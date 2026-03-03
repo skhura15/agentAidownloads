@@ -1,0 +1,84 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Data and local files (large files that shouldn't be in container)
+# Keep sim_configs and cases for simulation feature
+# Keep uta_knowledge for RAG ingestion at startup
+# Keep chroma_azure for pre-ingested vector data
+data/chroma/
+data/chroma_test/
+logs/
+*.log
+
+# Node/Frontend (if building backend only)
+ui/frontend/node_modules/
+ui/frontend/dist/
+ui/frontend/build/
+node_modules/
+
+# Azure/Deployment
+.azure/
+infra/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Tests (optional - remove if you want tests in container)
+tests/
+
+# Misc
+.env.local
+.env.*.local
+*.bak
+*.tmp

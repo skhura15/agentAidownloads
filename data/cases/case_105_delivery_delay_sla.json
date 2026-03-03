@@ -1,0 +1,64 @@
+{
+  "ticket_id": "TICKET-105",
+  "title": "Delivery Delayed Past ETA - Wants Refund",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Expectation Setting",
+  "tags": ["delivery", "tracking", "refund-request", "sla"],
+  "agent_context":"Order delivery is delayed but still within SLA thresholds. Use tracking data to set expectations and explain when refund or replacement becomes eligible.",
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Ethan Brooks",
+    "initial_message": "My package was supposed to arrive two days ago. Tracking hasn’t updated and I’m tired of excuses. I want a refund or a replacement — today.",
+    "context": "Order is 2 days past ETA but not yet past refund SLA threshold (refund eligible only after 3 business days past SLA). Replacement allowed only if no tracking movement for 48 hours. Customer is frustrated but not abusive."
+  },
+
+  "annotations": {
+    "sme_author": "Olivia Grant",
+    "sme_date": "2026-01-26",
+    "learning_objectives": [
+      "Use data-based updates instead of vague reassurance",
+      "Set expectations clearly (ETA, investigation, next update time)",
+      "Offer policy-aligned options without sounding dismissive"
+    ],
+    "correct_sop_steps": [
+      "Apologize and acknowledge frustration about the delay",
+      "Verify order identifier and check last tracking scan event",
+      "Explain what the tracking status means in plain language",
+      "Provide an updated ETA or investigation timeline",
+      "Offer next steps aligned with policy (investigation, replacement if 48h no movement, refund if SLA exceeded)",
+      "Commit to a concrete next update time"
+    ],
+    "common_mistakes": [
+      "Saying 'it will arrive soon' without checking tracking",
+      "Blaming the courier instead of taking ownership",
+      "Not giving a timeline for next update",
+      "Offering refund before eligibility"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Tracking check performed",
+        "Concrete next steps + timeline",
+        "Policy-aligned options explained",
+        "Next update time committed"
+      ],
+      "bonus_points": [
+        "Uses empathetic language while setting boundaries",
+        "Offers to open an investigation proactively"
+      ]
+    },
+    "sticky_notes": [
+      "KEY: Use the tracking last scan as your anchor. No vague reassurance.",
+      "HINT: Replacement only if no movement 48h; refund after SLA + 3 business days.",
+      "TRAP: If you blame the courier, customer escalates."
+    ]
+  },
+
+  "customer_persona_hints": {
+    "tone": "Frustrated, direct, wants action",
+    "secret_acceptance_condition": "Will accept waiting if agent provides a real tracking-based update and commits to a next update time",
+    "escalation_triggers": ["Vague promises", "Deflection to courier", "No clear timeline"],
+    "de-escalation_triggers": ["Concrete tracking info", "Ownership", "Clear options"]
+  }
+}

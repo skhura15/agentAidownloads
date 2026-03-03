@@ -1,0 +1,85 @@
+{
+  "case_id": "TICKET-105",
+  "title": "Delivery Delayed Past ETA - Wants Refund",
+  "difficulty": "intermediate",
+  "primary_skill": "Expectation Setting",
+  "customer_profile": {
+    "name": "Ethan Brooks",
+    "tone": "Frustrated, direct, wants action",
+    "knowledge_level": "average",
+    "opening_message": "My package was supposed to arrive two days ago. Tracking hasn’t updated and I’m tired of excuses. I want a refund or a replacement — today.",
+    "secret_condition": "Will accept waiting if agent provides a real tracking-based update and commits to a next update time",
+    "escalation_triggers": [
+      "Vague promises",
+      "Deflection to courier",
+      "No clear timeline"
+    ],
+    "de_escalation_triggers": [
+      "Concrete tracking info",
+      "Ownership",
+      "Clear options"
+    ],
+    "personality_notes": "Impatient but reasonable; wants facts and a plan."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Apologize and acknowledge frustration about the delay",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Apologize and acknowledge their frustration before discussing policy."
+      },
+      {
+        "id": 2,
+        "description": "Verify order identifier and check last tracking scan event",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask for order identifier and reference the last tracking scan event."
+      },
+      {
+        "id": 3,
+        "description": "Explain what the tracking status means in plain language",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Explain the tracking status simply so the customer understands."
+      },
+      {
+        "id": 4,
+        "description": "Provide an updated ETA or investigation timeline",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Provide an updated ETA or a clear investigation timeline."
+      },
+      {
+        "id": 5,
+        "description": "Offer next steps aligned with policy (investigation, replacement if 48h no movement, refund if SLA exceeded)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Offer policy-aligned options: replacement after 48h no movement; refund after SLA threshold."
+      },
+      {
+        "id": 6,
+        "description": "Commit to a concrete next update time",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Commit to the next update time to build trust."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Saying 'it will arrive soon' without checking tracking",
+      "Blaming the courier instead of taking ownership",
+      "Not giving a timeline for next update",
+      "Offering refund before eligibility"
+    ],
+    "positive_reinforcement_triggers": [
+      "Tracking-based update provided",
+      "Clear next update time committed",
+      "Policy-aligned options stated calmly"
+    ]
+  },
+  "scenario_context": "Order is 2 days past ETA but not yet past refund SLA threshold (refund eligible only after 3 business days past SLA). Replacement allowed only if no tracking movement for 48 hours. Customer is frustrated but not abusive.",
+  "success_summary": "Successfully demonstrate: Expectation Setting",
+  "max_turns": 20,
+  "generated_at": "2026-02-02T00:00:00.000000"
+}

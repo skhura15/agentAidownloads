@@ -1,0 +1,85 @@
+{
+  "case_id": "TICKET-106",
+  "title": "Cancel Subscription - Too Expensive + Bad Support",
+  "difficulty": "beginner",
+  "primary_skill": "Retention & Professionalism",
+  "customer_profile": {
+    "name": "Sofia Alvarez",
+    "tone": "Disappointed, firm but not rude",
+    "knowledge_level": "average",
+    "opening_message": "Please cancel my subscription. It’s too expensive and your support hasn’t helped me at all.",
+    "secret_condition": "Will consider a pause/discount if offered once respectfully; otherwise wants a clean cancellation",
+    "escalation_triggers": [
+      "Defensive tone",
+      "Multiple retention pushes",
+      "Unclear billing answers"
+    ],
+    "de_escalation_triggers": [
+      "Respectful tone",
+      "Clear end date",
+      "Fast confirmation"
+    ],
+    "personality_notes": "Wants clarity and closure; open to a single non-pushy alternative."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge request and confirm you can help with cancellation",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Confirm you can help with cancellation right away."
+      },
+      {
+        "id": 2,
+        "description": "Offer one optional question for feedback (non-intrusive)",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Ask one optional feedback question without interrogating."
+      },
+      {
+        "id": 3,
+        "description": "Offer one retention option if eligible (pause or discount) without pressure",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Offer one retention option once (pause/discount) if eligible."
+      },
+      {
+        "id": 4,
+        "description": "Confirm whether cancellation is immediate or end of billing cycle",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask whether they want cancellation now or end-of-cycle."
+      },
+      {
+        "id": 5,
+        "description": "Confirm billing impact (no further charges after effective date)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Clearly state billing impact and when charges stop."
+      },
+      {
+        "id": 6,
+        "description": "Send cancellation confirmation and summarize next steps",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Confirm you will send a cancellation confirmation and summarize next steps."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Asking 'why?' in an interrogating way",
+      "Pushing multiple retention offers",
+      "Canceling without confirming implications and end date",
+      "Becoming defensive about support complaint"
+    ],
+    "positive_reinforcement_triggers": [
+      "Single respectful retention offer",
+      "Clear end date + billing explanation",
+      "Concise summary and confirmation"
+    ]
+  },
+  "scenario_context": "Customer is eligible for a single retention offer (tenure 7 months). Policy: offer one discount or pause option once; do not pressure. Must confirm effective cancellation date and billing impact and send confirmation.",
+  "success_summary": "Successfully demonstrate: Retention & Professionalism",
+  "max_turns": 16,
+  "generated_at": "2026-02-02T00:00:00.000000"
+}

@@ -1,0 +1,75 @@
+{
+  "ticket_id": "TICKET-128",
+  "title": "High Performer but Toxic Behavior Impacting Team",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Difficult Conversation & Boundary Setting",
+  "tags": ["management", "behavior", "high-performer", "culture", "conflict", "coaching"],
+  "agent_context": "Employee delivers strong results but their behavior is damaging team morale. Acknowledge performance briefly, then set non-negotiable behavior expectations with examples + impact, keep confidentiality, and agree on concrete behavior changes with follow-up cadence.",
+
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Sanya Rao",
+    "initial_message": "So this is about people being ‘too sensitive’? I’m the one carrying projects. If they can’t handle direct feedback, that’s not my problem.",
+    "context": "1:1 behavior conversation. Reports: interrupts in meetings, belittling comments in reviews, shuts down questions. Policy: do not name complainants; keep it behavior + impact; acknowledge contributions; set clear expectations as non-negotiable; avoid labels like ‘toxic’; agree on 2–3 observable changes (meeting norms, PR tone, feedback model) with weekly check-ins. Don’t overpromise; stay calm and firm."
+  },
+
+  "annotations": {
+    "sme_author": "Management Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Address harmful behavior without escalating conflict",
+      "Separate performance recognition from behavior standards",
+      "Set clear boundaries and a measurable behavior change plan"
+    ],
+    "correct_sop_steps": [
+      "Set agenda: acknowledge results briefly, then state the topic is behavior expectations",
+      "Share specific behaviors and explain impact on collaboration/psych safety",
+      "State non-negotiable expectations for respectful communication and feedback",
+      "Invite perspective; handle pushback by redirecting to impact and expectations",
+      "Agree on 2–3 concrete behavior changes and how you’ll observe/measure them",
+      "Set weekly follow-up cadence and summarize next steps"
+    ],
+    "common_mistakes": [
+      "Using personal labels (‘toxic’) instead of behaviors",
+      "Revealing sources or naming complainants",
+      "Avoiding firmness because they are a high performer",
+      "No concrete plan or follow-up cadence"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Uses behavior-based examples and explains impact",
+        "Sets clear non-negotiable expectations",
+        "Maintains calm control during dismissal/pushback",
+        "Agrees on concrete behavior changes with follow-up cadence"
+      ],
+      "bonus_points": [
+        "Defines how progress will be observed/measured",
+        "Offers coaching resources (feedback training, mentoring)",
+        "Ends with a concise recap and next check-in date"
+      ],
+      "sticky_notes": [
+        "KEY: Recognize results, then be firm on behavior standards.",
+        "TRAP: Don’t disclose sources of feedback—keep confidentiality.",
+        "HINT: Agree on 2–3 observable behavior changes and review weekly."
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Defensive, dismissive, status-driven",
+    "secret_acceptance_condition": "Employee agrees to change if you acknowledge performance, stay behavior-focused, set firm expectations, and co-create a concrete improvement plan with weekly check-ins",
+    "escalation_triggers": [
+      "Personal labels ('toxic', 'bad person')",
+      "Naming complainants",
+      "Unclear expectations",
+      "Threats or shaming"
+    ],
+    "deescalation_triggers": [
+      "Calm, firm boundaries",
+      "Behavior-based examples",
+      "Clear expectations",
+      "Private coaching plan"
+    ]
+  }
+}

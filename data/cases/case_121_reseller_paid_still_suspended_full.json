@@ -1,0 +1,72 @@
+{
+  "ticket_id": "TICKET-121",
+  "title": "Paid via Reseller but Account Still Suspended for Non-Payment",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Partner Coordination & Restoration Planning",
+  "tags": ["reseller", "billing", "account-access", "coordination", "escalation"],
+  "agent_context": "Customer paid via an authorized reseller but account is suspended for non-payment. Verify reseller invoice details, open a partner billing investigation, and provide a restoration timeline or temporary access path if policy allows.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Hiroshi Tanaka",
+    "initial_message": "We paid our authorized reseller last week and we have the invoice and bank confirmation. But when my team tried to log in today, our account is suspended for non-payment. We’re rolling this out across multiple teams this week — we can’t afford downtime because of a billing mismatch between you and the reseller. What do you need from me to fix this right now?",
+    "context": "Customer payment handled via reseller/partner. Suspension likely due to settlement lag or remittance mapping gap. Policy: confirm reseller details safely; open partner billing case; coordinate mapping; offer temporary access mitigation if policy allows; set timeline + cadence."
+  },
+  "annotations": {
+    "sme_author": "Raj Mehta",
+    "sme_date": "2026-02-05",
+    "learning_objectives": [
+      "Handle third-party billing with ownership",
+      "Collect proof safely",
+      "Coordinate partner escalation",
+      "Offer mitigation if possible"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge urgency and apologize",
+      "Verify account + reseller + invoice ID",
+      "Collect minimal proof safely",
+      "Open partner billing investigation",
+      "Coordinate remittance mapping",
+      "Offer temporary access if policy allows",
+      "Set cadence + provide reference"
+    ],
+    "common_mistakes": [
+      "Requesting bank info",
+      "Treating as direct billing",
+      "No escalation",
+      "No reference",
+      "Overpromising restoration"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Partner verification plan",
+        "Safe proof collection",
+        "Escalation + reference",
+        "Timeline + cadence"
+      ],
+      "bonus_points": [
+        "Temporary access mitigation",
+        "Checklist summary"
+      ],
+      "sticky_notes": [
+        "KEY: Operational downtime is their fear—give ownership.",
+        "TRAP: Never request bank credentials.",
+        "HINT: Invoice ID + payment date usually enough."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Urgent, business-critical",
+    "escalation_triggers": [
+      "No plan",
+      "Sensitive info request",
+      "No timeline"
+    ],
+    "deescalation_triggers": [
+      "Checklist",
+      "Escalation",
+      "Update cadence"
+    ],
+    "secret_acceptance_condition": "Customer stabilizes when billing case is opened with checklist + timeline"
+  }
+}

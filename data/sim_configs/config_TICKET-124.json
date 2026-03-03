@@ -1,0 +1,81 @@
+{
+  "case_id": "TICKET-124",
+  "title": "IT Director Migration / Implementation Risk - Downtime Concerns",
+  "difficulty": "advanced",
+  "primary_skill": "Technical Discovery + Risk Mitigation",
+  "customer_profile": {
+    "name": "Neha Shah",
+    "tone": "Serious, technical, risk-focused",
+    "knowledge_level": "high",
+    "opening_message": "How do you migrate without downtime? What’s your rollback plan if this goes sideways?",
+    "secret_condition": "Customer accepts if agent asks strong technical discovery questions, proposes phased rollout + rollback framing, and schedules a technical assessment with owners and timeline",
+    "escalation_triggers": [
+      "Hand-wavy answers",
+      "Zero-downtime guarantees",
+      "Dodging rollback",
+      "Ignoring integrations"
+    ],
+    "de_escalation_triggers": [
+      "Phased plan",
+      "Rollback clarity",
+      "Readiness checklist",
+      "Assessment scheduled"
+    ],
+    "personality_notes": "Prioritizes stability, change windows, and stakeholder alignment; expects credible implementation sequencing and rollback thinking."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge downtime risk and confirm business-critical workflows",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask which workflows cannot be disrupted and what the blast radius is."
+      },
+      {
+        "id": 2,
+        "description": "Ask at least 4 technical discovery questions (integrations, SSO, data volume, environments, change windows)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Collect constraints before proposing timelines or guarantees."
+      },
+      {
+        "id": 3,
+        "description": "Propose phased rollout (pilot, parallel run, validation checklist, cutover)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Offer a step-by-step plan that reduces risk before full cutover."
+      },
+      {
+        "id": 4,
+        "description": "Address rollback/failback at a high level without promising zero downtime",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Explain rollback approach and what needs assessment to confirm."
+      },
+      {
+        "id": 5,
+        "description": "Close with next step: technical workshop/assessment with owners and timeline",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Schedule a technical session and list stakeholders needed (security/ops)."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Zero-downtime guarantee",
+      "No technical discovery",
+      "No rollback framing",
+      "No assessment next step"
+    ],
+    "positive_reinforcement_triggers": [
+      "Clear constraint discovery",
+      "Phased rollout sequencing",
+      "Rollback framing without overpromising",
+      "Concrete assessment scheduling"
+    ]
+  },
+  "scenario_context": "IT migration risk conversation. Must gather deployment constraints, propose phased rollout (pilot + parallel run + cutover checklist), address rollback without overpromising zero downtime, and schedule a technical assessment.",
+  "success_summary": "Successfully demonstrate: Technical Discovery + Risk Mitigation",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

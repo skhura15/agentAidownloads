@@ -1,0 +1,65 @@
+{
+  "ticket_id": "TICKET-102",
+  "title": "Double Charge on Subscription",
+  "difficulty": "beginner",
+  "estimated_time_minutes": 8,
+  "primary_skill": "Problem Resolution",
+  "tags": ["billing", "subscription", "refund-eligible"],
+  "agent_context":"Customer is reporting a duplicate subscription charge caused by a system error. Verify billing details and process the authorized refund quickly while maintaining reassurance.",
+  
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Jordan Chen",
+    "initial_message": "Hi, I just noticed I was charged twice for my monthly subscription this month. I see two charges of $29.99 on my credit card dated January 15th. Can you help me with this?",
+    "context": "Customer has been subscribed for 8 months. This is a legitimate duplicate charge due to a system glitch. Refund is authorized per policy."
+  },
+  
+  "annotations": {
+    "sme_author": "Michael Torres",
+    "sme_date": "2026-01-20",
+    "learning_objectives": [
+      "Practice standard billing dispute resolution",
+      "Learn to verify account information professionally",
+      "Execute straightforward refund process"
+    ],
+    "correct_sop_steps": [
+      "Thank the customer for bringing this to attention",
+      "Verify the account using last 4 digits of card or email",
+      "Confirm you can see the duplicate charge in the system",
+      "Apologize for the inconvenience caused by the error",
+      "Process the refund immediately",
+      "Provide timeline for refund to appear (3-5 business days)",
+      "Offer any goodwill gesture (e.g., one week free extension)"
+    ],
+    "common_mistakes": [
+      "Not verifying the account before discussing details",
+      "Making the customer wait while 'checking with supervisor' for obvious errors",
+      "Forgetting to give refund timeline",
+      "Not apologizing for the company's error"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Account verification step",
+        "Clear acknowledgment of the error",
+        "Refund processing confirmation",
+        "Timeline provided"
+      ],
+      "bonus_points": [
+        "Goodwill gesture offered",
+        "Proactive assurance this won't happen again"
+      ]
+    },
+    "sticky_notes": [
+      "EASY WIN: This is a straightforward case. Focus on efficiency and warmth.",
+      "TIP: Always verify before discussing account specifics (privacy)",
+      "BONUS: Offering a small goodwill gesture builds loyalty"
+    ]
+  },
+  
+  "customer_persona_hints": {
+    "tone": "Calm and reasonable, slightly concerned",
+    "secret_acceptance_condition": "Will be satisfied with just the refund and timeline, but delighted if offered goodwill gesture",
+    "escalation_triggers": ["Long hold times", "Being asked to repeat information multiple times"],
+    "de-escalation_triggers": ["Quick resolution", "Clear communication"]
+  }
+}

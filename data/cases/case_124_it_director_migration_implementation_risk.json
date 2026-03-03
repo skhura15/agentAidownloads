@@ -1,0 +1,72 @@
+{
+  "ticket_id": "TICKET-124",
+  "title": "IT Director Migration / Implementation Risk - Downtime Concerns",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Technical Discovery + Risk Mitigation",
+  "tags": ["sales", "it-director", "migration", "implementation", "downtime", "risk"],
+  "agent_context": "IT Director is concerned about downtime, rollout disruption, and rollback risk. Gather deployment constraints and integrations, propose a phased migration plan with rollback framing, and avoid promising zero downtime without an assessment.",
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Neha Shah",
+    "initial_message": "I’m not worried about features — I’m worried about downtime. How do you migrate without breaking workflows? What’s your rollback plan if this goes sideways?",
+    "context": "Prospect migrating from a legacy/internal tool. Stakeholders include security and operations. Policy: do not guarantee zero downtime; ask about integrations, SSO, data volume, environments, change windows; propose phased rollout (pilot + parallel run + cutover checklist); describe rollback at a high level and schedule a technical assessment."
+  },
+  "annotations": {
+    "sme_author": "Sales Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Run technical discovery to identify implementation constraints",
+      "Address downtime and rollback risk credibly",
+      "Align on a phased rollout plan and next-step assessment"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge risk concerns and confirm business-critical workflows",
+      "Ask technical discovery (integrations, SSO/identity, data volume, environments, change windows, stakeholders)",
+      "Outline phased rollout (pilot group, parallel run, validation checklist, cutover plan)",
+      "Address rollback/failback at a high level without overpromising",
+      "Clarify what requires technical assessment vs what can be confirmed now",
+      "Close with next step: technical workshop/assessment with owners and timeline"
+    ],
+    "common_mistakes": [
+      "Promising zero downtime without details",
+      "Giving vague migration answers without discovery",
+      "Ignoring integrations/security stakeholders",
+      "No concrete next step or assessment plan"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "At least 4 relevant technical discovery questions",
+        "Phased migration plan communicated clearly",
+        "Rollback addressed without promising zero downtime",
+        "Next step scheduled (assessment/workshop)"
+      ],
+      "bonus_points": [
+        "Mentions pilot + parallel run explicitly",
+        "Provides a short readiness checklist",
+        "Names owners/stakeholders needed for assessment"
+      ],
+      "sticky_notes": [
+        "KEY: Credibility beats optimism — ask constraints first.",
+        "TRAP: ‘Easy migration’ language undermines trust with IT.",
+        "HINT: Propose pilot + parallel run + cutover checklist, then schedule assessment."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Serious, technical, risk-focused",
+    "secret_acceptance_condition": "Will proceed if agent runs technical discovery, provides a phased rollout plan with rollback framing, and schedules a technical assessment with clear owners and timeline",
+    "escalation_triggers": [
+      "Hand-wavy answers",
+      "Zero-downtime guarantees",
+      "Dodging rollback",
+      "Ignoring integrations"
+    ],
+    "deescalation_triggers": [
+      "Phased plan",
+      "Rollback clarity",
+      "Readiness checklist",
+      "Assessment scheduled"
+    ]
+  }
+}

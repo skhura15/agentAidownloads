@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-108",
+  "title": "Feature Locked - Customer Believes It's Included",
+  "difficulty": "intermediate",
+  "primary_skill": "Expectation Setting",
+  "scenario_context": "Customer on Starter plan; Export feature is Pro+. Must explain entitlement clearly, offer workaround first, then optional upgrade. Avoid blame or pressure.",
+  "success_summary": "Expectation setting with workaround-first and non-pushy upgrade option.",
+  "max_turns": 12,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Riya Mehra",
+    "tone": "urgent, slightly accusatory",
+    "knowledge_level": "medium",
+    "opening_message": "Why is the Export button locked? I paid for this.",
+    "secret_condition": "Customer accepts if agent offers an immediate workaround and explains entitlement clearly without blame",
+    "escalation_triggers": [
+      "blame/condescending tone",
+      "no workaround",
+      "pushy upsell"
+    ],
+    "de_escalation_triggers": [
+      "workaround",
+      "clear plan explanation",
+      "optional upgrade"
+    ],
+    "personality_notes": "Urgent and slightly accusatory, but cooperative if helped quickly."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge urgency and frustration",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Lead with empathy before policy/plan details."
+      },
+      {
+        "id": 2,
+        "description": "Verify plan tier and confirm Export entitlement",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Confirm Starter vs Pro before explaining."
+      },
+      {
+        "id": 3,
+        "description": "Explain entitlement in soft language (no blame)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Avoid phrasing like 'you should have known'."
+      },
+      {
+        "id": 4,
+        "description": "Offer an immediate workaround based on their export need",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Ask what format they need and propose a workaround."
+      },
+      {
+        "id": 5,
+        "description": "Offer upgrade as an option (trial/upgrade) without pressure; offer note review if promised",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Present upgrade calmly; offer to check notes if they claim it was promised."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Upsell-first without workaround",
+      "Blame language",
+      "Vague entitlement explanation",
+      "Ignoring claim of prior promise"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

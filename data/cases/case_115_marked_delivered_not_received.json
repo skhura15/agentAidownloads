@@ -1,0 +1,68 @@
+{
+  "ticket_id": "TICKET-115",
+  "title": "Package Marked Delivered but Customer Didn't Receive It",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Calm Investigation & SLA Handling",
+  "tags": ["delivery", "marked-delivered", "investigation", "refund-policy"],
+  "agent_context": "Package is marked delivered but customer can’t find it. Apologize, verify delivery details and safe-drop options, open a carrier investigation immediately, and set a concrete update timeline plus when refund/replacement becomes available.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Fatima Ali",
+    "initial_message": "Tracking says ‘Delivered’ but there’s NOTHING here. I’ve checked everywhere. So where is my package?",
+    "context": "Shipment marked delivered but customer claims not received. Policy: apologize, verify address and delivery details, check safe drop/neighbor/front desk, open carrier investigation, set timeline for resolution, and explain replacement/refund options after investigation window."
+  },
+  "annotations": {
+    "sme_author": "Mina Al-Sayed",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "De-escalate and investigate calmly",
+      "Collect the right delivery details quickly",
+      "Set clear expectations and resolution timeline"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge frustration and apologize",
+      "Verify order ID and delivery address safely",
+      "Check safe-drop options and neighbors",
+      "Confirm delivery timestamp and any proof-of-delivery",
+      "Open carrier investigation and set update timeline",
+      "Explain replacement/refund policy after investigation window"
+    ],
+    "common_mistakes": [
+      "Accusing customer or courier",
+      "Skipping investigation",
+      "No timeline",
+      "Instant refund promise"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Apology + empathy",
+        "Investigation initiated",
+        "Clear timeline + next update time"
+      ],
+      "bonus_points": [
+        "Offers urgent replacement option",
+        "Clear end-of-message summary"
+      ],
+      "sticky_notes": [
+        "KEY: Immediate action + timeline matters most.",
+        "TRAP: Never imply the customer is lying.",
+        "HINT: Commit to a specific update time."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Stressed and impatient",
+    "escalation_triggers": [
+      "Accusations",
+      "No action plan",
+      "No timeline"
+    ],
+    "deescalation_triggers": [
+      "Clear steps",
+      "Fast investigation",
+      "Replacement option"
+    ],
+    "secret_acceptance_condition": "Will calm down if investigation is opened immediately with a clear update timeline"
+  }
+}

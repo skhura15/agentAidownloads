@@ -1,0 +1,21 @@
+# Production Environment Configuration
+# Overrides base config for production
+
+azure_openai:
+  model: "gpt-4"
+  temperature: 0.7
+  max_tokens: 2000
+
+logging:
+  level: "INFO"
+  
+api:
+  reload: false
+  workers: 4
+
+state:
+  use_redis: true
+  ttl_seconds: 7200
+
+orchestration:
+  max_iterations: 20

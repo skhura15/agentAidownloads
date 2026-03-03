@@ -1,0 +1,82 @@
+{
+  "case_id": "TICKET-123",
+  "title": "Skeptical CFO Discovery Call - ROI Pushback",
+  "difficulty": "advanced",
+  "primary_skill": "Discovery + Objection Handling",
+  "customer_profile": {
+    "name": "Ravi Mehta",
+    "tone": "Skeptical, blunt, time-conscious",
+    "knowledge_level": "high",
+    "opening_message": "I’ll be direct — why should I spend on this now? What’s the ROI and payback?",
+    "secret_condition": "Customer accepts if agent runs strong discovery, frames ROI conservatively with assumptions (no invented numbers), and proposes a pilot with measurable success metrics and timeline",
+    "escalation_triggers": [
+      "Hypey language",
+      "Invented benchmarks",
+      "Feature dumping",
+      "Dodging payback questions"
+    ],
+    "de_escalation_triggers": [
+      "Direct answers",
+      "Conservative assumptions",
+      "Pilot with metrics",
+      "Clear next steps"
+    ],
+    "personality_notes": "Cares about payback window, risk reduction, and credible measurement; dislikes fluff and unverified claims."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge skepticism and confirm what ROI/payback means to the CFO",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask what payback window and outcomes (hard savings vs risk) matter most."
+      },
+      {
+        "id": 2,
+        "description": "Ask at least 3 targeted discovery questions about current costs/risks",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Probe time spent, rework/error costs, delays, headcount, compliance risk."
+      },
+      {
+        "id": 3,
+        "description": "Summarize CFO priorities and restate success criteria in business terms",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Reflect their goals (payback + risk) before presenting any value frame."
+      },
+      {
+        "id": 4,
+        "description": "Frame value conservatively with explicit assumptions (no invented benchmarks)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: State assumptions and ask for inputs; avoid guaranteed savings."
+      },
+      {
+        "id": 5,
+        "description": "Propose a pilot/POC with metrics, owners, and timeline; ask for the next meeting",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Offer a measurable pilot and schedule the next step/workshop."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Demo-first pitch",
+      "Quoting ROI without discovery",
+      "Invented benchmarks",
+      "Guaranteeing savings",
+      "No measurable next step"
+    ],
+    "positive_reinforcement_triggers": [
+      "Clear discovery questions",
+      "Assumptions stated explicitly",
+      "Pilot proposal with metrics and owners",
+      "Concise business summary"
+    ]
+  },
+  "scenario_context": "CFO discovery call. Must ask discovery first, quantify value conservatively with stated assumptions, and avoid invented benchmarks or guaranteed ROI. End with a pilot proposal (metrics + timeline + owners).",
+  "success_summary": "Successfully demonstrate: Discovery + Objection Handling",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

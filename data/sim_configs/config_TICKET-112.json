@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-112",
+  "title": "Wrong/Damaged Item Delivered - Customer Wants Refund",
+  "difficulty": "intermediate",
+  "primary_skill": "Resolution within Policy",
+  "scenario_context": "Wrong/damaged item delivered. Replacement default; refund after return pickup/return initiated. Request photos politely. Offer expedited pickup/replacement with clear timelines.",
+  "success_summary": "Delivery issue handled with empathy, action, and clear refund timelines.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Kabir Joshi",
+    "tone": "impatient, annoyed",
+    "knowledge_level": "low",
+    "opening_message": "Wrong item and damaged box. I want a refund today.",
+    "secret_condition": "Customer accepts if pickup is initiated immediately with clear refund timeline",
+    "escalation_triggers": [
+      "implying customer is lying",
+      "no actionable steps",
+      "no timelines"
+    ],
+    "de_escalation_triggers": [
+      "pickup initiated",
+      "clear timeline",
+      "concise plan"
+    ],
+    "personality_notes": "Impatient but cooperative once action begins."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Apologize and acknowledge inconvenience",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Start with empathy."
+      },
+      {
+        "id": 2,
+        "description": "Verify order details",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Confirm basics first."
+      },
+      {
+        "id": 3,
+        "description": "Request photos politely if required",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Ask as process, not suspicion."
+      },
+      {
+        "id": 4,
+        "description": "Offer replacement or pickup + refund flow",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Provide options + constraints."
+      },
+      {
+        "id": 5,
+        "description": "Initiate pickup + provide refund timeline",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Action + timeline reduces frustration."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Rigid photo demands",
+      "No pickup initiation",
+      "No timeline",
+      "Refund denial without alternative"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

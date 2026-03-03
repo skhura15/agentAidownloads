@@ -1,0 +1,75 @@
+{
+  "ticket_id": "TICKET-130",
+  "title": "Burnout / Employee Wellbeing Conversation - Overwhelmed and Disengaged",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 14,
+  "primary_skill": "Wellbeing Support & Workload Alignment",
+  "tags": ["management", "burnout", "wellbeing", "workload", "support", "retention-risk"],
+  "agent_context": "Employee shows burnout signs (overwhelmed, disengaged, behind). Lead with empathy, explore workload drivers without prying, reduce scope immediately, offer supports/resources, and set a near-term follow-up with a clear recap.",
+
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Meera Nair",
+    "initial_message": "I’m just exhausted. I’m behind on everything and I don’t even know where to start. I’ve been thinking maybe I’m not cut out for this anymore.",
+    "context": "Wellbeing check-in. Signs: extended hours, missed deadlines, emotional fatigue. Policy: do not diagnose or ask for medical details; focus on workload/priorities/support; offer practical adjustments (de-scope, deadline reset, pairing, focus time) and point to support resources if applicable; set follow-up soon. Escalate to HR only if required by policy or explicit risk is disclosed."
+  },
+
+  "annotations": {
+    "sme_author": "Management Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Respond empathetically to burnout signals",
+      "Create a practical workload/prioritization plan",
+      "Offer supports/resources and set follow-up cadence"
+    ],
+    "correct_sop_steps": [
+      "Lead with empathy and psychological safety; thank them for sharing",
+      "Explore stressors with open questions (workload, clarity, constraints) without prying",
+      "Reprioritize: identify top 1–2 priorities and explicitly pause/de-scope others",
+      "Agree immediate supports (deadline reset, focus blocks, pairing, PTO planning if applicable)",
+      "Offer available resources in a non-pushy way (EAP/HR guidance as appropriate)",
+      "Schedule a near-term follow-up and recap next steps clearly"
+    ],
+    "common_mistakes": [
+      "Jumping to solutions without empathy",
+      "Minimizing (‘everyone is busy’)",
+      "Prying into personal/medical details",
+      "No scope reduction and no follow-up"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Empathetic response and safe tone",
+        "Explores stressors and clarifies workload drivers",
+        "Creates a concrete short-term plan (priorities + what pauses/stops)",
+        "Offers supports/resources and schedules follow-up"
+      ],
+      "bonus_points": [
+        "Sets boundaries and realistic expectations (response times, focus time)",
+        "Confirms plan in a concise written recap",
+        "Coordinates at a high level to adjust deadlines/expectations"
+      ],
+      "sticky_notes": [
+        "KEY: Empathy first, then practical reprioritization.",
+        "TRAP: Don’t diagnose or ask for medical details.",
+        "HINT: De-scope work and protect time immediately—don’t just ‘encourage.’"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Overwhelmed, anxious, discouraged",
+    "secret_acceptance_condition": "Employee stabilizes if you respond empathetically, reduce scope immediately, offer practical support/resources, and schedule a near-term follow-up with clear next steps",
+    "escalation_triggers": [
+      "Minimizing language",
+      "Pressure or guilt",
+      "No real workload change",
+      "Intrusive personal questions"
+    ],
+    "deescalation_triggers": [
+      "Empathy and validation",
+      "Immediate reprioritization",
+      "Practical support offers",
+      "Clear follow-up"
+    ]
+  }
+}

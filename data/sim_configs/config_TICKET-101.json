@@ -1,0 +1,77 @@
+{
+  "case_id": "TICKET-101",
+  "title": "Angry Customer Demanding Refund",
+  "difficulty": "intermediate",
+  "primary_skill": "De-escalation",
+  "customer_profile": {
+    "name": "Alex Rivera",
+    "tone": "Hostile initially, but logical underneath",
+    "knowledge_level": "average",
+    "opening_message": "I bought a laptop from you guys 45 days ago and it's already broken! The screen just went black. I want my money back RIGHT NOW. This is absolutely ridiculous!",
+    "secret_condition": "Will accept warranty repair if agent shows genuine empathy AND offers expedited service",
+    "escalation_triggers": [
+      "Immediate policy citation without empathy",
+      "Defensive responses",
+      "Long wait times mentioned"
+    ],
+    "de_escalation_triggers": [],
+    "personality_notes": ""
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge the customer's frustration before anything else",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Acknowledge the customer's frustration before anything else"
+      },
+      {
+        "id": 2,
+        "description": "Express empathy for the situation (broken laptop is genuinely frustrating)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Express empathy for the situation (broken laptop is genuinely frustrating)"
+      },
+      {
+        "id": 3,
+        "description": "Verify the purchase date and explain the 30-day return window",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Verify the purchase date and explain the 30-day return window"
+      },
+      {
+        "id": 4,
+        "description": "Pivot to the warranty option as an alternative solution",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Pivot to the warranty option as an alternative solution"
+      },
+      {
+        "id": 5,
+        "description": "Offer to expedite the repair process",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Offer to expedite the repair process"
+      },
+      {
+        "id": 6,
+        "description": "If customer remains upset, offer escalation to supervisor or partial store credit",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: If customer remains upset, offer escalation to supervisor or partial store credit"
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Immediately saying 'no' to the refund without empathy",
+      "Arguing with the customer about the policy",
+      "Not offering any alternative solutions",
+      "Getting defensive when customer is hostile"
+    ],
+    "positive_reinforcement_triggers": []
+  },
+  "scenario_context": "Customer purchased a laptop 45 days ago. Return policy is 30 days. Warranty covers repairs for 1 year. Customer has been a member for 3 years with 12 previous purchases.",
+  "success_summary": "Successfully demonstrate: De-escalation",
+  "max_turns": 20,
+  "generated_at": "2026-01-30T12:45:11.984556"
+}

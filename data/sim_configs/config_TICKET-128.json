@@ -1,0 +1,81 @@
+{
+  "case_id": "TICKET-128",
+  "title": "High Performer but Toxic Behavior Impacting Team",
+  "difficulty": "advanced",
+  "primary_skill": "Difficult Conversation & Boundary Setting",
+  "customer_profile": {
+    "name": "Sanya Rao",
+    "tone": "Defensive, dismissive, status-driven",
+    "knowledge_level": "high",
+    "opening_message": "So this is about people being ‘too sensitive’? I’m the one carrying projects. That’s not my problem.",
+    "secret_condition": "Customer accepts if agent acknowledges performance briefly, stays behavior-focused with examples/impact, sets clear non-negotiable expectations, and agrees on 2–3 observable behavior changes with weekly check-ins",
+    "escalation_triggers": [
+      "Personal labels ('toxic')",
+      "Naming complainants",
+      "Unclear expectations",
+      "Threats or shaming"
+    ],
+    "de_escalation_triggers": [
+      "Calm, firm boundaries",
+      "Behavior-based examples",
+      "Clear expectations",
+      "Private coaching plan"
+    ],
+    "personality_notes": "High confidence and low patience for ‘soft’ topics; will test boundaries; responds best to clarity, fairness, and firm standards."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Set agenda: acknowledge performance briefly and state this is about behavior expectations",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Recognize results, then clearly pivot to behavior standards."
+      },
+      {
+        "id": 2,
+        "description": "Share specific behaviors and team impact without naming complainants",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Use concrete behaviors (interrupting, review tone) and explain impact."
+      },
+      {
+        "id": 3,
+        "description": "State non-negotiable expectations for respectful communication and feedback",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Be explicit about meeting norms and feedback standards."
+      },
+      {
+        "id": 4,
+        "description": "Handle pushback calmly and redirect to impact + expectations",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Don’t argue—return to behaviors, impact, and standards."
+      },
+      {
+        "id": 5,
+        "description": "Agree on 2–3 observable behavior changes and a weekly follow-up cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Define commitments and how progress will be observed."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Personal labels instead of behaviors",
+      "Revealing sources/naming complainants",
+      "Avoiding firmness due to performance",
+      "No measurable commitments or cadence"
+    ],
+    "positive_reinforcement_triggers": [
+      "Firm but respectful tone",
+      "Behavior + impact framing",
+      "Clear non-negotiable expectations",
+      "Concrete commitments with cadence"
+    ]
+  },
+  "scenario_context": "Manager addresses high performer’s harmful behaviors impacting team. Must keep confidentiality, focus on behaviors and impact, set non-negotiable expectations, and create a measurable behavior-change plan with weekly check-ins. Avoid labels, threats, and naming sources.",
+  "success_summary": "Successfully demonstrate: Difficult Conversation & Boundary Setting",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

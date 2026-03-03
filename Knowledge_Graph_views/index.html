@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Knowledge Graph — Support AI Dashboard</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface2: #1a2236;
+      --border: rgba(255,255,255,0.08);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --dim: #6b7280;
+      --accent: #22c55e;
+      --accent2: #60a5fa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(900px 400px at 30% 20%, rgba(34,197,94,0.15), transparent 60%),
+        radial-gradient(900px 400px at 70% 10%, rgba(96,165,250,0.12), transparent 55%);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; }
+    .hero-logo {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #22c55e, #60a5fa);
+      display: inline-grid;
+      place-items: center;
+      font-size: 30px;
+      box-shadow: 0 12px 40px rgba(34,197,94,0.3);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-hero {
+      padding: 14px 32px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .btn-hero:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.16);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .btn-hero.primary {
+      background: linear-gradient(135deg, rgba(34,197,94,0.25), rgba(96,165,250,0.2));
+      border-color: rgba(34,197,94,0.4);
+      color: #bbf7d0;
+    }
+    .btn-hero.primary:hover {
+      background: linear-gradient(135deg, rgba(34,197,94,0.35), rgba(96,165,250,0.3));
+      box-shadow: 0 8px 32px rgba(34,197,94,0.15);
+    }
+
+    /* ── Stats Row ── */
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      padding: 0 24px 50px;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 140px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .stat-card:nth-child(1)::before { background: var(--accent); }
+    .stat-card:nth-child(2)::before { background: var(--accent2); }
+    .stat-card:nth-child(3)::before { background: #a78bfa; }
+    .stat-card:nth-child(4)::before { background: #f59e0b; }
+    .stat-card:nth-child(5)::before { background: #ec4899; }
+    .stat-card:nth-child(6)::before { background: #06b6d4; }
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    /* ── Section ── */
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ── Feature Cards ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(255,255,255,0.14);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Graph Schema Preview ── */
+    .schema-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .schema-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .schema-item:hover {
+      border-color: rgba(255,255,255,0.14);
+      background: var(--surface2);
+    }
+    .schema-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ── How it works ── */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step-item {
+      display: flex;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .step-content h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 30px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--dim);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) {
+      .hero { padding: 50px 16px 40px; }
+      .hero h1 { font-size: 26px; }
+      .stats-row { padding: 0 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-logo">🧠</div>
+    <h1>Support AI <span>Agent</span></h1>
+    <p>AI-powered ticket resolution for Microsoft Dynamics 365 Contact Center (CCaaS). Traverses the Knowledge Graph to find known issues, runbooks, expert contacts, and step-by-step solutions — powered by local Ollama LLM.</p>
+    <div class="hero-actions">
+      <a class="btn-hero primary" href="support_agent.html">🤖 Support AI Agent</a>
+      <a class="btn-hero" href="graph_explorer.html">🕸️ Graph Explorer</a>
+      <a class="btn-hero" href="knowledge_graph.json" target="_blank">📄 Raw JSON</a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row" id="statsRow">
+    <div class="stat-card"><div class="stat-number" id="s-nodes">—</div><div class="stat-label">Nodes</div></div>
+    <div class="stat-card"><div class="stat-number" id="s-edges">—</div><div class="stat-label">Edges</div></div>
+    <div class="stat-card"><div class="stat-number" id="s-products">—</div><div class="stat-label">Products</div></div>
+    <div class="stat-card"><div class="stat-number" id="s-services">—</div><div class="stat-label">Services</div></div>
+    <div class="stat-card"><div class="stat-number" id="s-experts">—</div><div class="stat-label">Experts</div></div>
+    <div class="stat-card"><div class="stat-number" id="s-types">—</div><div class="stat-label">Node Types</div></div>
+  </div>
+
+  <!-- Node Types in the Graph -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Graph Schema — Node Types</h2>
+      <p>All entity types in the knowledge graph with their color coding</p>
+    </div>
+    <div class="schema-grid" id="schemaGrid"></div>
+  </div>
+
+  <!-- How it works -->
+  <div class="section">
+    <div class="section-header">
+      <h2>How the Support AI Agent Uses This Graph</h2>
+      <p>When a support ticket arrives, the AI agent traverses the graph to find the best resolution</p>
+    </div>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Parse Ticket</h4>
+          <p>Extract product name, error messages, symptoms, affected version, and customer from the incoming ticket.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Match Known Issues</h4>
+          <p>Search KnownIssue nodes by matching symptoms. If found, provide the documented workaround immediately.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Check Release Notes &amp; Fixes</h4>
+          <p>Traverse FIXED_IN edges to see if the issue was resolved in a newer version. Recommend upgrade if applicable.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Find Runbooks &amp; SOPs</h4>
+          <p>Follow HAS_RUNBOOK edges from affected services to get step-by-step resolution procedures.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Identify Experts &amp; Escalate</h4>
+          <p>If unresolved, find the owning Team and available Experts using OWNS and ASSIGNED_TO edges. Follow SOP for escalation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Explorer Features</h2>
+      <p>What you can do in the interactive graph view</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🕸️</div>
+        <h3>Force-Directed Layout</h3>
+        <p>D3.js powered physics simulation that auto-arranges nodes by their relationships for intuitive visual exploration.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Search &amp; Filter</h3>
+        <p>Instantly search nodes by name and filter by type — Products, Services, Experts, Incidents, and more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Node Inspector</h3>
+        <p>Click any node to see all properties, tags, connected nodes, runbook steps, and resolution details in a side panel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Relationship Traversal</h3>
+        <p>Navigate between connected nodes — follow DEPENDS_ON chains, RESOLVED_BY links, and IMPACTED_BY paths.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Highlight Connections</h3>
+        <p>Selecting a node highlights all its direct connections and dims everything else for focused analysis.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🖱️</div>
+        <h3>Drag &amp; Zoom</h3>
+        <p>Pan, zoom, and drag nodes to rearrange the graph. Fit-to-screen with one click for the best overview.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Knowledge Graph Explorer &mdash; Support AI Agent &bull; <a href="graph_explorer.html">Open Explorer</a> &bull; <a href="knowledge_graph.json" target="_blank">View JSON</a></p>
+  </footer>
+
+  <script>
+    // Load stats from JSON
+    fetch('knowledge_graph.json')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('s-nodes').textContent = data.nodes.length;
+        document.getElementById('s-edges').textContent = data.edges.length;
+        document.getElementById('s-types').textContent = data.node_types.length;
+
+        const counts = {};
+        data.nodes.forEach(n => counts[n.type] = (counts[n.type] || 0) + 1);
+        document.getElementById('s-products').textContent = counts['Product'] || 0;
+        document.getElementById('s-services').textContent = counts['Service'] || 0;
+        document.getElementById('s-experts').textContent = counts['Expert'] || 0;
+
+        // Build schema grid
+        const colors = {
+          Product:'#22c55e', Service:'#60a5fa', SPO:'#a78bfa', ReleaseNote:'#f59e0b',
+          UserGuide:'#06b6d4', KnownIssue:'#ef4444', Runbook:'#10b981', SOP:'#8b5cf6',
+          Incident:'#f97316', Expert:'#ec4899', Team:'#14b8a6', Customer:'#eab308',
+          Infrastructure:'#64748b', Configuration:'#94a3b8', FAQ:'#06b6d4', Feature:'#34d399'
+        };
+        const icons = {
+          Product:'📦', Service:'⚙️', SPO:'📋', ReleaseNote:'📝', UserGuide:'📖',
+          KnownIssue:'⚠️', Runbook:'📘', SOP:'📑', Incident:'🚨', Expert:'👤',
+          Team:'👥', Customer:'🏢', Infrastructure:'🖥️', Configuration:'🔧', FAQ:'❓', Feature:'✨'
+        };
+        const grid = document.getElementById('schemaGrid');
+        Object.entries(counts).sort((a,b) => b[1]-a[1]).forEach(([type, count]) => {
+          const el = document.createElement('div');
+          el.className = 'schema-item';
+          el.innerHTML = `<div class="schema-dot" style="background:${colors[type]||'#64748b'}"></div>
+            <span>${icons[type]||'●'} ${type} (${count})</span>`;
+          grid.appendChild(el);
+        });
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

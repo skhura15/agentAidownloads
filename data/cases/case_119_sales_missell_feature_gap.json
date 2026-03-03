@@ -1,0 +1,72 @@
+{
+  "ticket_id": "TICKET-119",
+  "title": "Sales Promised Features Not Included - Customer Feels Misled",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Cross-Team Resolution & Trust Repair",
+  "tags": ["sales-missell", "feature-entitlement", "contract", "trust-repair", "escalation"],
+  "agent_context": "Customer believes sales promised advanced features that aren’t in their tier and feels misled after a rollout. Stay neutral, verify contract/entitlement and sales notes, escalate to account/commercial owner, provide a near-term workaround, and commit to a clear follow-up time.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Olivia Chen",
+    "initial_message": "We signed because your sales rep explicitly told us advanced analytics and forecasting were included. We onboarded 30 people this week based on that. Now support is telling us those features are on a higher tier. I don’t want a generic apology — I need to know who’s fixing this and what we’re supposed to do in the meantime.",
+    "context": "Customer claims sales promised features not included in purchased tier. Policy: do not accuse sales or customer; verify contract/SOW and entitlement; review sales notes if available; escalate to account manager/commercial owner; offer interim workaround if possible; set timeline for follow-up and ownership."
+  },
+  "annotations": {
+    "sme_author": "Priya Nair",
+    "sme_date": "2026-02-05",
+    "learning_objectives": [
+      "De-escalate a trust breach without assigning blame",
+      "Verify contract/entitlement correctly",
+      "Escalate to account/commercial owner with clear ownership",
+      "Provide interim options and timelines"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge impact and apologize for the confusion and disruption",
+      "Confirm account identifiers and expected features/use case",
+      "Verify entitlement and review contract/SOW + sales notes",
+      "Avoid blaming sales; use neutral phrasing",
+      "Escalate to account/commercial owner",
+      "Provide interim workaround",
+      "Set next update time and ownership"
+    ],
+    "common_mistakes": [
+      "Blaming sales",
+      "Arguing about promise",
+      "Policy-only response",
+      "No workaround",
+      "No owner/timeline"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Trust repair tone",
+        "Contract/entitlement verification",
+        "Commercial escalation",
+        "Timeline set"
+      ],
+      "bonus_points": [
+        "Interim workaround",
+        "Plan summary"
+      ],
+      "sticky_notes": [
+        "KEY: Validate rollout impact.",
+        "TRAP: Don’t throw sales under the bus.",
+        "HINT: Ask analytics use case."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Frustrated, businesslike",
+    "escalation_triggers": [
+      "Generic apology",
+      "Blame shifting",
+      "No timeline"
+    ],
+    "deescalation_triggers": [
+      "Ownership",
+      "Contract review",
+      "Workaround"
+    ],
+    "secret_acceptance_condition": "Customer stabilizes when ownership + escalation + workaround + timeline provided"
+  }
+}

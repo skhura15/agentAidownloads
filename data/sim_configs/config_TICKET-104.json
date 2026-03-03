@@ -1,0 +1,85 @@
+{
+  "case_id": "TICKET-104",
+  "title": "MFA Invalid Code - Urgent Login Block",
+  "difficulty": "intermediate",
+  "primary_skill": "Probing & Troubleshooting",
+  "customer_profile": {
+    "name": "Amina Hassan",
+    "tone": "Anxious, polite, time-pressured",
+    "knowledge_level": "average",
+    "opening_message": "I’m locked out of my account. The MFA code keeps saying 'invalid' even though I’m typing it right. I have a deadline in 30 minutes — please help.",
+    "secret_condition": "Will calm down if agent acknowledges urgency and provides a clear step-by-step plan quickly",
+    "escalation_triggers": [
+      "Asking for OTP/code",
+      "Vague answers",
+      "Long delays without updates"
+    ],
+    "de_escalation_triggers": [
+      "Clear steps",
+      "Quick checks",
+      "Ownership and reassurance"
+    ],
+    "personality_notes": "Cooperative but stressed; wants fast progress and clear guidance."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge urgency and reassure the customer you will help",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Acknowledge the urgency and reassure them you will help right away."
+      },
+      {
+        "id": 2,
+        "description": "Confirm whether MFA is via SMS or authenticator app",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Confirm whether they use SMS OTP or an authenticator app."
+      },
+      {
+        "id": 3,
+        "description": "Ask for safe context (device type, browser/app, when it started, exact error text)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask safe diagnostic questions (device, browser/app, start time, exact error text)."
+      },
+      {
+        "id": 4,
+        "description": "Check and fix time sync (set device time to automatic) then retry once",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Suggest time sync (set device time to automatic) as a common MFA fix, then retry once."
+      },
+      {
+        "id": 5,
+        "description": "If still failing, guide alternate safe options (backup codes, resend, different device/browser)",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Provide alternate safe options (backup codes if allowed, resend, different device/browser)."
+      },
+      {
+        "id": 6,
+        "description": "Escalate to identity team with timestamp, environment details, and steps already tried",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Escalate with complete context (timestamp, environment, steps tried) if unresolved."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Asking customer to share OTP/code",
+      "Repeating generic steps without gathering new info",
+      "Ending with 'try later' without ownership",
+      "Not acknowledging urgency"
+    ],
+    "positive_reinforcement_triggers": [
+      "Clear step-by-step plan",
+      "No request for OTP/code",
+      "Summarizes troubleshooting before escalation"
+    ]
+  },
+  "scenario_context": "Customer uses MFA via authenticator app. This issue is caused by device time drift. Policy: never request OTP codes. Customer is anxious but cooperative.",
+  "success_summary": "Successfully demonstrate: Probing & Troubleshooting",
+  "max_turns": 20,
+  "generated_at": "2026-02-02T00:00:00.000000"
+}

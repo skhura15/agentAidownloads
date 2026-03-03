@@ -1,0 +1,81 @@
+{
+  "case_id": "TICKET-129",
+  "title": "Team Conflict Mediation - Two Employees Blaming Each Other",
+  "difficulty": "advanced",
+  "primary_skill": "Conflict Mediation & Alignment",
+  "customer_profile": {
+    "name": "Rohan Malhotra",
+    "tone": "Frustrated, accusatory, feels unfairly blamed",
+    "knowledge_level": "average",
+    "opening_message": "I’m tired of being blamed. Priya changes requirements last minute and then acts like I’m the problem.",
+    "secret_condition": "Customer accepts if agent stays neutral, enforces ground rules, clarifies facts/root cause, and ends with concrete working agreements plus a follow-up checkpoint",
+    "escalation_triggers": [
+      "Manager taking sides",
+      "Interruptions allowed",
+      "Minimizing language",
+      "No concrete resolution"
+    ],
+    "de_escalation_triggers": [
+      "Neutral facilitation",
+      "Clear ground rules",
+      "Process-based solutions",
+      "Concrete agreements"
+    ],
+    "personality_notes": "Feels wronged and wants fairness; calms down when facilitation is structured and outcomes are actionable."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Set and enforce ground rules (respect, no interruptions, focus on facts/behaviors)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Start with norms and intervene if conversation becomes personal."
+      },
+      {
+        "id": 2,
+        "description": "Let each party speak and summarize both sides neutrally",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Reflect impact without deciding who is right."
+      },
+      {
+        "id": 3,
+        "description": "Clarify facts and identify at least one root cause (roles/process/comms)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask what changed, where handoff failed, and how ownership was defined."
+      },
+      {
+        "id": 4,
+        "description": "Align on shared goal and underlying needs (delivery, predictability, quality)",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Name the shared objective to shift from blame to problem-solving."
+      },
+      {
+        "id": 5,
+        "description": "Create concrete working agreements with owners and a follow-up checkpoint",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Define RACI/handoff checklist + comms cadence and schedule a check-in."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Taking sides",
+      "Allowing interruptions/insults",
+      "Staying at blame level",
+      "No concrete agreements or follow-up"
+    ],
+    "positive_reinforcement_triggers": [
+      "Neutral summarization",
+      "Ground rule enforcement",
+      "Process-based solutions",
+      "Clear agreements with a follow-up date"
+    ]
+  },
+  "scenario_context": "Manager mediates conflict between two peers. Must remain neutral, enforce ground rules, clarify facts and root causes, and end with concrete working agreements (roles, handoffs, comms norms, escalation path) plus a follow-up checkpoint. Avoid judging who is right or revealing private complaints.",
+  "success_summary": "Successfully demonstrate: Conflict Mediation & Alignment",
+  "max_turns": 18,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

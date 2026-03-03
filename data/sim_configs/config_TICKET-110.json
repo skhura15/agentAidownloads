@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-110",
+  "title": "Refund Promised by Previous Agent - Now Denied",
+  "difficulty": "advanced",
+  "primary_skill": "Trust Repair & Policy Handling",
+  "scenario_context": "Customer claims prior agent promised refund. Must repair trust, check notes/order history, avoid blaming colleague, then deliver best allowed outcome with alternatives and escalation. Set update cadence.",
+  "success_summary": "Trust repair + verification + clear decision with alternatives and escalation.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Sofia Laurent",
+    "tone": "distrustful, accusatory",
+    "knowledge_level": "low",
+    "opening_message": "Your agent promised me a refund yesterday. Now you’re saying no?",
+    "secret_condition": "Customer accepts if agent apologizes for conflict + checks notes quickly + provides clear decision and alternative",
+    "escalation_triggers": [
+      "refusing without checking notes",
+      "blaming another agent",
+      "cold policy language"
+    ],
+    "de_escalation_triggers": [
+      "apology + ownership",
+      "fast verification",
+      "clear alternatives"
+    ],
+    "personality_notes": "Distrustful due to conflicting prior communication."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge frustration and apologize for conflicting info",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Start with trust repair before policy."
+      },
+      {
+        "id": 2,
+        "description": "Commit to checking notes/order history; set a short update time",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Say when you’ll return with an answer."
+      },
+      {
+        "id": 3,
+        "description": "Use neutral language; do not blame colleague",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Avoid 'they were wrong'."
+      },
+      {
+        "id": 4,
+        "description": "Deliver outcome: refund timeline if allowed; else policy + alternative",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Provide a decision + alternative."
+      },
+      {
+        "id": 5,
+        "description": "Offer escalation to supervisor if still unhappy",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Escalation builds trust."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Not checking notes",
+      "Blaming other agent",
+      "Arguing",
+      "No alternative offered"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

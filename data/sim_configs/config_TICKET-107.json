@@ -1,0 +1,85 @@
+{
+  "case_id": "TICKET-107",
+  "title": "Service Outage - Demands ETA and Compensation",
+  "difficulty": "advanced",
+  "primary_skill": "Incident Communication",
+  "customer_profile": {
+    "name": "Marcus Lee",
+    "tone": "High pressure, demanding, business-impact focused",
+    "knowledge_level": "average",
+    "opening_message": "Your platform is down and my entire team is blocked. I need an ETA right now. If you don’t give me answers, I’m escalating and asking for compensation.",
+    "secret_condition": "Will accept no ETA if agent provides reliable cadence, ownership, and a concrete next update time",
+    "escalation_triggers": [
+      "Speculation",
+      "Vagueness",
+      "Minimizing impact"
+    ],
+    "de_escalation_triggers": [
+      "Confirmed facts",
+      "Cadence",
+      "Workaround offered"
+    ],
+    "personality_notes": "Stakeholder wants accountability and a predictable communication rhythm."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge impact and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Acknowledge the business impact and apologize before discussing details."
+      },
+      {
+        "id": 2,
+        "description": "Confirm whether incident is known and reference official status channel",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Confirm if the incident is known and reference an official status page/channel for updates."
+      },
+      {
+        "id": 3,
+        "description": "State clearly that ETA is not confirmed (avoid guessing)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Do not guess an ETA—state that an ETA is not confirmed yet and you will share confirmed updates only."
+      },
+      {
+        "id": 4,
+        "description": "Commit to a next update time and update cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Provide a concrete next update time and a cadence (e.g., every 30 minutes) even if there is no ETA."
+      },
+      {
+        "id": 5,
+        "description": "Collect impact details (region, users impacted, critical workflows)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask for region, number of impacted users, and which critical workflows are blocked."
+      },
+      {
+        "id": 6,
+        "description": "Offer workaround if available and escalation path for critical customers",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Offer any available workaround and an escalation path based on critical impact."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Guessing an ETA",
+      "Sounding dismissive about business impact",
+      "No commitment to next update time",
+      "Sharing internal system names or unverified details"
+    ],
+    "positive_reinforcement_triggers": [
+      "No guessed ETA + clear cadence provided",
+      "Impact details collected",
+      "Workaround/escalation offered"
+    ]
+  },
+  "scenario_context": "Known incident in progress. No confirmed ETA yet. Policy: do not guess ETAs; provide next update time and official status reference. Offer workaround and capture impact for prioritization. Do not share internal system names.",
+  "success_summary": "Successfully demonstrate: Incident Communication",
+  "max_turns": 22,
+  "generated_at": "2026-02-02T00:00:00.000000"
+}

@@ -1,0 +1,82 @@
+{
+  "case_id": "TICKET-126",
+  "title": "Renewal with Low Adoption - Value Not Realized",
+  "difficulty": "advanced",
+  "primary_skill": "Renewal Management + Value Realization",
+  "customer_profile": {
+    "name": "Maya Singh",
+    "tone": "Pragmatic, cautious, evaluating alternatives",
+    "knowledge_level": "average",
+    "opening_message": "Teams haven’t used it much. I’m not convinced we should renew.",
+    "secret_condition": "Customer accepts if agent diagnoses adoption blockers and proposes a measurable 30-day success plan with owners, cadence, and a scheduled review",
+    "escalation_triggers": [
+      "Defensive tone",
+      "Blame",
+      "Discount-only approach",
+      "No measurable plan"
+    ],
+    "de_escalation_triggers": [
+      "Ownership",
+      "Clear plan",
+      "Milestones",
+      "Measurement and cadence"
+    ],
+    "personality_notes": "Wants practical improvement fast; will not renew without a clear plan that drives adoption and measurable value."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge concern and confirm renewal timeline + stakeholders",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask when renewal is due and who is involved in the decision."
+      },
+      {
+        "id": 2,
+        "description": "Diagnose adoption blockers (workflow fit, training, champions, integrations, permissions)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask why teams didn’t adopt and what got in the way."
+      },
+      {
+        "id": 3,
+        "description": "Align on 1-2 outcomes and choose one priority workflow to focus on first",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Narrow scope to a high-impact workflow that can improve quickly."
+      },
+      {
+        "id": 4,
+        "description": "Propose a 30-day success plan with owners and weekly cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Include enablement actions, champions, and weekly checkpoints."
+      },
+      {
+        "id": 5,
+        "description": "Define measurement (baseline vs target) and schedule the next review meeting",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Agree on metrics and set a calendar date for review."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Defending product without discovery",
+      "User blame",
+      "Discount-first renewal pitch",
+      "No owners/cadence",
+      "No metrics"
+    ],
+    "positive_reinforcement_triggers": [
+      "Neutral, non-blaming tone",
+      "Clear adoption blocker discovery",
+      "30-day plan with owners and cadence",
+      "Metrics + scheduled review"
+    ]
+  },
+  "scenario_context": "Renewal at risk due to low adoption. Must diagnose blockers without blame, align on outcomes, propose a 30-day plan with owners/cadence, and define measurement with a scheduled review. Avoid defensiveness and discount-only tactics.",
+  "success_summary": "Successfully demonstrate: Renewal Management + Value Realization",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

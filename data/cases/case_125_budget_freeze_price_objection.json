@@ -1,0 +1,62 @@
+{
+  "ticket_id": "TICKET-125",
+  "title": "Budget Freeze - Price Objection Despite Interest",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Objection Handling + Next-Step Planning",
+  "tags": ["sales", "pricing", "budget-freeze", "procurement", "timing"],
+  "agent_context": "Prospect is interested but blocked by a budget freeze. Validate constraints, clarify timeline and approval path, and keep momentum with low-commitment next steps and a scheduled follow-up—without pressure or early discounting.",
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Ananya Kapoor",
+    "initial_message": "This looks good, but we’re in a budget freeze until next quarter. I can’t get anything approved right now.",
+    "context": "Prospect sees value but cannot purchase until budget reopens. Policy: don’t pressure or discount aggressively; clarify freeze end date, exceptions, approver, and procurement steps; propose low-commitment actions; schedule follow-up."
+  },
+  "annotations": {
+    "sme_author": "Sales Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Handle budget freeze objections without losing the deal",
+      "Clarify timeline, stakeholders, and approval requirements",
+      "Create a plan to be ready when budget opens"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge constraint and avoid pressure",
+      "Clarify freeze details",
+      "Confirm priority and cost of delay",
+      "Offer low-commitment next steps",
+      "Schedule follow-up tied to budget window",
+      "Summarize action plan"
+    ],
+    "common_mistakes": [
+      "Pushing discounts aggressively",
+      "Failing to clarify timing",
+      "Ending without next step",
+      "Challenging freeze reality"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Clarifies timeline",
+        "Offers next steps",
+        "Schedules follow-up",
+        "Respectful tone"
+      ],
+      "bonus_points": [
+        "Identifies exception path",
+        "Frames cost of delay",
+        "Summarizes plan"
+      ],
+      "sticky_notes": [
+        "KEY: Budget freeze is timing — solve with a plan.",
+        "TRAP: Early discounting weakens value.",
+        "HINT: Advance security/pilot prep now."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Positive but constrained",
+    "secret_acceptance_condition": "Will engage if timeline + plan + follow-up scheduled",
+    "escalation_triggers": ["Pushy pressure", "Discount-first", "Ignoring constraint"],
+    "deescalation_triggers": ["Respectful tone", "Plan", "Follow-up"]
+  }
+}

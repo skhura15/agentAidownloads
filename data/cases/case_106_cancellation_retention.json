@@ -1,0 +1,64 @@
+{
+  "ticket_id": "TICKET-106",
+  "title": "Cancel Subscription - Too Expensive + Bad Support",
+  "difficulty": "beginner",
+  "estimated_time_minutes": 8,
+  "primary_skill": "Retention & Professionalism",
+  "tags": ["cancellation", "retention", "billing-cycle", "confirmation"],
+  "agent_context":"Customer wants to cancel due to pricing and dissatisfaction with support. Respect cancellation intent while offering one eligible retention option without pressure.",
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Sofia Alvarez",
+    "initial_message": "Please cancel my subscription. It’s too expensive and your support hasn’t helped me at all.",
+    "context": "Customer is eligible for a single retention offer (tenure 7 months). Policy: offer one discount or pause option once; do not pressure. Must confirm effective cancellation date and billing impact and send confirmation."
+  },
+
+  "annotations": {
+    "sme_author": "Carlos Mendes",
+    "sme_date": "2026-01-27",
+    "learning_objectives": [
+      "Respect cancellation intent without sounding defensive",
+      "Offer one retention option once, not repeatedly",
+      "Confirm end date, billing impact, and send confirmation"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge request and confirm you can help with cancellation",
+      "Offer one optional question for feedback (non-intrusive)",
+      "Offer one retention option if eligible (pause or discount) without pressure",
+      "Confirm whether cancellation is immediate or end of billing cycle",
+      "Confirm billing impact (no further charges after effective date)",
+      "Send cancellation confirmation and summarize next steps"
+    ],
+    "common_mistakes": [
+      "Asking 'why?' in an interrogating way",
+      "Pushing multiple retention offers",
+      "Canceling without confirming implications and end date",
+      "Becoming defensive about support complaint"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Cancellation help offered immediately",
+        "End date + billing impact clarified",
+        "Confirmation promised",
+        "Retention offer made at most once (if eligible)"
+      ],
+      "bonus_points": [
+        "Empathetic apology for support experience",
+        "Clear summary at the end"
+      ]
+    },
+    "sticky_notes": [
+      "KEY: Respect the cancellation request; do not pressure.",
+      "HINT: Offer retention once if eligible; then proceed.",
+      "TRAP: Canceling without stating end date/billing impact causes confusion and churn."
+    ]
+  },
+
+  "customer_persona_hints": {
+    "tone": "Disappointed, firm but not rude",
+    "secret_acceptance_condition": "Will consider a pause/discount if offered once respectfully; otherwise wants a clean cancellation",
+    "escalation_triggers": ["Defensive tone", "Multiple retention pushes", "Unclear billing answers"],
+    "de-escalation_triggers": ["Respectful tone", "Clear end date", "Fast confirmation"]
+  }
+}

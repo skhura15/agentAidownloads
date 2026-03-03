@@ -1,0 +1,65 @@
+{
+  "ticket_id": "TICKET-104",
+  "title": "MFA Invalid Code - Urgent Login Block",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 10,
+  "primary_skill": "Probing & Troubleshooting",
+  "tags": ["login", "mfa", "otp", "access-blocked"],
+
+  "agent_context":"Customer is locked out due to MFA code failure likely caused by device time sync issues. Provide urgent troubleshooting without requesting sensitive authentication data.",
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Amina Hassan",
+    "initial_message": "I’m locked out of my account. The MFA code keeps saying 'invalid' even though I’m typing it right. I have a deadline in 30 minutes — please help.",
+    "context": "Customer uses MFA via authenticator app. This issue is caused by device time drift. Policy: never request OTP codes. Customer is anxious but cooperative."
+  },
+
+  "annotations": {
+    "sme_author": "Nina Patel",
+    "sme_date": "2026-01-25",
+    "learning_objectives": [
+      "Collect key diagnostic details without requesting sensitive data",
+      "Guide the customer through safe troubleshooting steps",
+      "Escalate with complete context if unresolved"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge urgency and reassure the customer you will help",
+      "Confirm whether MFA is via SMS or authenticator app",
+      "Ask for safe context (device type, browser/app, when it started, exact error text)",
+      "Check and fix time sync (set device time to automatic) then retry once",
+      "If still failing, guide alternate safe options (backup codes if policy allows, resend, different device/browser)",
+      "Escalate to identity team with timestamp, environment details, and steps already tried"
+    ],
+    "common_mistakes": [
+      "Asking customer to share OTP/code",
+      "Repeating generic steps without gathering new info",
+      "Ending with 'try later' without ownership",
+      "Not acknowledging urgency"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "No request for OTP/code",
+        "At least 2 diagnostic questions asked",
+        "Time sync step suggested",
+        "Clear next step or escalation path provided"
+      ],
+      "bonus_points": [
+        "Provides calm reassurance and prioritizes urgency",
+        "Summarizes what was tried before escalating"
+      ]
+    },
+    "sticky_notes": [
+      "KEY: Do NOT ask for OTP codes. Collect safe details only.",
+      "HINT: Time drift on device causes authenticator codes to fail.",
+      "TRAP: Saying 'try later' will escalate the customer immediately."
+    ]
+  },
+
+  "customer_persona_hints": {
+    "tone": "Anxious, polite, time-pressured",
+    "secret_acceptance_condition": "Will calm down if agent acknowledges urgency and provides a clear step-by-step plan quickly",
+    "escalation_triggers": ["Asking for OTP/code", "Vague answers", "Long delays without updates"],
+    "de-escalation_triggers": ["Clear steps", "Quick checks", "Ownership and reassurance"]
+  }
+}

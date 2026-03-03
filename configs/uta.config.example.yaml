@@ -1,0 +1,100 @@
+# UTA Configuration
+# Copy this file to config.yaml and customize for your environment
+
+app:
+  name: "Unified Troubleshooting Assistant"
+  version: "0.1.0"
+  debug: true
+  log_level: "INFO"
+
+# Vector Store Configuration
+# Switch providers by changing 'provider' value
+vector_store:
+  provider: "chroma"  # Options: chroma, cosmos, azure_search
+  
+  # ChromaDB settings (local development)
+  chroma:
+    collection_name: "uta_knowledge"
+    persist_directory: "./data/chroma"
+    embedding_model: "all-MiniLM-L6-v2"
+  
+  # Azure Cosmos DB settings
+  cosmos:
+    endpoint: "${COSMOS_ENDPOINT}"
+    key: "${COSMOS_KEY}"
+    database_name: "uta"
+    container_name: "knowledge"
+    embedding_model: "text-embedding-ada-002"
+  
+  # Azure AI Search settings (production)
+  azure_search:
+    endpoint: "${AZURE_SEARCH_ENDPOINT}"
+    api_key: "${AZURE_SEARCH_KEY}"
+    index_name: "uta-knowledge"
+    embedding_model: "text-embedding-ada-002"
+    use_semantic_search: true
+
+# Document Ingestion Settings
+ingestion:
+  chunk_size: 1000
+  chunk_overlap: 200
+  min_chunk_size: 100
+  supported_extensions:
+    - ".md"
+    - ".json"
+    - ".yaml"
+    - ".yml"
+    - ".txt"
+
+# Azure OpenAI Settings (for embeddings and LLM)
+azure_openai:
+  endpoint: "${AZURE_OPENAI_ENDPOINT}"
+  api_key: "${AZURE_OPENAI_API_KEY}"
+  api_version: "2024-02-01"
+  
+  # Model deployments
+  embeddings_deployment: "text-embedding-ada-002"
+  chat_deployment: "gpt-4"
+  
+  # Chat settings
+  temperature: 0.3
+  max_tokens: 4000
+
+# Knowledge Base Paths
+knowledge:
+  base_path: "./uta/knowledge"
+  sops_path: "./uta/knowledge/sample_sops"
+  playbooks_path: "./uta/knowledge/sample_playbooks"
+  known_issues_path: "./uta/knowledge/known_issues"
+  error_codes_file: "./uta/knowledge/error_codes.json"
+  config_checks_file: "./uta/knowledge/configuration_checks.json"
+  expert_insights_file: "./uta/knowledge/expert_insights.md"
+
+# API Settings
+api:
+  host: "0.0.0.0"
+  port: 8000
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:5173"
+
+# Search Settings
+search:
+  default_top_k: 5
+  max_top_k: 20
+  min_score_threshold: 0.3
+
+# Agent Settings
+agent:
+  max_iterations: 10
+  timeout_seconds: 60
+  
+  # Diagnostic workflow settings
+  workflow:
+    max_steps: 15
+    include_expert_insights: true
+  
+  # Configuration check settings
+  config_check:
+    include_remediation: true
+    max_checks_per_category: 5

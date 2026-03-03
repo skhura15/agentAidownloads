@@ -1,0 +1,80 @@
+{
+  "case_id": "TICKET-125",
+  "title": "Budget Freeze - Price Objection Despite Interest",
+  "difficulty": "intermediate",
+  "primary_skill": "Objection Handling + Next-Step Planning",
+  "customer_profile": {
+    "name": "Ananya Kapoor",
+    "tone": "Positive but constrained",
+    "knowledge_level": "average",
+    "opening_message": "This looks good, but we’re in a budget freeze until next quarter.",
+    "secret_condition": "Customer accepts if agent respects the freeze, clarifies timeline/approval path, and sets a concrete plan with a scheduled follow-up date",
+    "escalation_triggers": [
+      "Pushy pressure",
+      "Discount-first approach",
+      "Ignoring budget reality"
+    ],
+    "de_escalation_triggers": [
+      "Timeline clarity",
+      "Action plan",
+      "Low-commitment next steps",
+      "Scheduled follow-up"
+    ],
+    "personality_notes": "Interested in moving forward but limited by fiscal constraints; wants a clear plan rather than pressure."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge budget constraint without pressure",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Validate the freeze and keep tone supportive, not salesy."
+      },
+      {
+        "id": 2,
+        "description": "Clarify timeline and approval path (end date, approver, exceptions if any)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask when it lifts and who signs off; check if exceptions exist."
+      },
+      {
+        "id": 3,
+        "description": "Confirm priority and cost of delay in the customer’s terms",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Ask what waiting costs them (delays, manual work, risk)."
+      },
+      {
+        "id": 4,
+        "description": "Offer 2-3 low-commitment next steps to keep momentum",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Suggest security review, pilot scope, ROI worksheet, stakeholder alignment."
+      },
+      {
+        "id": 5,
+        "description": "Schedule a specific follow-up date and summarize actions/owners",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: End with a calendar commitment and short action plan."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Discount-first response",
+      "No timeline questions",
+      "No follow-up scheduled",
+      "Challenging the customer’s constraint"
+    ],
+    "positive_reinforcement_triggers": [
+      "Respectful constraint validation",
+      "Clear follow-up date",
+      "Action plan summary with owners",
+      "Low-commitment progress steps"
+    ]
+  },
+  "scenario_context": "Prospect is interested but blocked by a budget freeze. Must validate constraint, clarify timeline and approval path, propose low-commitment next steps, and schedule a follow-up date. Avoid pressure and early discounting.",
+  "success_summary": "Successfully demonstrate: Objection Handling + Next-Step Planning",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

@@ -1,0 +1,68 @@
+{
+  "ticket_id": "TICKET-114",
+  "title": "Auto-Renew Turned Off but Subscription Renewed Anyway",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Billing Investigation & Trust Repair",
+  "tags": ["billing", "renewal", "subscription", "trust-repair"],
+  "agent_context": "Customer says auto-renew was turned off but they were still charged, creating a trust issue. Verify timestamps vs renewal cutoff, explain outcome clearly, process refund if eligible, and confirm auto-renew is OFF to prevent future charges.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Marcus Lee",
+    "initial_message": "I had turned off auto-renew last week and you still charged me today.",
+    "context": "Customer claims auto-renew was disabled before renewal but was still charged. Policy: verify account and timestamps; explain billing cutoffs if any; if system error, refund authorized; prevent future renewals; do not argue."
+  },
+  "annotations": {
+    "sme_author": "Raj Mehta",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Repair trust and validate frustration",
+      "Verify timestamps to determine refund eligibility",
+      "Stop future charges and set a clear resolution path"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge frustration and apologize",
+      "Verify identity before discussing billing",
+      "Check disable timestamp vs renewal cutoff",
+      "Explain outcome clearly",
+      "Confirm auto-renew OFF now",
+      "Provide refund timeline + update cadence"
+    ],
+    "common_mistakes": [
+      "Arguing with customer",
+      "Skipping timestamp verification",
+      "Not preventing future charges",
+      "No refund timeline"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Apology + trust repair tone",
+        "Timestamp verification",
+        "Clear resolution + prevention"
+      ],
+      "bonus_points": [
+        "Clean summary of outcome",
+        "Offers escalation if disputed"
+      ],
+      "sticky_notes": [
+        "KEY: Trust repair first.",
+        "TRAP: Don’t blame customer.",
+        "HINT: Confirm next billing date is safe."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Annoyed and distrustful",
+    "escalation_triggers": [
+      "Blame language",
+      "Vague answers",
+      "No refund timeline"
+    ],
+    "deescalation_triggers": [
+      "Timestamp proof",
+      "Future charge prevention",
+      "Refund timeline"
+    ],
+    "secret_acceptance_condition": "Will calm down if auto-renew is OFF, timestamps explained, and refund plan shared"
+  }
+}

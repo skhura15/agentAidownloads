@@ -1,0 +1,20 @@
+# Azure Developer CLI (azd) configuration
+name: agentic-coe
+metadata:
+  template: agentic-coe@0.0.1
+
+# Azure infrastructure configuration
+infra:
+  provider: bicep
+  path: ./infra
+
+# Service definitions
+services:
+  # Backend FastAPI application
+  backend:
+    project: .
+    language: python
+    host: containerapp
+    docker:
+      path: ./Dockerfile
+      context: .

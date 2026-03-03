@@ -1,0 +1,75 @@
+{
+  "case_id": "TICKET-121",
+  "title": "Paid via Reseller but Account Still Suspended for Non-Payment",
+  "difficulty": "advanced",
+  "primary_skill": "Partner Coordination & Restoration Planning",
+  "scenario_context": "Customer paid reseller but account suspended. Verify invoice safely, open partner billing case, coordinate mapping, consider temporary access mitigation, set timeline/cadence.",
+  "success_summary": "Partner billing mismatch handled with safe proof collection, escalation, and restoration timeline.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Hiroshi Tanaka",
+    "tone": "urgent, business-critical",
+    "knowledge_level": "medium",
+    "opening_message": "We paid the reseller and still got suspended. Fix it now.",
+    "secret_condition": "Customer stabilizes when checklist + escalation + cadence provided",
+    "escalation_triggers": [
+      "no plan",
+      "sensitive info requests",
+      "no timeline"
+    ],
+    "de_escalation_triggers": [
+      "clear checklist",
+      "partner escalation",
+      "update time"
+    ],
+    "personality_notes": "Facing rollout downtime pressure."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge urgency and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Lead with ownership."
+      },
+      {
+        "id": 2,
+        "description": "Verify reseller + invoice + payment details safely",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Collect minimal proof."
+      },
+      {
+        "id": 3,
+        "description": "Open partner billing case + confirm owner",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Make escalation visible."
+      },
+      {
+        "id": 4,
+        "description": "Coordinate mapping + consider temporary access",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Explore mitigation."
+      },
+      {
+        "id": 5,
+        "description": "Provide reference + timeline + cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give next checkpoint."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Sensitive info requests",
+      "Ignoring reseller flow",
+      "No reference",
+      "Overpromising",
+      "No cadence"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

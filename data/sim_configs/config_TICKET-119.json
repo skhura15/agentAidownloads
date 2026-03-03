@@ -1,0 +1,75 @@
+{
+  "case_id": "TICKET-119",
+  "title": "Sales Promised Features Not Included - Customer Feels Misled",
+  "difficulty": "advanced",
+  "primary_skill": "Cross-Team Resolution & Trust Repair",
+  "scenario_context": "Customer claims sales promised features not included. Verify entitlement via contract/SOW + sales notes, escalate to account/commercial owner, provide interim workaround, and set timeline.",
+  "success_summary": "Trust repaired through entitlement verification, commercial escalation, interim workaround, and clear timeline.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Olivia Chen",
+    "tone": "frustrated, businesslike",
+    "knowledge_level": "medium",
+    "opening_message": "Sales promised forecasting was included, but support says it’s not. What now?",
+    "secret_condition": "Customer stabilizes when agent provides ownership, contract review plan, and a concrete timeline plus interim options",
+    "escalation_triggers": [
+      "no owner/timeline",
+      "blame-shifting",
+      "policy-only response"
+    ],
+    "de_escalation_triggers": [
+      "clear owner",
+      "contract review",
+      "interim workaround"
+    ],
+    "personality_notes": "Feels misled after operational rollout investment."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge impact and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Validate rollout disruption."
+      },
+      {
+        "id": 2,
+        "description": "Clarify expected features/use case",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Understand analytics need."
+      },
+      {
+        "id": 3,
+        "description": "Verify entitlement + contract/SOW review",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "State review plan."
+      },
+      {
+        "id": 4,
+        "description": "Escalate to account/commercial owner",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Provide ownership."
+      },
+      {
+        "id": 5,
+        "description": "Offer workaround + set timeline",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give interim path."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Blaming sales",
+      "Arguing",
+      "No escalation",
+      "No workaround",
+      "No timeline"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

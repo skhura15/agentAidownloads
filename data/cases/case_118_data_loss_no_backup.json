@@ -1,0 +1,71 @@
+{
+  "ticket_id": "TICKET-118",
+  "title": "Workspace Missing - Customer Reports Data Loss with No Backup",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 18,
+  "primary_skill": "High-Stakes Incident Handling",
+  "tags": ["data-loss", "recovery", "incident", "trust-repair", "escalation"],
+  "agent_context": "Customer reports a missing workspace/data loss with high business impact and no backup. Treat as high-severity: show ownership, collect minimal key details, start audit/recovery investigation, escalate to engineering, and set clear update cadence without promising recovery.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Ethan Marshall",
+    "initial_message": "I logged in this morning and one of our main workspaces is just gone...",
+    "context": "Customer reports missing workspace/data. Root cause unknown. Policy: do not blame; do not promise recovery; collect details; initiate audit logs + recovery check; escalate; set cadence."
+  },
+  "annotations": {
+    "sme_author": "Priya Nair",
+    "sme_date": "2026-02-05",
+    "learning_objectives": [
+      "Respond empathetically to high-impact data loss",
+      "Collect minimal investigation details",
+      "Set expectations without promising recovery",
+      "Escalate with urgency"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge severity and apologize",
+      "Clarify workspace scope + last seen time",
+      "Check permissions/access/billing changes",
+      "Initiate audit + recovery feasibility check",
+      "Escalate to engineering",
+      "Set update cadence",
+      "Offer mitigations if possible"
+    ],
+    "common_mistakes": [
+      "Blame language",
+      "Overpromising recovery",
+      "No cadence",
+      "Too many questions before action"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Empathy + ownership",
+        "Investigation initiation",
+        "No recovery promises",
+        "Update cadence set"
+      ],
+      "bonus_points": [
+        "Permission check",
+        "Crisp plan summary"
+      ],
+      "sticky_notes": [
+        "KEY: Treat as high severity.",
+        "TRAP: Never promise recovery early.",
+        "HINT: Ask last seen timestamp + admin actions."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Anxious and urgent",
+    "escalation_triggers": [
+      "Blame",
+      "No timeline",
+      "Vague responses"
+    ],
+    "deescalation_triggers": [
+      "Ownership",
+      "Escalation",
+      "Cadence"
+    ],
+    "secret_acceptance_condition": "Calms down when investigation starts + cadence set"
+  }
+}

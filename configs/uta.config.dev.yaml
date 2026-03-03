@@ -1,0 +1,55 @@
+# UTA Configuration - Development
+# Uses ChromaDB with Ollama for local development (both embeddings and LLM)
+
+app:
+  name: "Unified Troubleshooting Assistant"
+  version: "0.1.0"
+  debug: true
+  log_level: "DEBUG"
+
+# Ollama Configuration (shared by embeddings and LLM)
+ollama:
+  base_url: "http://localhost:11434"
+  
+  # LLM for generation (RAG responses)
+  llm_model: "llama3.1:8b-instruct-q8_0"  # run: ollama pull llama3.1:8b-instruct-q8_0
+  
+  # Embedding model for vector search
+  embedding_model: "nomic-embed-text"  # run: ollama pull nomic-embed-text
+  
+  # Generation parameters
+  temperature: 0.7
+  max_tokens: 2048
+  top_p: 0.9
+
+vector_store:
+  provider: "chroma"
+  chroma:
+    collection_name: "uta_knowledge"
+    persist_directory: "./data/chroma"
+    
+    # Embedding configuration (uses ollama settings above)
+    embedding_provider: "ollama"  # Options: "ollama", "sentence_transformers", "default"
+    
+    # Alternative: Sentence Transformers (uncomment to use instead of Ollama)
+    # embedding_provider: "sentence_transformers"
+    # embedding_model: "all-MiniLM-L6-v2"
+
+ingestion:
+  chunk_size: 1000
+  chunk_overlap: 200
+  min_chunk_size: 100
+
+knowledge:
+  base_path: "./uta/knowledge"
+
+search:
+  default_top_k: 5
+  min_score_threshold: 0.3
+
+api:
+  host: "127.0.0.1"
+  port: 8000
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:5173"

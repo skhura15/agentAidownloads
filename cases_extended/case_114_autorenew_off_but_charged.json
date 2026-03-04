@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-114",
+  "title": "Auto-Renew Turned Off but Subscription Renewed Anyway",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Billing Investigation & Trust Repair",
+  "tags": ["billing", "renewal", "subscription", "trust-repair"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Marcus Lee",
+    "initial_message": "I had turned off auto-renew last week and you still charged me today.",
+    "context": "Customer claims auto-renew was disabled before renewal but was still charged. Policy: verify account and timestamps; explain billing cutoffs if any; if system error, refund authorized; prevent future renewals; do not argue."
+  },
+
+  "annotations": {
+    "sme_author": "Raj Mehta",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Repair trust and validate frustration",
+      "Verify timestamps to determine refund eligibility",
+      "Stop future charges and set a clear resolution path"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge frustration and apologize",
+      "Verify customer identity/account before discussing billing details",
+      "Check cancellation/auto-renew disable timestamp vs renewal cutoff time",
+      "Explain outcome clearly: if disabled before cutoff, refund; if after cutoff, explain policy and offer best option",
+      "Confirm auto-renew status is OFF now and prevent next charge",
+      "Provide refund timeline (if applicable) and next update time"
+    ],
+    "common_mistakes": [
+      "Arguing about what the customer did",
+      "Skipping timestamp verification",
+      "Not confirming future charges are stopped",
+      "Not providing refund timeline"
+    ],
+    "sticky_notes": [
+      "KEY: Customer is upset because they feel tricked—trust repair matters.",
+      "TRAP: Don’t sound like you’re blaming the customer for not reading fine print.",
+      "HINT: Always confirm the next billing date is safe."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Apology + trust repair tone",
+        "Timestamp verification step",
+        "Clear resolution + prevention of future charges"
+      ],
+      "bonus_points": [
+        "Gives a clean summary: what happened, what you did, what happens next",
+        "Offers escalation if customer disputes cutoff policy"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Annoyed and distrustful",
+    "escalation_triggers": [
+      "Blame language",
+      "Vague answers",
+      "No refund timeline"
+    ],
+    "deescalation_triggers": [
+      "Clear explanation with proof (timestamps)",
+      "Immediate prevention of future charges",
+      "Refund timeline"
+    ],
+    "secret_acceptance_condition": "Will calm down if you confirm auto-renew is OFF, explain the timeline clearly, and provide a refund plan"
+  }
+}

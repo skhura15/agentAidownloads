@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-109",
+  "scenario_context": "Unauthorized charge claim with chargeback threat. Verify identity first; do not confirm fraud; secure account; open dispute workflow; provide timeline and case reference; explain chargeback implications neutrally.",
+  "customer_profile": {
+    "tone": "angry, anxious",
+    "knowledge_level": "low",
+    "opening_message": "I was charged and I never authorized it. I’m filing a chargeback.",
+    "secret_condition": "Customer accepts if agent provides security steps + dispute workflow + timeline + case reference",
+    "escalation_triggers": [
+      "accusatory language",
+      "no clear next steps",
+      "no timeline/reference"
+    ],
+    "de_escalation_triggers": [
+      "security actions",
+      "ownership",
+      "timeline + case reference"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge concern and keep a neutral, supportive tone", "hint_if_missed": "Validate first; don’t debate or accuse." },
+      { "id": 2, "description": "Verify identity before discussing billing details", "hint_if_missed": "Verification is required before account info." },
+      { "id": 3, "description": "Recommend immediate account security actions (reset/revoke/MFA)", "hint_if_missed": "Offer security steps early to reduce anxiety." },
+      { "id": 4, "description": "Initiate dispute workflow and explain realistic timeline + case reference", "hint_if_missed": "Open the dispute and set expectations clearly." },
+      { "id": 5, "description": "Address chargeback neutrally; recommend internal dispute first; set next update time", "hint_if_missed": "Don’t threaten; explain implications at high level and set cadence." }
+    ],
+    "common_mistakes_to_watch": [
+      "Confirming fraud",
+      "Sharing details before verification",
+      "Threatening re: chargeback",
+      "Vague timelines/no reference"
+    ]
+  },
+  "success_summary": "Risk-safe handling: verification + security actions + dispute workflow + clear timeline/cadence.",
+  "max_turns": 12
+}

@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-115",
+  "scenario_context": "Package marked delivered but not received. Verify details, check safe drop, open carrier investigation, set timeline, explain resolution options after investigation window.",
+  "customer_profile": {
+    "tone": "stressed, impatient",
+    "knowledge_level": "low",
+    "opening_message": "Tracking says delivered but I didn’t receive anything.",
+    "secret_condition": "Customer accepts if agent initiates investigation + provides clear timeline and options",
+    "escalation_triggers": [
+      "accusatory language",
+      "no investigation",
+      "no timeline"
+    ],
+    "de_escalation_triggers": [
+      "action plan",
+      "timeline",
+      "replacement option"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge frustration and apologize", "hint_if_missed": "Start with empathy before logistics questions." },
+      { "id": 2, "description": "Verify order and delivery details safely (address confirmation)", "hint_if_missed": "Confirm key details without requesting sensitive info." },
+      { "id": 3, "description": "Check safe-drop options (neighbor, concierge, reception, doorstep)", "hint_if_missed": "Ask quick ‘where it might be’ checks." },
+      { "id": 4, "description": "Initiate carrier investigation and set update timeline", "hint_if_missed": "Start investigation and give a next update time." },
+      { "id": 5, "description": "Explain replacement/refund options after investigation window", "hint_if_missed": "Set expectations and provide options without overpromising." }
+    ],
+    "common_mistakes_to_watch": [
+      "Implying customer is lying",
+      "No investigation path",
+      "Instant refund promise",
+      "No timeline"
+    ]
+  },
+  "success_summary": "Calm investigation + clear timeline with replacement/refund options.",
+  "max_turns": 10
+}

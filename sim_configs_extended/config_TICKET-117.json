@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-117",
+  "scenario_context": "Multi-issue: late delivery + damaged item. Apologize for both, confirm order, request minimal evidence politely if required, refund only after return initiated, offer expedited pickup/replacement, set update cadence, escalate if refusal.",
+  "customer_profile": {
+    "tone": "very angry, impatient",
+    "knowledge_level": "low",
+    "opening_message": "Late and broken. Refund me right now.",
+    "secret_condition": "Customer accepts if agent schedules pickup immediately and gives firm refund timeline",
+    "escalation_triggers": [
+      "policy-first response",
+      "no timeline",
+      "doubting damage claim"
+    ],
+    "de_escalation_triggers": [
+      "pickup scheduled",
+      "firm timeline",
+      "short plan"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge BOTH issues (late + broken) and apologize", "hint_if_missed": "Validate both complaints before proposing steps." },
+      { "id": 2, "description": "Confirm order details and delivery date", "hint_if_missed": "Verify basics quickly before resolution." },
+      { "id": 3, "description": "Request minimal evidence politely if required (photo)", "hint_if_missed": "Ask politely; don’t imply disbelief." },
+      { "id": 4, "description": "Explain refund constraint softly (after return initiated) and propose expedited pickup", "hint_if_missed": "Move to pickup initiation and timeline; avoid arguing." },
+      { "id": 5, "description": "Provide clear timeline + next update time and summarize plan; offer escalation if refusal", "hint_if_missed": "Give one confident plan with timing." }
+    ],
+    "common_mistakes_to_watch": [
+      "Ignoring one issue",
+      "Policy-first tone",
+      "No action plan",
+      "Doubting customer"
+    ]
+  },
+  "success_summary": "Multi-issue de-escalation with immediate action plan and refund timeline.",
+  "max_turns": 12
+}

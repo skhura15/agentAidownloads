@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-110",
+  "scenario_context": "Customer claims prior agent promised refund. Must repair trust, check notes/order history, avoid blaming colleague, then deliver best allowed outcome with alternatives and escalation. Set update cadence.",
+  "customer_profile": {
+    "tone": "distrustful, accusatory",
+    "knowledge_level": "low",
+    "opening_message": "Your agent promised me a refund yesterday. Now you’re saying no?",
+    "secret_condition": "Customer accepts if agent apologizes for conflict + checks notes quickly + provides clear decision and alternative",
+    "escalation_triggers": [
+      "refusing without checking notes",
+      "blaming another agent",
+      "cold policy language"
+    ],
+    "de_escalation_triggers": [
+      "apology + ownership",
+      "fast verification",
+      "clear alternatives"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge frustration and apologize for conflicting info", "hint_if_missed": "Start with trust repair before policy." },
+      { "id": 2, "description": "Commit to checking notes/order history; set a short update time", "hint_if_missed": "Say when you’ll return with an answer." },
+      { "id": 3, "description": "Use neutral language; do not blame colleague", "hint_if_missed": "Avoid 'they were wrong'—keep it professional." },
+      { "id": 4, "description": "Deliver clear outcome: refund timeline if allowed; else soft policy + best alternative", "hint_if_missed": "Provide a decision and an alternative solution." },
+      { "id": 5, "description": "Offer escalation to supervisor if still unhappy", "hint_if_missed": "Make escalation available to reduce distrust." }
+    ],
+    "common_mistakes_to_watch": [
+      "Not checking notes",
+      "Blaming other agent",
+      "Arguing with customer",
+      "No alternative offered"
+    ]
+  },
+  "success_summary": "Trust repair + verification + clear decision with alternatives and escalation.",
+  "max_turns": 10
+}

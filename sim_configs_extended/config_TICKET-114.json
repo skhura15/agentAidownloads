@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-114",
+  "scenario_context": "Customer disabled auto-renew but was charged. Verify timestamps vs cutoff. If error, refund. Confirm auto-renew OFF now and prevent future charges. Provide timeline.",
+  "customer_profile": {
+    "tone": "distrustful, annoyed",
+    "knowledge_level": "medium",
+    "opening_message": "I turned off auto-renew and still got charged today.",
+    "secret_condition": "Customer accepts if agent confirms renewal is stopped + explains timestamps + provides refund plan",
+    "escalation_triggers": [
+      "blame language",
+      "vague answer",
+      "no refund timeline"
+    ],
+    "de_escalation_triggers": [
+      "timestamp-based explanation",
+      "prevention of future charges",
+      "refund timeline"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge frustration and apologize", "hint_if_missed": "Start with trust repair tone." },
+      { "id": 2, "description": "Verify identity and check timestamps (disable vs renewal cutoff)", "hint_if_missed": "Timestamps decide outcome; don’t guess." },
+      { "id": 3, "description": "Explain outcome clearly (refund if eligible / policy if not)", "hint_if_missed": "Use soft language, not blame." },
+      { "id": 4, "description": "Confirm auto-renew OFF now and prevent future charges", "hint_if_missed": "Reassure them the next charge won’t happen." },
+      { "id": 5, "description": "Provide refund timeline and next update time", "hint_if_missed": "Give a timeline + cadence; don’t be vague." }
+    ],
+    "common_mistakes_to_watch": [
+      "Arguing with customer",
+      "No timestamp verification",
+      "No prevention of future charges",
+      "No timeline"
+    ]
+  },
+  "success_summary": "Trust repaired with timestamp verification, prevention of future charges, and refund plan.",
+  "max_turns": 10
+}

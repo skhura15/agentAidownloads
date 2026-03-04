@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-113",
+  "scenario_context": "Payment failed but customer sees debit. Likely pending authorization. Reassure, confirm pending vs posted, avoid sensitive data requests, provide timeline and escalation path.",
+  "customer_profile": {
+    "tone": "worried, defensive",
+    "knowledge_level": "low",
+    "opening_message": "My payment failed but the money is already deducted.",
+    "secret_condition": "Customer accepts if agent explains pending vs posted + gives timeline and follow-up plan",
+    "escalation_triggers": [
+      "dismissive responses",
+      "no timeline",
+      "requesting full card details/OTP"
+    ],
+    "de_escalation_triggers": [
+      "reassurance",
+      "clear explanation",
+      "concrete next steps"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge concern and reassure you will help", "hint_if_missed": "Start with empathy—money issues feel urgent." },
+      { "id": 2, "description": "Collect minimal transaction details and confirm pending vs posted", "hint_if_missed": "Ask amount, timestamp, and pending/posted status." },
+      { "id": 3, "description": "Explain authorization hold in simple language without dismissing", "hint_if_missed": "Clarify it may reverse automatically, but you’ll track it." },
+      { "id": 4, "description": "Share realistic timeline and what happens next", "hint_if_missed": "Give a clear expectation window + next update time." },
+      { "id": 5, "description": "Escalate if posted/settled or beyond SLA, and confirm follow-up", "hint_if_missed": "Offer billing review if it doesn’t resolve in time." }
+    ],
+    "common_mistakes_to_watch": [
+      "Saying 'it’s normal' dismissively",
+      "Requesting sensitive payment info",
+      "No timeline or follow-up",
+      "No escalation path"
+    ]
+  },
+  "success_summary": "Customer reassured with pending-vs-posted explanation, realistic timeline, and clear follow-up plan.",
+  "max_turns": 10
+}

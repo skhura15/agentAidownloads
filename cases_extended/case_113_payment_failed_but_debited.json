@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-113",
+  "title": "Payment Failed but Customer Sees Money Debited",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Billing Reassurance & Investigation",
+  "tags": ["billing", "payment-failure", "pending-charge", "reassurance"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Hannah",
+    "initial_message": "My payment failed but the money is already deducted.",
+    "context": "Customer sees debit after a failed payment attempt. Often this is a pending authorization that reverses automatically. Policy: reassure without dismissing, verify transaction details, avoid asking for full card numbers, explain expected timelines, and offer escalation if it doesn’t resolve in the SLA window."
+  },
+
+  "annotations": {
+    "sme_author": "Raj Mehta",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Explain pending authorizations clearly without sounding dismissive",
+      "Collect the minimal details needed for investigation",
+      "Set realistic expectations and next update time"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge frustration and reassure customer you will help",
+      "Confirm what they see: amount, timestamp, bank name, and whether it shows as 'pending' or 'posted'",
+      "Explain that sometimes failed payments still create a temporary authorization hold that reverses automatically",
+      "Clarify expected reversal timeline and offer to track it with a reference if available",
+      "If it’s posted/settled, escalate to billing review and request relevant transaction reference (without sensitive card data)",
+      "Set next update time and confirm you’ll follow up"
+    ],
+    "common_mistakes": [
+      "Saying 'it’s normal' and moving on",
+      "Asking for full card number or OTP",
+      "Not giving any timeline",
+      "Not offering escalation when customer is anxious"
+    ],
+    "sticky_notes": [
+      "KEY: Validate the anxiety first. Money leaving the account feels serious.",
+      "TRAP: Never request sensitive payment credentials.",
+      "HINT: Ask whether the charge is pending or posted—this changes next steps."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Reassurance + empathy",
+        "Minimal transaction detail collection",
+        "Clear timeline + next update cadence"
+      ],
+      "bonus_points": [
+        "Explains the difference between pending vs posted in simple language",
+        "Offers a clear ‘what I will do next’ summary"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Worried and defensive",
+    "escalation_triggers": [
+      "Being dismissed",
+      "No timeline",
+      "Requesting sensitive details"
+    ],
+    "deescalation_triggers": [
+      "Clear reassurance",
+      "Simple explanation",
+      "Specific next steps"
+    ],
+    "secret_acceptance_condition": "Will calm down if you explain pending vs posted and give a clear timeline and follow-up plan"
+  }
+}

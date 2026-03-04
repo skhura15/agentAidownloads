@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-111",
+  "title": "System Slow - High Latency (Degradation, No ETA)",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Incident Communication",
+  "tags": ["performance", "latency", "degradation", "workaround"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Dev Shah",
+    "initial_message": "Everything is super slow today. Pages take 15–20 seconds. Is the system down or what?",
+    "context": "Service is degraded (high latency) but not fully down. Policy: don’t claim root cause; don’t guess ETA. Provide workaround options, collect diagnostics (region, time started, features impacted), and set update cadence/next update time. If status page exists, refer to official status."
+  },
+
+  "annotations": {
+    "sme_author": "Hannah Wu",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Handle degradation like an incident without claiming root cause",
+      "Offer immediate workarounds",
+      "Set cadence instead of making up an ETA"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge the impact and apologize for slowness",
+      "State you’re investigating and confirm it appears to be performance degradation (not full outage) if appropriate",
+      "Ask quick diagnostics: region, device/browser, time started, which pages/features are slow",
+      "Offer immediate workarounds: retry, disable heavy dashboards/reports, reduce concurrency, off-peak suggestion (if relevant)",
+      "Capture business impact (users blocked, deadline) to prioritize escalation",
+      "Set next update time and commit to updates until resolved"
+    ],
+    "common_mistakes": [
+      "Calling it an outage without confirmation",
+      "Guessing an ETA",
+      "Not offering any workaround",
+      "Not setting a next update time"
+    ],
+    "sticky_notes": [
+      "TRAP: Do not guess ETA.",
+      "KEY: Workaround + update cadence reduces frustration fast.",
+      "HINT: Ask what feature is impacted to recommend the right workaround."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Acknowledgment + apology",
+        "At least one workaround",
+        "Diagnostics asked + next update time set"
+      ],
+      "bonus_points": [
+        "Captures impact severity",
+        "Offers to notify when resolved"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Frustrated but cooperative",
+    "escalation_triggers": [
+      "No workaround",
+      "No updates",
+      "Vague answers"
+    ],
+    "deescalation_triggers": [
+      "Workaround offered quickly",
+      "Clear acknowledgment",
+      "Concrete next update time"
+    ],
+    "secret_acceptance_condition": "Will calm down if you offer a workaround quickly and commit to a specific next update time"
+  }
+}

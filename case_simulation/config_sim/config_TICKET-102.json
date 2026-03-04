@@ -1,0 +1,90 @@
+{
+  "case_id": "TICKET-102",
+  "title": "Double Charge on Subscription",
+  "difficulty": "beginner",
+  "primary_skill": "Problem Resolution",
+  "customer_profile": {
+    "name": "Jordan Chen",
+    "tone": "Calm and reasonable, slightly concerned",
+    "knowledge_level": "average",
+    "opening_message": "Hi, I just noticed I was charged twice for my monthly subscription this month. I see two charges of $29.99 on my credit card dated January 15th. Can you help me with this?",
+    "secret_condition": "Will be satisfied with just the refund and timeline, but delighted if offered goodwill gesture",
+    "escalation_triggers": [
+      "Long hold times",
+      "Being asked to repeat information multiple times"
+    ],
+    "de_escalation_triggers": [
+      "Quick resolution",
+      "Clear communication"
+    ],
+    "personality_notes": "Customer is cooperative and focused on getting the duplicate charge corrected efficiently."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Thank the customer for bringing this to attention",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Thank the customer for bringing this to your attention to set a positive tone."
+      },
+      {
+        "id": 2,
+        "description": "Verify the account using last 4 digits of card or email",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Verify the account (last 4 digits or email) before discussing billing details."
+      },
+      {
+        "id": 3,
+        "description": "Confirm you can see the duplicate charge in the system",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Confirm you can see the duplicate charge in your system before taking action."
+      },
+      {
+        "id": 4,
+        "description": "Apologize for the inconvenience caused by the error",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Apologize for the inconvenience caused by the duplicate charge."
+      },
+      {
+        "id": 5,
+        "description": "Process the refund immediately",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Confirm you are processing the refund now and state what will happen next."
+      },
+      {
+        "id": 6,
+        "description": "Provide timeline for refund to appear (3-5 business days)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Provide the expected timeline for the refund to appear (3–5 business days)."
+      },
+      {
+        "id": 7,
+        "description": "Offer any goodwill gesture (e.g., one week free extension)",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Offer a small goodwill gesture (like a one-week extension) to reinforce loyalty."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Not verifying the account before discussing details",
+      "Making the customer wait while 'checking with supervisor' for obvious errors",
+      "Forgetting to give refund timeline",
+      "Not apologizing for the company's error"
+    ],
+    "positive_reinforcement_triggers": [
+      "Clear confirmation of refund processing",
+      "Concise and accurate timeline communication",
+      "Optional goodwill gesture offered"
+    ]
+  },
+  "scenario_context": "Customer has been subscribed for 8 months. This is a legitimate duplicate charge due to a system glitch. Refund is authorized per policy.",
+  "success_summary": "Successfully demonstrate: Problem Resolution",
+  "max_turns": 16,
+  "generated_at": "2026-02-02T00:00:00.000000"
+}

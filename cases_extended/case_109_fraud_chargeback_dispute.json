@@ -1,0 +1,71 @@
+{
+  "ticket_id": "TICKET-109",
+  "title": "Unauthorized Charge - Customer Threatening Chargeback",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 15,
+  "primary_skill": "Risk-Safe Billing Support",
+  "tags": ["fraud", "chargeback", "billing", "identity-verification"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Arjun Verma",
+    "initial_message": "I was charged 70$ and I never authorized it. If you don’t reverse it right now I’m filing a chargeback.",
+    "context": "Customer claims unauthorized charge. Policy: verify identity before discussing account details; do not accuse customer or confirm fraud without investigation; guide through steps: secure account, check recent logins/transactions, initiate dispute workflow, explain timelines, and provide next update time. Offer to freeze subscription renewals if applicable."
+  },
+
+  "annotations": {
+    "sme_author": "Raj Mehta",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Handle fraud disputes safely without confirming wrongdoing",
+      "Follow verification steps before account details",
+      "Explain dispute/chargeback implications and timelines clearly"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge concern and reassure you’ll help; remain neutral",
+      "Verify identity using approved method before sharing billing details",
+      "Collect key details: date/time, amount, payment method last 4 (if customer volunteers), and whether they recognize the merchant descriptor",
+      "Secure the account: password reset, sessions revoke, enable MFA (if not already)",
+      "Initiate internal billing dispute workflow and share realistic timeline for investigation/refund decision",
+      "Explain chargeback consequences at a high level (may pause account/flags) without threatening; recommend dispute workflow first",
+      "Set next update time and provide case reference"
+    ],
+    "common_mistakes": [
+      "Confirming it is fraud without evidence",
+      "Sharing account/payment info before identity verification",
+      "Threatening the customer about chargeback",
+      "Vague timelines or no reference number"
+    ],
+    "sticky_notes": [
+      "KEY: Verify identity before details.",
+      "TRAP: Don’t say 'yes this is fraud' — keep it neutral.",
+      "HINT: Offer security steps immediately to reduce anxiety."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Identity verification step",
+        "At least one account security action recommended",
+        "Dispute workflow + realistic timeline + reference number"
+      ],
+      "bonus_points": [
+        "Explains chargeback implications neutrally and recommends internal dispute first",
+        "Proactively checks for subscription renewal prevention"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Angry and anxious; wants immediate reversal",
+    "escalation_triggers": [
+      "Asking irrelevant questions",
+      "No clear action steps",
+      "Any accusatory language"
+    ],
+    "deescalation_triggers": [
+      "Clear security steps",
+      "Neutral tone + ownership",
+      "Concrete dispute workflow and timeline"
+    ],
+    "secret_acceptance_condition": "Will calm down if you start security actions + open dispute workflow and provide a concrete update cadence"
+  }
+}

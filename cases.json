@@ -1,0 +1,270 @@
+{
+  "version": "1.0",
+  "description": "Golden Record CaseData bundle for Contact Center Knowledge-Based Coach POC. Each case includes anonymized raw ticket text plus SME annotations (correct SOP steps, objectives, constraints).",
+  "cases": [
+    {
+      "ticket_id": "TICKET-001",
+      "domain": "Billing & Refunds",
+      "raw_content": "Customer: I want a refund NOW. This is ridiculous.\nAgent: We can't do that.\nCustomer: Are you kidding me? I will cancel everything.\nAgent: That's the policy.\nCustomer: Then get me a manager. I'm done.",
+      "metadata": { "channel": "chat", "priority": "P2", "product": "Subscription Service", "region": "NA" },
+      "annotations": {
+        "primary_skill": "De-escalation",
+        "learning_objectives": [
+          "Show empathy before policy",
+          "Ask clarifying questions (date/plan)",
+          "Offer approved alternatives without sounding dismissive"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge frustration and apologize",
+          "Verify transaction date and subscription plan",
+          "Explain refund policy clearly before refusal",
+          "Offer approved alternatives (partial credit or escalation path)"
+        ],
+        "common_mistakes_to_avoid": [
+          "Saying 'no' without explanation",
+          "Arguing with the customer",
+          "Ignoring cancellation threats"
+        ],
+        "policy_constraints": [
+          "Do not promise a full refund if outside the refund window",
+          "Do not offer compensation above $20 credit without approval"
+        ],
+        "resolution_criteria": [
+          "Customer accepts a policy-compliant alternative OR agrees to escalation",
+          "Customer tone de-escalates by end of interaction"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-002",
+      "domain": "Account Access (Login/MFA)",
+      "raw_content": "Customer: I can't log in. It says 'invalid code' every time.\nAgent: Reset your password.\nCustomer: I did, three times. Still broken.\nAgent: Try later.\nCustomer: I need access for work right now.",
+      "metadata": { "channel": "chat", "priority": "P1", "product": "Web Portal", "region": "EU" },
+      "annotations": {
+        "primary_skill": "Probing & Troubleshooting",
+        "learning_objectives": [
+          "Collect key diagnostic details early",
+          "Provide one step at a time and confirm outcome",
+          "Escalate with complete context if unresolved"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge impact and urgency",
+          "Gather details (device, browser, MFA/OTP, timestamp, error text)",
+          "Try safe quick fixes (incognito, time sync, resend code)",
+          "Escalate with required logs/timestamps if persists"
+        ],
+        "common_mistakes_to_avoid": [
+          "Repeating generic steps without new info",
+          "Requesting sensitive data (password/OTP)",
+          "Ending with 'try later' without ownership"
+        ],
+        "policy_constraints": [
+          "Do not request passwords or full OTP codes",
+          "Do not ask for sensitive personal identifiers"
+        ],
+        "resolution_criteria": [
+          "Issue resolved OR clean escalation created with complete diagnostic info",
+          "Customer understands next steps clearly"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-003",
+      "domain": "Order & Delivery Status",
+      "raw_content": "Customer: My delivery is late AGAIN.\nAgent: It will arrive soon.\nCustomer: You said that yesterday too. Where is it?\nAgent: It's with the courier.\nCustomer: That's not an answer. Give me a real update or refund me.",
+      "metadata": { "channel": "chat", "priority": "P2", "product": "E-commerce", "region": "NA" },
+      "annotations": {
+        "primary_skill": "Expectation Setting",
+        "learning_objectives": [
+          "Validate frustration about repeat delays",
+          "Provide concrete tracking info and ETA",
+          "Offer policy-aligned options if outside SLA"
+        ],
+        "correct_sop_steps": [
+          "Apologize and acknowledge repeat delay",
+          "Check tracking status and last scan event",
+          "Provide updated ETA with confidence level",
+          "Offer approved options (replacement, escalation, refund if eligible)"
+        ],
+        "common_mistakes_to_avoid": [
+          "Vague reassurance without data",
+          "No timeline or next update commitment",
+          "Deflecting responsibility to the courier"
+        ],
+        "policy_constraints": [
+          "Replacement allowed only if no movement for 48 hours",
+          "Refund allowed if past SLA by 3 business days"
+        ],
+        "resolution_criteria": [
+          "Customer receives a concrete next step with timeline",
+          "Customer chooses an option and agrees"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-004",
+      "domain": "Plan Cancellation & Retention",
+      "raw_content": "Customer: Cancel my plan. I'm done.\nAgent: Why?\nCustomer: Too expensive and support is useless.\nAgent: Okay canceling.\nCustomer: Wait—when does it end and will I be charged again?",
+      "metadata": { "channel": "chat", "priority": "P3", "product": "Subscription Service", "region": "APAC" },
+      "annotations": {
+        "primary_skill": "Retention & Professionalism",
+        "learning_objectives": [
+          "Respect cancellation intent without interrogating",
+          "Offer one retention option once (not pushy)",
+          "Confirm end date, charges, and confirmation"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge request and confirm you can help",
+          "Ask one optional feedback question",
+          "Offer one approved retention option if eligible (pause/discount)",
+          "Confirm cancellation timing, billing impact, and send confirmation"
+        ],
+        "common_mistakes_to_avoid": [
+          "Sounding defensive",
+          "Multiple retention pushes",
+          "Cancelling without confirming implications"
+        ],
+        "policy_constraints": [
+          "Offer discount only if tenure >= 6 months",
+          "Do not promise refunds for past months"
+        ],
+        "resolution_criteria": [
+          "Customer confirms they understand end date/charges",
+          "Cancellation completed OR retention accepted"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-005",
+      "domain": "Service Outage / Incident Communication",
+      "raw_content": "Customer: Your service is down. My team is blocked.\nAgent: Not sure.\nCustomer: This is costing us money. What's the ETA?\nAgent: I think it'll be back soon.\nCustomer: 'Think'? I need facts and updates.",
+      "metadata": { "channel": "chat", "priority": "P0", "product": "B2B Platform", "region": "NA" },
+      "annotations": {
+        "primary_skill": "Incident Communication",
+        "learning_objectives": [
+          "Acknowledge severity and take ownership",
+          "Avoid speculation; give status + next update time",
+          "Offer workaround/escalation for critical impact"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge incident impact and apologize",
+          "Confirm if incident is known and share official status reference",
+          "Commit to next update time (even if no ETA)",
+          "Offer workaround and escalation path for critical customers"
+        ],
+        "common_mistakes_to_avoid": [
+          "Guessing ETAs",
+          "Underplaying impact",
+          "No commitment to next update"
+        ],
+        "policy_constraints": [
+          "Do not provide an ETA unless confirmed by incident lead",
+          "Do not share internal system names"
+        ],
+        "resolution_criteria": [
+          "Customer receives update cadence and reference",
+          "Workaround/escalation offered if appropriate"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-006",
+      "domain": "Payment Failure / Card Declined",
+      "raw_content": "Customer: My card keeps getting declined, but the bank says it's fine.\nAgent: Then it's your bank.\nCustomer: It's not. I used the same card elsewhere. Fix it.\nAgent: Try another card.\nCustomer: I need this purchase to go through today.",
+      "metadata": { "channel": "chat", "priority": "P1", "product": "Checkout", "region": "NA" },
+      "annotations": {
+        "primary_skill": "Problem Ownership & Structured Troubleshooting",
+        "learning_objectives": [
+          "Avoid blame; take ownership and gather details",
+          "Check for common causes (AVS mismatch, limits, retries, region)",
+          "Provide safe steps and escalation path"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge urgency and apologize for the friction",
+          "Collect details (error message, last 4 digits optional, billing ZIP match, time, attempts, country)",
+          "Suggest safe steps (wait 10 min, confirm billing address, try once, alternate method like PayPal if supported)",
+          "Escalate to payments team with timestamp/error and advise customer of next update"
+        ],
+        "common_mistakes_to_avoid": [
+          "Blaming the bank immediately",
+          "Asking for full card number/CVV",
+          "Encouraging repeated rapid retries"
+        ],
+        "policy_constraints": [
+          "Do not request full card number or CVV",
+          "Do not store payment details in chat"
+        ],
+        "resolution_criteria": [
+          "Customer gets clear next steps (safe retry) OR escalation with expected timeline",
+          "Customer feels supported (tone improves)"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-007",
+      "domain": "Password Reset / Email Not Received",
+      "raw_content": "Customer: I requested a password reset but the email never comes.\nAgent: Check your spam.\nCustomer: I did. Nothing.\nAgent: Then wait.\nCustomer: I can't wait. I'm locked out and I have a deadline.",
+      "metadata": { "channel": "chat", "priority": "P1", "product": "Account Management", "region": "EU" },
+      "annotations": {
+        "primary_skill": "Guided Support & Escalation Readiness",
+        "learning_objectives": [
+          "Guide step-by-step without repeating generic advice",
+          "Check common deliverability causes (filters, domain, typos)",
+          "Offer alternative verification/escalation if stuck"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge urgency and apologize",
+          "Confirm email address format (without asking for sensitive info) and ask about corporate email filtering",
+          "Suggest whitelisted sender domain + try resend + alternate browser/device",
+          "If still failing, offer escalation and an alternative verification path (if policy allows)"
+        ],
+        "common_mistakes_to_avoid": [
+          "Telling them to just 'wait'",
+          "Asking for passwords",
+          "Skipping corporate filtering checks"
+        ],
+        "policy_constraints": [
+          "Do not request password",
+          "Do not disclose whether an email exists in the system beyond what the customer provides"
+        ],
+        "resolution_criteria": [
+          "Email deliverability issue resolved OR escalation created with required context",
+          "Customer has a concrete next action"
+        ]
+      }
+    },
+    {
+      "ticket_id": "TICKET-008",
+      "domain": "Policy Dispute / Chargeback Threat",
+      "raw_content": "Customer: You charged me twice. I'm filing a chargeback.\nAgent: We didn't.\nCustomer: Yes you did. I see two charges pending.\nAgent: That's not possible.\nCustomer: I'm taking this to my bank if you don't fix it now.",
+      "metadata": { "channel": "chat", "priority": "P0", "product": "Billing", "region": "NA" },
+      "annotations": {
+        "primary_skill": "De-escalation + Fact Finding",
+        "learning_objectives": [
+          "Avoid contradicting; validate concern and investigate",
+          "Explain pending vs posted charges clearly",
+          "Offer concrete actions and escalation path"
+        ],
+        "correct_sop_steps": [
+          "Acknowledge concern and apologize",
+          "Gather transaction details safely (dates/amounts/merchant descriptor; no full card info)",
+          "Explain pending authorization vs posted charges and expected timelines",
+          "If true duplicate charge: initiate refund/void process or escalate with timeline"
+        ],
+        "common_mistakes_to_avoid": [
+          "Saying 'not possible'",
+          "Arguing about what the customer sees",
+          "Ignoring chargeback threat"
+        ],
+        "policy_constraints": [
+          "Do not request full card details",
+          "Do not guarantee immediate reversal if pending authorization"
+        ],
+        "resolution_criteria": [
+          "Customer understands the situation (pending vs posted) OR duplicate identified and action taken",
+          "Chargeback threat de-escalates or is handled with clear next steps"
+        ]
+      }
+    }
+  ]
+}

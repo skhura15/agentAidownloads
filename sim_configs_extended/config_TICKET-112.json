@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-112",
+  "scenario_context": "Wrong/damaged item delivered. Replacement is default; refund occurs after return pickup/return initiated within 7 days. Request photos politely if required. Offer expedited pickup/replacement and clear timelines.",
+  "customer_profile": {
+    "tone": "impatient, annoyed",
+    "knowledge_level": "low",
+    "opening_message": "Wrong item and damaged box. I want a refund today.",
+    "secret_condition": "Customer accepts if agent initiates pickup immediately and gives clear refund timeline",
+    "escalation_triggers": [
+      "implying customer is lying",
+      "no actionable steps",
+      "no timelines"
+    ],
+    "de_escalation_triggers": [
+      "pickup initiated",
+      "clear timeline",
+      "concise plan"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Apologize and acknowledge inconvenience", "hint_if_missed": "Start with empathy; don’t jump to policy." },
+      { "id": 2, "description": "Verify order details (order ID, delivery date, expected vs received)", "hint_if_missed": "Confirm basics before proposing resolution." },
+      { "id": 3, "description": "Request photos politely if required; avoid accusatory tone", "hint_if_missed": "Ask for photos as a process step, not suspicion." },
+      { "id": 4, "description": "Offer options: expedited replacement OR return pickup + refund after initiated", "hint_if_missed": "Give clear options and constraints." },
+      { "id": 5, "description": "Initiate pickup/label and provide refund timeline + next update time", "hint_if_missed": "Action + timeline reduces frustration." }
+    ],
+    "common_mistakes_to_watch": [
+      "Rigid photo demands",
+      "No pickup initiation",
+      "No timeline",
+      "Refund denial without alternative"
+    ]
+  },
+  "success_summary": "Delivery issue handled with empathy, action (pickup/replacement), and clear refund timelines.",
+  "max_turns": 10
+}

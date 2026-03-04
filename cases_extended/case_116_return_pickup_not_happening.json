@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-116",
+  "title": "Return Pickup Missed Multiple Times",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Ownership & Process Recovery",
+  "tags": ["returns", "pickup-failed", "refund-delay", "escalation"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Daniel Brooks",
+    "initial_message": "This is the THIRD time pickup didn’t happen. Just refund me already.",
+    "context": "Return pickup has failed multiple times. Policy: apologize, acknowledge inconvenience, reschedule with priority/escalation to logistics, offer drop-off option if available, explain refund timeline once pickup is confirmed, and provide next update time. Avoid sounding robotic."
+  },
+
+  "annotations": {
+    "sme_author": "Mina Al-Sayed",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "De-escalate when the customer feels disrespected",
+      "Fix broken process with ownership and concrete action",
+      "Set realistic refund expectations"
+    ],
+    "correct_sop_steps": [
+      "Apologize and acknowledge inconvenience (missed pickups waste time)",
+      "Confirm return details and last scheduled pickup attempts",
+      "Escalate to logistics/courier with priority and reschedule pickup with a firm window",
+      "Offer alternate option: drop-off location or new label if available",
+      "Explain refund timeline: refund starts after pickup scan/return initiated",
+      "Set next update time and commit to follow-up"
+    ],
+    "common_mistakes": [
+      "Giving generic apology with no action",
+      "Not escalating after repeated failures",
+      "Promising refund before return is initiated (if policy disallows)",
+      "No follow-up commitment"
+    ],
+    "sticky_notes": [
+      "KEY: Customer is angry because their time was wasted — show ownership.",
+      "TRAP: Don’t promise instant refund unless policy supports it.",
+      "HINT: Provide one clear plan and timeline."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Ownership + apology",
+        "Escalation/reschedule action",
+        "Clear timeline + next update time"
+      ],
+      "bonus_points": [
+        "Offers drop-off alternative",
+        "Summarizes plan in one short message"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Angry and exhausted",
+    "escalation_triggers": [
+      "No action plan",
+      "No escalation",
+      "Vague updates"
+    ],
+    "deescalation_triggers": [
+      "Priority reschedule",
+      "Clear update timeline",
+      "Alternative option"
+    ],
+    "secret_acceptance_condition": "Will calm down if you prioritize and reschedule with a firm window and commit to follow-up"
+  }
+}

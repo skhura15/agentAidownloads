@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-110",
+  "title": "Refund Promised by Previous Agent - Now Denied",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 15,
+  "primary_skill": "Trust Repair & Policy Handling",
+  "tags": ["refund", "policy", "handoff", "trust-repair"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Sofia Laurent",
+    "initial_message": "Your agent promised me a full refund yesterday. Now you’re saying no? Are you guys scamming me?",
+    "context": "Customer outside the refund window based on policy, but claims a previous agent promised a refund. Policy: do not blame colleague; apologize for confusion; check internal notes/order details; if refund not allowed, offer best alternative (warranty/credit/expedited repair) and offer supervisor escalation. Provide clear next update time after checking notes."
+  },
+
+  "annotations": {
+    "sme_author": "Hannah Wu",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Repair trust when prior info conflicts",
+      "Avoid blaming other agents",
+      "Offer best allowed solution + escalation path"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge frustration and apologize for conflicting information",
+      "Confirm details and commit to checking account notes/order history",
+      "Avoid blaming colleague; use neutral language ('I’ll review what was shared')",
+      "If refund is allowed per notes/policy, confirm and share timeline; if not allowed, explain policy softly and offer best alternative",
+      "Offer escalation to supervisor if customer requests or remains upset",
+      "Set a clear next update time (e.g., after reviewing notes within X minutes) and follow-through"
+    ],
+    "common_mistakes": [
+      "Saying 'the other agent was wrong' or blaming them",
+      "Refusing without checking notes",
+      "Arguing about what the customer was told",
+      "Offering no alternative solution"
+    ],
+    "sticky_notes": [
+      "KEY: Trust repair first; then verify notes.",
+      "TRAP: Don’t blame a colleague — customer interprets it as incompetence.",
+      "HINT: Commit to a short review window and come back with a clear decision + alternative."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Apology for conflicting info",
+        "Verification action (check notes/order details)",
+        "Clear outcome with alternative + escalation option"
+      ],
+      "bonus_points": [
+        "Sets and meets a short update cadence ('I’ll be back in 5 minutes')",
+        "Acknowledges loyalty/tenure if present in case details (if applicable)"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Accusatory and distrustful",
+    "escalation_triggers": [
+      "Not checking notes",
+      "Blaming another agent",
+      "Cold policy language"
+    ],
+    "deescalation_triggers": [
+      "Ownership and apology",
+      "Quick verification and update cadence",
+      "Reasonable alternative offered"
+    ],
+    "secret_acceptance_condition": "Will calm down if you apologize for confusion and quickly verify notes with a clear next update time"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-111",
+  "scenario_context": "Performance degradation (high latency), not full outage. Do not claim root cause or guess ETA. Offer workaround, collect diagnostics, set update cadence.",
+  "customer_profile": {
+    "tone": "frustrated, cooperative",
+    "knowledge_level": "low",
+    "opening_message": "Pages take 15–20 seconds. Is the system down?",
+    "secret_condition": "Customer accepts if agent offers workaround + sets next update time (no ETA guessing)",
+    "escalation_triggers": [
+      "no workaround",
+      "no update cadence",
+      "guessing ETA/root cause"
+    ],
+    "de_escalation_triggers": [
+      "workaround",
+      "apology",
+      "next update time"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Acknowledge impact and apologize", "hint_if_missed": "Start with empathy before troubleshooting." },
+      { "id": 2, "description": "State investigating; describe as degradation if appropriate; avoid root-cause claims", "hint_if_missed": "Don’t label outage/root cause without confirmation." },
+      { "id": 3, "description": "Ask minimal diagnostics (region, time started, features impacted, client info)", "hint_if_missed": "Collect quick details for triage." },
+      { "id": 4, "description": "Offer at least one immediate workaround", "hint_if_missed": "Provide a practical workaround quickly." },
+      { "id": 5, "description": "Set update cadence and a next update time (no ETA guessing)", "hint_if_missed": "Commit to updates instead of an ETA." }
+    ],
+    "common_mistakes_to_watch": [
+      "Guessing ETA",
+      "No workaround",
+      "No diagnostics",
+      "Overconfident root cause"
+    ]
+  },
+  "success_summary": "Degradation comms: workaround + diagnostics + update cadence without ETA guessing.",
+  "max_turns": 10
+}

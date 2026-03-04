@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-112",
+  "title": "Wrong/Damaged Item Delivered - Customer Wants Refund",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Resolution within Policy",
+  "tags": ["delivery", "damaged-item", "replacement", "refund-policy"],
+
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Kabir Joshi",
+    "initial_message": "My order arrived but it’s the wrong item AND the box is damaged. I don’t want a replacement — I want a refund.",
+    "context": "Order delivered with wrong item/damage. Policy: apologize and gather order details. Replacement is the default resolution; refund is allowed only after return pickup is initiated (or item is returned) within 7 days of delivery. Ask for photos if required, but don’t demand them aggressively. Offer expedited replacement or return pickup. Set clear timeline for refund processing once return is in motion."
+  },
+
+  "annotations": {
+    "sme_author": "Mina Al-Sayed",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Handle delivery issues with empathy and clear resolution options",
+      "Follow return/refund policy steps without escalating",
+      "Offer expedited replacement/return pickup and set expectations"
+    ],
+    "correct_sop_steps": [
+      "Apologize and acknowledge inconvenience",
+      "Verify order details (order ID, delivery date, item expected vs received)",
+      "If policy requires, request photos of label/item/box politely to confirm wrong/damaged",
+      "Explain options: expedited replacement or return pickup + refund after pickup/return initiated",
+      "Initiate return pickup (or provide return label) and share timeline for refund processing",
+      "If customer insists on refund today, explain constraint and offer supervisor escalation if needed; set next update time"
+    ],
+    "common_mistakes": [
+      "Refusing refund without offering return pickup steps",
+      "Being rigid/robotic about photos",
+      "Not providing timelines",
+      "Failing to offer expedited replacement/return pickup"
+    ],
+    "sticky_notes": [
+      "KEY: Offer action steps (pickup/label) before policy debate.",
+      "TRAP: Don’t sound like you’re doubting the customer—ask for photos politely.",
+      "HINT: If they refuse replacement, focus on return pickup + refund timeline."
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Acknowledgment + apology",
+        "Clear options offered (replacement vs refund flow)",
+        "Concrete next steps + timeline"
+      ],
+      "bonus_points": [
+        "Offers expedited pickup/replacement",
+        "Provides a single concise message summarizing the plan"
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Annoyed and impatient",
+    "escalation_triggers": [
+      "Accusatory tone implying customer is lying",
+      "No clear next steps",
+      "Long timelines with no updates"
+    ],
+    "deescalation_triggers": [
+      "Immediate pickup/replacement offered",
+      "Clear refund timeline",
+      "Concise plan summary"
+    ],
+    "secret_acceptance_condition": "Will accept the refund process if you initiate return pickup immediately and give a clear refund timeline"
+  }
+}

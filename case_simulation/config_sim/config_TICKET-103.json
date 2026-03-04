@@ -1,0 +1,95 @@
+{
+  "case_id": "TICKET-103",
+  "title": "Software Not Installing - Frustrated Power User",
+  "difficulty": "advanced",
+  "primary_skill": "Technical Troubleshooting + De-escalation",
+  "customer_profile": {
+    "name": "Dr. Patricia Kowalski",
+    "tone": "Frustrated but professional, expects peer-level technical discussion",
+    "knowledge_level": "expert",
+    "opening_message": "I've been trying to install your enterprise software for 3 hours now. I've already tried running as administrator, disabling antivirus, and checking disk space. Error code 0x80070005. I'm an IT director and I know what I'm doing. Don't give me a script - I need real help.",
+    "secret_condition": "Will be satisfied if agent demonstrates technical competence and provides the actual fix quickly",
+    "escalation_triggers": [
+      "Script reading",
+      "Condescension",
+      "Asking to repeat already-stated info",
+      "Basic troubleshooting suggestions"
+    ],
+    "de_escalation_triggers": [
+      "Acknowledging expertise",
+      "Jumping to advanced solutions",
+      "Technical peer-level discussion"
+    ],
+    "personality_notes": "High-value enterprise stakeholder; expects efficient, technically competent support. Low tolerance for scripted responses."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge the customer's technical expertise immediately",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Acknowledge their expertise upfront (they are an IT Director and explicitly asked for non-scripted help)."
+      },
+      {
+        "id": 2,
+        "description": "Thank them for providing the error code and the troubleshooting already completed",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Thank them for the error code and for listing what they've already tried."
+      },
+      {
+        "id": 3,
+        "description": "Skip basic troubleshooting steps they already mentioned doing",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Do NOT suggest admin run/AV disable/disk checks again—move straight to advanced resolution."
+      },
+      {
+        "id": 4,
+        "description": "Go directly to the advanced solution for error 0x80070005 (access/permissions)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Provide the real fix path for 0x80070005 (permissions) rather than generic steps."
+      },
+      {
+        "id": 5,
+        "description": "Provide the registry fix steps clearly (HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Give clear, step-by-step registry fix instructions and mention the exact path: HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System."
+      },
+      {
+        "id": 6,
+        "description": "Offer to stay on chat while they try the fix",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Offer to stay on chat and validate the outcome in real time."
+      },
+      {
+        "id": 7,
+        "description": "If the fix doesn't work, offer direct escalation to L3 engineering",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Consider: Offer an immediate L3 escalation path if the registry fix fails."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Reading from script when customer explicitly asked not to",
+      "Asking customer to try basic steps they already mentioned doing",
+      "Not acknowledging their technical expertise",
+      "Being condescending about technical details"
+    ],
+    "positive_reinforcement_triggers": [
+      "Explicit acknowledgment of customer's expertise",
+      "Direct jump to advanced solution without repeating basics",
+      "Clear, step-by-step technical instructions",
+      "Offering to stay on chat during implementation",
+      "Offering direct L3 escalation path"
+    ]
+  },
+  "scenario_context": "Customer is an IT Director at a Fortune 500 company. This is an enterprise license ($50K/year). Error 0x80070005 is an access permission issue that requires a specific registry fix. Customer has already done basic troubleshooting.",
+  "success_summary": "Successfully demonstrate: Technical Troubleshooting + De-escalation",
+  "max_turns": 24,
+  "generated_at": "2026-02-02T00:00:00.000000"
+}

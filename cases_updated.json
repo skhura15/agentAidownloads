@@ -1,0 +1,897 @@
+[
+  {
+    "ticket_id": "TICKET-001",
+    "domain": "Billing & Refunds",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "I want a refund NOW. This is ridiculous." },
+        { "speaker": "Agent", "text": "I can’t do that." },
+        { "speaker": "Customer", "text": "Are you kidding me? I will cancel everything." },
+        { "speaker": "Agent", "text": "That’s the policy." },
+        { "speaker": "Customer", "text": "Then get me a manager. I’m done." }
+      ],
+      [
+        { "speaker": "Customer", "text": "I was charged and I want my money back today." },
+        { "speaker": "Agent", "text": "I’m sorry you’re dealing with this. Let me check the details so I can tell you what options are available." },
+        { "speaker": "Customer", "text": "I don’t want options. I want a refund." },
+        { "speaker": "Agent", "text": "I hear you. Can you confirm the transaction date and which plan you’re on?" },
+        { "speaker": "Customer", "text": "It was about 6 weeks ago. Premium plan." },
+        { "speaker": "Agent", "text": "Thanks. Our refund window is 30 days, so a full refund may not be available—however I can offer a credit or escalate this for review." }
+      ],
+      [
+        { "speaker": "Customer", "text": "This is the worst experience. Refund me immediately." },
+        { "speaker": "Agent", "text": "I understand your frustration, and I’m here to help. Let me verify your charge details first." },
+        { "speaker": "Customer", "text": "Why do you need that? Just refund me." },
+        { "speaker": "Agent", "text": "I’ll be quick—once I confirm the date and plan, I can tell you the fastest path forward within policy." },
+        { "speaker": "Customer", "text": "Fine. The charge was last month." },
+        { "speaker": "Agent", "text": "Got it—if it’s outside the 30-day window, I can’t promise a full refund, but I can offer a partial credit or escalate to a supervisor." }
+      ],
+      [
+        { "speaker": "Customer", "text": "You took my money twice. Fix it or I’m reporting you." },
+        { "speaker": "Agent", "text": "I’m sorry that happened. I’ll review your billing activity right now so we can resolve it." },
+        { "speaker": "Customer", "text": "I don’t care—just refund me." },
+        { "speaker": "Agent", "text": "I understand. First, I need to confirm the transaction date(s) and amount(s) so I can check if it’s pending or posted." },
+        { "speaker": "Customer", "text": "It’s from 2 months ago." },
+        { "speaker": "Agent", "text": "Thanks. If it’s outside the refund window, I can’t guarantee a full refund, but I can offer a credit or escalate for an exception review." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Your service didn’t work for me. I want a refund." },
+        { "speaker": "Agent", "text": "I’m sorry it didn’t meet your expectations. Let me check your plan and purchase date so I can guide you properly." },
+        { "speaker": "Customer", "text": "I already told you—I want my money back." },
+        { "speaker": "Agent", "text": "Understood. Once I confirm the date, I can explain what’s eligible and what I can offer immediately." },
+        { "speaker": "Customer", "text": "Purchase was 5 weeks ago." },
+        { "speaker": "Agent", "text": "Thanks. Our standard refund window is 30 days, so a full refund may not apply—but I can offer a partial credit or escalate for review." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P2", "product": "Subscription Service", "region": "NA" },
+    "sentiment_statements": {
+      "positive": [
+        "I understand how frustrating that is, and I’m here to help.",
+        "I’m sorry for the trouble—let’s sort this out together.",
+        "Thanks for explaining—I'll check this right now.",
+        "I appreciate your patience while I review the details.",
+        "You’re right to raise this, and I’ll take ownership of next steps.",
+        "I’ll do my best to help today within what I’m allowed to do.",
+        "I hear you, and I want to make this as easy as possible.",
+        "Let me look into this carefully and give you a clear answer.",
+        "Thanks—this information helps me move faster.",
+        "I can offer the best available option right away."
+      ],
+      "neutral": [
+        "Can you confirm the transaction date?",
+        "Which plan are you currently on?",
+        "What amount were you charged?",
+        "Was the charge pending or posted on your statement?",
+        "Let me check the billing record on my side.",
+        "Here are the options available based on policy.",
+        "To confirm, are you requesting a refund or a credit?",
+        "If you’re okay with it, I can escalate this for review.",
+        "Do you see one charge or multiple charges?",
+        "I’m going to review the account details and update you."
+      ],
+      "negative": [
+        "We can’t do that.",
+        "That’s the policy.",
+        "It’s not possible.",
+        "You’re outside the refund window so you won’t get a refund.",
+        "Calm down.",
+        "Stop threatening us.",
+        "There’s nothing I can do.",
+        "That’s not my problem.",
+        "No.",
+        "Try reading the policy."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "De-escalation",
+      "learning_objectives": [
+        "Show empathy before policy",
+        "Ask clarifying questions (date/plan)",
+        "Offer approved alternatives without sounding dismissive"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge frustration and apologize",
+        "Verify transaction date and subscription plan",
+        "Explain refund policy clearly before refusal",
+        "Offer approved alternatives (partial credit or escalation path)"
+      ],
+      "common_mistakes_to_avoid": [
+        "Saying 'no' without explanation",
+        "Arguing with the customer",
+        "Ignoring cancellation threats"
+      ],
+      "policy_constraints": [
+        "Do not promise a full refund if outside the refund window",
+        "Do not offer compensation above $20 credit without approval"
+      ],
+      "resolution_criteria": [
+        "Customer accepts a policy-compliant alternative OR agrees to escalation",
+        "Customer tone de-escalates by end of interaction"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-002",
+    "domain": "Account Access (Login/MFA)",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "I can't log in. It says 'invalid code' every time." },
+        { "speaker": "Agent", "text": "Reset your password." },
+        { "speaker": "Customer", "text": "I did, three times. Still broken." },
+        { "speaker": "Agent", "text": "Try later." },
+        { "speaker": "Customer", "text": "I need access for work right now." }
+      ],
+      [
+        { "speaker": "Customer", "text": "My MFA code keeps failing. It won’t accept it." },
+        { "speaker": "Agent", "text": "I’m sorry you’re blocked—let’s fix this quickly. Are you on mobile or desktop, and what does the exact error say?" },
+        { "speaker": "Customer", "text": "Desktop. It just says invalid code." },
+        { "speaker": "Agent", "text": "Thanks. Let’s try an incognito window and request a fresh code—enter it right away. Tell me if it changes." },
+        { "speaker": "Customer", "text": "Still invalid." },
+        { "speaker": "Agent", "text": "Got it. One more check—can you confirm your device time is set to automatic? Time drift can cause invalid codes." }
+      ],
+      [
+        { "speaker": "Customer", "text": "I’m locked out. Codes don’t work and I have a meeting." },
+        { "speaker": "Agent", "text": "I understand the urgency. I won’t ask for any codes—just a few safe details: device, browser, and the time this started." },
+        { "speaker": "Customer", "text": "Chrome on Windows. Started 10 minutes ago." },
+        { "speaker": "Agent", "text": "Thanks. Please try a new code after resyncing your device time, and if it still fails I’ll escalate with your timestamp and error details." },
+        { "speaker": "Customer", "text": "Okay but hurry." },
+        { "speaker": "Agent", "text": "Absolutely—if it fails again, I’ll submit escalation immediately and keep you updated." }
+      ],
+      [
+        { "speaker": "Customer", "text": "It says invalid code, but I’m typing it correctly." },
+        { "speaker": "Agent", "text": "I believe you. Let’s narrow it down: is the issue with password reset, or only the MFA/OTP step?" },
+        { "speaker": "Customer", "text": "Only the code step." },
+        { "speaker": "Agent", "text": "Understood. Please try on a different browser or a private window—sometimes extensions interfere." },
+        { "speaker": "Customer", "text": "No change." },
+        { "speaker": "Agent", "text": "Thanks—I'll escalate this with your environment details and the exact error so the team can investigate." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Can I just tell you the code and you log me in?" },
+        { "speaker": "Agent", "text": "I can’t accept OTP codes, but I can help you get back in safely. What device and browser are you using, and when did this start?" },
+        { "speaker": "Customer", "text": "iPhone app. Started today." },
+        { "speaker": "Agent", "text": "Thanks—please reinstall the app or try generating a fresh code, and confirm your phone time is set to automatic." },
+        { "speaker": "Customer", "text": "Still broken." },
+        { "speaker": "Agent", "text": "Got it—I’ll escalate now with the timestamp and error, and I’ll share the expected update window." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P1", "product": "Web Portal", "region": "EU" },
+    "sentiment_statements": {
+      "positive": [
+        "I’m sorry you’re blocked—let’s fix this quickly.",
+        "I understand the urgency and I’ll stay with you through the steps.",
+        "Thanks for confirming—this helps narrow it down.",
+        "I believe you; let’s troubleshoot this together.",
+        "You’re doing the right thing—let’s try one safe step at a time.",
+        "I’ll take ownership and escalate if the quick fixes don’t work.",
+        "I appreciate your patience while we test this.",
+        "I won’t ask for any sensitive info—just safe diagnostics.",
+        "I’ll keep you updated on the next steps.",
+        "We’ll get you access as soon as possible."
+      ],
+      "neutral": [
+        "What device and browser are you using?",
+        "What is the exact error message?",
+        "When did the issue start?",
+        "Is this failing at password or MFA/OTP step?",
+        "Please try an incognito/private window and request a new code.",
+        "Is your device time set to automatic?",
+        "Have you tried a different browser or disabling extensions?",
+        "I can escalate with your timestamp and environment details.",
+        "Do you see this issue on mobile as well?",
+        "Please don’t share OTP codes—just confirm whether it worked."
+      ],
+      "negative": [
+        "Try later.",
+        "Just reset your password.",
+        "It’s probably your fault.",
+        "There’s nothing we can do.",
+        "That’s not possible.",
+        "Send me the code.",
+        "Stop spamming attempts.",
+        "Calm down.",
+        "Not my issue.",
+        "Figure it out."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "Probing & Troubleshooting",
+      "learning_objectives": [
+        "Collect key diagnostic details early",
+        "Provide one step at a time and confirm outcome",
+        "Escalate with complete context if unresolved"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge impact and urgency",
+        "Gather details (device, browser, MFA/OTP, timestamp, error text)",
+        "Try safe quick fixes (incognito, time sync, resend code)",
+        "Escalate with required logs/timestamps if persists"
+      ],
+      "common_mistakes_to_avoid": [
+        "Repeating generic steps without new info",
+        "Requesting sensitive data (password/OTP)",
+        "Ending with 'try later' without ownership"
+      ],
+      "policy_constraints": [
+        "Do not request passwords or full OTP codes",
+        "Do not ask for sensitive personal identifiers"
+      ],
+      "resolution_criteria": [
+        "Issue resolved OR clean escalation created with complete diagnostic info",
+        "Customer understands next steps clearly"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-003",
+    "domain": "Order & Delivery Status",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "My delivery is late AGAIN." },
+        { "speaker": "Agent", "text": "It will arrive soon." },
+        { "speaker": "Customer", "text": "You said that yesterday too. Where is it?" },
+        { "speaker": "Agent", "text": "It's with the courier." },
+        { "speaker": "Customer", "text": "That's not an answer. Give me a real update or refund me." }
+      ],
+      [
+        { "speaker": "Customer", "text": "My package is delayed and I need it today." },
+        { "speaker": "Agent", "text": "I’m sorry about the delay. Let me check the latest tracking scan and ETA for you." },
+        { "speaker": "Customer", "text": "Don’t guess. Tell me where it is." },
+        { "speaker": "Agent", "text": "Understood. The last scan shows it reached the local facility at 9:10 AM, and the ETA is tomorrow by end of day." },
+        { "speaker": "Customer", "text": "Tomorrow is not okay." },
+        { "speaker": "Agent", "text": "I hear you. If it doesn’t move within 48 hours, I can start a replacement. If it passes the SLA by 3 business days, we can discuss a refund per policy." }
+      ],
+      [
+        { "speaker": "Customer", "text": "This is the second time you’ve delayed my delivery." },
+        { "speaker": "Agent", "text": "I’m sorry this happened again. Let me pull up the tracking details and see what options we have." },
+        { "speaker": "Customer", "text": "I want compensation." },
+        { "speaker": "Agent", "text": "I understand. First I’ll confirm where it is and the updated ETA, then I can tell you what we can offer based on eligibility." },
+        { "speaker": "Customer", "text": "Fine." },
+        { "speaker": "Agent", "text": "Thanks. The last scan was at the regional hub, and the updated ETA is within 24–48 hours." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Tracking hasn’t updated for two days." },
+        { "speaker": "Agent", "text": "That’s concerning—thanks for flagging it. Let me check the last movement and open an investigation if needed." },
+        { "speaker": "Customer", "text": "So you lost it?" },
+        { "speaker": "Agent", "text": "Not necessarily. If there’s no movement for 48 hours, we can trigger a replacement process. I’ll confirm the last scan and next steps now." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "The last scan was 36 hours ago at the distribution center. If it doesn’t update by tomorrow morning, I’ll start the replacement flow." }
+      ],
+      [
+        { "speaker": "Customer", "text": "It says delivered but I don’t have it." },
+        { "speaker": "Agent", "text": "I’m sorry—that’s stressful. Let’s confirm the delivery address and the delivery timestamp so we can investigate." },
+        { "speaker": "Customer", "text": "It’s the right address." },
+        { "speaker": "Agent", "text": "Thanks. I’ll open a courier investigation and keep you updated. If it’s not found within the investigation window, we can move to replacement/refund per policy." },
+        { "speaker": "Customer", "text": "How long?" },
+        { "speaker": "Agent", "text": "Typically 24–48 hours for a courier response, and I’ll message you as soon as I have an update." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P2", "product": "E-commerce", "region": "NA" },
+    "sentiment_statements": {
+      "positive": [
+        "I’m sorry about the delay—let me check the latest tracking right now.",
+        "I understand this is urgent; I’ll give you a concrete update.",
+        "Thanks for your patience—I'll verify the last scan and ETA.",
+        "I can see why you’re frustrated, especially with repeat delays.",
+        "I’ll take ownership of the next steps and keep you updated.",
+        "You’re right to ask for specifics—let me pull up the details.",
+        "I’ll open an investigation and share the timeline clearly.",
+        "I’ll make sure you know exactly what happens next.",
+        "Thanks for confirming—this helps me move faster.",
+        "I’m here to help you get a resolution."
+      ],
+      "neutral": [
+        "Let me check the last tracking scan and current ETA.",
+        "Can you confirm the order number?",
+        "What is the delivery address and ZIP/postal code?",
+        "Does tracking show any movement in the last 48 hours?",
+        "Here are the eligible options based on policy and timeline.",
+        "If there’s no movement for 48 hours, we can start a replacement.",
+        "If the SLA is missed by 3 business days, refund eligibility may apply.",
+        "I’m opening a courier investigation now.",
+        "What time does it show as delivered?",
+        "I’ll update you again by tomorrow morning."
+      ],
+      "negative": [
+        "It will arrive soon.",
+        "It’s with the courier.",
+        "That’s not our fault.",
+        "Just wait.",
+        "Not my problem.",
+        "Calm down.",
+        "Stop complaining.",
+        "There’s nothing I can do.",
+        "You’ll get it when you get it.",
+        "Read the tracking."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "Expectation Setting",
+      "learning_objectives": [
+        "Validate frustration about repeat delays",
+        "Provide concrete tracking info and ETA",
+        "Offer policy-aligned options if outside SLA"
+      ],
+      "correct_sop_steps": [
+        "Apologize and acknowledge repeat delay",
+        "Check tracking status and last scan event",
+        "Provide updated ETA with confidence level",
+        "Offer approved options (replacement, escalation, refund if eligible)"
+      ],
+      "common_mistakes_to_avoid": [
+        "Vague reassurance without data",
+        "No timeline or next update commitment",
+        "Deflecting responsibility to the courier"
+      ],
+      "policy_constraints": [
+        "Replacement allowed only if no movement for 48 hours",
+        "Refund allowed if past SLA by 3 business days"
+      ],
+      "resolution_criteria": [
+        "Customer receives a concrete next step with timeline",
+        "Customer chooses an option and agrees"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-004",
+    "domain": "Plan Cancellation & Retention",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "Cancel my plan. I'm done." },
+        { "speaker": "Agent", "text": "Why?" },
+        { "speaker": "Customer", "text": "Too expensive and support is useless." },
+        { "speaker": "Agent", "text": "Okay canceling." },
+        { "speaker": "Customer", "text": "Wait—when does it end and will I be charged again?" }
+      ],
+      [
+        { "speaker": "Customer", "text": "I want to cancel. It's too expensive." },
+        { "speaker": "Agent", "text": "I can help with that. Before I proceed, just to confirm—do you want the plan to end immediately or at the end of the billing cycle?" },
+        { "speaker": "Customer", "text": "End of the cycle. And I don’t want any more charges." },
+        { "speaker": "Agent", "text": "Understood. You’ll keep access until the end date and won’t be charged again after that. I’ll send confirmation once it’s done." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "Optional—if price is the main issue, I can offer a pause or discount if you’re eligible. If not, I’ll proceed with cancellation." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Cancel right now. Support was terrible." },
+        { "speaker": "Agent", "text": "I’m sorry you had that experience. I can cancel, and I’d like to understand what went wrong—totally optional—so we can improve." },
+        { "speaker": "Customer", "text": "Just cancel." },
+        { "speaker": "Agent", "text": "Understood. Can you confirm whether you want cancellation effective immediately or at the end of your billing period?" },
+        { "speaker": "Customer", "text": "End of billing." },
+        { "speaker": "Agent", "text": "Thanks—I'll process it and confirm the end date and that you won’t be billed again." }
+      ],
+      [
+        { "speaker": "Customer", "text": "I’m canceling because I don’t use it enough." },
+        { "speaker": "Agent", "text": "Got it. I can cancel. Would you prefer to pause instead, so you don’t lose access permanently?" },
+        { "speaker": "Customer", "text": "Maybe. What does that do?" },
+        { "speaker": "Agent", "text": "A pause stops future billing for a set period while keeping your account ready. If you’d rather cancel, I can do that too." },
+        { "speaker": "Customer", "text": "Okay pause sounds better." },
+        { "speaker": "Agent", "text": "Great—I’ll confirm eligibility and apply it. If not eligible, I’ll let you know and proceed with cancellation if you want." }
+      ],
+      [
+        { "speaker": "Customer", "text": "If I cancel, will I lose my data?" },
+        { "speaker": "Agent", "text": "Good question. I can explain what happens to your access and data retention before we finalize cancellation." },
+        { "speaker": "Customer", "text": "I don’t want to lose anything." },
+        { "speaker": "Agent", "text": "Understood. Typically, you keep access until the end of the billing cycle, and data retention applies for a defined period. I’ll confirm the exact policy for your plan." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "Once you confirm, I’ll cancel and send a confirmation with the end date and billing status." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P3", "product": "Subscription Service", "region": "APAC" },
+    "sentiment_statements": {
+      "positive": [
+        "I can help with that, and I’ll make this quick.",
+        "I’m sorry you had that experience—thanks for telling me.",
+        "I understand, and I’ll respect your decision.",
+        "I’ll confirm everything clearly so there are no surprises.",
+        "Thanks—I'll send confirmation as soon as it’s processed.",
+        "If you’re open to it, I can offer one option to help with price—otherwise we’ll proceed.",
+        "I appreciate the feedback; it helps us improve.",
+        "I’ll make sure you aren’t billed again after the end date.",
+        "I can explain the impact on access and data before you decide.",
+        "I’ll take care of the next steps for you."
+      ],
+      "neutral": [
+        "Do you want cancellation effective immediately or at the end of the billing cycle?",
+        "Can you confirm the reason for cancellation? Totally optional.",
+        "Your access remains until {end_date}.",
+        "You won’t be charged again after cancellation is effective.",
+        "Here’s the retention/pause option if you’re eligible.",
+        "I’ll send a cancellation confirmation email.",
+        "Do you want to pause instead of canceling?",
+        "Let me confirm your plan’s cancellation and data retention policy.",
+        "Would you like to export your data before canceling?",
+        "I’m processing the request now."
+      ],
+      "negative": [
+        "Why?",
+        "Okay canceling.",
+        "That’s not my problem.",
+        "You should have read the terms.",
+        "There’s nothing I can do.",
+        "Calm down.",
+        "Stop wasting my time.",
+        "Fine, I’ll cancel.",
+        "Whatever.",
+        "Not my issue."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "Retention & Professionalism",
+      "learning_objectives": [
+        "Respect cancellation intent without interrogating",
+        "Offer one retention option once (not pushy)",
+        "Confirm end date, charges, and confirmation"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge request and confirm you can help",
+        "Ask one optional feedback question",
+        "Offer one approved retention option if eligible (pause/discount)",
+        "Confirm cancellation timing, billing impact, and send confirmation"
+      ],
+      "common_mistakes_to_avoid": [
+        "Sounding defensive",
+        "Multiple retention pushes",
+        "Cancelling without confirming implications"
+      ],
+      "policy_constraints": [
+        "Offer discount only if tenure >= 6 months",
+        "Do not promise refunds for past months"
+      ],
+      "resolution_criteria": [
+        "Customer confirms they understand end date/charges",
+        "Cancellation completed OR retention accepted"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-005",
+    "domain": "Service Outage / Incident Communication",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "Your service is down. My team is blocked." },
+        { "speaker": "Agent", "text": "Not sure." },
+        { "speaker": "Customer", "text": "This is costing us money. What's the ETA?" },
+        { "speaker": "Agent", "text": "I think it'll be back soon." },
+        { "speaker": "Customer", "text": "'Think'? I need facts and updates." }
+      ],
+      [
+        { "speaker": "Customer", "text": "We’re completely down. What’s going on?" },
+        { "speaker": "Agent", "text": "I’m sorry—this is blocking. Let me check if there’s a known incident and I’ll share the confirmed status." },
+        { "speaker": "Customer", "text": "I need an ETA." },
+        { "speaker": "Agent", "text": "I don’t have a confirmed ETA yet, but I will update you again at 2:30 PM with the latest status." },
+        { "speaker": "Customer", "text": "That’s not good enough." },
+        { "speaker": "Agent", "text": "I understand. If you share your impact (how many users/critical workflows), I can prioritize escalation while we wait for the next official update." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Is this just us or everyone?" },
+        { "speaker": "Agent", "text": "Good question. I’m checking system status now. Are you seeing errors on multiple devices or networks?" },
+        { "speaker": "Customer", "text": "Yes, multiple users." },
+        { "speaker": "Agent", "text": "Thanks—that suggests broader impact. I’ll confirm the incident status and keep you updated on a set cadence." },
+        { "speaker": "Customer", "text": "How often?" },
+        { "speaker": "Agent", "text": "Every 30 minutes until resolved, or sooner if we get a major update." }
+      ],
+      [
+        { "speaker": "Customer", "text": "We have a client demo in 20 minutes. This is unacceptable." },
+        { "speaker": "Agent", "text": "I’m really sorry. I don’t have a confirmed ETA, but I can suggest a workaround if available and I’ll escalate your account as time-critical." },
+        { "speaker": "Customer", "text": "What workaround?" },
+        { "speaker": "Agent", "text": "If your team can access the read-only dashboard, you may be able to present that while write actions are impaired—I'll confirm if that’s currently working." },
+        { "speaker": "Customer", "text": "Okay check now." },
+        { "speaker": "Agent", "text": "Doing that now, and I’ll update you in 10 minutes regardless of status." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Don’t lie to me—how long will this take?" },
+        { "speaker": "Agent", "text": "I won’t guess. I’ll share only confirmed updates. Right now, the incident is being investigated, and the next update is scheduled at 3:00 PM." },
+        { "speaker": "Customer", "text": "So no ETA?" },
+        { "speaker": "Agent", "text": "Not yet. But I will keep you informed on a consistent cadence and escalate if your impact is critical." },
+        { "speaker": "Customer", "text": "Fine." },
+        { "speaker": "Agent", "text": "Thanks. Can you share the affected region and number of impacted users so I can log this properly?" }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P0", "product": "B2B Platform", "region": "NA" },
+    "sentiment_statements": {
+      "positive": [
+        "I’m sorry—this is blocking and I understand the urgency.",
+        "I won’t guess; I’ll share only confirmed updates.",
+        "Thanks for your patience—I'll check incident status right now.",
+        "I understand the business impact, and I’m escalating this appropriately.",
+        "I’ll keep you updated on a clear cadence until this is resolved.",
+        "You’re right to ask for facts—I'm looking at the official status now.",
+        "I’ll provide the next update time even if we don’t have an ETA yet.",
+        "I’m here with you and will communicate clearly throughout.",
+        "I’ll prioritize your case based on impact.",
+        "I’m sorry for the disruption—let’s focus on the fastest safe path forward."
+      ],
+      "neutral": [
+        "Are you seeing this across multiple users/devices?",
+        "What region are you in and how many users are impacted?",
+        "I’m checking if there’s a known incident.",
+        "I don’t have a confirmed ETA yet; next update is at {time}.",
+        "I will update you every {cadence} minutes until resolution.",
+        "Is there any workaround you can use temporarily (read-only mode, alternate flow)?",
+        "I’m logging your impact details for escalation.",
+        "I’ll share the official status reference once confirmed.",
+        "Are critical workflows blocked or partially degraded?",
+        "I’ll update you again at {next_update_time} regardless."
+      ],
+      "negative": [
+        "Not sure.",
+        "I think it’ll be back soon.",
+        "Probably in an hour.",
+        "It’s not our fault.",
+        "Just wait.",
+        "Calm down.",
+        "Stop asking for ETAs.",
+        "There’s nothing we can do.",
+        "It’ll fix itself.",
+        "No idea."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "Incident Communication",
+      "learning_objectives": [
+        "Acknowledge severity and take ownership",
+        "Avoid speculation; give status + next update time",
+        "Offer workaround/escalation for critical impact"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge incident impact and apologize",
+        "Confirm if incident is known and share official status reference",
+        "Commit to next update time (even if no ETA)",
+        "Offer workaround and escalation path for critical customers"
+      ],
+      "common_mistakes_to_avoid": [
+        "Guessing ETAs",
+        "Underplaying impact",
+        "No commitment to next update"
+      ],
+      "policy_constraints": [
+        "Do not provide an ETA unless confirmed by incident lead",
+        "Do not share internal system names"
+      ],
+      "resolution_criteria": [
+        "Customer receives update cadence and reference",
+        "Workaround/escalation offered if appropriate"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-006",
+    "domain": "Payment Failure / Card Declined",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "My card keeps getting declined, but the bank says it's fine." },
+        { "speaker": "Agent", "text": "Then it's your bank." },
+        { "speaker": "Customer", "text": "It's not. I used the same card elsewhere. Fix it." },
+        { "speaker": "Agent", "text": "Try another card." },
+        { "speaker": "Customer", "text": "I need this purchase to go through today." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Payment keeps failing and I’m on a deadline." },
+        { "speaker": "Agent", "text": "I’m sorry—let’s fix this quickly. What exact error do you see and what time did the last attempt happen?" },
+        { "speaker": "Customer", "text": "It says 'card declined' about 2 minutes ago." },
+        { "speaker": "Agent", "text": "Thanks. Please don’t share full card details—just confirm if your billing address/ZIP matches your card statement." },
+        { "speaker": "Customer", "text": "Yes, it matches." },
+        { "speaker": "Agent", "text": "Understood. To avoid triggering fraud blocks, please wait 10 minutes and try once. If it fails again, I’ll escalate with the timestamp and error." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Why are you declining my card? The bank said it’s okay." },
+        { "speaker": "Agent", "text": "I understand. It may be an authorization or address verification issue. Let’s check a few safe details." },
+        { "speaker": "Customer", "text": "Like what?" },
+        { "speaker": "Agent", "text": "The exact error message, the time of attempt, and whether billing ZIP/address matches. No card numbers needed." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "Thanks. If this persists, I’ll escalate to payments with your timestamp and error so we can investigate." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Can I give you my card number so you do it?" },
+        { "speaker": "Agent", "text": "I can’t take full card details, but I can help you troubleshoot safely. What error do you see?" },
+        { "speaker": "Customer", "text": "Declined." },
+        { "speaker": "Agent", "text": "Thanks. Please try once after 10 minutes and consider an alternate method if available. I’ll escalate if it fails again." },
+        { "speaker": "Customer", "text": "This is annoying." },
+        { "speaker": "Agent", "text": "I’m sorry—if you share the time of the last attempt, I’ll log it for escalation right away." }
+      ],
+      [
+        { "speaker": "Customer", "text": "It fails every time I try." },
+        { "speaker": "Agent", "text": "I hear you. Multiple retries can sometimes worsen the block. Let’s pause and do one controlled retry." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "Please wait 10 minutes, then try once. If it fails, I’ll escalate with the timestamp and error code if available." },
+        { "speaker": "Customer", "text": "Fine." },
+        { "speaker": "Agent", "text": "Thanks—I'll stay with you and guide the next step based on the result." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P1", "product": "Checkout", "region": "NA" },
+    "sentiment_statements": {
+      "positive": [
+        "I’m sorry—let’s fix this quickly.",
+        "I understand this is urgent, and I’ll help you through it.",
+        "Thanks for confirming—this helps narrow the cause.",
+        "I won’t ask for sensitive info; we’ll keep this safe.",
+        "I hear you—payment issues are frustrating.",
+        "I’ll take ownership and escalate if the safe steps don’t work.",
+        "I appreciate your patience while we try a controlled retry.",
+        "You’re right to ask—let’s verify what we can safely.",
+        "I’ll keep you updated on the escalation timeline if needed.",
+        "We’ll aim for the fastest safe resolution."
+      ],
+      "neutral": [
+        "What exact error message do you see?",
+        "What time was your last attempt?",
+        "Please don’t share full card details.",
+        "Does your billing address/ZIP match your card statement?",
+        "To avoid blocks, please wait 10 minutes and retry once.",
+        "Do you have an alternate payment method available?",
+        "If it fails again, I’ll escalate with timestamp and error details.",
+        "How many attempts have you made in the last hour?",
+        "Are you purchasing from a different country/region than your card?",
+        "I’m logging this now so we can investigate if needed."
+      ],
+      "negative": [
+        "Then it’s your bank.",
+        "Try another card.",
+        "Not our issue.",
+        "Stop retrying.",
+        "Calm down.",
+        "Give me your card number.",
+        "There’s nothing I can do.",
+        "It’s probably your fault.",
+        "Just wait.",
+        "No refunds."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "Problem Ownership & Structured Troubleshooting",
+      "learning_objectives": [
+        "Avoid blame; take ownership and gather details",
+        "Check for common causes (AVS mismatch, limits, retries, region)",
+        "Provide safe steps and escalation path"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge urgency and apologize for the friction",
+        "Collect details (error message, last 4 digits optional, billing ZIP match, time, attempts, country)",
+        "Suggest safe steps (wait 10 min, confirm billing address, try once, alternate method like PayPal if supported)",
+        "Escalate to payments team with timestamp/error and advise customer of next update"
+      ],
+      "common_mistakes_to_avoid": [
+        "Blaming the bank immediately",
+        "Asking for full card number/CVV",
+        "Encouraging repeated rapid retries"
+      ],
+      "policy_constraints": [
+        "Do not request full card number or CVV",
+        "Do not store payment details in chat"
+      ],
+      "resolution_criteria": [
+        "Customer gets clear next steps (safe retry) OR escalation with expected timeline",
+        "Customer feels supported (tone improves)"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-007",
+    "domain": "Password Reset / Email Not Received",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "I requested a password reset but the email never comes." },
+        { "speaker": "Agent", "text": "Check your spam." },
+        { "speaker": "Customer", "text": "I did. Nothing." },
+        { "speaker": "Agent", "text": "Then wait." },
+        { "speaker": "Customer", "text": "I can't wait. I'm locked out and I have a deadline." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Reset email doesn’t arrive at all." },
+        { "speaker": "Agent", "text": "I’m sorry—you shouldn’t be stuck. Are you using a corporate email by any chance? Some filters block automated emails." },
+        { "speaker": "Customer", "text": "Yes, corporate." },
+        { "speaker": "Agent", "text": "Thanks. Please check quarantine/junk and ask IT to whitelist our sender domain. I can also have you try resending from an incognito window." },
+        { "speaker": "Customer", "text": "Okay, resending now." },
+        { "speaker": "Agent", "text": "Great—tell me if it arrives. If not, I’ll escalate with your email domain and timestamp so we can investigate deliverability." }
+      ],
+      [
+        { "speaker": "Customer", "text": "I can’t access my account and this is urgent." },
+        { "speaker": "Agent", "text": "I understand. I can’t see or confirm private account details, but I can guide troubleshooting. What email domain are you using (like company.com)?" },
+        { "speaker": "Customer", "text": "company.com" },
+        { "speaker": "Agent", "text": "Thanks—corporate filters are common. Please check spam/quarantine and try requesting from another browser or device." },
+        { "speaker": "Customer", "text": "Still nothing." },
+        { "speaker": "Agent", "text": "Got it—I’ll escalate this as a deliverability issue and share the next update window." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Can you just reset it for me?" },
+        { "speaker": "Agent", "text": "I can’t reset passwords directly, but I can help you receive the reset email. Have you checked spam and quarantine?" },
+        { "speaker": "Customer", "text": "Yes." },
+        { "speaker": "Agent", "text": "Thanks. Next, try resending from an incognito window and ensure your inbox isn’t filtering our messages." },
+        { "speaker": "Customer", "text": "No email." },
+        { "speaker": "Agent", "text": "Understood—I’ll escalate and include your domain and the exact time you tried so the team can trace it." }
+      ],
+      [
+        { "speaker": "Customer", "text": "It used to work, now it doesn’t. This is ridiculous." },
+        { "speaker": "Agent", "text": "I’m sorry—let’s fix it. Did anything change recently, like switching email providers or new company security rules?" },
+        { "speaker": "Customer", "text": "Not sure." },
+        { "speaker": "Agent", "text": "No worries. Please try from a different device/browser and ask IT to whitelist the sender domain if you’re on corporate email." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "If it still doesn’t arrive within 10 minutes, I’ll escalate with your domain and timestamps." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P1", "product": "Account Management", "region": "EU" },
+    "sentiment_statements": {
+      "positive": [
+        "I’m sorry—you shouldn’t be stuck like this.",
+        "I understand the urgency and I’ll help you get access back.",
+        "Thanks for confirming—this helps narrow the cause.",
+        "I appreciate your patience while we try the next step.",
+        "I’ll take ownership and escalate if the email still doesn’t arrive.",
+        "You’re right to flag this—deliverability issues happen and we’ll address it.",
+        "Let’s try one quick step at a time so we don’t miss anything.",
+        "I’ll keep you updated on the escalation window.",
+        "Thanks—I'll log the timestamp so the team can trace it.",
+        "We’ll get you a clear next step right now."
+      ],
+      "neutral": [
+        "Are you using a corporate email domain (like company.com)?",
+        "Please check spam/quarantine/junk folders.",
+        "Please try requesting the reset from an incognito/private window.",
+        "Try a different browser or device.",
+        "Ask IT to whitelist our sender domain.",
+        "What time did you last request the reset email?",
+        "I can escalate with your domain and timestamp.",
+        "Do you have any inbox rules that auto-delete or auto-archive messages?",
+        "Please wait 10 minutes after resending before trying again.",
+        "I can share the next update window once escalated."
+      ],
+      "negative": [
+        "Check your spam.",
+        "Then wait.",
+        "Not my problem.",
+        "There’s nothing I can do.",
+        "Calm down.",
+        "Stop complaining.",
+        "Just try later.",
+        "Give me your password.",
+        "It’s your fault.",
+        "Figure it out."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "Guided Support & Escalation Readiness",
+      "learning_objectives": [
+        "Guide step-by-step without repeating generic advice",
+        "Check common deliverability causes (filters, domain, typos)",
+        "Offer alternative verification/escalation if stuck"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge urgency and apologize",
+        "Confirm email address format (without asking for sensitive info) and ask about corporate email filtering",
+        "Suggest whitelisted sender domain + try resend + alternate browser/device",
+        "If still failing, offer escalation and an alternative verification path (if policy allows)"
+      ],
+      "common_mistakes_to_avoid": [
+        "Telling them to just 'wait'",
+        "Asking for passwords",
+        "Skipping corporate filtering checks"
+      ],
+      "policy_constraints": [
+        "Do not request password",
+        "Do not disclose whether an email exists in the system beyond what the customer provides"
+      ],
+      "resolution_criteria": [
+        "Email deliverability issue resolved OR escalation created with required context",
+        "Customer has a concrete next action"
+      ]
+    }
+  },
+
+  {
+    "ticket_id": "TICKET-008",
+    "domain": "Policy Dispute / Chargeback Threat",
+    "raw_conversations": [
+      [
+        { "speaker": "Customer", "text": "You charged me twice. I'm filing a chargeback." },
+        { "speaker": "Agent", "text": "We didn't." },
+        { "speaker": "Customer", "text": "Yes you did. I see two charges pending." },
+        { "speaker": "Agent", "text": "That's not possible." },
+        { "speaker": "Customer", "text": "I'm taking this to my bank if you don't fix it now." }
+      ],
+      [
+        { "speaker": "Customer", "text": "I see two charges. Explain it or I’m doing a chargeback." },
+        { "speaker": "Agent", "text": "I’m sorry for the worry. Let’s check whether those are pending authorizations or posted charges." },
+        { "speaker": "Customer", "text": "They’re both pending." },
+        { "speaker": "Agent", "text": "Thanks. Pending authorizations can appear twice temporarily and usually drop off automatically within a few days. I’ll confirm the transaction details and timeline." },
+        { "speaker": "Customer", "text": "So you won’t fix it?" },
+        { "speaker": "Agent", "text": "I can help by verifying what they are and escalating if they post as duplicates. If you share the dates and amounts, I can investigate safely." }
+      ],
+      [
+        { "speaker": "Customer", "text": "You took my money twice and I’m furious." },
+        { "speaker": "Agent", "text": "I understand why you’re upset. I’m sorry this happened. Let’s review the charges and get you a clear answer." },
+        { "speaker": "Customer", "text": "One is from today and one from yesterday." },
+        { "speaker": "Agent", "text": "Thanks—are they marked pending or posted? That determines whether we can void immediately or need to wait for posting." },
+        { "speaker": "Customer", "text": "Pending." },
+        { "speaker": "Agent", "text": "Got it. Pending charges often resolve automatically; I’ll share the expected timeline and I can escalate if either posts as a true duplicate." }
+      ],
+      [
+        { "speaker": "Customer", "text": "If you don’t refund me right now, I’m calling my bank." },
+        { "speaker": "Agent", "text": "I hear you. Let’s confirm what the two charges represent so we handle this correctly." },
+        { "speaker": "Customer", "text": "They’re the same amount." },
+        { "speaker": "Agent", "text": "Thanks. Please share the dates and whether they show as pending or posted. No card details needed." },
+        { "speaker": "Customer", "text": "Pending." },
+        { "speaker": "Agent", "text": "Understood. If they remain after the pending window, I’ll escalate to billing to void/refund as appropriate." }
+      ],
+      [
+        { "speaker": "Customer", "text": "Your agent told me it’s not possible. That’s unacceptable." },
+        { "speaker": "Agent", "text": "You’re right—that wording isn’t helpful. I’m sorry. Let’s focus on resolving this by checking the charge status and next steps." },
+        { "speaker": "Customer", "text": "Okay." },
+        { "speaker": "Agent", "text": "Can you share the date and amount for each charge and whether they’re pending or posted?" },
+        { "speaker": "Customer", "text": "Two pending charges, same amount." },
+        { "speaker": "Agent", "text": "Thanks. I’ll explain the pending authorization timeline and what we’ll do if it posts as a duplicate." }
+      ]
+    ],
+    "metadata": { "channel": "chat", "priority": "P0", "product": "Billing", "region": "NA" },
+    "sentiment_statements": {
+      "positive": [
+        "I understand why you’re upset, and I’m sorry for the stress.",
+        "You’re right to raise this—let’s investigate it carefully.",
+        "Thanks for sharing those details; that helps a lot.",
+        "I’ll take ownership and explain exactly what’s happening.",
+        "I can see how two charges would be alarming.",
+        "I’m here to help, and we’ll handle this the right way.",
+        "I’ll give you clear next steps and a timeline.",
+        "I won’t dismiss what you’re seeing—let’s verify it together.",
+        "I appreciate your patience while we confirm the status.",
+        "I’ll escalate immediately if it posts as a true duplicate."
+      ],
+      "neutral": [
+        "Are the charges pending or posted?",
+        "What are the dates and amounts for each charge?",
+        "Pending authorizations can appear temporarily and drop off automatically.",
+        "Please don’t share card details—dates and amounts are enough.",
+        "If the charge posts as a duplicate, we can start the void/refund process.",
+        "I’m checking the billing record now.",
+        "I’ll share the expected pending timeline based on your bank.",
+        "Do you see the same merchant descriptor on both charges?",
+        "I can escalate to billing with your timestamps and amounts.",
+        "I’ll update you again once I confirm the status."
+      ],
+      "negative": [
+        "We didn’t.",
+        "That’s not possible.",
+        "Calm down.",
+        "Stop threatening us.",
+        "There’s nothing I can do.",
+        "Just wait.",
+        "Not my problem.",
+        "You’re wrong.",
+        "No refunds.",
+        "Read the policy."
+      ]
+    },
+    "annotations": {
+      "primary_skill": "De-escalation + Fact Finding",
+      "learning_objectives": [
+        "Avoid contradicting; validate concern and investigate",
+        "Explain pending vs posted charges clearly",
+        "Offer concrete actions and escalation path"
+      ],
+      "correct_sop_steps": [
+        "Acknowledge concern and apologize",
+        "Gather transaction details safely (dates/amounts/merchant descriptor; no full card info)",
+        "Explain pending authorization vs posted charges and expected timelines",
+        "If true duplicate charge: initiate refund/void process or escalate with timeline"
+      ],
+      "common_mistakes_to_avoid": [
+        "Saying 'not possible'",
+        "Arguing about what the customer sees",
+        "Ignoring chargeback threat"
+      ],
+      "policy_constraints": [
+        "Do not request full card details",
+        "Do not guarantee immediate reversal if pending authorization"
+      ],
+      "resolution_criteria": [
+        "Customer understands the situation (pending vs posted) OR duplicate identified and action taken",
+        "Chargeback threat de-escalates or is handled with clear next steps"
+      ]
+    }
+  }
+]

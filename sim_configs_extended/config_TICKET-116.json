@@ -1,0 +1,37 @@
+{
+  "case_id": "TICKET-116",
+  "scenario_context": "Return pickup missed multiple times. Apologize, show ownership, escalate to logistics, reschedule with firm window, offer drop-off alternative, refund timeline only after pickup scan, set follow-up cadence.",
+  "customer_profile": {
+    "tone": "angry, exhausted",
+    "knowledge_level": "low",
+    "opening_message": "Pickup failed three times. Refund me already.",
+    "secret_condition": "Customer accepts if pickup is prioritized/rescheduled with firm window + follow-up commitment",
+    "escalation_triggers": [
+      "no action plan",
+      "no escalation",
+      "vague updates"
+    ],
+    "de_escalation_triggers": [
+      "priority reschedule",
+      "timeline",
+      "drop-off option"
+    ]
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      { "id": 1, "description": "Apologize and acknowledge wasted time; show ownership", "hint_if_missed": "Validate the inconvenience first." },
+      { "id": 2, "description": "Confirm failed pickup attempts and return details", "hint_if_missed": "Gather last pickup dates/times." },
+      { "id": 3, "description": "Escalate and reschedule pickup with priority and firm window", "hint_if_missed": "Don’t just ‘try again’—prioritize." },
+      { "id": 4, "description": "Offer alternate option (drop-off/label) if available", "hint_if_missed": "Give them another path to finish the return." },
+      { "id": 5, "description": "Explain refund timeline after pickup scan + set next update time", "hint_if_missed": "Set expectations and commit to follow-up." }
+    ],
+    "common_mistakes_to_watch": [
+      "Generic apology only",
+      "No escalation",
+      "Refund promise too early",
+      "No follow-up timeline"
+    ]
+  },
+  "success_summary": "Ownership + escalation + reschedule plan with clear refund and update timelines.",
+  "max_turns": 10
+}

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Known Issue Resolver — Microsoft CCaaS</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #111827;
+    --bg3: #1e293b;
+    --bg4: #273449;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --green: #22c55e;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --purple: #a78bfa;
+    --border: #334155;
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ─── Header ──────────────────────────────────────────── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header-logo {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .header-title h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .header-title p {
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-link {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--bg4);
+  }
+
+  /* ─── Main Layout ─────────────────────────────────────── */
+  .main-layout {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* ─── Search Panel ────────────────────────────────────── */
+  .search-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .search-section {
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    background: var(--bg2);
+    flex-shrink: 0;
+  }
+  .search-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .search-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .input-wrapper {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s;
+  }
+  .input-wrapper:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+  }
+  .search-input {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 13px;
+    padding: 12px 14px;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    line-height: 1.5;
+    min-height: 48px;
+    max-height: 200px;
+    width: 100%;
+  }
+  .search-input::placeholder { color: var(--text2); }
+  .search-btn {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .search-btn:hover { background: var(--accent2); }
+  .search-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ─── Results Section ─────────────────────────────────── */
+  .results-section {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .results-section::-webkit-scrollbar { width: 6px; }
+  .results-section::-webkit-scrollbar-track { background: transparent; }
+  .results-section::-webkit-scrollbar-thumb {
+    background: var(--bg4);
+    border-radius: 3px;
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text2);
+    font-size: 13px;
+    margin: auto;
+  }
+  .empty-state .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  /* Keywords section */
+  .keywords-section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .chip {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text2);
+    margin: 4px;
+  }
+
+  /* Result cards */
+  .result-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .result-card.selected {
+    border-color: var(--accent);
+    background: var(--bg3);
+  }
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .result-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .score-badge {
+    background: var(--accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .result-details {
+    margin-top: 12px;
+  }
+  .detail-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .detail-label {
+    font-weight: 600;
+    color: var(--text2);
+    min-width: 100px;
+  }
+  .detail-value {
+    color: var(--text);
+  }
+
+  /* Issue details section */
+  .issue-details {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .issue-details h3 {
+    color: var(--accent2);
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .issue-field {
+    margin-bottom: 10px;
+  }
+  .issue-field-label {
+    font-weight: 600;
+    color: var(--text2);
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .issue-field-value {
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* ─── Context Side Panel ──────────────────────────────── */
+  .context-panel {
+    width: 320px;
+    background: var(--bg2);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .context-panel.collapsed { width: 0; border-left: none; }
+  .context-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .context-header h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .context-close {
+    background: none;
+    border: none;
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .context-close:hover { background: var(--bg3); color: var(--text); }
+  .context-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .context-body::-webkit-scrollbar { width: 5px; }
+  .context-body::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+  .context-section {
+    margin-bottom: 16px;
+  }
+  .context-section-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .context-chip {
+    display: inline-block;
+    padding: 3px 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text2);
+    margin: 2px;
+  }
+  .context-item {
+    padding: 8px 10px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .context-item .label {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .context-item .type-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 600;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+  .context-item.clickable {
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  .context-item.clickable:hover {
+    background: var(--bg2);
+    transform: translateX(2px);
+  }
+  .context-item.clickable:active {
+    transform: translateX(1px);
+  }
+  .type-badge.known-issue { background: rgba(239,68,68,0.15); color: var(--red); }
+  .type-badge.runbook { background: rgba(245,158,11,0.15); color: var(--orange); }
+  .type-badge.expert { background: rgba(34,197,94,0.15); color: var(--green); }
+  .type-badge.service { background: rgba(59,130,246,0.15); color: var(--accent2); }
+  .type-badge.faq { background: rgba(167,139,250,0.15); color: var(--purple); }
+  .type-badge.incident { background: rgba(239,68,68,0.15); color: var(--red); }
+  .type-badge.document { background: rgba(94,234,212,0.15); color: #5eeaD4; }
+  .type-badge.sop { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .type-badge.feature { background: rgba(147,51,234,0.15); color: #9333ea; }
+  .type-badge.customer { background: rgba(249,115,22,0.15); color: #f97316; }
+
+  .context-empty {
+    text-align: center;
+    padding: 30px 10px;
+    color: var(--text2);
+    font-size: 12px;
+  }
+  .context-empty .icon { font-size: 28px; margin-bottom: 8px; }
+
+  /* ─── Toggle Context Button ───────────────────────────── */
+  .toggle-context-btn {
+    position: fixed;
+    right: 12px;
+    bottom: 80px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text2);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 10;
+  }
+  .toggle-context-btn:hover { background: var(--bg4); color: var(--text); }
+  .context-panel.collapsed ~ .toggle-context-btn { display: flex; }
+
+  /* ─── Document Viewer Modal ───────────────────────────── */
+  .doc-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+  }
+  .doc-modal-content {
+    background: var(--bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .doc-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .doc-modal-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .doc-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .doc-download-btn:hover {
+    background: var(--accent2);
+  }
+  .doc-download-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .doc-modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--text2);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .doc-modal-close:hover {
+    background: var(--bg3);
+    color: var(--text);
+  }
+  .doc-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    position: relative;
+  }
+  .doc-loading {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    color: var(--text2);
+  }
+  #documentContent {
+    background: var(--bg2);
+    padding: 16px;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+  }
+
+  /* ─── Spinner ─────────────────────────────────────────── */
+  .spinner {
+    border: 3px solid var(--bg3);
+    border-top: 3px solid var(--accent);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* ─── Responsive ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .context-panel { width: 260px; }
+  }
+  @media (max-width: 700px) {
+    .context-panel { display: none; }
+    .toggle-context-btn { display: none !important; }
+    .header-right .nav-link { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Header ────────────────────────────────────────────── -->
+<header class="header">
+  <div class="header-left">
+    <div class="header-logo">🔍</div>
+    <div class="header-title">
+      <h1>Known Issue Resolver</h1>
+      <p>Microsoft Dynamics 365 Contact Center (CCaaS)</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="support_agent.html" class="nav-link">🤖 Support Agent</a>
+    <a href="graph_explorer.html" class="nav-link">📊 Graph Explorer</a>
+    <a href="index.html" class="nav-link">🏠 Dashboard</a>
+  </div>
+</header>
+
+<!-- ─── Main Layout ───────────────────────────────────────── -->
+<div class="main-layout">
+  <!-- Search Panel -->
+  <div class="search-panel">
+    <div class="search-section">
+      <label class="search-label">Enter Problem Description</label>
+      <div class="search-input-wrapper">
+        <div class="input-wrapper">
+          <textarea 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="e.g., WFM forecast updated but schedules not regenerating; intraday view stale"
+            rows="2"
+          ></textarea>
+        </div>
+        <button id="searchBtn" class="search-btn" onclick="searchIssue()" title="Search (Enter)">
+          🔍
+        </button>
+      </div>
+    </div>
+
+    <div class="results-section" id="resultsSection">
+      <div class="empty-state">
+        <div class="icon">🔍</div>
+        <p>Enter a problem description to find matching Known Issues</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context Side Panel -->
+  <div class="context-panel" id="contextPanel">
+    <div class="context-header">
+      <h3>🔍 Graph Context</h3>
+      <button class="context-close" onclick="toggleContext()">&times;</button>
+    </div>
+    <div class="context-body" id="contextBody">
+      <div class="context-empty">
+        <div class="icon">🗺️</div>
+        <p>Perform a search to see<br>Knowledge Graph traversal results</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="toggle-context-btn" onclick="toggleContext()" title="Show Graph Context">🔍</button>
+
+  <!-- Document Viewer Modal -->
+  <div id="documentModal" class="doc-modal">
+    <div class="doc-modal-content">
+      <div class="doc-modal-header">
+        <h3 id="documentTitle">Document</h3>
+        <div class="doc-modal-actions">
+          <button class="doc-download-btn" onclick="downloadDocument()" title="Download file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download
+          </button>
+          <button class="doc-modal-close" onclick="closeDocumentModal()">&times;</button>
+        </div>
+      </div>
+      <div class="doc-modal-body">
+        <div id="documentLoading" class="doc-loading">
+          <div class="spinner"></div>
+          <p>Loading document...</p>
+        </div>
+        <pre id="documentContent"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    const API_BASE = 'http://127.0.0.1:8000';
+    let currentResults = null;
+
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Page loaded, initializing...');
+      
+      // Enter key handler
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            console.log('Enter key pressed, searching...');
+            searchIssue();
+          }
+        });
+        console.log('Event listener attached to search input');
+      } else {
+        console.error('Search input not found!');
+      }
+
+      // Also attach to button
+      const searchBtn = document.getElementById('searchBtn');
+      if (searchBtn) {
+        searchBtn.onclick = function(e) {
+          e.preventDefault();
+          console.log('Search button clicked!');
+          searchIssue();
+        };
+        console.log('Event listener attached to search button');
+      } else {
+        console.error('Search button not found!');
+      }
+    });
+
+    async function searchIssue() {
+      console.log('searchIssue() function called');
+      
+      const input = document.getElementById('searchInput');
+      const message = input.value.trim();
+      
+      console.log('Search message:', message);
+      
+      if (!message) {
+        alert('Please enter a problem description');
+        return;
+      }
+
+      const btn = document.getElementById('searchBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="spinner"></span> Searching...';
+      btn.disabled = true;
+
+      console.log('Sending request to:', `${API_BASE}/kg/resolve_issue`);
+
+      try {
+        const requestBody = {
+          tenant_id: 'tenant_demo',
+          message: message,
+          limit: 5
+        };
+        
+        console.log('Request body:', requestBody);
+
+        const response = await fetch(`${API_BASE}/kg/resolve_issue`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody)
+        });
+
+        console.log('Response status:', response.status);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log('Response data:', data);
+        
+        currentResults = data;
+        displayResults(data);
+        
+        // Update context panel if we have a selected issue
+        if (data.selected_context) {
+          updateContextPanel(data);
+        }
+
+      } catch (error) {
+        console.error('Search error:', error);
+        document.getElementById('resultsSection').innerHTML = `
+          <div class="empty-state">
+            <div class="icon">❌</div>
+            <p><strong>Error connecting to API</strong><br>
+            ${error.message}<br><br>
+            Make sure the backend server is running:<br>
+            <code>python -m uvicorn api.main:app --reload --port 8000</code></p>
+          </div>
+        `;
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    }
+
+    function displayResults(data) {
+      const section = document.getElementById('resultsSection');
+      
+      if (!data.ok || !data.candidates || data.candidates.length === 0) {
+        section.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">🔍</div>
+            <p>No matching Known Issues found</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+
+      // Keywords section
+      if (data.keywords && data.keywords.length > 0) {
+        html += `
+          <div class="keywords-section">
+            <div class="section-title">🔑 Detected Keywords</div>
+            <div>
+              ${data.keywords.map(k => `<span class="chip">${k}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Candidates section
+      html += `<div class="section-title">📋 Found Issues (${data.candidates.length})</div>`;
+      
+      data.candidates.forEach((candidate, index) => {
+        const isSelected = candidate.issue_id === data.selected_issue_id;
+        html += `
+          <div class="result-card ${isSelected ? 'selected' : ''}">
+            <div class="result-header">
+              <div class="result-title">${candidate.issue_id}</div>
+              <div class="score-badge">Score: ${candidate.score.toFixed(1)}</div>
+            </div>
+            ${isSelected ? '<div style="color: #667eea; font-weight: 600; font-size: 13px; margin-bottom: 8px;">✓ Selected Issue</div>' : ''}
+            <div class="result-details">
+              ${candidate.service_ids && candidate.service_ids.length > 0 ? `
+                <div class="detail-row">
+                  <div class="detail-label">Affected Services:</div>
+                  <div class="detail-value">${candidate.service_ids.join(', ')}</div>
+                </div>
+              ` : ''}
+              ${candidate.debug_hits && candidate.debug_hits.length > 0 ? `
+                <div class="detail-row">
+                  <div class="detail-label">Hits:</div>
+                  <div class="detail-value">${candidate.debug_hits.join(', ')}</div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      // Selected issue details
+      if (data.selected_context && data.selected_context.issue) {
+        const issue = data.selected_context.issue;
+        html += `
+          <div class="issue-details">
+            <h3>📄 Issue Details: ${issue.issue_id || data.selected_issue_id}</h3>
+            ${issue.symptoms ? `
+              <div class="issue-field">
+                <div class="issue-field-label">Symptoms:</div>
+                <div class="issue-field-value">${issue.symptoms}</div>
+              </div>
+            ` : ''}
+            ${issue.root_cause ? `
+              <div class="issue-field">
+                <div class="issue-field-label">Root Cause:</div>
+                <div class="issue-field-value">${issue.root_cause}</div>
+              </div>
+            ` : ''}
+            ${issue.workaround ? `
+              <div class="issue-field">
+                <div class="issue-field-label">Workaround:</div>
+                <div class="issue-field-value">${issue.workaround}</div>
+              </div>
+            ` : ''}
+            ${issue.status ? `
+              <div class="issue-field">
+                <div class="issue-field-label">Status:</div>
+                <div class="issue-field-value">${issue.status}</div>
+              </div>
+            ` : ''}
+            ${issue.severity ? `
+              <div class="issue-field">
+                <div class="issue-field-label">Severity:</div>
+                <div class="issue-field-value">${issue.severity}</div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+
+      section.innerHTML = html;
+    }
+
+    function updateContextPanel(data) {
+      const contextBody = document.getElementById('contextBody');
+      const ctx = data.selected_context;
+      
+      if (!ctx) {
+        contextBody.innerHTML = `
+          <div class="context-empty">
+            <div class="icon">🔍</div>
+            <p>No context available</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+
+      // Keywords
+      if (data.keywords && data.keywords.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">🔑 Keywords</div>
+            <div>
+              ${data.keywords.slice(0, 15).map(k => `<span class="context-chip">${k}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Linked Runbooks
+      if (ctx.linked && ctx.linked.runbooks && ctx.linked.runbooks.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">📋 Runbooks</div>
+            ${ctx.linked.runbooks.map(r => {
+              const title = r.title || r.runbook_id || 'Runbook';
+              const path = r.document || r.path || r.url;
+              const hasPath = !!path;
+              return `
+                <div class="context-item ${hasPath ? 'clickable' : ''}" ${hasPath ? `onclick="openPath('${path}')"` : ''} title="${hasPath ? 'Click to open: ' + path : title}">
+                  <span class="label">${title}</span>
+                  <span class="type-badge runbook">Runbook</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // Linked SOPs
+      if (ctx.linked && ctx.linked.sops && ctx.linked.sops.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">📝 SOPs</div>
+            ${ctx.linked.sops.map(s => `
+              <div class="context-item">
+                <span class="label">${s.title || s.sop_id || 'SOP'}</span>
+                <span class="type-badge sop">SOP</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Linked FAQs
+      if (ctx.linked && ctx.linked.faqs && ctx.linked.faqs.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">❓ FAQs</div>
+            ${ctx.linked.faqs.map(f => `
+              <div class="context-item">
+                <span class="label">${f.question || f.faq_id || 'FAQ'}</span>
+                <span class="type-badge faq">FAQ</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Linked Documents
+      if (ctx.linked && ctx.linked.documents && ctx.linked.documents.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">📄 Documents</div>
+            ${ctx.linked.documents.map(d => {
+              const title = d.title || d.document_id || d.doc_id || 'Document';
+              const path = d.url || d.document || d.path;
+              const hasPath = !!path;
+              return `
+                <div class="context-item ${hasPath ? 'clickable' : ''}" ${hasPath ? `onclick="openPath('${path}')"` : ''} title="${hasPath ? 'Click to open: ' + path : title}">
+                  <span class="label">${title}</span>
+                  <span class="type-badge document">Doc</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // Affected Services
+      if (ctx.affected && ctx.affected.services && ctx.affected.services.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">🔧 Affected Services</div>
+            ${ctx.affected.services.map(s => `
+              <div class="context-item">
+                <span class="label">${s.service_id || s.name || 'Service'}</span>
+                <span class="type-badge service">Service</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Affected Customers
+      if (ctx.affected && ctx.affected.customers && ctx.affected.customers.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">👥 Affected Customers</div>
+            ${ctx.affected.customers.map(c => `
+              <div class="context-item">
+                <span class="label">${c.customer_id || c.name || 'Customer'}</span>
+                <span class="type-badge customer">Customer</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Affected Features
+      if (ctx.affected && ctx.affected.features && ctx.affected.features.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">⚡ Affected Features</div>
+            ${ctx.affected.features.map(f => `
+              <div class="context-item">
+                <span class="label">${f.feature_id || f.name || 'Feature'}</span>
+                <span class="type-badge feature">Feature</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // Related Incidents
+      if (ctx.affected && ctx.affected.incidents && ctx.affected.incidents.length > 0) {
+        html += `
+          <div class="context-section">
+            <div class="context-section-title">📊 Related Incidents</div>
+            ${ctx.affected.incidents.map(i => `
+              <div class="context-item">
+                <span class="label">${i.incident_id || i.title || 'Incident'}</span>
+                <span class="type-badge incident">Incident</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      if (!html) {
+        html = `
+          <div class="context-empty">
+            <div class="icon">🔍</div>
+            <p>No graph relationships found</p>
+          </div>
+        `;
+      }
+
+      contextBody.innerHTML = html;
+    }
+
+    function toggleContext() {
+      document.getElementById('contextPanel').classList.toggle('collapsed');
+    }
+
+    let currentDocumentPath = null;
+    let currentDocumentContent = null;
+
+    function openPath(path) {
+      if (!path) return;
+      console.log('Opening path:', path);
+      
+      // If it's a URL (starts with http/https), open in new tab
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        window.open(path, '_blank');
+      } 
+      // If it's a relative path to data/ folder, open in modal
+      else if (path.startsWith('data/')) {
+        openDocument(path);
+      }
+      // Otherwise, show the path in an alert
+      else {
+        alert(`Document path: ${path}\n\nNote: This would typically open the document from your document management system.`);
+      }
+    }
+
+    function openDocument(path) {
+      const modal = document.getElementById('documentModal');
+      const titleEl = document.getElementById('documentTitle');
+      const contentEl = document.getElementById('documentContent');
+      const loadingEl = document.getElementById('documentLoading');
+      
+      // Show modal and loading state
+      modal.style.display = 'flex';
+      titleEl.textContent = path.split('/').pop();
+      contentEl.textContent = '';
+      loadingEl.style.display = 'block';
+      currentDocumentPath = path;
+      currentDocumentContent = null;
+      
+      // Fetch document content directly as text
+      fetch(`http://localhost:8080/${path}`)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+          }
+          return res.text();
+        })
+        .then(content => {
+          loadingEl.style.display = 'none';
+          contentEl.textContent = content;
+          currentDocumentContent = content;
+        })
+        .catch(err => {
+          loadingEl.style.display = 'none';
+          contentEl.textContent = `Failed to load document: ${err.message}\n\nPath: ${path}\n\nPlease ensure the web server is running on http://localhost:8080`;
+          currentDocumentContent = null;
+        });
+    }
+
+    function closeDocumentModal() {
+      document.getElementById('documentModal').style.display = 'none';
+    }
+
+    function downloadDocument() {
+      if (!currentDocumentContent || !currentDocumentPath) {
+        alert('No document loaded');
+        return;
+      }
+      
+      // Create blob and download
+      const blob = new Blob([currentDocumentContent], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = currentDocumentPath.split('/').pop();
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('documentModal');
+      if (e.target === modal) {
+        closeDocumentModal();
+      }
+    });
+  </script>
+</body>
+</html>

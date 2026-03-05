@@ -662,9 +662,9 @@
     </div>
   </div>
   <div class="header-right">
-    <div class="status-badge" id="ollamaStatus">
+    <div class="status-badge" id="llmStatus">
       <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">Checking Ollama…</span>
+      <span id="statusText">Checking LLM…</span>
     </div>
     <a href="graph_explorer.html" class="nav-link">📊 Graph Explorer</a>
     <a href="index.html" class="nav-link">🏠 Dashboard</a>
@@ -818,38 +818,45 @@ function useSample(index) {
 
 // ─── State ────────────────────────────────────────────────
 let isProcessing = false;
-let ollamaConnected = false;
+let llmConnected = false;
 
-// ─── Ollama Status Check ──────────────────────────────────
-async function checkOllama() {
+// ─── LLM Status Check ──────────────────────────────────────
+async function checkLLMStatus() {
   try {
-    const resp = await fetch('/api/ollama-status');
+    const resp = await fetch('/api/llm-status');
     const data = await resp.json();
     const dot = document.getElementById('statusDot');
     const text = document.getElementById('statusText');
 
     if (data.status === 'connected') {
-      ollamaConnected = true;
-      if (data.model_available) {
+      llmConnected = true;
+      const provider = data.provider === 'azure' ? 'Azure OpenAI' : 'Ollama';
+      const modelInfo = data.model || data.selected_model;
+      
+      if (data.provider === 'azure') {
         dot.className = 'status-dot connected';
-        text.textContent = `Ollama ✓ (${data.selected_model})`;
+        text.textContent = `${provider} ✓ (${modelInfo})`;
+      } else if (data.model_available !== false) {
+        dot.className = 'status-dot connected';
+        text.textContent = `${provider} ✓ (${modelInfo})`;
       } else {
         dot.className = 'status-dot';
-        text.textContent = `Ollama ✓ — Model not found`;
+        text.textContent = `${provider} ✓ — Model not found`;
       }
     } else {
-      ollamaConnected = false;
+      llmConnected = false;
       dot.className = 'status-dot disconnected';
-      text.textContent = 'Ollama Offline';
+      const provider = data.provider === 'azure' ? 'Azure OpenAI' : 'Ollama';
+      text.textContent = `${provider} Offline`;
     }
   } catch {
-    ollamaConnected = false;
+    llmConnected = false;
     document.getElementById('statusDot').className = 'status-dot disconnected';
     document.getElementById('statusText').textContent = 'Backend Offline';
   }
 }
-checkOllama();
-setInterval(checkOllama, 15000);
+checkLLMStatus();
+setInterval(checkLLMStatus, 15000);
 
 // ─── Chat Logic ───────────────────────────────────────────
 function sendMessage() {

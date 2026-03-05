@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "title": "Knowledge Graph - Mögliche Node-Verknüpfungen",
+    "description": "Zeigt alle möglichen Verknüpfungen zwischen Node-Typen über Edge-Typen basierend auf dem Knowledge Graph",
+    "source_file": "knowledge_graph.json",
+    "generated_date": "2026-03-05"
+  },
+  "node_types": [
+    "Product",
+    "Service",
+    "SPO",
+    "ReleaseNote",
+    "UserGuide",
+    "KnownIssue",
+    "Runbook",
+    "SOP",
+    "Incident",
+    "Expert",
+    "Team",
+    "Customer",
+    "Infrastructure",
+    "Configuration",
+    "FAQ",
+    "Feature"
+  ],
+  "edge_types": [
+    "HAS_SERVICE",
+    "DEPENDS_ON",
+    "BELONGS_TO_SPO",
+    "HAS_RELEASE_NOTE",
+    "DOCUMENTED_IN",
+    "HAS_KNOWN_ISSUE",
+    "RESOLVED_BY",
+    "HAS_RUNBOOK",
+    "HAS_SOP",
+    "REPORTED_INCIDENT",
+    "ASSIGNED_TO",
+    "OWNS",
+    "IMPACTED_BY",
+    "SUBSCRIBES_TO",
+    "RUNS_ON",
+    "CONFIGURED_BY",
+    "RELATED_TO",
+    "ESCALATES_TO",
+    "FIXED_IN",
+    "HAS_FAQ",
+    "HAS_FEATURE",
+    "WORKAROUND_IN"
+  ],
+  "connections": [
+    {
+      "edge_type": "HAS_SERVICE",
+      "description": "Produkt oder SPO hat einen Service",
+      "source_node_types": ["Product", "SPO"],
+      "target_node_types": ["Service"],
+      "examples": [
+        "Product → Service (PROD-001 → SVC-001)",
+        "SPO → Service (SPO-001 → SVC-009)"
+      ]
+    },
+    {
+      "edge_type": "DEPENDS_ON",
+      "description": "Service ist abhängig von anderem Service oder Infrastruktur",
+      "source_node_types": ["Service"],
+      "target_node_types": ["Service", "Infrastructure"],
+      "examples": [
+        "Service → Service (SVC-004 → SVC-007)",
+        "Service → Infrastructure (SVC-004 → INFRA-003)"
+      ]
+    },
+    {
+      "edge_type": "BELONGS_TO_SPO",
+      "description": "Produkt gehört zu einem SPO (Service Plan Offering)",
+      "source_node_types": ["Product"],
+      "target_node_types": ["SPO"],
+      "examples": [
+        "Product → SPO (PROD-001 → SPO-001)"
+      ]
+    },
+    {
+      "edge_type": "HAS_RELEASE_NOTE",
+      "description": "Produkt hat Release Notes",
+      "source_node_types": ["Product"],
+      "target_node_types": ["ReleaseNote"],
+      "examples": [
+        "Product → ReleaseNote (PROD-001 → RN-001)"
+      ]
+    },
+    {
+      "edge_type": "DOCUMENTED_IN",
+      "description": "Service ist in einem User Guide dokumentiert",
+      "source_node_types": ["Service"],
+      "target_node_types": ["UserGuide"],
+      "examples": [
+        "Service → UserGuide (SVC-005 → UG-001)"
+      ]
+    },
+    {
+      "edge_type": "HAS_KNOWN_ISSUE",
+      "description": "Service hat bekannte Probleme",
+      "source_node_types": ["Service"],
+      "target_node_types": ["KnownIssue"],
+      "examples": [
+        "Service → KnownIssue (SVC-001 → KI-001)"
+      ]
+    },
+    {
+      "edge_type": "RESOLVED_BY",
+      "description": "Incident wird durch Runbook gelöst",
+      "source_node_types": ["Incident"],
+      "target_node_types": ["Runbook"],
+      "examples": [
+        "Incident → Runbook (INC-001 → RB-001)"
+      ]
+    },
+    {
+      "edge_type": "HAS_RUNBOOK",
+      "description": "Service hat ein Runbook für Problemlösung",
+      "source_node_types": ["Service"],
+      "target_node_types": ["Runbook"],
+      "examples": [
+        "Service → Runbook (SVC-001 → RB-001)"
+      ]
+    },
+    {
+      "edge_type": "HAS_SOP",
+      "description": "Produkt hat Standard Operating Procedures",
+      "source_node_types": ["Product"],
+      "target_node_types": ["SOP"],
+      "examples": [
+        "Product → SOP (PROD-001 → SOP-001)"
+      ]
+    },
+    {
+      "edge_type": "REPORTED_INCIDENT",
+      "description": "Kunde meldet einen Incident",
+      "source_node_types": ["Customer"],
+      "target_node_types": ["Incident"],
+      "examples": [
+        "Customer → Incident (CUST-001 → INC-001)"
+      ]
+    },
+    {
+      "edge_type": "ASSIGNED_TO",
+      "description": "Incident oder Team ist einem Experten zugewiesen",
+      "source_node_types": ["Incident", "Team"],
+      "target_node_types": ["Expert"],
+      "examples": [
+        "Incident → Expert (INC-001 → EXP-001)",
+        "Team → Expert (TEAM-001 → EXP-001)"
+      ]
+    },
+    {
+      "edge_type": "OWNS",
+      "description": "Team besitzt/verantwortet einen Service",
+      "source_node_types": ["Team"],
+      "target_node_types": ["Service"],
+      "examples": [
+        "Team → Service (TEAM-001 → SVC-001)"
+      ]
+    },
+    {
+      "edge_type": "IMPACTED_BY",
+      "description": "Incident betrifft einen Service",
+      "source_node_types": ["Incident"],
+      "target_node_types": ["Service"],
+      "examples": [
+        "Incident → Service (INC-001 → SVC-001)"
+      ]
+    },
+    {
+      "edge_type": "SUBSCRIBES_TO",
+      "description": "Kunde abonniert ein SPO",
+      "source_node_types": ["Customer"],
+      "target_node_types": ["SPO"],
+      "examples": [
+        "Customer → SPO (CUST-001 → SPO-001)"
+      ]
+    },
+    {
+      "edge_type": "RUNS_ON",
+      "description": "Service läuft auf Infrastruktur",
+      "source_node_types": ["Service"],
+      "target_node_types": ["Infrastructure"],
+      "examples": [
+        "Service → Infrastructure (SVC-001 → INFRA-001)"
+      ]
+    },
+    {
+      "edge_type": "CONFIGURED_BY",
+      "description": "Service wird durch Konfiguration gesteuert",
+      "source_node_types": ["Service"],
+      "target_node_types": ["Configuration"],
+      "examples": [
+        "Service → Configuration (SVC-001 → CFG-001)"
+      ]
+    },
+    {
+      "edge_type": "RELATED_TO",
+      "description": "Allgemeine Beziehung zwischen verschiedenen Elementen",
+      "source_node_types": ["KnownIssue", "Runbook"],
+      "target_node_types": ["Incident", "Configuration", "UserGuide"],
+      "examples": [
+        "KnownIssue → Incident (KI-001 → INC-001)",
+        "Runbook → Configuration (RB-001 → CFG-001)",
+        "Runbook → UserGuide (RB-002 → UG-003)"
+      ]
+    },
+    {
+      "edge_type": "ESCALATES_TO",
+      "description": "SOP eskaliert zu einem Team",
+      "source_node_types": ["SOP"],
+      "target_node_types": ["Team"],
+      "examples": [
+        "SOP → Team (SOP-001 → TEAM-001)"
+      ]
+    },
+    {
+      "edge_type": "FIXED_IN",
+      "description": "Known Issue wurde in Release Note behoben",
+      "source_node_types": ["KnownIssue"],
+      "target_node_types": ["ReleaseNote"],
+      "examples": [
+        "KnownIssue → ReleaseNote (KI-001 → RN-001)"
+      ]
+    },
+    {
+      "edge_type": "HAS_FAQ",
+      "description": "Service hat FAQs",
+      "source_node_types": ["Service"],
+      "target_node_types": ["FAQ"],
+      "examples": [
+        "Service → FAQ (SVC-005 → FAQ-001)"
+      ]
+    },
+    {
+      "edge_type": "HAS_FEATURE",
+      "description": "Service hat Features",
+      "source_node_types": ["Service"],
+      "target_node_types": ["Feature"],
+      "examples": [
+        "Service → Feature (SVC-003 → FEAT-001)"
+      ]
+    },
+    {
+      "edge_type": "WORKAROUND_IN",
+      "description": "Known Issue hat Workaround in Konfiguration",
+      "source_node_types": ["KnownIssue"],
+      "target_node_types": ["Configuration"],
+      "examples": [
+        "KnownIssue → Configuration (KI-002 → CFG-002)"
+      ]
+    }
+  ],
+  "connection_matrix": {
+    "description": "Matrix zeigt welche Node-Typen (Zeile) mit welchen Node-Typen (Spalte) über welche Edge-Typen verbunden werden können",
+    "Product": {
+      "Service": ["HAS_SERVICE"],
+      "SPO": ["BELONGS_TO_SPO"],
+      "ReleaseNote": ["HAS_RELEASE_NOTE"],
+      "SOP": ["HAS_SOP"]
+    },
+    "Service": {
+      "Service": ["DEPENDS_ON"],
+      "Infrastructure": ["DEPENDS_ON", "RUNS_ON"],
+      "UserGuide": ["DOCUMENTED_IN"],
+      "KnownIssue": ["HAS_KNOWN_ISSUE"],
+      "Runbook": ["HAS_RUNBOOK"],
+      "Configuration": ["CONFIGURED_BY"],
+      "FAQ": ["HAS_FAQ"],
+      "Feature": ["HAS_FEATURE"]
+    },
+    "SPO": {
+      "Service": ["HAS_SERVICE"]
+    },
+    "Customer": {
+      "Incident": ["REPORTED_INCIDENT"],
+      "SPO": ["SUBSCRIBES_TO"]
+    },
+    "Incident": {
+      "Service": ["IMPACTED_BY"],
+      "Runbook": ["RESOLVED_BY"],
+      "Expert": ["ASSIGNED_TO"]
+    },
+    "Team": {
+      "Service": ["OWNS"],
+      "Expert": ["ASSIGNED_TO"]
+    },
+    "SOP": {
+      "Team": ["ESCALATES_TO"]
+    },
+    "KnownIssue": {
+      "ReleaseNote": ["FIXED_IN"],
+      "Configuration": ["WORKAROUND_IN"],
+      "Incident": ["RELATED_TO"]
+    },
+    "Runbook": {
+      "Configuration": ["RELATED_TO"],
+      "UserGuide": ["RELATED_TO"]
+    }
+  },
+  "statistics": {
+    "total_node_types": 16,
+    "total_edge_types": 22,
+    "total_unique_connections": 22,
+    "most_connected_source_type": "Service (8 verschiedene Zieltypen)",
+    "most_connected_target_type": "Service (4 verschiedene Quelltypen)"
+  },
+  "usage_guide": {
+    "description": "Diese Struktur hilft beim Verständnis des Knowledge Graphs",
+    "use_cases": [
+      "Graph-Abfragen planen: Wissen welche Traversierungspfade möglich sind",
+      "Datenvalidierung: Prüfen ob neue Edges den definierten Mustern entsprechen",
+      "Query-Optimierung: Die richtigen Edge-Typen für Suchanfragen verwenden",
+      "Dokumentation: Verstehen welche Beziehungen zwischen Entitäten existieren"
+    ]
+  }
+}

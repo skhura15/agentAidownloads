@@ -1,5 +1,7 @@
 # Known Issue Resolver - Setup Guide
 
+> **Quick Start:** For a fast setup guide, see [QUICKSTART_SUPPORT_AGENT.md](QUICKSTART_SUPPORT_AGENT.md)
+
 This guide explains how to set up and run the **resolve_issue.html** web interface for querying the Knowledge Graph to find and resolve known issues.
 
 ## Overview

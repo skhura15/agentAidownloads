@@ -13,12 +13,53 @@ from urllib.parse import urlparse, parse_qs
 import mimetypes
 import time
 from socketserver import ThreadingMixIn
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
+
+# Try to import Azure OpenAI (optional)
+try:
+    from openai import AzureOpenAI
+    AZURE_AVAILABLE = True
+except ImportError:
+    AZURE_AVAILABLE = False
+    print("[WARNING] openai package not installed. Azure OpenAI support disabled.")
+    print("          Install with: pip install openai")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 KG_PATH = os.path.join(BASE_DIR, "knowledge_graph.json")
 DATA_DIR = os.path.join(BASE_DIR, "data")
+
+# LLM Provider Configuration
+# Set USE_AZURE_OPENAI=true in environment to use Azure OpenAI instead of Ollama
+USE_AZURE_OPENAI = os.getenv('USE_AZURE_OPENAI', 'false').lower() == 'true'
+
+# Ollama Configuration
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "gemma3:4b"  # Change to your installed Ollama model
+
+# Azure OpenAI Configuration (from .env)
+AZURE_OPENAI_ENDPOINT = os.getenv('AZURE_OPENAI_ENDPOINT', '')
+AZURE_OPENAI_API_KEY = os.getenv('AZURE_OPENAI_API_KEY', '')
+AZURE_OPENAI_API_VERSION = os.getenv('AZURE_OPENAI_API_VERSION', '2024-02-15-preview')
+AZURE_OPENAI_MODEL = os.getenv('KG_AGENT_MODEL', 'gpt-4o-mini')
+
+# Initialize Azure OpenAI client if configured
+azure_client = None
+if USE_AZURE_OPENAI and AZURE_AVAILABLE and AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY:
+    try:
+        azure_client = AzureOpenAI(
+            api_key=AZURE_OPENAI_API_KEY,
+            api_version=AZURE_OPENAI_API_VERSION,
+            azure_endpoint=AZURE_OPENAI_ENDPOINT
+        )
+        print(f"[INFO] Azure OpenAI client initialized: {AZURE_OPENAI_MODEL}")
+    except Exception as e:
+        print(f"[ERROR] Failed to initialize Azure OpenAI client: {e}")
+        azure_client = None
+elif USE_AZURE_OPENAI:
+    print("[WARNING] USE_AZURE_OPENAI=true but credentials missing or openai not installed")
 
 
 # ─── Knowledge Graph Loader ─────────────────────────────────────────────────
@@ -316,7 +357,37 @@ def build_llm_prompt(ticket_text, context, keywords):
     return "\n".join(prompt_parts)
 
 
-# ─── Ollama Integration ─────────────────────────────────────────────────────
+# ─── LLM Integration ────────────────────────────────────────────────────────
+
+def query_azure_openai(prompt):
+    """Send prompt to Azure OpenAI and get response."""
+    if not azure_client:
+        return "Error: Azure OpenAI client not initialized. Check your .env configuration."
+    
+    try:
+        print(f"[DEBUG]    Azure OpenAI request sent (model: {AZURE_OPENAI_MODEL})")
+        t_start = time.time()
+        
+        response = azure_client.chat.completions.create(
+            model=AZURE_OPENAI_MODEL,
+            messages=[
+                {"role": "system", "content": "You are a helpful support assistant for Microsoft Dynamics 365 Contact Center (CCaaS). Provide clear, actionable solutions."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=1024,
+            top_p=0.9
+        )
+        
+        t_end = time.time()
+        response_text = response.choices[0].message.content
+        print(f"[DEBUG]    Azure OpenAI response received: {t_end-t_start:.3f}s ({len(response_text)} chars)")
+        return response_text
+        
+    except Exception as e:
+        print(f"[DEBUG]    Azure OpenAI ERROR: {e}")
+        return f"Error calling Azure OpenAI: {e}"
+
 
 def query_ollama(prompt):
     """Send prompt to local Ollama and get full response (non-streaming fallback)."""
@@ -353,6 +424,58 @@ def query_ollama(prompt):
     except Exception as e:
         print(f"[DEBUG]    Ollama EXCEPTION: {e}")
         return f"Error: {str(e)}"
+
+
+def query_llm(prompt):
+    """Unified LLM query function - routes to Azure OpenAI or Ollama based on configuration."""
+    if USE_AZURE_OPENAI and azure_client:
+        return query_azure_openai(prompt)
+    else:
+        return query_ollama(prompt)
+
+
+def stream_azure_openai(prompt):
+    """Stream response from Azure OpenAI using SSE, yields (chunk_text, is_done) tuples."""
+    if not azure_client:
+        yield ("Error: Azure OpenAI client not initialized.", True)
+        return
+    
+    try:
+        print(f"[DEBUG]    Azure OpenAI STREAMING request sent (model: {AZURE_OPENAI_MODEL})")
+        t_start = time.time()
+        first_token = True
+        
+        stream = azure_client.chat.completions.create(
+            model=AZURE_OPENAI_MODEL,
+            messages=[
+                {"role": "system", "content": "You are a helpful support assistant for Microsoft Dynamics 365 Contact Center (CCaaS). Provide clear, actionable solutions."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=1024,
+            top_p=0.9,
+            stream=True
+        )
+        
+        for chunk in stream:
+            if chunk.choices and len(chunk.choices) > 0:
+                delta = chunk.choices[0].delta
+                if delta.content:
+                    if first_token:
+                        print(f"[DEBUG]    Time to first token: {time.time()-t_start:.3f}s")
+                        first_token = False
+                    yield (delta.content, False)
+            
+            # Check if done
+            if chunk.choices and chunk.choices[0].finish_reason:
+                yield ("", True)
+                break
+        
+        print(f"[DEBUG]    Azure OpenAI stream total: {time.time()-t_start:.3f}s")
+        
+    except Exception as e:
+        print(f"[DEBUG]    Azure OpenAI STREAMING ERROR: {e}")
+        yield (f"Error streaming from Azure OpenAI: {e}", True)
 
 
 def stream_ollama(prompt):
@@ -411,6 +534,14 @@ def stream_ollama(prompt):
     except Exception as e:
         print(f"[DEBUG]    Ollama STREAM EXCEPTION: {e}")
         yield f"Error: {str(e)}", True
+
+
+def stream_llm(prompt):
+    """Unified LLM streaming function - routes to Azure OpenAI or Ollama based on configuration."""
+    if USE_AZURE_OPENAI and azure_client:
+        yield from stream_azure_openai(prompt)
+    else:
+        yield from stream_ollama(prompt)
 
 
 def generate_fallback_response(ticket_text, context, keywords):
@@ -531,7 +662,13 @@ class SupportAgentHandler(http.server.SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
 
         if parsed.path == "/api/health":
-            self._send_json({"status": "ok", "model": OLLAMA_MODEL})
+            llm_provider = "azure" if (USE_AZURE_OPENAI and azure_client) else "ollama"
+            llm_model = AZURE_OPENAI_MODEL if (USE_AZURE_OPENAI and azure_client) else OLLAMA_MODEL
+            self._send_json({
+                "status": "ok",
+                "llm_provider": llm_provider,
+                "model": llm_model
+            })
         elif parsed.path == "/api/graph-stats":
             self._send_json({
                 "total_nodes": len(NODES),
@@ -539,8 +676,8 @@ class SupportAgentHandler(http.server.SimpleHTTPRequestHandler):
                 "node_types": list(set(n["type"] for n in NODES.values())),
                 "product": KG["metadata"]["product"]
             })
-        elif parsed.path == "/api/ollama-status":
-            self._check_ollama_status()
+        elif parsed.path == "/api/ollama-status" or parsed.path == "/api/llm-status":
+            self._check_llm_status()
         elif parsed.path == "/api/document":
             self._handle_document_request(parsed)
         else:
@@ -600,17 +737,19 @@ class SupportAgentHandler(http.server.SimpleHTTPRequestHandler):
         print(f"[DEBUG] 2. Build summary:      {t3-t2:.3f}s")
 
         if use_llm:
-            # Build prompt and query Ollama
+            # Build prompt and query LLM (Azure OpenAI or Ollama)
             t4 = time.time()
             prompt = build_llm_prompt(ticket_text, context, keywords)
             t5 = time.time()
             print(f"[DEBUG] 3. Build LLM prompt:   {t5-t4:.3f}s  (prompt length: {len(prompt)} chars)")
 
-            print(f"[DEBUG] 4. Calling Ollama ({OLLAMA_MODEL})...")
+            llm_provider = "Azure OpenAI" if (USE_AZURE_OPENAI and azure_client) else "Ollama"
+            llm_model = AZURE_OPENAI_MODEL if (USE_AZURE_OPENAI and azure_client) else OLLAMA_MODEL
+            print(f"[DEBUG] 4. Calling {llm_provider} ({llm_model})...")
             t6 = time.time()
-            response_text = query_ollama(prompt)
+            response_text = query_llm(prompt)
             t7 = time.time()
-            print(f"[DEBUG] 4. Ollama response:    {t7-t6:.3f}s  <<<< (response length: {len(response_text)} chars)")
+            print(f"[DEBUG] 4. {llm_provider} response: {t7-t6:.3f}s  <<<< (response length: {len(response_text)} chars)")
         else:
             # Fallback: structured response from graph only
             t4 = time.time()
@@ -694,9 +833,11 @@ class SupportAgentHandler(http.server.SimpleHTTPRequestHandler):
 
             if use_llm:
                 prompt = build_llm_prompt(ticket_text, context, keywords)
-                print(f"[DEBUG] Prompt length: {len(prompt)} chars. Streaming from Ollama...")
+                llm_provider = "Azure OpenAI" if (USE_AZURE_OPENAI and azure_client) else "Ollama"
+                llm_model = AZURE_OPENAI_MODEL if (USE_AZURE_OPENAI and azure_client) else OLLAMA_MODEL
+                print(f"[DEBUG] Prompt length: {len(prompt)} chars. Streaming from {llm_provider} ({llm_model})...")
                 try:
-                    for token, done in stream_ollama(prompt):
+                    for token, done in stream_llm(prompt):
                         if token:
                             chunk = json.dumps({"type": "token", "text": token})
                             try:
@@ -792,23 +933,58 @@ class SupportAgentHandler(http.server.SimpleHTTPRequestHandler):
                          "tags": n.get("tags", [])} for n in results]
         })
 
-    def _check_ollama_status(self):
-        try:
-            req = urllib.request.Request("http://localhost:11434/api/tags")
-            with urllib.request.urlopen(req, timeout=5) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                models = [m["name"] for m in data.get("models", [])]
-                self._send_json({
+    def _check_llm_status(self):
+        """Check status of configured LLM provider (Azure OpenAI or Ollama)."""
+        response = {
+            "provider": "azure" if (USE_AZURE_OPENAI and azure_client) else "ollama",
+            "use_azure": USE_AZURE_OPENAI
+        }
+        
+        if USE_AZURE_OPENAI and azure_client:
+            # Azure OpenAI status
+            try:
+                # Quick test to verify connectivity
+                test_response = azure_client.chat.completions.create(
+                    model=AZURE_OPENAI_MODEL,
+                    messages=[{"role": "user", "content": "test"}],
+                    max_tokens=1
+                )
+                response.update({
                     "status": "connected",
-                    "models": models,
-                    "selected_model": OLLAMA_MODEL,
-                    "model_available": any(OLLAMA_MODEL in m for m in models)
+                    "model": AZURE_OPENAI_MODEL,
+                    "endpoint": AZURE_OPENAI_ENDPOINT,
+                    "api_version": AZURE_OPENAI_API_VERSION
                 })
-        except Exception:
-            self._send_json({
-                "status": "disconnected",
-                "error": "Cannot connect to Ollama. Run: ollama serve"
-            })
+            except Exception as e:
+                response.update({
+                    "status": "error",
+                    "error": str(e),
+                    "model": AZURE_OPENAI_MODEL
+                })
+        else:
+            # Ollama status
+            try:
+                req = urllib.request.Request("http://localhost:11434/api/tags")
+                with urllib.request.urlopen(req, timeout=5) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    models = [m["name"] for m in data.get("models", [])]
+                    response.update({
+                        "status": "connected",
+                        "models": models,
+                        "selected_model": OLLAMA_MODEL,
+                        "model_available": any(OLLAMA_MODEL in m for m in models)
+                    })
+            except Exception:
+                response.update({
+                    "status": "disconnected",
+                    "error": "Cannot connect to Ollama. Run: ollama serve"
+                })
+        
+        self._send_json(response)
+    
+    def _check_ollama_status(self):
+        """Legacy endpoint - redirects to _check_llm_status."""
+        self._check_llm_status()
 
     def _handle_document_request(self, parsed):
         """Handle requests to load document content."""
@@ -893,7 +1069,8 @@ def main():
     print(f"  Graph Explorer  : http://localhost:{PORT}/graph_explorer.html")
     print(f"  API — Chat      : POST http://localhost:{PORT}/api/chat")
     print(f"  API — Health    : GET  http://localhost:{PORT}/api/health")
-    print(f"  API — Ollama    : GET  http://localhost:{PORT}/api/ollama-status")
+    print(f"  API — LLM Status : GET  http://localhost:{PORT}/api/llm-status")
+    print(f"  API — Ollama     : GET  http://localhost:{PORT}/api/ollama-status (legacy)")
     print("=" * 60)
     print("  Press Ctrl+C to stop the server")
     print("=" * 60)

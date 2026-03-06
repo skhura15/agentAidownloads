@@ -1,0 +1,27 @@
+{
+  "id": "INC-001",
+  "type": "Incident",
+  "label": "INC-001 Voice Outage",
+  "properties": {
+    "severity": "P1"
+  },
+  "tags": [
+    "incident"
+  ],
+  "relations": {
+    "IMPACTED_BY": [
+      "SVC-001"
+    ],
+    "RESOLVED_BY": [
+      "RB-001"
+    ],
+    "ASSIGNED_TO": [
+      "EXP-001"
+    ],
+    "RELATED_TO": [
+      "KI-001",
+      "CFG-001",
+      "UG-001"
+    ]
+  }
+}

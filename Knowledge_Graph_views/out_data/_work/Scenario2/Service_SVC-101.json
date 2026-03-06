@@ -1,0 +1,19 @@
+{
+  "id": "SVC-101",
+  "type": "Service",
+  "label": "Chat Channel",
+  "properties": {
+    "criticality": "P2"
+  },
+  "tags": [
+    "chat"
+  ],
+  "relations": {
+    "RUNS_ON": [
+      "INFRA-101"
+    ],
+    "HAS_FAQ": [
+      "FAQ-101"
+    ]
+  }
+}

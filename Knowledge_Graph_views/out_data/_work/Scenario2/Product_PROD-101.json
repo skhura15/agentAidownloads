@@ -1,0 +1,16 @@
+{
+  "id": "PROD-101",
+  "type": "Product",
+  "label": "Sample Product B",
+  "properties": {
+    "vendor": "Acme"
+  },
+  "tags": [
+    "sample"
+  ],
+  "relations": {
+    "HAS_SERVICE": [
+      "SVC-101"
+    ]
+  }
+}

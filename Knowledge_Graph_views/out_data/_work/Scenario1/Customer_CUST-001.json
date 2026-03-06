@@ -1,0 +1,19 @@
+{
+  "id": "CUST-001",
+  "type": "Customer",
+  "label": "Contoso",
+  "properties": {
+    "sla_tier": "Premier"
+  },
+  "tags": [
+    "customer"
+  ],
+  "relations": {
+    "REPORTED_INCIDENT": [
+      "INC-001"
+    ],
+    "SUBSCRIBES_TO": [
+      "SPO-001"
+    ]
+  }
+}

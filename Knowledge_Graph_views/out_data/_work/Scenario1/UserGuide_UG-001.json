@@ -1,0 +1,12 @@
+{
+  "id": "UG-001",
+  "type": "UserGuide",
+  "label": "Admin Guide",
+  "properties": {
+    "pages": 10
+  },
+  "tags": [
+    "guide"
+  ],
+  "relations": {}
+}

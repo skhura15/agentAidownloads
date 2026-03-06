@@ -1,0 +1,16 @@
+{
+  "id": "SPO-001",
+  "type": "SPO",
+  "label": "Enterprise License",
+  "properties": {
+    "price_usd": "$110"
+  },
+  "tags": [
+    "license"
+  ],
+  "relations": {
+    "HAS_SERVICE": [
+      "SVC-001"
+    ]
+  }
+}

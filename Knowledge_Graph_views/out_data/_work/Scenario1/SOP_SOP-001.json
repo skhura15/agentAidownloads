@@ -1,0 +1,16 @@
+{
+  "id": "SOP-001",
+  "type": "SOP",
+  "label": "P1 Escalation SOP",
+  "properties": {
+    "category": "Escalation"
+  },
+  "tags": [
+    "sop"
+  ],
+  "relations": {
+    "ESCALATES_TO": [
+      "TEAM-001"
+    ]
+  }
+}

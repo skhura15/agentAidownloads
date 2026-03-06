@@ -1,0 +1,19 @@
+{
+  "id": "TEAM-001",
+  "type": "Team",
+  "label": "Voice Team",
+  "properties": {
+    "members": 5
+  },
+  "tags": [
+    "team"
+  ],
+  "relations": {
+    "OWNS": [
+      "SVC-001"
+    ],
+    "ASSIGNED_TO": [
+      "EXP-001"
+    ]
+  }
+}

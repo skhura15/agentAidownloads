@@ -28,12 +28,13 @@ except ImportError:
     print("          Install with: pip install openai")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# KG_PATH = os.path.join(BASE_DIR, "knowledge_graph_generated.json")
 KG_PATH = os.path.join(BASE_DIR, "knowledge_graph.json")
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 # LLM Provider Configuration
-# Set USE_AZURE_OPENAI=true in environment to use Azure OpenAI instead of Ollama
-USE_AZURE_OPENAI = os.getenv('USE_AZURE_OPENAI', 'false').lower() == 'true'
+# Azure OpenAI is DISABLED - using Ollama only
+USE_AZURE_OPENAI = False  # Hardcoded to False to disable Azure OpenAI
 
 # Ollama Configuration
 OLLAMA_URL = "http://localhost:11434/api/generate"

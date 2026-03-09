@@ -2,12 +2,12 @@
   "metadata": {
     "graph_name": "Microsoft CCaaS — Support AI Knowledge Graph",
     "version": "2.0.0",
-    "description": "Automatisch generierter Knowledge Graph für Support AI Agent. Basiert auf Textdokumenten im data/ Verzeichnis.",
-    "created_date": "2026-03-06",
-    "last_updated": "2026-03-06",
+    "description": "Automatically generated Knowledge Graph for Support AI Agent. Based on text documents in the data/ directory.",
+    "created_date": "2026-03-09",
+    "last_updated": "2026-03-09",
     "product": "Microsoft Dynamics 365 Contact Center (CCaaS)",
-    "total_nodes": 24,
-    "total_edges": 0,
+    "total_nodes": 36,
+    "total_edges": 27,
     "schema_version": "v2",
     "generated_by": "generate_knowledge_graph.py"
   },
@@ -70,7 +70,7 @@
     {
       "id": "KI-2025-002",
       "type": "KnownIssue",
-      "label": "",
+      "label": "Copilot Suggestions Delayed > 10 Seconds",
       "properties": {
         "issue_id": "KI-2025-002",
         "severity": "P2",
@@ -118,7 +118,7 @@
     {
       "id": "KI-2025-003",
       "type": "KnownIssue",
-      "label": "",
+      "label": "Chat Widget Not Loading on Safari",
       "properties": {
         "issue_id": "KI-2025-003",
         "severity": "P2",
@@ -144,7 +144,7 @@
     {
       "id": "KI-2025-001",
       "type": "KnownIssue",
-      "label": "",
+      "label": "Voice Call Drops During Warm Transfer",
       "properties": {
         "issue_id": "KI-2025-001",
         "severity": "P1",
@@ -291,7 +291,7 @@
     {
       "id": "RB-ROUTE-001",
       "type": "Runbook",
-      "label": "STEP-BY-STEP FIX:",
+      "label": "Routing Misconfiguration Fix",
       "properties": {
         "runbook_id": "RB-ROUTE-001",
         "category": "Configuration Fix",
@@ -315,7 +315,7 @@
     {
       "id": "RB-VOICE-001",
       "type": "Runbook",
-      "label": "PRE-REQUISITES:",
+      "label": "Voice Channel Outage Recovery",
       "properties": {
         "runbook_id": "RB-VOICE-001",
         "category": "Incident Recovery",
@@ -357,7 +357,7 @@
     {
       "id": "SOP-ESC-P1",
       "type": "SOP",
-      "label": "P1 SEVERITY DEFINITION:",
+      "label": "P1 Escalation",
       "properties": {
         "sop_id": "SOP-ESC-P1",
         "category": "Escalation",
@@ -399,7 +399,7 @@
     {
       "id": "SPO-CCAAS-DIGITAL",
       "type": "SPO",
-      "label": "Ccaas Digital",
+      "label": "Microsoft Dynamics 365 Contact Center — Digital Only License",
       "properties": {
         "effective_date": "January 1, 2025",
         "expiration_date": "December 31, 2025 (auto-renew)",
@@ -427,7 +427,7 @@
     {
       "id": "SPO-CCAAS-ENTERPRISE",
       "type": "SPO",
-      "label": "Ccaas Enterprise",
+      "label": "Microsoft Dynamics 365 Contact Center — Enterprise License",
       "properties": {
         "effective_date": "January 1, 2025",
         "expiration_date": "December 31, 2025 (auto-renew)",
@@ -611,9 +611,365 @@
         "Copilot",
         "Azure"
       ]
+    },
+    {
+      "id": "FAQ-001",
+      "type": "FAQ",
+      "label": "How to reset agent presence?",
+      "properties": {
+        "question": "An agent is stuck in Busy status and cannot receive new work items. How to reset?",
+        "answer": "1. Sign out of Dynamics 365 and close all tabs. 2. Wait 2 minutes. 3. Sign back in and set Available. 4. Admin can reset via Omnichannel admin > Agents > Reset presence. 5. Last resort: OData API PATCH msdyn_omnichannelpresences."
+      },
+      "tags": [
+        "Presence",
+        "Agent",
+        "Reset"
+      ]
+    },
+    {
+      "id": "FAQ-002",
+      "type": "FAQ",
+      "label": "How to add a new chat channel?",
+      "properties": {
+        "question": "How do I configure a new live chat widget for a customer website?",
+        "answer": "1. Admin center > Channels > Chat > Add Chat Widget. 2. Configure name, language, operating hours, pre-chat survey. 3. Set routing workstream and queue. 4. Customize appearance. 5. Copy JS snippet. 6. Paste into customer website. 7. Test in incognito."
+      },
+      "tags": [
+        "Chat",
+        "Widget",
+        "Setup"
+      ]
+    },
+    {
+      "id": "FAQ-003",
+      "type": "FAQ",
+      "label": "Why is Copilot not showing suggestions?",
+      "properties": {
+        "question": "Copilot panel shows No suggestions available for an active conversation. Why?",
+        "answer": "1. Copilot feature flag disabled — check admin center > Productivity > Copilot. 2. No published knowledge articles matching topic. 3. Azure OpenAI quota exhausted. 4. Agent missing Copilot User security role. 5. Need at least 2 customer messages before Copilot activates."
+      },
+      "tags": [
+        "Copilot",
+        "Troubleshooting"
+      ]
+    },
+    {
+      "id": "FAQ-004",
+      "type": "FAQ",
+      "label": "How to generate agent schedules?",
+      "properties": {
+        "question": "How do I generate optimized agent schedules based on forecasted volume?",
+        "answer": "1. Admin center > Workforce Management > Forecasting. 2. Import historical data or use AI forecasting. 3. Review forecast accuracy. 4. Navigate to Scheduling > Generate Schedule. 5. Set date range, shift patterns, and staffing requirements. 6. Run optimizer. 7. Review draft schedule. 8. Publish to agents. 9. Allow shift bidding if enabled."
+      },
+      "tags": [
+        "WFM",
+        "Scheduling",
+        "Forecasting"
+      ]
+    },
+    {
+      "id": "INFRA-001",
+      "type": "Infrastructure",
+      "label": "Azure Communication Services",
+      "properties": {
+        "resource_type": "ACS",
+        "regions": [
+          "US East",
+          "US West",
+          "EU West"
+        ],
+        "provisioning": "Multi-region with geo-failover",
+        "monitoring": "Application Insights + Azure Monitor",
+        "health_url": "https://status.azure.com"
+      },
+      "tags": [
+        "ACS",
+        "Azure",
+        "Voice"
+      ]
+    },
+    {
+      "id": "INFRA-002",
+      "type": "Infrastructure",
+      "label": "Dataverse (CDS)",
+      "properties": {
+        "resource_type": "Dataverse",
+        "regions": [
+          "US East",
+          "EU West"
+        ],
+        "capacity": "10 GB per environment",
+        "monitoring": "Power Platform Admin Center",
+        "description": "Core data platform storing all CCaaS entities."
+      },
+      "tags": [
+        "Dataverse",
+        "Data",
+        "Power Platform"
+      ]
+    },
+    {
+      "id": "INFRA-003",
+      "type": "Infrastructure",
+      "label": "Azure OpenAI Service",
+      "properties": {
+        "resource_type": "Azure OpenAI",
+        "model": "GPT-4o",
+        "regions": [
+          "US East",
+          "EU West"
+        ],
+        "tpm_quota": "120K tokens/min",
+        "description": "Powers Copilot for agents — case summarization, response drafting, knowledge article recommendations."
+      },
+      "tags": [
+        "OpenAI",
+        "GPT",
+        "Copilot"
+      ]
+    },
+    {
+      "id": "CFG-001",
+      "type": "Configuration",
+      "label": "Voice Channel Config",
+      "properties": {
+        "config_area": "Voice",
+        "key_settings": [
+          "Phone number assignment via ACS",
+          "IVR greeting and menu",
+          "Call recording policy",
+          "Transcription language",
+          "Post-call survey trigger"
+        ],
+        "admin_path": "Dynamics 365 admin center > Customer Service > Channels > Voice"
+      },
+      "tags": [
+        "Voice",
+        "Config"
+      ]
+    },
+    {
+      "id": "CFG-002",
+      "type": "Configuration",
+      "label": "Copilot Feature Flags",
+      "properties": {
+        "config_area": "Copilot",
+        "key_settings": [
+          "Enable/disable Copilot",
+          "Case summarization toggle",
+          "Response suggestion toggle",
+          "Knowledge article suggestion toggle",
+          "Analytics and feedback"
+        ],
+        "admin_path": "Dynamics 365 admin center > Productivity > Copilot"
+      },
+      "tags": [
+        "Copilot",
+        "Config",
+        "Feature Flags"
+      ]
+    },
+    {
+      "id": "CFG-003",
+      "type": "Configuration",
+      "label": "WFM Configuration",
+      "properties": {
+        "config_area": "Workforce Management",
+        "key_settings": [
+          "Forecast models",
+          "Schedule templates",
+          "Shift patterns",
+          "Break rules",
+          "Adherence thresholds",
+          "Time-off requests"
+        ],
+        "admin_path": "Dynamics 365 admin center > Workforce Management > Configuration"
+      },
+      "tags": [
+        "WFM",
+        "Config",
+        "Scheduling"
+      ]
+    },
+    {
+      "id": "FEAT-001",
+      "type": "Feature",
+      "label": "Real-Time Translation",
+      "properties": {
+        "feature_name": "Real-Time Message Translation",
+        "description": "Automatically translates messages between customer and agent languages in real-time. Supports 50+ languages.",
+        "availability": "2025 Wave 2",
+        "channels": [
+          "Chat",
+          "SMS",
+          "WhatsApp"
+        ],
+        "prerequisite": "Azure AI Translator resource connected"
+      },
+      "tags": [
+        "Translation",
+        "Multilingual",
+        "Chat"
+      ]
+    },
+    {
+      "id": "FEAT-002",
+      "type": "Feature",
+      "label": "Sentiment-Based Routing",
+      "properties": {
+        "feature_name": "Sentiment-Based Intelligent Routing",
+        "description": "Routes conversations to specialized agents when customer sentiment is Very Negative. Uses real-time sentiment analysis to reclassify and reroute.",
+        "availability": "2025 Wave 1",
+        "channels": [
+          "Voice",
+          "Chat"
+        ],
+        "prerequisite": "Sentiment analysis enabled in workstream settings"
+      },
+      "tags": [
+        "Sentiment",
+        "Routing",
+        "AI"
+      ]
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "source": "PROD-001",
+      "target": "SPO-CCAAS-DIGITAL",
+      "type": "BELONGS_TO_SPO"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SPO-CCAAS-ENTERPRISE",
+      "type": "BELONGS_TO_SPO"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W1",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W2",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W2-QM",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W2-WFM",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SOP-ESC-P1",
+      "type": "HAS_SOP"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SOP-003",
+      "type": "HAS_SOP"
+    },
+    {
+      "source": "SPO-CCAAS-DIGITAL",
+      "target": "UG-AGENTDESKTOP",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SPO-CCAAS-ENTERPRISE",
+      "target": "UG-AGENTDESKTOP",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SPO-CCAAS-ENTERPRISE",
+      "target": "UG-QM-ADMIN",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SPO-CCAAS-ENTERPRISE",
+      "target": "UG-WFM-ADMIN",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-004",
+      "target": "RB-004",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-005",
+      "target": "RB-005",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-005",
+      "target": "FAQ-005",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-2025-002",
+      "target": "CFG-002",
+      "type": "WORKAROUND_IN"
+    },
+    {
+      "source": "FAQ-001",
+      "target": "UG-AGENTDESKTOP",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "FAQ-003",
+      "target": "CFG-002",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "FAQ-004",
+      "target": "UG-WFM-ADMIN",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "FAQ-004",
+      "target": "CFG-003",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "NODE-2025W2",
+      "target": "KI-2025-001",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "NODE-2025W2",
+      "target": "KI-2025-002",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "NODE-2025W2",
+      "target": "KI-2025-003",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "RB-VOICE-001",
+      "target": "SOP-ESC-P1",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SOP-ESC-P1",
+      "target": "RB-VOICE-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SOP-ESC-P1",
+      "target": "RB-ROUTE-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "UG-AGENTDESKTOP",
+      "target": "KI-2025-001",
+      "type": "RELATED_TO"
+    }
+  ],
   "ai_agent_instructions": {
     "purpose": "When a support ticket arrives for Microsoft Dynamics 365 Contact Center (CCaaS), traverse this graph to find the best resolution path.",
     "resolution_workflow": [

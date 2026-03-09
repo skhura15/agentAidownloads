@@ -1,0 +1,122 @@
+[
+  {
+    "source": "PROD-001",
+    "target": "SPO-CCAAS-DIGITAL",
+    "type": "BELONGS_TO_SPO",
+    "description": "Digital license belongs to product"
+  },
+  {
+    "source": "PROD-001",
+    "target": "SPO-CCAAS-ENTERPRISE",
+    "type": "BELONGS_TO_SPO",
+    "description": "Enterprise license belongs to product"
+  },
+  {
+    "source": "PROD-001",
+    "target": "NODE-2025W1",
+    "type": "HAS_RELEASE_NOTE",
+    "description": "Product has release note 2025W1"
+  },
+  {
+    "source": "PROD-001",
+    "target": "NODE-2025W2",
+    "type": "HAS_RELEASE_NOTE",
+    "description": "Product has release note 2025W2"
+  },
+  {
+    "source": "PROD-001",
+    "target": "NODE-2025W2-QM",
+    "type": "HAS_RELEASE_NOTE",
+    "description": "Product has release note 2025W2 QM"
+  },
+  {
+    "source": "PROD-001",
+    "target": "NODE-2025W2-WFM",
+    "type": "HAS_RELEASE_NOTE",
+    "description": "Product has release note 2025W2 WFM"
+  },
+  {
+    "source": "PROD-001",
+    "target": "SOP-ESC-P1",
+    "type": "HAS_SOP",
+    "description": "Product has P1 escalation SOP"
+  },
+  {
+    "source": "PROD-001",
+    "target": "SOP-003",
+    "type": "HAS_SOP",
+    "description": "Product has QM supervisor communication SOP"
+  },
+  {
+    "source": "SPO-CCAAS-DIGITAL",
+    "target": "UG-AGENTDESKTOP",
+    "type": "RELATED_TO",
+    "description": "Digital license includes agent desktop"
+  },
+  {
+    "source": "SPO-CCAAS-ENTERPRISE",
+    "target": "UG-AGENTDESKTOP",
+    "type": "RELATED_TO",
+    "description": "Enterprise license includes agent desktop"
+  },
+  {
+    "source": "SPO-CCAAS-ENTERPRISE",
+    "target": "UG-QM-ADMIN",
+    "type": "RELATED_TO",
+    "description": "Enterprise license includes QM admin guide"
+  },
+  {
+    "source": "SPO-CCAAS-ENTERPRISE",
+    "target": "UG-WFM-ADMIN",
+    "type": "RELATED_TO",
+    "description": "Enterprise license includes WFM admin guide"
+  },
+  {
+    "source": "KI-004",
+    "target": "RB-004",
+    "type": "RELATED_TO",
+    "description": "WFM schedule mismatch issue has recovery runbook"
+  },
+  {
+    "source": "KI-005",
+    "target": "RB-005",
+    "type": "RELATED_TO",
+    "description": "QM scorecard drift has cache reset runbook"
+  },
+  {
+    "source": "KI-005",
+    "target": "FAQ-005",
+    "type": "RELATED_TO",
+    "description": "QM scoring issue has related FAQ"
+  },
+  {
+    "source": "KI-2025-002",
+    "target": "CFG-002",
+    "type": "WORKAROUND_IN",
+    "description": "Copilot delay workaround requires config adjustment"
+  },
+  {
+    "source": "FAQ-001",
+    "target": "UG-AGENTDESKTOP",
+    "type": "RELATED_TO",
+    "description": "Agent presence FAQ relates to agent desktop guide"
+  },
+  {
+    "source": "FAQ-003",
+    "target": "CFG-002",
+    "type": "RELATED_TO",
+    "description": "Copilot FAQ relates to Copilot configuration"
+  },
+  {
+    "source": "FAQ-004",
+    "target": "UG-WFM-ADMIN",
+    "type": "RELATED_TO",
+    "description": "WFM schedule FAQ relates to WFM admin guide"
+  },
+  {
+    "source": "FAQ-004",
+    "target": "CFG-003",
+    "type": "RELATED_TO",
+    "description": "WFM schedule FAQ relates to WFM configuration"
+  }
+]

@@ -120,24 +120,34 @@ class TextDocumentParser:
     
     def extract_label(self) -> str:
         """Extracts the label (title) from the document."""
-        # Search for title in different formats
+        # New pattern for the standard format:
+        # ================================================================================
+        # TYPE — ID
+        # Title Text Here
+        # ================================================================================
+        
+        # Try to find title between header lines (3rd line after ===)
+        header_pattern = r'^={3,}\s*\n(?:[A-Z\s—-]+?[A-Z]{2,4}-[\w-]+)?\s*\n(.+?)\s*\n={3,}'
+        match = re.search(header_pattern, self.content, re.MULTILINE)
+        if match:
+            label = match.group(1).strip()
+            # Remove any remaining IDs
+            label = re.sub(r'^[A-Z]{2,4}-[\w-]+\s*[—-]?\s*', '', label)
+            if label:
+                return label
+        
+        # Alternative patterns
         patterns = [
-            r'^={3,}\n(.+?)\n={3,}',  # Title between ======
-            r'^KNOWN ISSUE\s*[—-]\s*(.+?)$',
-            r'^RUNBOOK\s*[—-]\s*(.+?)$',
+            r'^KNOWN ISSUE\s*[—-]\s*[A-Z]{2,4}-[\w-]+\s*\n(.+?)$',
+            r'^RUNBOOK\s*[—-]\s*[A-Z]{2,4}-[\w-]+\s*\n(.+?)$',
             r'^USER GUIDE\s*[—-]\s*(.+?)$',
-            r'^STANDARD OPERATING PROCEDURE\s*[—-]\s*(.+?)$',
             r'^FAQ:\s*(.+?)$',
         ]
         
         for pattern in patterns:
             match = re.search(pattern, self.content, re.MULTILINE | re.IGNORECASE)
             if match:
-                label = match.group(1).strip()
-                # Remove ID from label
-                label = re.sub(r'^[A-Z]{2,3}-\d{4}-\d{3}\s*', '', label)
-                label = re.sub(r'^[A-Z]{2,3}-[A-Z]+-\d{3}\s*', '', label)
-                return label
+                return match.group(1).strip()
         
         # Fallback: Use filename
         clean_name = self.filename
@@ -259,6 +269,8 @@ class TextDocumentParser:
         
         # Add general properties
         properties['document'] = f"data/{self.file_path.name}"
+        # Store full text for edge inference (entire document to catch all ID references)
+        properties['_full_text'] = self.content
         
         # Type-specific properties
         if node_type == "KnownIssue":
@@ -347,6 +359,94 @@ class KnowledgeGraphGenerator:
         print(f"\n📌 Adding {len(hardcoded_nodes)} hardcoded nodes...")
         self.nodes.extend(hardcoded_nodes)
     
+    def load_static_nodes(self, nodes_file: Optional[Path] = None) -> None:
+        """
+        Loads predefined nodes from external JSON file.
+        These are nodes without corresponding text documents (FAQ, Infrastructure, etc.)
+        that are purely defined in JSON format.
+        """
+        if nodes_file is None:
+            nodes_file = Path(__file__).parent / 'static_nodes.json'
+        
+        if not nodes_file.exists():
+            print(f"   ⚠ Static nodes file not found: {nodes_file}")
+            return
+        
+        try:
+            with open(nodes_file, 'r', encoding='utf-8') as f:
+                static_nodes = json.load(f)
+            
+            # Validate nodes and avoid duplicates
+            existing_ids = {node['id'] for node in self.nodes}
+            valid_nodes = []
+            
+            for node in static_nodes:
+                # Validate required fields
+                if not all(key in node for key in ['id', 'type', 'label']):
+                    print(f"   ⚠ Skipping invalid node (missing id/type/label): {node.get('id', 'unknown')}")
+                    continue
+                
+                # Check for duplicates
+                if node['id'] in existing_ids:
+                    print(f"   ⚠ Skipping duplicate node: {node['id']}")
+                    continue
+                
+                valid_nodes.append(node)
+                existing_ids.add(node['id'])
+            
+            self.nodes.extend(valid_nodes)
+            print(f"📦 Loaded {len(valid_nodes)} static nodes from {nodes_file.name}")
+        
+        except json.JSONDecodeError as e:
+            print(f"   ❌ Error parsing static nodes file: {e}")
+        except Exception as e:
+            print(f"   ❌ Error loading static nodes: {e}")
+    
+    def load_static_edges(self, edges_file: Optional[Path] = None) -> None:
+        """
+        Loads predefined edges from external JSON file.
+        These are structural edges (HAS_SERVICE, BELONGS_TO_SPO, etc.)
+        that cannot be inferred from text documents.
+        """
+        if edges_file is None:
+            edges_file = Path(__file__).parent / 'static_edges.json'
+        
+        if not edges_file.exists():
+            print(f"   ⚠ Static edges file not found: {edges_file}")
+            return
+        
+        try:
+            with open(edges_file, 'r', encoding='utf-8') as f:
+                static_edges = json.load(f)
+            
+            # Validate that referenced nodes exist
+            node_ids = {node['id'] for node in self.nodes}
+            valid_edges = []
+            
+            for edge in static_edges:
+                if edge['source'] in node_ids and edge['target'] in node_ids:
+                    # Keep only source, target, type (remove description)
+                    valid_edges.append({
+                        "source": edge['source'],
+                        "target": edge['target'],
+                        "type": edge['type']
+                    })
+                else:
+                    missing = []
+                    if edge['source'] not in node_ids:
+                        missing.append(edge['source'])
+                    if edge['target'] not in node_ids:
+                        missing.append(edge['target'])
+                    print(f"   ⚠ Skipping edge {edge['source']} → {edge['target']}: missing nodes {missing}")
+            
+            self.edges.extend(valid_edges)
+            print(f"📎 Loaded {len(valid_edges)} static edges from {edges_file.name}")
+        
+        except json.JSONDecodeError as e:
+            print(f"   ❌ Error parsing static edges file: {e}")
+        except Exception as e:
+            print(f"   ❌ Error loading static edges: {e}")
+    
     def infer_edges(self) -> None:
         """
         Infers edges between nodes based on:
@@ -363,7 +463,7 @@ class KnowledgeGraphGenerator:
             node_id = node['id']
             node_type = node['type']
             
-            # Search for referenced IDs in properties
+            # Search for referenced IDs in ALL properties (including _full_text)
             for prop_key, prop_value in node.get('properties', {}).items():
                 if not isinstance(prop_value, str):
                     continue
@@ -437,6 +537,23 @@ class KnowledgeGraphGenerator:
             ("Runbook", "Configuration"): "RELATED_TO",
             ("Runbook", "UserGuide"): "RELATED_TO",
             ("Runbook", "KnownIssue"): "RELATED_TO",
+            ("Runbook", "SOP"): "RELATED_TO",
+            ("Runbook", "Service"): "RELATED_TO",
+            
+            # UserGuide edges
+            ("UserGuide", "KnownIssue"): "RELATED_TO",
+            ("UserGuide", "Runbook"): "RELATED_TO",
+            ("UserGuide", "Service"): "RELATED_TO",
+            
+            # ReleaseNote edges
+            ("ReleaseNote", "KnownIssue"): "FIXED_IN",
+            ("ReleaseNote", "Feature"): "HAS_FEATURE",
+            
+            # FAQ edges
+            ("FAQ", "KnownIssue"): "RELATED_TO",
+            ("FAQ", "Runbook"): "RELATED_TO",
+            ("FAQ", "Service"): "RELATED_TO",
+            ("FAQ", "UserGuide"): "RELATED_TO",
             
             # Team edges
             ("Team", "Service"): "OWNS",
@@ -444,6 +561,9 @@ class KnowledgeGraphGenerator:
             
             # SOP edges
             ("SOP", "Team"): "ESCALATES_TO",
+            ("SOP", "Runbook"): "RELATED_TO",
+            ("SOP", "KnownIssue"): "RELATED_TO",
+            ("SOP", "Service"): "RELATED_TO",
             
             # SPO edges
             ("SPO", "Service"): "HAS_SERVICE",
@@ -486,11 +606,19 @@ class KnowledgeGraphGenerator:
     
     def build_knowledge_graph(self) -> Dict[str, Any]:
         """Creates the complete knowledge graph structure."""
+        # Clean up temporary properties before saving
+        cleaned_nodes = []
+        for node in self.nodes:
+            node_copy = node.copy()
+            if '_full_text' in node_copy.get('properties', {}):
+                del node_copy['properties']['_full_text']
+            cleaned_nodes.append(node_copy)
+        
         return {
             "metadata": self.generate_metadata(),
             "node_types": ALL_NODE_TYPES,
             "edge_types": ALL_EDGE_TYPES,
-            "nodes": self.nodes,
+            "nodes": cleaned_nodes,
             "edges": self.edges,
             "ai_agent_instructions": self.generate_ai_instructions()
         }
@@ -517,6 +645,8 @@ class KnowledgeGraphGenerator:
         
         self.scan_and_parse_documents()
         self.add_hardcoded_nodes()
+        self.load_static_nodes()
+        self.load_static_edges()
         self.infer_edges()
         self.save_to_file()
         

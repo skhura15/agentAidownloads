@@ -1,0 +1,12 @@
+{
+  "id": "CFG-001",
+  "type": "Configuration",
+  "label": "Voice+Routing Config",
+  "properties": {
+    "admin_path": "Admin Center > Config"
+  },
+  "tags": [
+    "config"
+  ],
+  "relations": {}
+}

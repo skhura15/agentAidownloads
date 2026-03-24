@@ -1,0 +1,72 @@
+{
+  "ticket_id": "TICKET-123",
+  "title": "Skeptical CFO Discovery Call - ROI Pushback",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Discovery + Objection Handling",
+  "tags": ["sales", "cfo", "roi", "discovery", "budget", "stakeholder"],
+  "agent_context": "CFO is skeptical and budget-focused, challenging ROI and payback. Lead with discovery on current costs/risks, frame value with clear assumptions, and propose a low-risk pilot with measurable success criteria without overpromising.",
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Ravi Mehta",
+    "initial_message": "I’ll be direct — tools like this usually sound nice but don’t move the needle. Why should I spend on this now? What’s the ROI and how fast do we get payback?",
+    "context": "Prospect CFO evaluating an enterprise workflow platform. CFO wants hard value, payback window, and risk reduction. Policy: do not invent benchmarks; do not promise guaranteed savings; ask discovery questions first; quantify conservatively with stated assumptions; end with a pilot proposal (timeline + metrics + data needed)."
+  },
+  "annotations": {
+    "sme_author": "Sales Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Run CFO-grade discovery (cost drivers, risk, decision criteria)",
+      "Handle ROI objections without hype or invented benchmarks",
+      "Secure next step via a measurable pilot plan"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge skepticism and confirm what ROI/payback means to them (timeframe + cost categories)",
+      "Ask targeted discovery questions (process time, rework/error rates, headcount cost, delays/opportunity cost, compliance risk)",
+      "Summarize their inputs and restate success criteria in business terms",
+      "Frame value conservatively using assumptions (ranges, not guarantees) and clarify what data is needed to validate",
+      "Propose a pilot/POC with success metrics, owners, and timeline",
+      "Confirm next step: schedule workshop/pilot kickoff and request required inputs"
+    ],
+    "common_mistakes": [
+      "Starting with a product demo or feature dump",
+      "Quoting ROI numbers without discovery or evidence",
+      "Using hypey language or arguing with the CFO",
+      "Promising guaranteed savings or unrealistic timelines"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "At least 3 targeted discovery questions asked",
+        "Value framed with explicit assumptions (no invented claims)",
+        "Pilot proposed with metrics + timeline",
+        "Concrete next step scheduled or clearly requested"
+      ],
+      "bonus_points": [
+        "Separates hard-dollar vs soft-dollar benefits",
+        "Offers sensitivity range (best/base/worst) based on their inputs",
+        "Aligns on procurement and decision timeline"
+      ],
+      "sticky_notes": [
+        "KEY: Discovery first — CFOs buy outcomes, not features.",
+        "TRAP: Don’t invent ROI benchmarks. State assumptions and ask for inputs.",
+        "HINT: A pilot with metrics de-risks the decision and builds credibility."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Skeptical, blunt, time-conscious",
+    "secret_acceptance_condition": "Will engage if agent quantifies value using the CFO’s context (with assumptions) and proposes a low-risk pilot with clear success metrics and timeline",
+    "escalation_triggers": [
+      "Hypey language",
+      "Invented benchmarks",
+      "Feature dumping",
+      "Dodging payback questions"
+    ],
+    "deescalation_triggers": [
+      "Direct answers",
+      "Conservative assumptions",
+      "Pilot with metrics",
+      "Clear next steps"
+    ]
+  }
+}

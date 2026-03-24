@@ -1,0 +1,542 @@
+{
+  "metadata": {
+    "version": "2.5",
+    "last_updated": "2026-01-15",
+    "total_codes": 45
+  },
+  "error_codes": {
+    "ROUTING": {
+      "ERR-QUEUE-001": {
+        "code": "ERR-QUEUE-001",
+        "category": "routing",
+        "meaning": "Queue capacity exceeded",
+        "description": "The queue has reached its maximum capacity and cannot accept new calls.",
+        "common_causes": [
+          "High call volume spike",
+          "Insufficient agents available",
+          "Queue capacity set too low",
+          "Agents not accepting calls"
+        ],
+        "recommended_actions": [
+          "Check current queue capacity settings",
+          "Add more agents to the queue",
+          "Enable overflow to backup queue",
+          "Increase queue capacity limit if appropriate"
+        ],
+        "related_sop": "SOP-ROUTING-001",
+        "kb_article": "KB-2025-0567",
+        "severity": "medium"
+      },
+      "ERR-QUEUE-002": {
+        "code": "ERR-QUEUE-002",
+        "category": "routing",
+        "meaning": "No agents available in queue",
+        "description": "The queue has no agents assigned or all agents are unavailable.",
+        "common_causes": [
+          "No agents assigned to queue",
+          "All agents logged out",
+          "All agents in busy/away status",
+          "Agent assignment removed"
+        ],
+        "recommended_actions": [
+          "Verify agents are assigned to the queue",
+          "Check agent availability status",
+          "Confirm agents are logged into the system",
+          "Review queue membership configuration"
+        ],
+        "related_sop": "SOP-ROUTING-001",
+        "kb_article": "KB-2025-0568",
+        "severity": "high"
+      },
+      "ERR-QUEUE-003": {
+        "code": "ERR-QUEUE-003",
+        "category": "routing",
+        "meaning": "Queue not found",
+        "description": "The specified queue does not exist or has been deleted.",
+        "common_causes": [
+          "Queue was deleted",
+          "Queue ID is incorrect",
+          "Queue not replicated to region",
+          "Configuration not saved"
+        ],
+        "recommended_actions": [
+          "Verify queue exists in Admin Portal",
+          "Check queue ID in call flow configuration",
+          "Create queue if missing",
+          "Wait for replication if recently created"
+        ],
+        "related_sop": "SOP-ROUTING-001",
+        "kb_article": "KB-2025-0569",
+        "severity": "high"
+      },
+      "ERR-ROUTE-001": {
+        "code": "ERR-ROUTE-001",
+        "category": "routing",
+        "meaning": "No matching routing rule",
+        "description": "No routing rule matched the call criteria.",
+        "common_causes": [
+          "Routing rules not configured",
+          "Rule conditions not met",
+          "Rules disabled",
+          "Priority order incorrect"
+        ],
+        "recommended_actions": [
+          "Review routing rule configuration",
+          "Check rule conditions and criteria",
+          "Ensure at least one rule is enabled",
+          "Add a default/catch-all rule"
+        ],
+        "related_sop": "SOP-ROUTING-001",
+        "kb_article": "KB-2025-0601",
+        "severity": "high"
+      },
+      "ERR-ROUTE-002": {
+        "code": "ERR-ROUTE-002",
+        "category": "routing",
+        "meaning": "Skill match failed",
+        "description": "No agent with required skills is available.",
+        "common_causes": [
+          "Required skills not assigned to agents",
+          "Agents with skills are unavailable",
+          "Skill proficiency mismatch",
+          "Skills not defined in system"
+        ],
+        "recommended_actions": [
+          "Check skill requirements on the queue",
+          "Verify agents have required skills assigned",
+          "Review skill proficiency requirements",
+          "Add skill fallback rules"
+        ],
+        "related_sop": "SOP-ROUTING-002",
+        "kb_article": "KB-2025-0602",
+        "severity": "medium"
+      },
+      "ERR-OVERFLOW-001": {
+        "code": "ERR-OVERFLOW-001",
+        "category": "routing",
+        "meaning": "Overflow target unavailable",
+        "description": "The configured overflow queue or destination is not available.",
+        "common_causes": [
+          "Overflow queue deleted",
+          "Overflow queue also at capacity",
+          "Circular overflow reference",
+          "Overflow not properly configured"
+        ],
+        "recommended_actions": [
+          "Verify overflow target exists",
+          "Check overflow queue has capacity",
+          "Remove circular references",
+          "Configure alternative overflow path"
+        ],
+        "related_sop": "SOP-ROUTING-001",
+        "kb_article": "KB-2025-0620",
+        "severity": "medium"
+      }
+    },
+    "LICENSING": {
+      "LIC-001": {
+        "code": "LIC-001",
+        "category": "licensing",
+        "meaning": "No valid CCaaS license",
+        "description": "The user does not have a valid CCaaS license assigned.",
+        "common_causes": [
+          "License not assigned to user",
+          "License assignment pending",
+          "License expired",
+          "Wrong license type assigned"
+        ],
+        "recommended_actions": [
+          "Check user license assignment in M365 Admin",
+          "Assign CCaaS license to user",
+          "Wait 15-30 minutes for propagation",
+          "Have user sign out and back in"
+        ],
+        "related_sop": "SOP-LICENSING-001",
+        "kb_article": "KB-2025-0456",
+        "severity": "high"
+      },
+      "LIC-002": {
+        "code": "LIC-002",
+        "category": "licensing",
+        "meaning": "License expired",
+        "description": "The organization's CCaaS subscription has expired.",
+        "common_causes": [
+          "Subscription not renewed",
+          "Payment failed",
+          "Trial period ended",
+          "Contract lapsed"
+        ],
+        "recommended_actions": [
+          "Check subscription status in M365 Admin",
+          "Contact account team to renew",
+          "Update payment method if needed",
+          "Request trial extension if applicable"
+        ],
+        "related_sop": "SOP-LICENSING-001",
+        "kb_article": "KB-2025-0457",
+        "severity": "critical"
+      },
+      "LIC-003": {
+        "code": "LIC-003",
+        "category": "licensing",
+        "meaning": "Feature not in license SKU",
+        "description": "The requested feature is not included in the current license tier.",
+        "common_causes": [
+          "Using Standard license, feature requires Premium",
+          "Feature is Enterprise-only",
+          "Add-on license required",
+          "Regional restriction"
+        ],
+        "recommended_actions": [
+          "Verify feature requirements in license matrix",
+          "Upgrade to appropriate license tier",
+          "Purchase add-on license if available",
+          "Check regional availability"
+        ],
+        "related_sop": "SOP-LICENSING-001",
+        "kb_article": "KB-2025-0458",
+        "severity": "medium"
+      },
+      "LIC-004": {
+        "code": "LIC-004",
+        "category": "licensing",
+        "meaning": "License sync pending",
+        "description": "License synchronization is in progress or delayed.",
+        "common_causes": [
+          "Recent license change",
+          "Sync service delay",
+          "Network connectivity issue",
+          "Tenant migration in progress"
+        ],
+        "recommended_actions": [
+          "Wait up to 24 hours for auto-sync",
+          "Trigger manual sync if available",
+          "Check sync status in Admin Portal",
+          "Contact support if sync repeatedly fails"
+        ],
+        "related_sop": "SOP-LICENSING-001",
+        "kb_article": "KB-2025-0459",
+        "severity": "low"
+      },
+      "LIC-005": {
+        "code": "LIC-005",
+        "category": "licensing",
+        "meaning": "Regional restriction",
+        "description": "The feature is not available in the tenant's region.",
+        "common_causes": [
+          "Feature not yet rolled out to region",
+          "Regulatory restrictions",
+          "Data residency requirements",
+          "Limited regional capacity"
+        ],
+        "recommended_actions": [
+          "Check feature availability matrix",
+          "Review regional rollout schedule",
+          "Consider tenant migration if critical",
+          "Use alternative features if available"
+        ],
+        "related_sop": "SOP-LICENSING-001",
+        "kb_article": "KB-2025-0460",
+        "severity": "medium"
+      },
+      "LIC-006": {
+        "code": "LIC-006",
+        "category": "licensing",
+        "meaning": "Insufficient role permissions",
+        "description": "The user's role does not have permission to access this feature.",
+        "common_causes": [
+          "User has Agent role, needs Supervisor",
+          "Admin permissions required",
+          "Custom role missing permission",
+          "Role assignment not propagated"
+        ],
+        "recommended_actions": [
+          "Review user's assigned roles",
+          "Assign appropriate role for feature",
+          "Check custom role permissions",
+          "Wait for role propagation (15 min)"
+        ],
+        "related_sop": "SOP-LICENSING-001",
+        "kb_article": "KB-2025-0461",
+        "severity": "low"
+      }
+    },
+    "CONNECTIVITY": {
+      "CONN-001": {
+        "code": "CONN-001",
+        "category": "connectivity",
+        "meaning": "Connection timeout",
+        "description": "The connection to CCaaS service timed out.",
+        "common_causes": [
+          "Network connectivity issues",
+          "Firewall blocking connection",
+          "Service temporarily unavailable",
+          "High latency network"
+        ],
+        "recommended_actions": [
+          "Check network connectivity",
+          "Verify firewall allows CCaaS endpoints",
+          "Check Azure service health status",
+          "Test from different network"
+        ],
+        "related_sop": "SOP-CONNECTIVITY-001",
+        "kb_article": "KB-2025-0678",
+        "severity": "high"
+      },
+      "CONN-002": {
+        "code": "CONN-002",
+        "category": "connectivity",
+        "meaning": "WebSocket connection failed",
+        "description": "Real-time WebSocket connection could not be established.",
+        "common_causes": [
+          "Proxy blocking WebSocket upgrade",
+          "Firewall blocking WSS protocol",
+          "SSL inspection interfering",
+          "Browser WebSocket disabled"
+        ],
+        "recommended_actions": [
+          "Check proxy WebSocket support",
+          "Whitelist CCaaS WebSocket endpoints",
+          "Exclude CCaaS from SSL inspection",
+          "Try incognito mode"
+        ],
+        "related_sop": "SOP-CONNECTIVITY-001",
+        "kb_article": "KB-2025-0679",
+        "severity": "high"
+      },
+      "CONN-003": {
+        "code": "CONN-003",
+        "category": "connectivity",
+        "meaning": "Authentication failed",
+        "description": "Could not authenticate with Azure AD.",
+        "common_causes": [
+          "Azure AD connectivity issue",
+          "Token expired",
+          "Conditional access blocking",
+          "MFA challenge failed"
+        ],
+        "recommended_actions": [
+          "Verify login.microsoftonline.com is accessible",
+          "Have user sign out and back in",
+          "Check conditional access policies",
+          "Verify MFA is configured correctly"
+        ],
+        "related_sop": "SOP-CONNECTIVITY-001",
+        "kb_article": "KB-2025-0680",
+        "severity": "high"
+      },
+      "CONN-004": {
+        "code": "CONN-004",
+        "category": "connectivity",
+        "meaning": "Media negotiation failed",
+        "description": "Voice/video media connection could not be established.",
+        "common_causes": [
+          "UDP ports blocked",
+          "TURN server unreachable",
+          "Symmetric NAT issues",
+          "Media relay unavailable"
+        ],
+        "recommended_actions": [
+          "Open UDP ports 3478-3481",
+          "Whitelist TURN server IPs",
+          "Check NAT configuration",
+          "Run media connectivity test"
+        ],
+        "related_sop": "SOP-CONNECTIVITY-001",
+        "kb_article": "KB-2025-0701",
+        "severity": "high"
+      },
+      "CONN-005": {
+        "code": "CONN-005",
+        "category": "connectivity",
+        "meaning": "SSL certificate error",
+        "description": "SSL/TLS certificate validation failed.",
+        "common_causes": [
+          "SSL inspection modifying certificate",
+          "Expired certificate in chain",
+          "Certificate pinning mismatch",
+          "Clock skew on client"
+        ],
+        "recommended_actions": [
+          "Exclude CCaaS from SSL inspection",
+          "Check client system time",
+          "Clear browser certificate cache",
+          "Verify certificate chain"
+        ],
+        "related_sop": "SOP-CONNECTIVITY-001",
+        "kb_article": "KB-2025-0702",
+        "severity": "medium"
+      },
+      "CONN-006": {
+        "code": "CONN-006",
+        "category": "connectivity",
+        "meaning": "DNS resolution failed",
+        "description": "Could not resolve CCaaS service hostname.",
+        "common_causes": [
+          "DNS server not responding",
+          "DNS filtering blocking domain",
+          "Split DNS misconfiguration",
+          "Local hosts file override"
+        ],
+        "recommended_actions": [
+          "Check DNS server connectivity",
+          "Verify CCaaS domains not blocked",
+          "Test with alternative DNS (8.8.8.8)",
+          "Check hosts file for overrides"
+        ],
+        "related_sop": "SOP-CONNECTIVITY-001",
+        "kb_article": "KB-2025-0703",
+        "severity": "high"
+      }
+    },
+    "API": {
+      "API-001": {
+        "code": "API-001",
+        "category": "api",
+        "meaning": "API rate limit exceeded",
+        "description": "Too many API requests in a short time period.",
+        "common_causes": [
+          "Integration making excessive calls",
+          "Polling too frequently",
+          "Bulk operation without throttling",
+          "Multiple clients sharing token"
+        ],
+        "recommended_actions": [
+          "Implement exponential backoff",
+          "Reduce polling frequency",
+          "Use webhooks instead of polling",
+          "Distribute load across time"
+        ],
+        "related_sop": null,
+        "kb_article": "KB-2025-0750",
+        "severity": "medium"
+      },
+      "API-002": {
+        "code": "API-002",
+        "category": "api",
+        "meaning": "API version deprecated",
+        "description": "The API version being used is no longer supported.",
+        "common_causes": [
+          "Integration using old API version",
+          "Not updated after platform upgrade",
+          "Hardcoded API version in code"
+        ],
+        "recommended_actions": [
+          "Check API deprecation schedule",
+          "Update integration to supported version",
+          "Test with new API version",
+          "Review API changelog for breaking changes"
+        ],
+        "related_sop": null,
+        "kb_article": "KB-2025-0912",
+        "severity": "medium"
+      },
+      "API-003": {
+        "code": "API-003",
+        "category": "api",
+        "meaning": "Invalid API request",
+        "description": "The API request format is invalid or missing required fields.",
+        "common_causes": [
+          "Missing required parameters",
+          "Invalid JSON format",
+          "Wrong data types",
+          "Malformed request body"
+        ],
+        "recommended_actions": [
+          "Review API documentation",
+          "Validate request against schema",
+          "Check for missing required fields",
+          "Verify JSON syntax"
+        ],
+        "related_sop": null,
+        "kb_article": "KB-2025-0751",
+        "severity": "low"
+      },
+      "API-004": {
+        "code": "API-004",
+        "category": "api",
+        "meaning": "Unauthorized API access",
+        "description": "The API request lacks valid authentication or authorization.",
+        "common_causes": [
+          "Access token expired",
+          "Insufficient permissions",
+          "Wrong API key",
+          "Token not included in request"
+        ],
+        "recommended_actions": [
+          "Refresh access token",
+          "Verify API key is valid",
+          "Check permission scopes",
+          "Ensure token in Authorization header"
+        ],
+        "related_sop": null,
+        "kb_article": "KB-2025-0752",
+        "severity": "high"
+      }
+    },
+    "AGENT": {
+      "AGT-001": {
+        "code": "AGT-001",
+        "category": "agent",
+        "meaning": "Agent session expired",
+        "description": "The agent's session has expired due to inactivity or timeout.",
+        "common_causes": [
+          "Session timeout reached",
+          "Network disconnection",
+          "Browser closed",
+          "Single sign-out triggered"
+        ],
+        "recommended_actions": [
+          "Agent should log back in",
+          "Check session timeout settings",
+          "Verify network stability",
+          "Review SSO configuration"
+        ],
+        "related_sop": null,
+        "kb_article": "KB-2025-0800",
+        "severity": "low"
+      },
+      "AGT-002": {
+        "code": "AGT-002",
+        "category": "agent",
+        "meaning": "Agent already logged in",
+        "description": "The agent is already logged in on another device or session.",
+        "common_causes": [
+          "Previous session not closed properly",
+          "Logged in on multiple devices",
+          "Session not terminated on logout"
+        ],
+        "recommended_actions": [
+          "Log out from other sessions",
+          "Wait 5 minutes and retry",
+          "Admin can force session termination",
+          "Clear browser storage"
+        ],
+        "related_sop": null,
+        "kb_article": "KB-2025-0801",
+        "severity": "low"
+      },
+      "AGT-003": {
+        "code": "AGT-003",
+        "category": "agent",
+        "meaning": "Agent not assigned to any queue",
+        "description": "The agent is not a member of any active queue.",
+        "common_causes": [
+          "Agent not added to queues",
+          "Queue assignments removed",
+          "Agent profile incomplete",
+          "Queue configuration error"
+        ],
+        "recommended_actions": [
+          "Add agent to appropriate queues",
+          "Verify agent profile configuration",
+          "Check queue membership settings",
+          "Review agent onboarding checklist"
+        ],
+        "related_sop": "SOP-ROUTING-001",
+        "kb_article": "KB-2025-0802",
+        "severity": "medium"
+      }
+    }
+  }
+}

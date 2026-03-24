@@ -1,0 +1,68 @@
+{
+  "ticket_id": "TICKET-112",
+  "title": "Wrong/Damaged Item Delivered - Customer Wants Refund",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Resolution within Policy",
+  "tags": ["delivery", "damaged-item", "replacement", "refund-policy"],
+  "agent_context": "Customer received the wrong/damaged item and demands a refund immediately. Apologize, verify order details, request photos politely if required, initiate return pickup, and set expectations for refund timeline once return is in motion.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Kabir Joshi",
+    "initial_message": "My order arrived but it’s the wrong item AND the box is damaged. I don’t want a replacement — I want a refund.",
+    "context": "Order delivered with wrong item/damage. Policy: apologize and gather order details. Replacement is the default resolution; refund is allowed only after return pickup is initiated within 7 days. Ask for photos politely if required. Offer expedited replacement or return pickup. Set clear timeline for refund processing."
+  },
+  "annotations": {
+    "sme_author": "Mina Al-Sayed",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Handle delivery issues with empathy and clear resolution options",
+      "Follow return/refund policy steps without escalating",
+      "Offer expedited replacement/return pickup and set expectations"
+    ],
+    "correct_sop_steps": [
+      "Apologize and acknowledge inconvenience",
+      "Verify order details",
+      "Request photos politely if required",
+      "Explain replacement vs refund-after-return options",
+      "Initiate return pickup/label",
+      "Set refund timeline and next update time"
+    ],
+    "common_mistakes": [
+      "Refund refusal without pickup step",
+      "Rigid photo demands",
+      "No timelines",
+      "No expedited options"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Acknowledgment + apology",
+        "Clear options offered",
+        "Concrete next steps + timeline"
+      ],
+      "bonus_points": [
+        "Expedited pickup/replacement",
+        "Concise plan summary"
+      ],
+      "sticky_notes": [
+        "KEY: Offer action steps before policy debate.",
+        "TRAP: Don’t imply customer is lying.",
+        "HINT: Focus on pickup + refund timeline if replacement refused."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Annoyed and impatient",
+    "escalation_triggers": [
+      "Accusatory tone",
+      "No next steps",
+      "No timelines"
+    ],
+    "deescalation_triggers": [
+      "Pickup initiated",
+      "Clear timeline",
+      "Concise plan"
+    ],
+    "secret_acceptance_condition": "Will accept refund process if pickup is initiated immediately with clear timeline"
+  }
+}

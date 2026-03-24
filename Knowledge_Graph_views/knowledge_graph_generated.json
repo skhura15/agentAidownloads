@@ -1,0 +1,988 @@
+{
+  "metadata": {
+    "graph_name": "Microsoft CCaaS — Support AI Knowledge Graph",
+    "version": "2.0.0",
+    "description": "Automatically generated Knowledge Graph for Support AI Agent. Based on text documents in the data/ directory.",
+    "created_date": "2026-03-09",
+    "last_updated": "2026-03-09",
+    "product": "Microsoft Dynamics 365 Contact Center (CCaaS)",
+    "total_nodes": 36,
+    "total_edges": 27,
+    "schema_version": "v2",
+    "generated_by": "generate_knowledge_graph.py"
+  },
+  "node_types": [
+    "Product",
+    "Service",
+    "SPO",
+    "ReleaseNote",
+    "UserGuide",
+    "KnownIssue",
+    "Runbook",
+    "SOP",
+    "Incident",
+    "Expert",
+    "Team",
+    "Customer",
+    "Infrastructure",
+    "Configuration",
+    "FAQ",
+    "Feature"
+  ],
+  "edge_types": [
+    "HAS_SERVICE",
+    "DEPENDS_ON",
+    "BELONGS_TO_SPO",
+    "HAS_RELEASE_NOTE",
+    "DOCUMENTED_IN",
+    "HAS_KNOWN_ISSUE",
+    "RESOLVED_BY",
+    "HAS_RUNBOOK",
+    "HAS_SOP",
+    "REPORTED_INCIDENT",
+    "ASSIGNED_TO",
+    "OWNS",
+    "IMPACTED_BY",
+    "SUBSCRIBES_TO",
+    "RUNS_ON",
+    "CONFIGURED_BY",
+    "RELATED_TO",
+    "ESCALATES_TO",
+    "FIXED_IN",
+    "HAS_FAQ",
+    "HAS_FEATURE",
+    "WORKAROUND_IN"
+  ],
+  "nodes": [
+    {
+      "id": "FAQ-005",
+      "type": "FAQ",
+      "label": "Why did the same interaction score differently when re-scored?",
+      "properties": {
+        "faq": "Why did the same interaction score differently when re-scored?",
+        "faq_id": "FAQ-005",
+        "document": "data/FAQ_QM_Drift.txt"
+      },
+      "tags": [
+        "QM"
+      ]
+    },
+    {
+      "id": "KI-2025-002",
+      "type": "KnownIssue",
+      "label": "Copilot Suggestions Delayed > 10 Seconds",
+      "properties": {
+        "issue_id": "KI-2025-002",
+        "severity": "P2",
+        "status": "Workaround Available",
+        "reported": "October 22, 2025",
+        "affected": "2025 Wave 2",
+        "symptoms": "1. Agent opens a conversation and Copilot panel loads\n2. Copilot shows spinning indicator for 10-30 seconds\n3. Sometimes Copilot request times out completely\n4. Most frequent during peak hours (9 AM -",
+        "root_cause": "-----------",
+        "each_copilot_request_consumes_approximately": "- Case summarization: ~2,000 tokens",
+        "impact": "-------",
+        "workaround": "Option 1 (Recommended): Request Azure OpenAI Quota Increase\n  1. Azure Portal > Azure OpenAI resource > Quotas\n  2. Click \"Request Quota Increase\"\n  3. Recommended: 500K TPM for 200 agents, 1M TPM for",
+        "monitoring": "-----------",
+        "check_azure_openai_usage": "Azure Portal > Azure OpenAI resource > Metrics",
+        "check_copilot_latency_in_application_insights": "requests",
+        "document": "data/KnownIssue_CopilotDelay.txt"
+      },
+      "tags": [
+        "Azure",
+        "Copilot",
+        "OpenAI",
+        "P2"
+      ]
+    },
+    {
+      "id": "KI-005",
+      "type": "KnownIssue",
+      "label": "Qm Scorecarddrift",
+      "properties": {
+        "known_issue": "QM scorecards show inconsistent results across runs",
+        "issue_id": "KI-005",
+        "severity": "P2",
+        "status": "Workaround Available",
+        "affected_versions": "2025 Wave 2",
+        "symptoms": "- The same call is scored differently when re-evaluated (±15–25 points).",
+        "a_scoring_model_version_mismatch": "some jobs still use the previous rubric weights after a background configuration rollout.",
+        "workaround": "- Force-refresh rubric configuration and clear QM scoring cache.",
+        "operational_notes": "- Check recent config deployments for QM rubric/weights changes.",
+        "document": "data/KnownIssue_QM_ScorecardDrift.txt"
+      },
+      "tags": [
+        "P2",
+        "QM"
+      ]
+    },
+    {
+      "id": "KI-2025-003",
+      "type": "KnownIssue",
+      "label": "Chat Widget Not Loading on Safari",
+      "properties": {
+        "issue_id": "KI-2025-003",
+        "severity": "P2",
+        "status": "Workaround Available",
+        "reported": "October 30, 2025",
+        "affected": "2025 Wave 2",
+        "symptoms": "1. Live chat widget fails to render on Safari 17+\n2. Browser console shows \"SecurityError: Blocked a frame with origin...\"\n3. Widget iframe loads but session cookie is rejected\n4. Affects both macOS S",
+        "root_cause": "-----------",
+        "impact": "-------",
+        "workaround": "Recommended Fix: Enable First-Party Cookie Mode\n\n1. In admin center > Channels > Chat > Widget settings\n2. Find \"Cookie configuration\" section\n3. Set cookieDomain to the customer's own domain:\n   Exam",
+        "recommended_fix": "Enable First-Party Cookie Mode",
+        "alternative": "Request customer users to disable ITP in Safari:",
+        "testing": "--------",
+        "after_applying_the_workaround": "1. Open customer website in Safari 17+ (macOS or iOS)",
+        "affected_customers": "-------------------",
+        "document": "data/KnownIssue_SafariChat.txt"
+      },
+      "tags": [
+        "Chat",
+        "P2"
+      ]
+    },
+    {
+      "id": "KI-2025-001",
+      "type": "KnownIssue",
+      "label": "Voice Call Drops During Warm Transfer",
+      "properties": {
+        "issue_id": "KI-2025-001",
+        "severity": "P1",
+        "status": "Fix in Progress",
+        "eta_fix": "March 15, 2026",
+        "reported": "November 10, 2025",
+        "affected": "2025 Wave 1, 2025 Wave 2",
+        "symptoms": "1. Agent initiates a warm (consultive) transfer to another agent\n2. Customer hears dead air for 3-5 seconds\n3. Call disconnects — customer is dropped\n4. Transfer failure is logged in Azure Communicati",
+        "affected_scenarios": "-------------------",
+        "root_cause": "-----------",
+        "the_acs_team_has_identified_the_fix": "extend the handshake window to 10 seconds",
+        "impact": "-------",
+        "workaround": "Option 1 (Recommended): Use COLD TRANSFER instead of warm transfer\n  - Agent clicks Transfer > Select target agent/queue > Cold Transfer\n  - Customer is transferred immediately without consultation\n  ",
+        "resolution_timeline": "--------------------",
+        "monitoring": "-----------",
+        "document": "data/KnownIssue_VoiceTransferDrop.txt"
+      },
+      "tags": [
+        "ACS",
+        "Azure",
+        "P1",
+        "Routing",
+        "Voice"
+      ]
+    },
+    {
+      "id": "KI-004",
+      "type": "KnownIssue",
+      "label": "Wfm Schedulemismatch",
+      "properties": {
+        "title": "Workforce Management — Forecast/Schedule mismatch after Wave 2 update",
+        "issue_id": "KI-004",
+        "severity": "P2",
+        "symptoms": "Forecast view shows updated demand, but schedules don’t regenerate",
+        "workaround": "Release the orchestration lock and re-trigger regeneration",
+        "status": "Workaround Available",
+        "eta_fix": "2026-03-25",
+        "affected_versions": "2025 Wave 2",
+        "document": "data/KnownIssue_WFM_ScheduleMismatch.txt"
+      },
+      "tags": [
+        "Dataverse",
+        "P2",
+        "WFM"
+      ]
+    },
+    {
+      "id": "NODE-2025W1",
+      "type": "ReleaseNote",
+      "label": "2025W1",
+      "properties": {
+        "highlights": "-----------",
+        "new_features": "-------------",
+        "bug_fixes": "----------",
+        "upgrade_instructions": "---------------------",
+        "document": "data/ReleaseNotes_2025W1.txt"
+      },
+      "tags": [
+        "API",
+        "Analytics",
+        "Chat",
+        "Copilot",
+        "Dynamics",
+        "Power BI",
+        "Routing",
+        "Voice",
+        "WhatsApp"
+      ]
+    },
+    {
+      "id": "NODE-2025W2",
+      "type": "ReleaseNote",
+      "label": "2025W2",
+      "properties": {
+        "highlights": "-----------",
+        "new_features": "-------------",
+        "bug_fixes": "----------",
+        "known_issues": "-------------",
+        "deprecations": "-------------",
+        "upgrade_instructions": "---------------------",
+        "document": "data/ReleaseNotes_2025W2.txt"
+      },
+      "tags": [
+        "ACS",
+        "Analytics",
+        "Azure",
+        "Chat",
+        "Copilot",
+        "Dynamics",
+        "OpenAI",
+        "Power BI",
+        "SMS",
+        "Voice"
+      ]
+    },
+    {
+      "id": "NODE-2025W2-QM",
+      "type": "ReleaseNote",
+      "label": "2025W2 Qm",
+      "properties": {
+        "release_notes": "2025 Release Wave 2 (Quality Management)",
+        "release_id": "RN-004",
+        "release_date": "2025-10-01",
+        "version": "2025 Release Wave 2 (QM)",
+        "highlights": "- Updated rubric weighting engine (faster scoring pipeline)",
+        "document": "data/ReleaseNotes_2025W2_QM.txt"
+      },
+      "tags": [
+        "QM"
+      ]
+    },
+    {
+      "id": "NODE-2025W2-WFM",
+      "type": "ReleaseNote",
+      "label": "2025W2 Wfm",
+      "properties": {
+        "release_note_id": "RN-003",
+        "version": "2025 Release Wave 2 (WFM Updates)",
+        "release_date": "2025-10-01",
+        "highlights": "Forecast accuracy improvements (holiday weighting)",
+        "document": "data/ReleaseNotes_2025W2_WFM.txt"
+      },
+      "tags": [
+        "WFM"
+      ]
+    },
+    {
+      "id": "RB-005",
+      "type": "Runbook",
+      "label": "Qm Rubriccachereset",
+      "properties": {
+        "runbook": "QM Rubric Cache Reset + Re-score",
+        "runbook_id": "RB-005",
+        "category": "Incident Recovery",
+        "estimated_time": "30 minutes",
+        "when_to_use": "- QM scoring results drift between runs",
+        "steps": "1. Confirm drift: pick 5 recent interactions and compare two re-scores.",
+        "document": "data/Runbook_QM_RubricCacheReset.txt"
+      },
+      "tags": [
+        "QM"
+      ]
+    },
+    {
+      "id": "RB-ROUTE-001",
+      "type": "Runbook",
+      "label": "Routing Misconfiguration Fix",
+      "properties": {
+        "runbook_id": "RB-ROUTE-001",
+        "category": "Configuration Fix",
+        "estimated_time": "20 minutes",
+        "last_updated": "February 2026",
+        "owner": "CCaaS Digital & Routing Team (James Wilson)",
+        "trigger": "Work items stuck in queue, routing incorrectly, or not routing at all",
+        "common_scenarios": "================================================================================",
+        "scenario": "\"Routing worked yesterday but broken today\"",
+        "escalation": "================================================================================",
+        "document": "data/Runbook_RoutingFix.txt"
+      },
+      "tags": [
+        "API",
+        "Chat",
+        "Routing",
+        "Teams",
+        "Voice"
+      ]
+    },
+    {
+      "id": "RB-VOICE-001",
+      "type": "Runbook",
+      "label": "Voice Channel Outage Recovery",
+      "properties": {
+        "runbook_id": "RB-VOICE-001",
+        "category": "Incident Recovery",
+        "estimated_time": "30 minutes",
+        "last_updated": "February 2026",
+        "owner": "CCaaS Voice Platform Team (Priya Sharma)",
+        "trigger": "Voice channel fully or partially unavailable",
+        "escalation": "================================================================================",
+        "document": "data/Runbook_VoiceOutage.txt"
+      },
+      "tags": [
+        "ACS",
+        "Analytics",
+        "Azure",
+        "Dynamics",
+        "IVR",
+        "Routing",
+        "Teams",
+        "Voice"
+      ]
+    },
+    {
+      "id": "RB-004",
+      "type": "Runbook",
+      "label": "Wfm Forecastregen",
+      "properties": {
+        "runbook": "WFM Forecast → Schedule Regeneration Recovery (Lock / Queue Stuck)",
+        "runbook_id": "RB-004",
+        "category": "Incident Recovery",
+        "estimated_time": "25 minutes",
+        "steps": "Confirm WFM schedule regen backlog in Admin Center → WFM → Jobs",
+        "document": "data/Runbook_WFM_ForecastRegen.txt"
+      },
+      "tags": [
+        "Dataverse",
+        "WFM"
+      ]
+    },
+    {
+      "id": "SOP-ESC-P1",
+      "type": "SOP",
+      "label": "P1 Escalation",
+      "properties": {
+        "sop_id": "SOP-ESC-P1",
+        "category": "Escalation",
+        "effective_date": "January 1, 2026",
+        "last_reviewed": "February 15, 2026",
+        "owner": "VP Support Operations",
+        "applies_to": "All CCaaS Support Engineers (L1, L2, L3)",
+        "escalation_procedure": "================================================================================",
+        "sla_targets": "================================================================================",
+        "contacts": "================================================================================",
+        "document": "data/SOP_P1_Escalation.txt"
+      },
+      "tags": [
+        "Analytics",
+        "Copilot",
+        "Dynamics",
+        "P1",
+        "Routing",
+        "Teams",
+        "Voice"
+      ]
+    },
+    {
+      "id": "SOP-003",
+      "type": "SOP",
+      "label": "Qm P2 Supervisorcomms",
+      "properties": {
+        "sop": "P2 Quality Management Scoring Drift — Supervisor Communications",
+        "sop_id": "SOP-003",
+        "category": "Communications",
+        "goal": "Keep supervisors informed while remediation is applied and prevent incorrect coaching actions.",
+        "steps": "1. Confirm impacted queues/teams and time window (e.g., last 24–48 hours).",
+        "document": "data/SOP_QM_P2_SupervisorComms.txt"
+      },
+      "tags": [
+        "Teams"
+      ]
+    },
+    {
+      "id": "SPO-CCAAS-DIGITAL",
+      "type": "SPO",
+      "label": "Microsoft Dynamics 365 Contact Center — Digital Only License",
+      "properties": {
+        "effective_date": "January 1, 2025",
+        "expiration_date": "December 31, 2025 (auto-renew)",
+        "pricing_model": "Per Agent / Per Month",
+        "list_price": "$65.00 USD / agent / month",
+        "volume_discount": "10% for 100+ agents",
+        "included_components": "--------------------",
+        "excluded": "---------",
+        "support": "--------",
+        "document": "data/SPO_CCaaS_Digital.txt"
+      },
+      "tags": [
+        "API",
+        "Analytics",
+        "Azure",
+        "Chat",
+        "Copilot",
+        "Dynamics",
+        "IVR",
+        "Routing",
+        "SMS",
+        "Voice"
+      ]
+    },
+    {
+      "id": "SPO-CCAAS-ENTERPRISE",
+      "type": "SPO",
+      "label": "Microsoft Dynamics 365 Contact Center — Enterprise License",
+      "properties": {
+        "effective_date": "January 1, 2025",
+        "expiration_date": "December 31, 2025 (auto-renew)",
+        "pricing_model": "Per Agent / Per Month",
+        "list_price": "$110.00 USD / agent / month",
+        "volume_discount": "10% for 200+ agents, 15% for 500+ agents",
+        "included_components": "--------------------",
+        "support": "--------",
+        "infrastructure_requirements": "-----------------------------",
+        "document": "data/SPO_CCaaS_Enterprise.txt"
+      },
+      "tags": [
+        "API",
+        "Analytics",
+        "Azure",
+        "Chat",
+        "Copilot",
+        "Dynamics",
+        "IVR",
+        "OpenAI",
+        "Power BI",
+        "Routing"
+      ]
+    },
+    {
+      "id": "UG-AGENTDESKTOP",
+      "type": "UserGuide",
+      "label": "Microsoft Dynamics 365 Contact Center",
+      "properties": {
+        "table_of_contents": "------------------",
+        "navigate_to_https": "//[your-org].crm.dynamics.com",
+        "your_presence_determines_if_you_receive_work_items": "- Available     : Receive calls, chats, and other work items",
+        "to_change": "Click your avatar (top right) > Select status",
+        "important": "If your presence gets stuck on \"Busy\" after a call:",
+        "when_a_work_item_is_routed_to_you": "1. A notification toast appears (with customer name if identified)",
+        "for_voice_calls": "- Accept opens the call panel with mute, hold, transfer controls",
+        "during_any_conversation": "1. Click the Knowledge tab (book icon) in the side panel",
+        "tips": "- Copilot needs at least 2 customer messages to generate suggestions",
+        "to_create_a_new_case_from_conversation": "1. Click \"Create Case\" in the command bar",
+        "to_update_existing_case": "1. Open customer context panel",
+        "case_statuses": "Active > In Progress > Waiting > Resolved > Closed",
+        "enterprise_license": "Up to 6 concurrent sessions",
+        "digital_license": "Up to 4 concurrent sessions",
+        "color_coding": "- Green dot: Active conversation",
+        "note": "Known Issue KI-2025-001 — Voice warm transfers may drop the call",
+        "after_customer_disconnects": "1. Complete wrap-up activities (case notes, disposition code)",
+        "issue": "Customer context not loading",
+        "fix": "Clear browser cache. Check Dataverse connectivity status.",
+        "for_more_help": "Contact your supervisor or open an internal IT ticket.",
+        "document": "data/UserGuide_AgentDesktop.txt",
+        "audience": "All Users"
+      },
+      "tags": [
+        "Azure",
+        "Chat",
+        "Copilot",
+        "Dataverse",
+        "Dynamics",
+        "OpenAI",
+        "Voice"
+      ]
+    },
+    {
+      "id": "UG-QM-ADMIN",
+      "type": "UserGuide",
+      "label": "Qm Admin",
+      "properties": {
+        "user_guide": "Quality Management — Admin Guide (Rubrics, Scoring, Re-score)",
+        "doc_id": "UG-005",
+        "audience": "QM Admins",
+        "pages": "28",
+        "topics": "- Rubric management and versioning",
+        "document": "data/UserGuide_QM_Admin.txt"
+      },
+      "tags": [
+        "QM"
+      ]
+    },
+    {
+      "id": "UG-ROUTINGADMIN",
+      "type": "UserGuide",
+      "label": "Microsoft Dynamics 365 Contact Center",
+      "properties": {
+        "table_of_contents": "------------------",
+        "path": "Admin center > Routing diagnostics",
+        "create_workstream": "1. Name and description",
+        "important": "Each channel type needs its own workstream.",
+        "queue_properties": "- Name and description",
+        "agent_membership": "- Add agents directly or via team",
+        "best_practice": "Create separate queues for complexity tiers:",
+        "rule_types": "- RULE-BASED: If condition (e.g., subject contains \"billing\") → set attribute",
+        "critical": "Always publish rulesets after editing. Unpublished changes are not",
+        "skill_types": "- Proficiency (e.g., Spanish: Beginner/Intermediate/Expert)",
+        "configure_skills": "1. Admin center > Agent experience > Skills",
+        "skill_matching_modes": "- Exact Match: Agent must have all required skills at exact level",
+        "example": "Voice: 1 concurrent (voice calls require full attention)",
+        "blended_capacity": "Agent can handle 1 voice + 2 chats simultaneously.",
+        "custom_assignment_example": "IF   work_item.priority = \"Critical\"",
+        "triggers": "- Wait time exceeds threshold (e.g., > 5 minutes)",
+        "actions": "- Transfer to overflow queue (with relaxed skill matching)",
+        "config": "Queue > Overflow tab",
+        "steps": "1. Enter work item ID or conversation ID",
+        "mistake": "Capacity profile not assigned — agent never receives work",
+        "fix": "Assign capacity profile via admin center > Agent experience.",
+        "for_help": "Contact James Wilson (CCaaS Platform Architect) or the",
+        "document": "data/UserGuide_RoutingAdmin.txt",
+        "audience": "All Users"
+      },
+      "tags": [
+        "Chat",
+        "Dynamics",
+        "Routing",
+        "SMS",
+        "Teams",
+        "Voice"
+      ]
+    },
+    {
+      "id": "UG-SUPERVISOR",
+      "type": "UserGuide",
+      "label": "Microsoft Dynamics 365 Contact Center",
+      "properties": {
+        "table_of_contents": "------------------",
+        "navigate_to": "Dynamics 365 > Customer Service workspace > Omnichannel real-time analytics",
+        "required_roles": "Omnichannel Supervisor, System Administrator, or custom role",
+        "the_queue_dashboard_shows": "- Active conversations per channel (Voice, Chat, SMS, etc.)",
+        "key_metrics_explained": "- Queue Depth: Number of work items waiting for assignment",
+        "filters": "Channel, Queue, Time Period (Last 1h, 4h, 8h, 24h)",
+        "click_an_agent_row_to_see": "- Open conversations detail",
+        "actions": "- Force sign out an agent",
+        "alert": "If >30% negative sentiment across queue, consider:",
+        "best_practices": "- Use Monitor for quality assurance sampling",
+        "export_options": "- Excel: Click \"Export\" on any dashboard table",
+        "standard_reports_available": "- Daily Agent Performance Summary",
+        "issue": "Sentiment not displaying",
+        "fix": "Verify sentiment analysis is enabled at workstream level.",
+        "for_help": "Contact L2 support or CCaaS Digital & Routing Team.",
+        "document": "data/UserGuide_Supervisor.txt",
+        "audience": "All Users"
+      },
+      "tags": [
+        "Analytics",
+        "Chat",
+        "Dataverse",
+        "Dynamics",
+        "Power BI",
+        "Routing",
+        "SMS",
+        "Voice"
+      ]
+    },
+    {
+      "id": "UG-WFM-ADMIN",
+      "type": "UserGuide",
+      "label": "Wfm Admin",
+      "properties": {
+        "title": "Workforce Management — Admin Guide (Forecasting & Scheduling)",
+        "doc_id": "UG-004",
+        "audience": "WFM Admins",
+        "topics": "Forecast creation and recalculation",
+        "document": "data/UserGuide_WFM_Admin.txt"
+      },
+      "tags": [
+        "WFM"
+      ]
+    },
+    {
+      "id": "PROD-001",
+      "type": "Product",
+      "label": "MS Dynamics 365 Contact Center",
+      "properties": {
+        "full_name": "Microsoft Dynamics 365 Contact Center (CCaaS)",
+        "vendor": "Microsoft",
+        "version": "2025 Release Wave 2",
+        "category": "Contact Center as a Service",
+        "deployment": "Cloud (Azure)"
+      },
+      "tags": [
+        "CCaaS",
+        "Omnichannel",
+        "Copilot",
+        "Azure"
+      ]
+    },
+    {
+      "id": "FAQ-001",
+      "type": "FAQ",
+      "label": "How to reset agent presence?",
+      "properties": {
+        "question": "An agent is stuck in Busy status and cannot receive new work items. How to reset?",
+        "answer": "1. Sign out of Dynamics 365 and close all tabs. 2. Wait 2 minutes. 3. Sign back in and set Available. 4. Admin can reset via Omnichannel admin > Agents > Reset presence. 5. Last resort: OData API PATCH msdyn_omnichannelpresences."
+      },
+      "tags": [
+        "Presence",
+        "Agent",
+        "Reset"
+      ]
+    },
+    {
+      "id": "FAQ-002",
+      "type": "FAQ",
+      "label": "How to add a new chat channel?",
+      "properties": {
+        "question": "How do I configure a new live chat widget for a customer website?",
+        "answer": "1. Admin center > Channels > Chat > Add Chat Widget. 2. Configure name, language, operating hours, pre-chat survey. 3. Set routing workstream and queue. 4. Customize appearance. 5. Copy JS snippet. 6. Paste into customer website. 7. Test in incognito."
+      },
+      "tags": [
+        "Chat",
+        "Widget",
+        "Setup"
+      ]
+    },
+    {
+      "id": "FAQ-003",
+      "type": "FAQ",
+      "label": "Why is Copilot not showing suggestions?",
+      "properties": {
+        "question": "Copilot panel shows No suggestions available for an active conversation. Why?",
+        "answer": "1. Copilot feature flag disabled — check admin center > Productivity > Copilot. 2. No published knowledge articles matching topic. 3. Azure OpenAI quota exhausted. 4. Agent missing Copilot User security role. 5. Need at least 2 customer messages before Copilot activates."
+      },
+      "tags": [
+        "Copilot",
+        "Troubleshooting"
+      ]
+    },
+    {
+      "id": "FAQ-004",
+      "type": "FAQ",
+      "label": "How to generate agent schedules?",
+      "properties": {
+        "question": "How do I generate optimized agent schedules based on forecasted volume?",
+        "answer": "1. Admin center > Workforce Management > Forecasting. 2. Import historical data or use AI forecasting. 3. Review forecast accuracy. 4. Navigate to Scheduling > Generate Schedule. 5. Set date range, shift patterns, and staffing requirements. 6. Run optimizer. 7. Review draft schedule. 8. Publish to agents. 9. Allow shift bidding if enabled."
+      },
+      "tags": [
+        "WFM",
+        "Scheduling",
+        "Forecasting"
+      ]
+    },
+    {
+      "id": "INFRA-001",
+      "type": "Infrastructure",
+      "label": "Azure Communication Services",
+      "properties": {
+        "resource_type": "ACS",
+        "regions": [
+          "US East",
+          "US West",
+          "EU West"
+        ],
+        "provisioning": "Multi-region with geo-failover",
+        "monitoring": "Application Insights + Azure Monitor",
+        "health_url": "https://status.azure.com"
+      },
+      "tags": [
+        "ACS",
+        "Azure",
+        "Voice"
+      ]
+    },
+    {
+      "id": "INFRA-002",
+      "type": "Infrastructure",
+      "label": "Dataverse (CDS)",
+      "properties": {
+        "resource_type": "Dataverse",
+        "regions": [
+          "US East",
+          "EU West"
+        ],
+        "capacity": "10 GB per environment",
+        "monitoring": "Power Platform Admin Center",
+        "description": "Core data platform storing all CCaaS entities."
+      },
+      "tags": [
+        "Dataverse",
+        "Data",
+        "Power Platform"
+      ]
+    },
+    {
+      "id": "INFRA-003",
+      "type": "Infrastructure",
+      "label": "Azure OpenAI Service",
+      "properties": {
+        "resource_type": "Azure OpenAI",
+        "model": "GPT-4o",
+        "regions": [
+          "US East",
+          "EU West"
+        ],
+        "tpm_quota": "120K tokens/min",
+        "description": "Powers Copilot for agents — case summarization, response drafting, knowledge article recommendations."
+      },
+      "tags": [
+        "OpenAI",
+        "GPT",
+        "Copilot"
+      ]
+    },
+    {
+      "id": "CFG-001",
+      "type": "Configuration",
+      "label": "Voice Channel Config",
+      "properties": {
+        "config_area": "Voice",
+        "key_settings": [
+          "Phone number assignment via ACS",
+          "IVR greeting and menu",
+          "Call recording policy",
+          "Transcription language",
+          "Post-call survey trigger"
+        ],
+        "admin_path": "Dynamics 365 admin center > Customer Service > Channels > Voice"
+      },
+      "tags": [
+        "Voice",
+        "Config"
+      ]
+    },
+    {
+      "id": "CFG-002",
+      "type": "Configuration",
+      "label": "Copilot Feature Flags",
+      "properties": {
+        "config_area": "Copilot",
+        "key_settings": [
+          "Enable/disable Copilot",
+          "Case summarization toggle",
+          "Response suggestion toggle",
+          "Knowledge article suggestion toggle",
+          "Analytics and feedback"
+        ],
+        "admin_path": "Dynamics 365 admin center > Productivity > Copilot"
+      },
+      "tags": [
+        "Copilot",
+        "Config",
+        "Feature Flags"
+      ]
+    },
+    {
+      "id": "CFG-003",
+      "type": "Configuration",
+      "label": "WFM Configuration",
+      "properties": {
+        "config_area": "Workforce Management",
+        "key_settings": [
+          "Forecast models",
+          "Schedule templates",
+          "Shift patterns",
+          "Break rules",
+          "Adherence thresholds",
+          "Time-off requests"
+        ],
+        "admin_path": "Dynamics 365 admin center > Workforce Management > Configuration"
+      },
+      "tags": [
+        "WFM",
+        "Config",
+        "Scheduling"
+      ]
+    },
+    {
+      "id": "FEAT-001",
+      "type": "Feature",
+      "label": "Real-Time Translation",
+      "properties": {
+        "feature_name": "Real-Time Message Translation",
+        "description": "Automatically translates messages between customer and agent languages in real-time. Supports 50+ languages.",
+        "availability": "2025 Wave 2",
+        "channels": [
+          "Chat",
+          "SMS",
+          "WhatsApp"
+        ],
+        "prerequisite": "Azure AI Translator resource connected"
+      },
+      "tags": [
+        "Translation",
+        "Multilingual",
+        "Chat"
+      ]
+    },
+    {
+      "id": "FEAT-002",
+      "type": "Feature",
+      "label": "Sentiment-Based Routing",
+      "properties": {
+        "feature_name": "Sentiment-Based Intelligent Routing",
+        "description": "Routes conversations to specialized agents when customer sentiment is Very Negative. Uses real-time sentiment analysis to reclassify and reroute.",
+        "availability": "2025 Wave 1",
+        "channels": [
+          "Voice",
+          "Chat"
+        ],
+        "prerequisite": "Sentiment analysis enabled in workstream settings"
+      },
+      "tags": [
+        "Sentiment",
+        "Routing",
+        "AI"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "PROD-001",
+      "target": "SPO-CCAAS-DIGITAL",
+      "type": "BELONGS_TO_SPO"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SPO-CCAAS-ENTERPRISE",
+      "type": "BELONGS_TO_SPO"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W1",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W2",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W2-QM",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "NODE-2025W2-WFM",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SOP-ESC-P1",
+      "type": "HAS_SOP"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SOP-003",
+      "type": "HAS_SOP"
+    },
+    {
+      "source": "SPO-CCAAS-DIGITAL",
+      "target": "UG-AGENTDESKTOP",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SPO-CCAAS-ENTERPRISE",
+      "target": "UG-AGENTDESKTOP",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SPO-CCAAS-ENTERPRISE",
+      "target": "UG-QM-ADMIN",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SPO-CCAAS-ENTERPRISE",
+      "target": "UG-WFM-ADMIN",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-004",
+      "target": "RB-004",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-005",
+      "target": "RB-005",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-005",
+      "target": "FAQ-005",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-2025-002",
+      "target": "CFG-002",
+      "type": "WORKAROUND_IN"
+    },
+    {
+      "source": "FAQ-001",
+      "target": "UG-AGENTDESKTOP",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "FAQ-003",
+      "target": "CFG-002",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "FAQ-004",
+      "target": "UG-WFM-ADMIN",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "FAQ-004",
+      "target": "CFG-003",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "NODE-2025W2",
+      "target": "KI-2025-001",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "NODE-2025W2",
+      "target": "KI-2025-002",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "NODE-2025W2",
+      "target": "KI-2025-003",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "RB-VOICE-001",
+      "target": "SOP-ESC-P1",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SOP-ESC-P1",
+      "target": "RB-VOICE-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "SOP-ESC-P1",
+      "target": "RB-ROUTE-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "UG-AGENTDESKTOP",
+      "target": "KI-2025-001",
+      "type": "RELATED_TO"
+    }
+  ],
+  "ai_agent_instructions": {
+    "purpose": "When a support ticket arrives for Microsoft Dynamics 365 Contact Center (CCaaS), traverse this graph to find the best resolution path.",
+    "resolution_workflow": [
+      "1. PARSE: Extract product, service, error messages, symptoms, customer name from ticket",
+      "2. IDENTIFY SERVICE: Map symptoms to the affected service node",
+      "3. CHECK KNOWN ISSUES: Search KnownIssue nodes matching symptoms — provide workaround immediately",
+      "4. CHECK RELEASE NOTES: Follow FIXED_IN edges for available fixes in newer versions",
+      "5. FIND RUNBOOK: Follow HAS_RUNBOOK edges for step-by-step recovery",
+      "6. CHECK FAQ: Follow HAS_FAQ edges for common questions",
+      "7. REVIEW PAST INCIDENTS: Search similar past incidents and their resolutions",
+      "8. FIND DOCUMENTS: Retrieve relevant User Guides, SPOs, Release Notes",
+      "9. IDENTIFY EXPERTS: Follow OWNS/ASSIGNED_TO edges to find the expert team",
+      "10. ESCALATE: If P1, follow SOP for escalation workflow"
+    ]
+  }
+}

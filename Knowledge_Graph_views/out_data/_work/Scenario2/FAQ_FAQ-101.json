@@ -1,0 +1,12 @@
+{
+  "id": "FAQ-101",
+  "type": "FAQ",
+  "label": "Add chat widget",
+  "properties": {
+    "question": "How to add a chat widget?"
+  },
+  "tags": [
+    "faq"
+  ],
+  "relations": {}
+}

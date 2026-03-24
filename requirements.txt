@@ -1,0 +1,62 @@
+# Core dependencies
+# IMPORTANT: Install Agent Framework with: pip install agent-framework-azure-ai --pre
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.12.5
+pydantic-settings>=2.1.0
+
+# Azure SDKs
+openai>=1.10.0
+azure-identity>=1.15.0
+azure-keyvault-secrets>=4.7.0
+opencensus-ext-azure>=1.1.13
+
+# AI/ML Frameworks - Microsoft Agent Framework (Preview)
+# Note: --pre flag required during preview period
+agent-framework-azure-ai  # Core Agent Framework with Azure AI integration
+tiktoken>=0.5.2
+
+# Vector Store
+chromadb>=0.4.22
+
+# Data processing
+python-multipart>=0.0.6
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+jinja2>=3.1.3
+
+# WebSocket support
+websockets>=12.0
+python-socketio>=5.11.0
+
+# State management
+redis>=5.0.1
+hiredis>=2.3.2
+
+# HTTP client
+httpx>=0.26.0
+aiohttp>=3.9.1
+
+# Utilities
+python-dateutil>=2.8.2
+pytz>=2023.3
+
+# UI - Streamlit
+streamlit>=1.30.0
+streamlit-chat>=0.1.1
+
+# Testing
+pytest>=7.4.4
+pytest-asyncio>=0.23.3
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Development
+black>=23.12.1
+flake8>=7.0.0
+mypy>=1.8.0
+isort>=5.13.2
+
+# Documentation
+mkdocs>=1.5.3
+mkdocs-material>=9.5.3

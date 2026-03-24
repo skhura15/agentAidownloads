@@ -1,0 +1,12 @@
+{
+  "id": "EXP-001",
+  "type": "Expert",
+  "label": "Priya Sharma",
+  "properties": {
+    "role": "Senior Engineer"
+  },
+  "tags": [
+    "expert"
+  ],
+  "relations": {}
+}

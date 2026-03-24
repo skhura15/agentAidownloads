@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-115",
+  "title": "Package Marked Delivered but Customer Didn't Receive It",
+  "difficulty": "intermediate",
+  "primary_skill": "Calm Investigation & SLA Handling",
+  "scenario_context": "Package marked delivered but not received. Verify details, check safe drop, open carrier investigation, set timeline, explain resolution options after investigation window.",
+  "success_summary": "Calm investigation + clear timeline with replacement/refund options.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Fatima Ali",
+    "tone": "stressed, impatient",
+    "knowledge_level": "low",
+    "opening_message": "Tracking says delivered but I didn’t receive anything.",
+    "secret_condition": "Customer accepts if investigation is initiated with a clear timeline and options",
+    "escalation_triggers": [
+      "accusatory language",
+      "no investigation",
+      "no timeline"
+    ],
+    "de_escalation_triggers": [
+      "action plan",
+      "timeline",
+      "replacement option"
+    ],
+    "personality_notes": "Stressed about missing package; needs immediate action and clarity."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge frustration and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Start with empathy."
+      },
+      {
+        "id": 2,
+        "description": "Verify order and delivery details safely",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Confirm details without sensitive data."
+      },
+      {
+        "id": 3,
+        "description": "Check safe-drop options",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Ask quick checks."
+      },
+      {
+        "id": 4,
+        "description": "Initiate carrier investigation and set update timeline",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Open case + give update time."
+      },
+      {
+        "id": 5,
+        "description": "Explain replacement/refund options post-investigation",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Set expectations clearly."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Implying customer is lying",
+      "No investigation",
+      "Instant refund promise",
+      "No timeline"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

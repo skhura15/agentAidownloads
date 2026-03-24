@@ -1,0 +1,74 @@
+# Base Configuration
+# This file contains default settings that can be overridden by environment-specific configs
+
+# Microsoft Agent Framework Configuration
+agent_framework:
+  # Use Microsoft Foundry (formerly Azure AI Foundry) or Azure OpenAI
+  use_foundry: false  # Set to true to use Foundry instead of Azure OpenAI
+  use_azure_openai: false  # DISABLED - Not using Azure OpenAI
+  
+  # Microsoft Foundry settings (when use_foundry: true)
+  project_endpoint: "${FOUNDRY_PROJECT_ENDPOINT}"  # e.g., https://my-project.eastus.inference.ai.azure.com
+  model_deployment_name: "${FOUNDRY_MODEL_DEPLOYMENT}"  # e.g., gpt-4o
+  
+  # Agent behavior
+  default_temperature: 0.7
+  default_top_p: 1.0
+  enable_streaming: true
+  enable_function_calling: true
+
+azure_openai:
+  model: "gpt-4"
+  temperature: 0.7
+  max_tokens: 1000
+  top_p: 0.95
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
+
+agents:
+  customer_support:
+    name: "Customer Support Agent"
+    description: "Handles customer inquiries and support requests"
+    capabilities:
+      - "Answer product questions"
+      - "Track orders"
+      - "Create support tickets"
+      - "Escalate complex issues"
+    tools:
+      - "search_knowledge_base"
+      - "create_ticket"
+      - "send_email"
+    prompts:
+      system: "customer_support_system"
+      greeting: "customer_support_greeting"
+
+orchestration:
+  default_strategy: "sequential"
+  max_iterations: 10
+  handoff_rules:
+    - from: "customer_support"
+      to: "technical_support"
+      condition: "technical_issue"
+    - from: "technical_support"
+      to: "escalation"
+      condition: "requires_escalation"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+state:
+  ttl_seconds: 3600
+  use_redis: false
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
+  workers: 1
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:3001"

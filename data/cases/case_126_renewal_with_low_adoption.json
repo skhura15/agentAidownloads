@@ -1,0 +1,62 @@
+{
+  "ticket_id": "TICKET-126",
+  "title": "Renewal with Low Adoption - Value Not Realized",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Renewal Management + Value Realization",
+  "tags": ["renewal", "adoption", "account-management", "risk"],
+  "agent_context": "Renewal risk due to low adoption. Diagnose blockers, align on outcomes, and propose a measurable success plan before discussing renewal.",
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Maya Singh",
+    "initial_message": "Teams haven’t used it much. I’m not convinced we should renew.",
+    "context": "Low adoption risk. Diagnose blockers, propose 30-day success plan, define measurement."
+  },
+  "annotations": {
+    "sme_author": "Customer Success Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Handle renewal risk calmly",
+      "Diagnose adoption blockers",
+      "Create measurable plan"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge concern",
+      "Confirm renewal timeline",
+      "Diagnose blockers",
+      "Align on outcomes",
+      "Propose 30-day plan",
+      "Define measurement + review"
+    ],
+    "common_mistakes": [
+      "Defensiveness",
+      "User blame",
+      "Discount-first",
+      "No plan"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Blocker discovery",
+        "Outcome alignment",
+        "30-day plan",
+        "Metrics + review"
+      ],
+      "bonus_points": [
+        "Champion model",
+        "Workflow mapping",
+        "Checklist summary"
+      ],
+      "sticky_notes": [
+        "KEY: Diagnose before defending.",
+        "TRAP: Discounts don’t fix adoption.",
+        "HINT: One workflow, one outcome, one month."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Pragmatic, cautious",
+    "secret_acceptance_condition": "Will reconsider if measurable success plan proposed",
+    "escalation_triggers": ["Defensive tone", "Blame", "No plan"],
+    "deescalation_triggers": ["Ownership", "Plan", "Metrics"]
+  }
+}

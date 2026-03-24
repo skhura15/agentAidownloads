@@ -1,0 +1,37 @@
+{
+  "id": "SVC-001",
+  "type": "Service",
+  "label": "Voice Channel",
+  "properties": {
+    "criticality": "P1"
+  },
+  "tags": [
+    "voice"
+  ],
+  "relations": {
+    "RUNS_ON": [
+      "INFRA-001"
+    ],
+    "CONFIGURED_BY": [
+      "CFG-001"
+    ],
+    "DEPENDS_ON": [
+      "SVC-002"
+    ],
+    "DOCUMENTED_IN": [
+      "UG-001"
+    ],
+    "HAS_KNOWN_ISSUE": [
+      "KI-001"
+    ],
+    "HAS_RUNBOOK": [
+      "RB-001"
+    ],
+    "HAS_FAQ": [
+      "FAQ-001"
+    ],
+    "HAS_FEATURE": [
+      "FEAT-001"
+    ]
+  }
+}

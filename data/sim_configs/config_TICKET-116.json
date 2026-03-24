@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-116",
+  "title": "Return Pickup Missed Multiple Times",
+  "difficulty": "intermediate",
+  "primary_skill": "Ownership & Process Recovery",
+  "scenario_context": "Return pickup missed multiple times. Apologize, escalate, reschedule with firm window, offer drop-off, refund timeline post pickup scan, set follow-up cadence.",
+  "success_summary": "Ownership + escalation + reschedule plan with clear refund and update timelines.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Daniel Brooks",
+    "tone": "angry, exhausted",
+    "knowledge_level": "low",
+    "opening_message": "Pickup failed three times. Refund me already.",
+    "secret_condition": "Customer accepts if pickup is prioritized/rescheduled with firm window + follow-up",
+    "escalation_triggers": [
+      "no action plan",
+      "no escalation",
+      "vague updates"
+    ],
+    "de_escalation_triggers": [
+      "priority reschedule",
+      "timeline",
+      "drop-off option"
+    ],
+    "personality_notes": "Feels disrespected due to repeated missed pickups."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Apologize and show ownership",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Validate wasted time."
+      },
+      {
+        "id": 2,
+        "description": "Confirm pickup failures",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Gather attempt details."
+      },
+      {
+        "id": 3,
+        "description": "Escalate and reschedule with priority window",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Prioritize pickup."
+      },
+      {
+        "id": 4,
+        "description": "Offer drop-off alternative",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Provide alternate return path."
+      },
+      {
+        "id": 5,
+        "description": "Explain refund timeline + follow-up cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Set expectations."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Generic apology",
+      "No escalation",
+      "Early refund promise",
+      "No follow-up"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

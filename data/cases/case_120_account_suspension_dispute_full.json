@@ -1,0 +1,72 @@
+{
+  "ticket_id": "TICKET-120",
+  "title": "Account Suspended for Policy Violation - Customer Disputes Suspension",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Policy Enforcement & Appeal Handling",
+  "tags": ["account-suspension", "policy", "appeal", "risk", "escalation"],
+  "agent_context": "Customer’s account was suspended for a policy violation and they are disputing the action. Provide a high-level explanation without disclosing sensitive triggers, guide the appeal process, and set a realistic review timeline with update cadence.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Luis Romero",
+    "initial_message": "Our account was suspended overnight with no warning. My entire team is locked out and we have active client work running today. We reviewed our usage and we don’t see any policy violation. I need a clear explanation of what triggered this and I need access restored immediately.",
+    "context": "Account suspended for policy violation (internal risk/compliance action). Policy: take concern seriously; do not disclose sensitive enforcement signals; do not promise reinstatement; provide high-level explanation; guide appeal/review process; collect necessary identifiers; escalate to compliance team; set realistic review timeline and update cadence."
+  },
+  "annotations": {
+    "sme_author": "Mina Al-Sayed",
+    "sme_date": "2026-02-05",
+    "learning_objectives": [
+      "Communicate clearly under enforcement constraints",
+      "Avoid over-disclosure and overpromising reinstatement",
+      "Guide customer through appeal process",
+      "Set realistic timelines and update cadence"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge severity and apologize for disruption",
+      "Confirm account identifiers and verify requester identity/role as needed",
+      "Explain at a high level: suspension triggered by policy review; you may not be able to share specific signals",
+      "Offer appeal/review path: what information they need to provide and what happens next",
+      "Escalate case to compliance/risk team with priority due to business impact",
+      "Set expectations: review timeline and next update time (cadence)",
+      "Offer immediate safe options if available (export invoices, provide status updates, connect to account manager)"
+    ],
+    "common_mistakes": [
+      "Sharing internal detection details or sensitive enforcement reasons",
+      "Promising immediate reinstatement",
+      "Sounding accusatory or implying wrongdoing",
+      "Not providing a clear appeal path",
+      "No timeline or next update"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Empathy + neutral tone",
+        "High-level explanation with boundaries",
+        "Clear appeal process steps",
+        "Realistic timeline + update cadence"
+      ],
+      "bonus_points": [
+        "Offers to involve account manager for business coordination",
+        "Provides a concise checklist of what the customer should send for review"
+      ],
+      "sticky_notes": [
+        "KEY: Stay neutral. ‘We’ll review’ is safer than implying guilt or innocence.",
+        "TRAP: Do not disclose sensitive enforcement triggers or internal system names.",
+        "HINT: Make the appeal steps concrete and time-bound."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Urgent, defensive, business-critical",
+    "escalation_triggers": [
+      "Accusatory language",
+      "No clear path to resolution",
+      "No timeline"
+    ],
+    "deescalation_triggers": [
+      "Neutral, respectful tone",
+      "Clear appeal steps",
+      "Concrete update time"
+    ],
+    "secret_acceptance_condition": "Customer calms down if you explain boundaries clearly, provide a concrete appeal checklist, and commit to a specific next update time"
+  }
+}

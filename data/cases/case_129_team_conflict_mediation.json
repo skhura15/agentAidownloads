@@ -1,0 +1,75 @@
+{
+  "ticket_id": "TICKET-129",
+  "title": "Team Conflict Mediation - Two Employees Blaming Each Other",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 18,
+  "primary_skill": "Conflict Mediation & Alignment",
+  "tags": ["management", "conflict", "mediation", "teamwork", "communication"],
+  "agent_context": "Two employees are in conflict and blaming each other for missed deadlines. Stay neutral, enforce ground rules, surface facts/root causes, and end with a concrete working agreement (roles, handoffs, comms norms) plus a follow-up checkpoint.",
+
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Rohan Malhotra",
+    "initial_message": "I’m tired of being blamed. Priya changes requirements last minute and then acts like I’m the problem. I’m done covering for this.",
+    "context": "Manager-led mediation between two peers (Rohan and Priya). Pattern: misaligned expectations, unclear ownership, reactive messaging. Policy: remain neutral; set and enforce norms; give uninterrupted time; focus on behaviors/facts and impact; align on shared goal; produce a working agreement (RACI/hand-off checklist, comms cadence, response-time norms, escalation path); schedule follow-up. Do not allow insults."
+  },
+
+  "annotations": {
+    "sme_author": "Management Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "De-escalate and facilitate mediation neutrally",
+      "Identify root causes (roles, process, communication norms)",
+      "Create a working agreement with accountability and follow-up"
+    ],
+    "correct_sop_steps": [
+      "Set ground rules (respect, no interruptions, focus on facts/behaviors, shared goal)",
+      "Let each person speak and summarize both sides neutrally",
+      "Clarify facts (ownership, timelines, what changed, where handoff failed)",
+      "Identify underlying needs and shared objective (delivery, predictability, quality)",
+      "Agree on concrete working agreements (roles/RACI, definition of ready/done, comms cadence, escalation path)",
+      "Schedule follow-up checkpoint and define how improvement will be measured"
+    ],
+    "common_mistakes": [
+      "Taking sides or acting like a judge",
+      "Allowing interruptions/insults",
+      "Staying in blame instead of process fixes",
+      "Ending without clear agreements and follow-up"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Sets and enforces ground rules",
+        "Summarizes both sides neutrally",
+        "Identifies at least one root cause (role/process/communication)",
+        "Produces concrete agreements with owners and follow-up"
+      ],
+      "bonus_points": [
+        "Creates a simple RACI or handoff checklist",
+        "Defines communication norms (cadence, response times, escalation)",
+        "Ends with a concise recap both parties confirm"
+      ],
+      "sticky_notes": [
+        "KEY: Neutral structure + shared goal, then process fixes.",
+        "TRAP: Don’t act as a judge—act as a facilitator.",
+        "HINT: End with a written working agreement and a check-in date."
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Frustrated, accusatory, feels unfairly blamed",
+    "secret_acceptance_condition": "Employee accepts mediation if you stay neutral, enforce ground rules, and end with clear working agreements and a follow-up checkpoint",
+    "escalation_triggers": [
+      "Manager taking sides",
+      "Interruptions allowed",
+      "Minimizing language",
+      "No concrete resolution"
+    ],
+    "deescalation_triggers": [
+      "Neutral facilitation",
+      "Clear ground rules",
+      "Process-based solutions",
+      "Concrete agreements"
+    ]
+  }
+}

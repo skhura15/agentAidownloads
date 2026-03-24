@@ -1,0 +1,14 @@
+name: customer_support_greeting
+version: "1.0.0"
+description: "Greeting message for customer support agent"
+variables:
+  - customer_name
+template: |
+  Hello{customer_name}! 👋
+  
+  Thank you for contacting support. I'm here to help you with any questions or issues you may have.
+  
+  How can I assist you today?
+metadata:
+  category: "customer_support"
+  language: "en"

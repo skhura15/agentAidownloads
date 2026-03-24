@@ -1,0 +1,275 @@
+# RAG Service Kubernetes Deployment
+# Deploy as a standalone microservice with proper scaling and health checks
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-service
+  labels:
+    app: rag-service
+    component: rag
+    tier: backend
+spec:
+  replicas: 2  # Start with 2 replicas for HA
+  selector:
+    matchLabels:
+      app: rag-service
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: rag-service
+        component: rag
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8001"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: rag-service
+      
+      # Security context
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      
+      containers:
+        - name: rag-service
+          image: rag-service:latest
+          imagePullPolicy: Always
+          
+          ports:
+            - name: http
+              containerPort: 8001
+              protocol: TCP
+          
+          # Environment variables
+          env:
+            - name: RAG_SERVICE_HOST
+              value: "0.0.0.0"
+            - name: RAG_SERVICE_PORT
+              value: "8001"
+            
+            # Vector store configuration
+            - name: VECTOR_PROVIDER
+              value: "chroma"
+            - name: VECTOR_COLLECTION
+              valueFrom:
+                configMapKeyRef:
+                  name: rag-service-config
+                  key: vector_collection
+            - name: VECTOR_PERSIST_DIR
+              value: "/app/data/chroma"
+            
+            # RAG configuration
+            - name: RAG_TOP_K
+              value: "5"
+            - name: RAG_MIN_SCORE
+              value: "0.05"
+            - name: RAG_QUERY_EXPANSION
+              value: "true"
+            
+            # Azure AI Foundry (from secrets)
+            - name: USE_FOUNDRY
+              valueFrom:
+                configMapKeyRef:
+                  name: rag-service-config
+                  key: use_foundry
+            - name: FOUNDRY_PROJECT_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: rag-service-secrets
+                  key: foundry_endpoint
+                  optional: true
+            - name: FOUNDRY_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rag-service-secrets
+                  key: foundry_api_key
+                  optional: true
+            - name: FOUNDRY_MODEL_DEPLOYMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: rag-service-config
+                  key: foundry_model
+                  optional: true
+            - name: AZURE_OPENAI_EMBEDDING_DEPLOYMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: rag-service-config
+                  key: embedding_model
+                  optional: true
+            
+            # Ollama fallback
+            - name: OLLAMA_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: rag-service-config
+                  key: ollama_url
+                  optional: true
+          
+          # Resource limits
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          
+          # Probes
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8001
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8001
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          
+          # Volume mounts
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+            - name: logs
+              mountPath: /app/logs
+      
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: rag-service-data
+        - name: logs
+          emptyDir: {}
+      
+      # Affinity and anti-affinity
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - rag-service
+                topologyKey: kubernetes.io/hostname
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: rag-service
+  labels:
+    app: rag-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8001
+      targetPort: 8001
+      protocol: TCP
+      name: http
+  selector:
+    app: rag-service
+
+---
+# ServiceAccount
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rag-service
+  labels:
+    app: rag-service
+
+---
+# ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rag-service-config
+data:
+  use_foundry: "true"
+  vector_collection: "uta_knowledge_azure"
+  foundry_model: "gpt-4o"
+  embedding_model: "text-embedding-3-large"
+  ollama_url: "http://ollama-service:11434"
+
+---
+# Secret placeholder (replace with actual secrets)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rag-service-secrets
+type: Opaque
+data:
+  # Base64 encoded values - replace with actual secrets
+  foundry_endpoint: ""
+  foundry_api_key: ""
+
+---
+# PersistentVolumeClaim for vector store data
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rag-service-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: managed-premium  # Azure managed disk
+
+---
+# HorizontalPodAutoscaler
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: rag-service-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: rag-service
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+
+---
+# PodDisruptionBudget for HA
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: rag-service-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: rag-service

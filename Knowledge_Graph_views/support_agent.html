@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support AI Agent — Microsoft CCaaS</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #111827;
+    --bg3: #1e293b;
+    --bg4: #273449;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --green: #22c55e;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --purple: #a78bfa;
+    --border: #334155;
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ─── Header ──────────────────────────────────────────── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header-logo {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .header-title h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .header-title p {
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+  .status-dot.connected { background: var(--green); }
+  .status-dot.disconnected { background: var(--red); }
+  .nav-link {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--bg4);
+  }
+
+  /* ─── Main Layout ─────────────────────────────────────── */
+  .main-layout {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* ─── Chat Panel ──────────────────────────────────────── */
+  .chat-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .chat-messages::-webkit-scrollbar { width: 6px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb {
+    background: var(--bg4);
+    border-radius: 3px;
+  }
+
+  /* Welcome message */
+  .welcome-card {
+    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(167,139,250,0.1));
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 12px;
+    padding: 24px;
+    margin: auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  .welcome-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--accent2);
+  }
+  .welcome-card p {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .sample-tickets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sample-ticket {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 12px;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sample-ticket:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--bg4);
+  }
+  .sample-ticket strong {
+    color: var(--text);
+    font-size: 12px;
+  }
+
+  /* Message bubbles */
+  .message {
+    display: flex;
+    gap: 10px;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .message.user { align-self: flex-end; flex-direction: row-reverse; }
+  .message.agent { align-self: flex-start; }
+
+  .msg-avatar {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .message.user .msg-avatar {
+    background: var(--bg4);
+  }
+  .message.agent .msg-avatar {
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+  }
+
+  .msg-content {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .message.user .msg-content {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+  .message.agent .msg-content {
+    border-bottom-left-radius: 4px;
+  }
+  .msg-content h1, .msg-content h2, .msg-content h3 {
+    margin: 12px 0 6px 0;
+    color: var(--accent2);
+  }
+  .msg-content h1 { font-size: 16px; }
+  .msg-content h2 { font-size: 14px; }
+  .msg-content h3 { font-size: 13px; }
+  .msg-content p { margin: 6px 0; }
+  .msg-content ul, .msg-content ol {
+    margin: 6px 0 6px 20px;
+  }
+  .msg-content li { margin: 3px 0; }
+  .msg-content code {
+    background: var(--bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+  }
+  .msg-content pre {
+    background: var(--bg);
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 8px 0;
+    font-size: 12px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+  }
+  .msg-content strong { color: var(--accent2); }
+  .msg-label {
+    font-size: 10px;
+    color: var(--text2);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  /* Typing indicator */
+  .typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 8px 0;
+  }
+  .typing-indicator span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text2);
+    animation: typing 1.4s infinite;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing {
+    0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+    30% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ─── Input Area ──────────────────────────────────────── */
+  .input-area {
+    border-top: 1px solid var(--border);
+    padding: 16px 20px;
+    background: var(--bg2);
+    flex-shrink: 0;
+  }
+  .input-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .input-wrapper {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s;
+  }
+  .input-wrapper:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+  }
+  #ticketInput {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 13px;
+    padding: 12px 14px;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    line-height: 1.5;
+    min-height: 48px;
+    max-height: 200px;
+  }
+  #ticketInput::placeholder { color: var(--text2); }
+  .input-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border-top: 1px solid var(--border);
+  }
+  .input-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+  .toggle-switch {
+    position: relative;
+    width: 32px; height: 18px;
+    cursor: pointer;
+  }
+  .toggle-switch input { display: none; }
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--bg4);
+    border-radius: 9px;
+    transition: 0.3s;
+  }
+  .toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 14px; height: 14px;
+    left: 2px; bottom: 2px;
+    background: var(--text);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  .toggle-switch input:checked + .toggle-slider {
+    background: var(--accent);
+  }
+  .toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(14px);
+  }
+  .char-count {
+    font-size: 10px;
+    color: var(--text2);
+  }
+  .send-btn {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .send-btn:hover { background: var(--accent2); }
+  .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ─── Context Side Panel ──────────────────────────────── */
+  .context-panel {
+    width: 320px;
+    background: var(--bg2);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .context-panel.collapsed { width: 0; border-left: none; }
+  .context-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .context-header h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .context-close {
+    background: none;
+    border: none;
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .context-close:hover { background: var(--bg3); color: var(--text); }
+  .context-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .context-body::-webkit-scrollbar { width: 5px; }
+  .context-body::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+  .context-section {
+    margin-bottom: 16px;
+  }
+  .context-section-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .context-chip {
+    display: inline-block;
+    padding: 3px 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text2);
+    margin: 2px;
+  }
+  .context-item {
+    padding: 8px 10px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .context-item .label {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .context-item .type-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 600;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+  .context-item.clickable {
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  .context-item.clickable:hover {
+    background: var(--bg2);
+    transform: translateX(2px);
+  }
+  .context-item.clickable:active {
+    transform: translateX(1px);
+  }
+  .type-badge.known-issue { background: rgba(239,68,68,0.15); color: var(--red); }
+  .type-badge.runbook { background: rgba(245,158,11,0.15); color: var(--orange); }
+  .type-badge.expert { background: rgba(34,197,94,0.15); color: var(--green); }
+  .type-badge.service { background: rgba(59,130,246,0.15); color: var(--accent2); }
+  .type-badge.faq { background: rgba(167,139,250,0.15); color: var(--purple); }
+  .type-badge.incident { background: rgba(239,68,68,0.15); color: var(--red); }
+  .type-badge.document { background: rgba(94,234,212,0.15); color: #5eeaD4; }
+
+  .context-empty {
+    text-align: center;
+    padding: 30px 10px;
+    color: var(--text2);
+    font-size: 12px;
+  }
+  .context-empty .icon { font-size: 28px; margin-bottom: 8px; }
+
+  /* ─── Toggle Context Button ───────────────────────────── */
+  .toggle-context-btn {
+    position: fixed;
+    right: 12px;
+    bottom: 80px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text2);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 10;
+  }
+  .toggle-context-btn:hover { background: var(--bg4); color: var(--text); }
+  .context-panel.collapsed ~ .toggle-context-btn { display: flex; }
+
+  /* ─── Document Viewer Modal ───────────────────────────── */
+  .doc-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .doc-modal-content {
+    background: var(--bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .doc-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .doc-modal-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .doc-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .doc-download-btn:hover {
+    background: var(--accent2);
+  }
+  .doc-download-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .doc-modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--text2);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .doc-modal-close:hover {
+    background: var(--bg3);
+    color: var(--text);
+  }
+  .doc-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    position: relative;
+  }
+  .doc-loading {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    color: var(--text2);
+  }
+  .spinner {
+    border: 3px solid var(--bg3);
+    border-top: 3px solid var(--accent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  #documentContent {
+    background: var(--bg2);
+    padding: 16px;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+  }
+
+  /* ─── Responsive ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .context-panel { width: 260px; }
+  }
+  @media (max-width: 700px) {
+    .context-panel { display: none; }
+    .toggle-context-btn { display: none !important; }
+    .header-right .nav-link { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Header ────────────────────────────────────────────── -->
+<header class="header">
+  <div class="header-left">
+    <div class="header-logo">🤖</div>
+    <div class="header-title">
+      <h1>Support AI Agent</h1>
+      <p>Microsoft Dynamics 365 Contact Center (CCaaS)</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="status-badge" id="llmStatus">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Checking LLM…</span>
+    </div>
+    <a href="graph_explorer.html" class="nav-link">📊 Graph Explorer</a>
+    <a href="index.html" class="nav-link">🏠 Dashboard</a>
+  </div>
+</header>
+
+<!-- ─── Main Layout ───────────────────────────────────────── -->
+<div class="main-layout">
+  <!-- Chat Panel -->
+  <div class="chat-panel">
+    <div class="chat-messages" id="chatMessages">
+      <!-- Welcome Card -->
+      <div class="welcome-card" id="welcomeCard">
+        <h2>👋 Welcome to Support AI Agent</h2>
+        <p>
+          Paste a support ticket or describe an issue below. I'll traverse the
+          Knowledge Graph to find known issues, runbooks, expert contacts, and
+          provide step-by-step resolution guidance.
+        </p>
+        <div class="sample-tickets">
+          <div class="sample-ticket" onclick="useSample(0)">
+            <strong>🔴 Voice Outage</strong> — Contoso Corp agents report all inbound voice calls are dropping after 3 seconds. Multiple agents affected in US East region. Started 15 minutes ago.
+          </div>
+          <div class="sample-ticket" onclick="useSample(1)">
+            <strong>🟡 Copilot Slow</strong> — Agents at Fabrikam Inc report Copilot suggestions take over 15 seconds to appear. Spinning indicator shown. Happening since 9 AM during peak hours.
+          </div>
+          <div class="sample-ticket" onclick="useSample(2)">
+            <strong>🟡 Chat Not Working on Safari</strong> — Northwind Traders customers report live chat widget not loading on Safari browsers. Works fine on Chrome and Edge.
+          </div>
+          <div class="sample-ticket" onclick="useSample(3)">
+            <strong>🟠 Routing Stuck</strong> — Contoso Corp chat work items are piling up in queue. 50+ items waiting. Agents are available but not receiving assignments. Started after routing rule change.
+          </div>
+          <div class="sample-ticket" onclick="useSample(4)">
+            <strong>🔵 Agent Stuck in Busy</strong> — An agent at Fabrikam Inc is stuck in Busy status after a call disconnected. Cannot receive new work items. Already tried signing out.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+      <div class="input-row">
+        <div class="input-wrapper">
+          <textarea id="ticketInput"
+            placeholder="Paste ticket details or describe the issue…  (Shift+Enter for new line)"
+            rows="2"></textarea>
+          <div class="input-controls">
+            <label class="input-toggle">
+              <label class="toggle-switch">
+                <input type="checkbox" id="useLlmToggle" checked>
+                <span class="toggle-slider"></span>
+              </label>
+              Use Ollama LLM
+            </label>
+            <span class="char-count" id="charCount">0 chars</span>
+          </div>
+        </div>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send (Enter)">
+          ➤
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context Side Panel -->
+  <div class="context-panel" id="contextPanel">
+    <div class="context-header">
+      <h3>🔍 Graph Context</h3>
+      <button class="context-close" onclick="toggleContext()">&times;</button>
+    </div>
+    <div class="context-body" id="contextBody">
+      <div class="context-empty">
+        <div class="icon">🗺️</div>
+        <p>Send a message to see<br>Knowledge Graph traversal results</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="toggle-context-btn" onclick="toggleContext()" title="Show Graph Context">🔍</button>
+
+  <!-- Document Viewer Modal -->
+  <div id="documentModal" class="doc-modal">
+    <div class="doc-modal-content">
+      <div class="doc-modal-header">
+        <h3 id="documentTitle">Document</h3>
+        <div class="doc-modal-actions">
+          <button class="doc-download-btn" onclick="downloadDocument()" title="Download file">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download
+          </button>
+          <button class="doc-modal-close" onclick="closeDocumentModal()">&times;</button>
+        </div>
+      </div>
+      <div class="doc-modal-body">
+        <div id="documentLoading" class="doc-loading">
+          <div class="spinner"></div>
+          <p>Loading document...</p>
+        </div>
+        <pre id="documentContent"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── Sample Tickets ───────────────────────────────────────
+const SAMPLES = [
+  `TICKET: INC-20260225-001
+Priority: P1
+Customer: Contoso Corp (Enterprise - 250 agents)
+Channel: Voice
+Issue: All inbound voice calls are dropping after 3 seconds. Agents hear ringing, customer connects briefly, then call drops. Transfer attempts also failing. Started ~15 minutes ago. Approximately 50 agents affected in US East region. IVR menu loads but drops after customer selection. Call recording shows 0-second recordings.`,
+
+  `TICKET: INC-20260225-002
+Priority: P2
+Customer: Fabrikam Inc (Enterprise - 120 agents)
+Channel: Digital
+Issue: Copilot suggestions panel is extremely slow. Agents report waiting 15-20 seconds for any Copilot response. Spinning indicator shows indefinitely. Case summarization times out. Response drafting not working. Issue started around 9 AM when all agents logged in. Off-peak hours Copilot was working fine yesterday evening.`,
+
+  `TICKET: INC-20260225-003
+Priority: P2
+Customer: Northwind Traders (Digital Only - 45 agents)
+Channel: Chat
+Issue: Multiple end-customers reporting that the live chat widget is not loading on Safari browser. Widget button appears but clicking shows empty panel. Works fine on Chrome, Edge, and Firefox. Affects both macOS and iOS Safari users. Console error: "SecurityError: Blocked a frame with origin". Customers in EU West region.`,
+
+  `TICKET: INC-20260225-004
+Priority: P2
+Customer: Contoso Corp
+Channel: Chat
+Issue: Chat and email work items are piling up in the General Support queue. Currently 53 items waiting. Agents show as Available with capacity remaining. Routing diagnostics shows items are being classified but not assigned. This started approximately 2 hours ago after admin published a new classification ruleset. Agents have the right skills.`,
+
+  `TICKET: INC-20260225-005
+Priority: P3
+Customer: Fabrikam Inc
+Channel: Voice/Chat
+Issue: One agent (ID: AGT-0045) is stuck in "Busy" status. Agent reports they finished their last voice call 30 minutes ago but status never changed back. They tried signing out, closing browser, reopening — still shows Busy. Cannot receive any new calls or chats. Supervisor also sees them as Busy in dashboard.`
+];
+
+function useSample(index) {
+  const textarea = document.getElementById('ticketInput');
+  textarea.value = SAMPLES[index];
+  textarea.style.height = 'auto';
+  textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+  updateCharCount();
+  textarea.focus();
+}
+
+// ─── State ────────────────────────────────────────────────
+let isProcessing = false;
+let llmConnected = false;
+
+// ─── LLM Status Check ──────────────────────────────────────
+async function checkLLMStatus() {
+  try {
+    const resp = await fetch('/api/llm-status');
+    const data = await resp.json();
+    const dot = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+
+    if (data.status === 'connected') {
+      llmConnected = true;
+      const provider = data.provider === 'azure' ? 'Azure OpenAI' : 'Ollama';
+      const modelInfo = data.model || data.selected_model;
+      
+      if (data.provider === 'azure') {
+        dot.className = 'status-dot connected';
+        text.textContent = `${provider} ✓ (${modelInfo})`;
+      } else if (data.model_available !== false) {
+        dot.className = 'status-dot connected';
+        text.textContent = `${provider} ✓ (${modelInfo})`;
+      } else {
+        dot.className = 'status-dot';
+        text.textContent = `${provider} ✓ — Model not found`;
+      }
+    } else {
+      llmConnected = false;
+      dot.className = 'status-dot disconnected';
+      const provider = data.provider === 'azure' ? 'Azure OpenAI' : 'Ollama';
+      text.textContent = `${provider} Offline`;
+    }
+  } catch {
+    llmConnected = false;
+    document.getElementById('statusDot').className = 'status-dot disconnected';
+    document.getElementById('statusText').textContent = 'Backend Offline';
+  }
+}
+checkLLMStatus();
+setInterval(checkLLMStatus, 15000);
+
+// ─── Chat Logic ───────────────────────────────────────────
+function sendMessage() {
+  const textarea = document.getElementById('ticketInput');
+  const text = textarea.value.trim();
+  if (!text || isProcessing) return;
+
+  // Remove welcome card
+  const welcome = document.getElementById('welcomeCard');
+  if (welcome) welcome.remove();
+
+  // Add user message
+  addMessage('user', text);
+  textarea.value = '';
+  textarea.style.height = 'auto';
+  updateCharCount();
+
+  // Add typing indicator
+  const typingId = addTyping();
+
+  isProcessing = true;
+  document.getElementById('sendBtn').disabled = true;
+
+  const useLlm = document.getElementById('useLlmToggle').checked;
+
+  // Inactivity timeout: triggers only if no data received for 60 seconds
+  let inactivityTimeoutId = null;
+  
+  function resetInactivityTimeout() {
+    if (inactivityTimeoutId) {
+      clearTimeout(inactivityTimeoutId);
+    }
+    inactivityTimeoutId = setTimeout(() => {
+      if (isProcessing) {
+        console.warn('No data received for 60 seconds - connection timeout');
+        removeTyping(typingId);
+        addMessage('agent', `**Timeout:** No response received for 60 seconds. The server might be stuck or not responding.`, '⏱️ Timeout');
+        isProcessing = false;
+        document.getElementById('sendBtn').disabled = false;
+      }
+    }, 60000); // 60 seconds of inactivity
+  }
+
+  // Start initial timeout
+  resetInactivityTimeout();
+
+  // Use streaming endpoint for real-time token display
+  fetch('/api/chat-stream', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: text, use_llm: useLlm })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+    }
+    
+    // Reset timeout when we get response headers
+    resetInactivityTimeout();
+    removeTyping(typingId);
+
+    // Create the agent message bubble for streaming
+    const container = document.getElementById('chatMessages');
+    const msg = document.createElement('div');
+    msg.className = 'message agent';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'msg-avatar';
+    avatar.textContent = '🤖';
+
+    const content = document.createElement('div');
+    content.className = 'msg-content';
+
+    const lbl = document.createElement('div');
+    lbl.className = 'msg-label';
+    lbl.textContent = useLlm ? '🤖 AI Response (Streaming)' : '📊 Graph-Only Response';
+    content.appendChild(lbl);
+
+    const textEl = document.createElement('div');
+    textEl.className = 'msg-streaming-text';
+    content.appendChild(textEl);
+
+    msg.appendChild(avatar);
+    msg.appendChild(content);
+    container.appendChild(msg);
+
+    let fullText = '';
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+
+    function pump() {
+      return reader.read()
+        .then(({ done, value }) => {
+          if (done) {
+            // Final render with full markdown
+            textEl.innerHTML = renderMarkdown(fullText);
+            container.scrollTop = container.scrollHeight;
+            clearTimeout(inactivityTimeoutId);
+            isProcessing = false;
+            document.getElementById('sendBtn').disabled = false;
+            return;
+          }
+
+          // Reset timeout on each chunk received - this is the key fix!
+          resetInactivityTimeout();
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n');
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            try {
+              const evt = JSON.parse(line.slice(6));
+              if (evt.type === 'context') {
+                updateContextPanel(evt.graph_context);
+              } else if (evt.type === 'token') {
+                fullText += evt.text;
+                // Show raw text while streaming (re-render markdown periodically)
+                textEl.innerHTML = renderMarkdown(fullText);
+                container.scrollTop = container.scrollHeight;
+              } else if (evt.type === 'done') {
+                // Response complete - re-enable button immediately and close stream
+                lbl.textContent = evt.mode === 'llm' ? '🤖 AI Response (Ollama)' : '📊 Graph-Only Response';
+                textEl.innerHTML = renderMarkdown(fullText);
+                container.scrollTop = container.scrollHeight;
+                clearTimeout(inactivityTimeoutId);
+                isProcessing = false;
+                document.getElementById('sendBtn').disabled = false;
+                console.log('Response complete - closing stream and re-enabling button');
+                // Close the reader to free up the connection
+                reader.cancel();
+                return; // Exit the pump loop
+              } else if (evt.type === 'error') {
+                // Server sent an error event
+                console.error('Server error:', evt.message);
+                fullText += `\n\n**Server Error:** ${evt.message}`;
+                textEl.innerHTML = renderMarkdown(fullText);
+                container.scrollTop = container.scrollHeight;
+              }
+            } catch(parseErr) {
+              console.error('Failed to parse SSE event:', line, parseErr);
+            }
+          }
+          return pump();
+        })
+        .catch(streamErr => {
+          // Handle streaming errors
+          console.error('Stream reading error:', streamErr);
+          clearTimeout(inactivityTimeoutId);
+          isProcessing = false;
+          document.getElementById('sendBtn').disabled = false;
+          throw streamErr;
+        });
+    }
+
+    return pump();
+  })
+  .catch(err => {
+    console.error('Request error:', err);
+    clearTimeout(inactivityTimeoutId);
+    removeTyping(typingId);
+    addMessage('agent', `**Error:** Could not connect to backend.\n\n${err.message}\n\nMake sure the Python server is running: \`python server.py\``, '❌ Error');
+    isProcessing = false;
+    document.getElementById('sendBtn').disabled = false;
+  });
+}
+
+function addMessage(role, text, label) {
+  const container = document.getElementById('chatMessages');
+  const msg = document.createElement('div');
+  msg.className = `message ${role}`;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.textContent = role === 'user' ? '👤' : '🤖';
+
+  const content = document.createElement('div');
+  content.className = 'msg-content';
+
+  if (label) {
+    const lbl = document.createElement('div');
+    lbl.className = 'msg-label';
+    lbl.textContent = label;
+    content.appendChild(lbl);
+  }
+
+  if (role === 'agent') {
+    content.innerHTML += renderMarkdown(text);
+  } else {
+    content.textContent = text;
+  }
+
+  msg.appendChild(avatar);
+  msg.appendChild(content);
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+}
+
+function addTyping() {
+  const container = document.getElementById('chatMessages');
+  const msg = document.createElement('div');
+  msg.className = 'message agent';
+  msg.id = 'typing-' + Date.now();
+
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.textContent = '🤖';
+
+  const content = document.createElement('div');
+  content.className = 'msg-content';
+  content.innerHTML = `
+    <div class="msg-label">Analyzing ticket & traversing Knowledge Graph…</div>
+    <div class="typing-indicator">
+      <span></span><span></span><span></span>
+    </div>
+  `;
+
+  msg.appendChild(avatar);
+  msg.appendChild(content);
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+  return msg.id;
+}
+
+function removeTyping(id) {
+  const el = document.getElementById(id);
+  if (el) el.remove();
+}
+
+// ─── Simple Markdown Renderer ─────────────────────────────
+function renderMarkdown(text) {
+  let html = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // Code blocks
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Italic
+  html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  // Headers
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+  // Unordered lists
+  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+  // Ordered lists
+  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+  // Line breaks
+  html = html.replace(/\n\n/g, '</p><p>');
+  html = html.replace(/\n/g, '<br>');
+  // Wrap in paragraph
+  html = '<p>' + html + '</p>';
+  // Clean up empty paragraphs
+  html = html.replace(/<p>\s*<\/p>/g, '');
+
+  return html;
+}
+
+// ─── Context Panel ────────────────────────────────────────
+function updateContextPanel(ctx) {
+  if (!ctx) return;
+  const body = document.getElementById('contextBody');
+  let html = '';
+
+  // Keywords
+  if (ctx.keywords && ctx.keywords.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">🔑 Keywords Detected</div>
+      <div>${ctx.keywords.map(k => `<span class="context-chip">${k}</span>`).join('')}</div>
+    </div>`;
+  }
+
+  // Known Issues
+  if (ctx.known_issues && ctx.known_issues.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">🔴 Known Issues</div>
+      ${ctx.known_issues.map(k => `<div class="context-item"><span class="label">${k}</span><span class="type-badge known-issue">Known Issue</span></div>`).join('')}
+    </div>`;
+  }
+
+  // Runbooks
+  if (ctx.runbooks && ctx.runbooks.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">📋 Runbooks</div>
+      ${ctx.runbooks.map(r => {
+        // Handle both old format (string) and new format (object)
+        if (typeof r === 'string') {
+          return `<div class="context-item"><span class="label">${r}</span><span class="type-badge runbook">Runbook</span></div>`;
+        }
+        // New format - make clickable if path exists
+        const clickable = r.path ? 'clickable' : '';
+        const dataPath = r.path ? `data-path="${r.path}"` : '';
+        return `<div class="context-item ${clickable}" ${dataPath}><span class="label">${r.label}</span><span class="type-badge runbook">Runbook</span></div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  // FAQs
+  if (ctx.faqs && ctx.faqs.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">❓ FAQs</div>
+      ${ctx.faqs.map(f => `<div class="context-item"><span class="label">${f}</span><span class="type-badge faq">FAQ</span></div>`).join('')}
+    </div>`;
+  }
+
+  // Services
+  if (ctx.matched_services && ctx.matched_services.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">🔧 Affected Services</div>
+      ${ctx.matched_services.map(s => `<div class="context-item"><span class="label">${s}</span><span class="type-badge service">Service</span></div>`).join('')}
+    </div>`;
+  }
+
+  // Experts
+  if (ctx.experts && ctx.experts.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">👤 Experts</div>
+      ${ctx.experts.map(e => `<div class="context-item"><span class="label">${e}</span><span class="type-badge expert">Expert</span></div>`).join('')}
+    </div>`;
+  }
+
+  // Past Incidents
+  if (ctx.past_incidents && ctx.past_incidents.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">📊 Past Incidents</div>
+      ${ctx.past_incidents.map(i => `<div class="context-item"><span class="label">${i}</span><span class="type-badge incident">Incident</span></div>`).join('')}
+    </div>`;
+  }
+
+  // Documents
+  if (ctx.documents && ctx.documents.length) {
+    html += `<div class="context-section">
+      <div class="context-section-title">📄 Documents Referenced</div>
+      ${ctx.documents.map(d => {
+        // Handle both old format (string) and new format (object)
+        if (typeof d === 'string') {
+          return `<div class="context-item"><span class="label">${d}</span><span class="type-badge document">Doc</span></div>`;
+        }
+        // New format - make clickable if path exists
+        const clickable = d.path ? 'clickable' : '';
+        const dataPath = d.path ? `data-path="${d.path}"` : '';
+        return `<div class="context-item ${clickable}" ${dataPath}><span class="label">${d.source}</span><span class="type-badge document">Doc</span></div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  if (!html) {
+    html = `<div class="context-empty">
+      <div class="icon">🔍</div>
+      <p>No matching nodes found<br>in the Knowledge Graph</p>
+    </div>`;
+  }
+
+  body.innerHTML = html;
+}
+
+function toggleContext() {
+  document.getElementById('contextPanel').classList.toggle('collapsed');
+}
+
+// ─── Input Handling ───────────────────────────────────────
+const textarea = document.getElementById('ticketInput');
+textarea.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+textarea.addEventListener('input', () => {
+  textarea.style.height = 'auto';
+  textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+  updateCharCount();
+});
+
+function updateCharCount() {
+  const count = document.getElementById('ticketInput').value.length;
+  document.getElementById('charCount').textContent = `${count} chars`;
+}
+
+// ─── Document Viewer ──────────────────────────────────────
+let currentDocumentPath = null;
+let currentDocumentContent = null;
+
+function openDocument(path) {
+  const modal = document.getElementById('documentModal');
+  const titleEl = document.getElementById('documentTitle');
+  const contentEl = document.getElementById('documentContent');
+  const loadingEl = document.getElementById('documentLoading');
+  
+  // Show modal and loading state
+  modal.style.display = 'flex';
+  titleEl.textContent = path.split('/').pop();
+  contentEl.textContent = '';
+  loadingEl.style.display = 'block';
+  currentDocumentPath = path;
+  currentDocumentContent = null;
+  
+  // Fetch document content from server
+  fetch(`/api/document?path=${encodeURIComponent(path)}`)
+    .then(res => res.json())
+    .then(data => {
+      loadingEl.style.display = 'none';
+      if (data.error) {
+        contentEl.textContent = `Error: ${data.error}`;
+        currentDocumentContent = null;
+      } else {
+        contentEl.textContent = data.content;
+        currentDocumentContent = data.content;
+      }
+    })
+    .catch(err => {
+      loadingEl.style.display = 'none';
+      contentEl.textContent = `Failed to load document: ${err.message}`;
+      currentDocumentContent = null;
+    });
+}
+
+function closeDocumentModal() {
+  document.getElementById('documentModal').style.display = 'none';
+}
+
+function downloadDocument() {
+  if (!currentDocumentContent || !currentDocumentPath) {
+    alert('No document loaded');
+    return;
+  }
+  
+  // Create blob and download
+  const blob = new Blob([currentDocumentContent], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = currentDocumentPath.split('/').pop();
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// Add click handlers to context items (delegated event)
+document.addEventListener('click', (e) => {
+  const item = e.target.closest('.context-item.clickable');
+  if (item && item.dataset.path) {
+    openDocument(item.dataset.path);
+  }
+});
+</script>
+</body>
+</html>

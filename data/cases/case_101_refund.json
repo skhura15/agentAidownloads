@@ -1,0 +1,64 @@
+{
+  "ticket_id": "TICKET-101",
+  "title": "Angry Customer Demanding Refund",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 10,
+  "primary_skill": "De-escalation",
+  "tags": ["refund", "angry-customer", "policy-enforcement"],
+  "agent_context": "Customer is upset about a defective laptop but is outside the return window. Focus on de-escalation and guide the conversation toward warranty repair as the primary resolution path.",
+  
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Alex Rivera",
+    "initial_message": "I bought a laptop from you guys 45 days ago and it's already broken! The screen just went black. I want my money back RIGHT NOW. This is absolutely ridiculous!",
+    "context": "Customer purchased a laptop 45 days ago. Return policy is 30 days. Warranty covers repairs for 1 year. Customer has been a member for 3 years with 12 previous purchases."
+  },
+  
+  "annotations": {
+    "sme_author": "Sarah Johnson",
+    "sme_date": "2026-01-15",
+    "learning_objectives": [
+      "Practice de-escalation techniques with hostile customers",
+      "Learn to explain policy limitations empathetically",
+      "Identify alternative solutions when direct requests cannot be met"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge the customer's frustration before anything else",
+      "Express empathy for the situation (broken laptop is genuinely frustrating)",
+      "Verify the purchase date and explain the 30-day return window",
+      "Pivot to the warranty option as an alternative solution",
+      "Offer to expedite the repair process",
+      "If customer remains upset, offer escalation to supervisor or partial store credit"
+    ],
+    "common_mistakes": [
+      "Immediately saying 'no' to the refund without empathy",
+      "Arguing with the customer about the policy",
+      "Not offering any alternative solutions",
+      "Getting defensive when customer is hostile"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Clear empathy statement",
+        "Policy explanation with soft language",
+        "At least one alternative solution offered"
+      ],
+      "bonus_points": [
+        "Acknowledging customer's loyalty (3 years, 12 purchases)",
+        "Offering expedited service",
+        "Proactive follow-up offer"
+      ]
+    },
+    "sticky_notes": [
+      "KEY: The customer will calm down if you acknowledge their frustration FIRST. Don't jump to policy!",
+      "HINT: Mentioning warranty repair + expedited service usually works for this scenario",
+      "TRAP: If agent says 'That's not our policy' without empathy, customer will escalate anger"
+    ]
+  },
+  
+  "customer_persona_hints": {
+    "tone": "Hostile initially, but logical underneath",
+    "secret_acceptance_condition": "Will accept warranty repair if agent shows genuine empathy AND offers expedited service",
+    "escalation_triggers": ["Immediate policy citation without empathy", "Defensive responses", "Long wait times mentioned"],
+    "de-escalation_triggers": ["Genuine apology", "Acknowledgment of frustration", "Concrete alternative offered quickly"]
+  }
+}

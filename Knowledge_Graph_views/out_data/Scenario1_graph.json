@@ -1,0 +1,434 @@
+{
+  "metadata": {
+    "graph_name": "Knowledge Graph - Scenario1",
+    "version": "2.0.0",
+    "description": "Knowledge graph for Support AI Agent to resolve Microsoft Dynamics 365 Contact Center (CCaaS) tickets. Covers services, SPOs, release notes, user guides, known issues, runbooks, SOPs, incidents, experts, and customers.",
+    "created_date": "2026-03-06",
+    "last_updated": "2026-03-06",
+    "product": "Microsoft Dynamics 365 Contact Center (CCaaS)",
+    "total_nodes": 17,
+    "total_edges": 34,
+    "schema_version": "v2"
+  },
+  "node_types": [
+    "Product",
+    "Service",
+    "SPO",
+    "ReleaseNote",
+    "UserGuide",
+    "KnownIssue",
+    "Runbook",
+    "SOP",
+    "Incident",
+    "Expert",
+    "Team",
+    "Customer",
+    "Infrastructure",
+    "Configuration",
+    "FAQ",
+    "Feature"
+  ],
+  "edge_types": [
+    "ASSIGNED_TO",
+    "BELONGS_TO_SPO",
+    "CONFIGURED_BY",
+    "DEPENDS_ON",
+    "DOCUMENTED_IN",
+    "ESCALATES_TO",
+    "FIXED_IN",
+    "HAS_FAQ",
+    "HAS_FEATURE",
+    "HAS_KNOWN_ISSUE",
+    "HAS_RELEASE_NOTE",
+    "HAS_RUNBOOK",
+    "HAS_SERVICE",
+    "HAS_SOP",
+    "IMPACTED_BY",
+    "OWNS",
+    "RELATED_TO",
+    "REPORTED_INCIDENT",
+    "RESOLVED_BY",
+    "RUNS_ON",
+    "SUBSCRIBES_TO",
+    "WORKAROUND_IN"
+  ],
+  "nodes": [
+    {
+      "id": "CFG-001",
+      "type": "Configuration",
+      "label": "Voice+Routing Config",
+      "properties": {
+        "admin_path": "Admin Center > Config"
+      },
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "id": "CUST-001",
+      "type": "Customer",
+      "label": "Contoso",
+      "properties": {
+        "sla_tier": "Premier"
+      },
+      "tags": [
+        "customer"
+      ]
+    },
+    {
+      "id": "EXP-001",
+      "type": "Expert",
+      "label": "Priya Sharma",
+      "properties": {
+        "role": "Senior Engineer"
+      },
+      "tags": [
+        "expert"
+      ]
+    },
+    {
+      "id": "FAQ-001",
+      "type": "FAQ",
+      "label": "Reset Presence",
+      "properties": {
+        "question": "How to reset presence?"
+      },
+      "tags": [
+        "faq"
+      ]
+    },
+    {
+      "id": "FEAT-001",
+      "type": "Feature",
+      "label": "Sentiment Routing",
+      "properties": {
+        "availability": "2025 Wave 1"
+      },
+      "tags": [
+        "feature"
+      ]
+    },
+    {
+      "id": "INC-001",
+      "type": "Incident",
+      "label": "INC-001 Voice Outage",
+      "properties": {
+        "severity": "P1"
+      },
+      "tags": [
+        "incident"
+      ]
+    },
+    {
+      "id": "INFRA-001",
+      "type": "Infrastructure",
+      "label": "Dataverse",
+      "properties": {
+        "regions": [
+          "US East"
+        ]
+      },
+      "tags": [
+        "data"
+      ]
+    },
+    {
+      "id": "KI-001",
+      "type": "KnownIssue",
+      "label": "Voice Transfer Drop",
+      "properties": {
+        "severity": "P1"
+      },
+      "tags": [
+        "issue"
+      ]
+    },
+    {
+      "id": "PROD-001",
+      "type": "Product",
+      "label": "Sample Contact Center Product",
+      "properties": {
+        "vendor": "Microsoft",
+        "version": "2025 Wave 2"
+      },
+      "tags": [
+        "sample"
+      ]
+    },
+    {
+      "id": "RN-001",
+      "type": "ReleaseNote",
+      "label": "2025 Wave 2 Notes",
+      "properties": {
+        "release_date": "2025-10-01"
+      },
+      "tags": [
+        "release"
+      ]
+    },
+    {
+      "id": "RB-001",
+      "type": "Runbook",
+      "label": "Recover Voice Outage",
+      "properties": {
+        "estimated_time": "30 minutes"
+      },
+      "tags": [
+        "runbook"
+      ]
+    },
+    {
+      "id": "SVC-001",
+      "type": "Service",
+      "label": "Voice Channel",
+      "properties": {
+        "criticality": "P1"
+      },
+      "tags": [
+        "voice"
+      ]
+    },
+    {
+      "id": "SVC-002",
+      "type": "Service",
+      "label": "Routing Engine",
+      "properties": {
+        "criticality": "P2"
+      },
+      "tags": [
+        "routing"
+      ]
+    },
+    {
+      "id": "SOP-001",
+      "type": "SOP",
+      "label": "P1 Escalation SOP",
+      "properties": {
+        "category": "Escalation"
+      },
+      "tags": [
+        "sop"
+      ]
+    },
+    {
+      "id": "SPO-001",
+      "type": "SPO",
+      "label": "Enterprise License",
+      "properties": {
+        "price_usd": "$110"
+      },
+      "tags": [
+        "license"
+      ]
+    },
+    {
+      "id": "TEAM-001",
+      "type": "Team",
+      "label": "Voice Team",
+      "properties": {
+        "members": 5
+      },
+      "tags": [
+        "team"
+      ]
+    },
+    {
+      "id": "UG-001",
+      "type": "UserGuide",
+      "label": "Admin Guide",
+      "properties": {
+        "pages": 10
+      },
+      "tags": [
+        "guide"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "CUST-001",
+      "target": "INC-001",
+      "type": "REPORTED_INCIDENT"
+    },
+    {
+      "source": "CUST-001",
+      "target": "SPO-001",
+      "type": "SUBSCRIBES_TO"
+    },
+    {
+      "source": "INC-001",
+      "target": "SVC-001",
+      "type": "IMPACTED_BY"
+    },
+    {
+      "source": "INC-001",
+      "target": "RB-001",
+      "type": "RESOLVED_BY"
+    },
+    {
+      "source": "INC-001",
+      "target": "EXP-001",
+      "type": "ASSIGNED_TO"
+    },
+    {
+      "source": "INC-001",
+      "target": "KI-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "INC-001",
+      "target": "CFG-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "INC-001",
+      "target": "UG-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-001",
+      "target": "RN-001",
+      "type": "FIXED_IN"
+    },
+    {
+      "source": "KI-001",
+      "target": "CFG-001",
+      "type": "WORKAROUND_IN"
+    },
+    {
+      "source": "KI-001",
+      "target": "INC-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-001",
+      "target": "RB-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "KI-001",
+      "target": "UG-001",
+      "type": "RELATED_TO"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SVC-001",
+      "type": "HAS_SERVICE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SVC-002",
+      "type": "HAS_SERVICE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SPO-001",
+      "type": "BELONGS_TO_SPO"
+    },
+    {
+      "source": "PROD-001",
+      "target": "RN-001",
+      "type": "HAS_RELEASE_NOTE"
+    },
+    {
+      "source": "PROD-001",
+      "target": "SOP-001",
+      "type": "HAS_SOP"
+    },
+    {
+      "source": "PROD-001",
+      "target": "FEAT-001",
+      "type": "HAS_FEATURE"
+    },
+    {
+      "source": "SVC-001",
+      "target": "INFRA-001",
+      "type": "RUNS_ON"
+    },
+    {
+      "source": "SVC-001",
+      "target": "CFG-001",
+      "type": "CONFIGURED_BY"
+    },
+    {
+      "source": "SVC-001",
+      "target": "SVC-002",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "source": "SVC-001",
+      "target": "UG-001",
+      "type": "DOCUMENTED_IN"
+    },
+    {
+      "source": "SVC-001",
+      "target": "KI-001",
+      "type": "HAS_KNOWN_ISSUE"
+    },
+    {
+      "source": "SVC-001",
+      "target": "RB-001",
+      "type": "HAS_RUNBOOK"
+    },
+    {
+      "source": "SVC-001",
+      "target": "FAQ-001",
+      "type": "HAS_FAQ"
+    },
+    {
+      "source": "SVC-001",
+      "target": "FEAT-001",
+      "type": "HAS_FEATURE"
+    },
+    {
+      "source": "SVC-002",
+      "target": "INFRA-001",
+      "type": "RUNS_ON"
+    },
+    {
+      "source": "SVC-002",
+      "target": "CFG-001",
+      "type": "CONFIGURED_BY"
+    },
+    {
+      "source": "SVC-002",
+      "target": "UG-001",
+      "type": "DOCUMENTED_IN"
+    },
+    {
+      "source": "SOP-001",
+      "target": "TEAM-001",
+      "type": "ESCALATES_TO"
+    },
+    {
+      "source": "SPO-001",
+      "target": "SVC-001",
+      "type": "HAS_SERVICE"
+    },
+    {
+      "source": "TEAM-001",
+      "target": "SVC-001",
+      "type": "OWNS"
+    },
+    {
+      "source": "TEAM-001",
+      "target": "EXP-001",
+      "type": "ASSIGNED_TO"
+    }
+  ],
+  "ai_agent_instructions": {
+    "purpose": "When a support ticket arrives for Microsoft Dynamics 365 Contact Center (CCaaS), traverse this graph to find the best resolution path.",
+    "resolution_workflow": [
+      "1. PARSE: Extract product, service, error messages, symptoms, customer name from ticket",
+      "2. IDENTIFY SERVICE: Map symptoms to the affected service node",
+      "3. CHECK KNOWN ISSUES: Search KnownIssue nodes matching symptoms — provide workaround immediately",
+      "4. CHECK RELEASE NOTES: Follow FIXED_IN edges for available fixes in newer versions",
+      "5. FIND RUNBOOK: Follow HAS_RUNBOOK edges for step-by-step recovery",
+      "6. CHECK FAQ: Follow HAS_FAQ edges for common questions",
+      "7. REVIEW PAST INCIDENTS: Search similar past incidents and their resolutions",
+      "8. FIND DOCUMENTS: Retrieve relevant User Guides, SPOs, Release Notes",
+      "9. IDENTIFY EXPERTS: Follow OWNS/ASSIGNED_TO edges to find the expert team",
+      "10. ESCALATE: If P1, follow SOP for escalation workflow"
+    ]
+  }
+}

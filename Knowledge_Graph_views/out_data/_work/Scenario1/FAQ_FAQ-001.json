@@ -1,0 +1,12 @@
+{
+  "id": "FAQ-001",
+  "type": "FAQ",
+  "label": "Reset Presence",
+  "properties": {
+    "question": "How to reset presence?"
+  },
+  "tags": [
+    "faq"
+  ],
+  "relations": {}
+}

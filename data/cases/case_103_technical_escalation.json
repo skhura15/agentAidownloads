@@ -1,0 +1,67 @@
+{
+  "ticket_id": "TICKET-103",
+  "title": "Software Not Installing - Frustrated Power User",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 15,
+  "primary_skill": "Technical Troubleshooting + De-escalation",
+  "tags": ["technical", "installation", "power-user", "escalation-risk"],
+  "agent_context":"Enterprise power user facing installation failure after attempting advanced troubleshooting. Acknowledge expertise and move directly to permission-level fix or engineering escalation.",
+  
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Dr. Patricia Kowalski",
+    "initial_message": "I've been trying to install your enterprise software for 3 hours now. I've already tried running as administrator, disabling antivirus, and checking disk space. Error code 0x80070005. I'm an IT director and I know what I'm doing. Don't give me a script - I need real help.",
+    "context": "Customer is an IT Director at a Fortune 500 company. This is an enterprise license ($50K/year). Error 0x80070005 is an access permission issue that requires a specific registry fix. Customer has already done basic troubleshooting."
+  },
+  
+  "annotations": {
+    "sme_author": "David Kim",
+    "sme_date": "2026-01-22",
+    "learning_objectives": [
+      "Learn to adapt communication style for technical users",
+      "Practice skipping basic troubleshooting when customer demonstrates expertise",
+      "Handle high-value enterprise customers appropriately"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge the customer's technical expertise immediately",
+      "Thank them for the detailed error code and troubleshooting already done",
+      "Skip basic troubleshooting steps (they've already done them)",
+      "Go directly to the advanced solution for 0x80070005",
+      "Provide the registry fix steps clearly",
+      "Offer to stay on chat while they try the fix",
+      "If fix doesn't work, offer direct escalation to L3 engineering"
+    ],
+    "common_mistakes": [
+      "Reading from script when customer explicitly asked not to",
+      "Asking customer to try basic steps they already mentioned doing",
+      "Not acknowledging their technical expertise",
+      "Being condescending about technical details"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Acknowledgment of customer's expertise",
+        "Skipped basic troubleshooting",
+        "Advanced solution provided efficiently",
+        "Offer to stay while they implement"
+      ],
+      "bonus_points": [
+        "Mentioning enterprise support priority",
+        "Offering direct L3 escalation path",
+        "Following up on business impact"
+      ]
+    },
+    "sticky_notes": [
+      "CRITICAL: This customer WILL leave if you read from script. Adapt immediately!",
+      "KEY: Error 0x80070005 fix requires editing HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+      "VALUE: $50K/year enterprise customer - handle with care",
+      "TRAP: Asking 'Have you tried running as administrator?' will immediately lose trust"
+    ]
+  },
+  
+  "customer_persona_hints": {
+    "tone": "Frustrated but professional, expects peer-level technical discussion",
+    "secret_acceptance_condition": "Will be satisfied if agent demonstrates technical competence and provides the actual fix quickly",
+    "escalation_triggers": ["Script reading", "Condescension", "Asking to repeat already-stated info", "Basic troubleshooting suggestions"],
+    "de-escalation_triggers": ["Acknowledging expertise", "Jumping to advanced solutions", "Technical peer-level discussion"]
+  }
+}

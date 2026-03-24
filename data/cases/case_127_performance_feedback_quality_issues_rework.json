@@ -1,0 +1,75 @@
+{
+  "ticket_id": "TICKET-127",
+  "title": "Performance Feedback - Quality Issues Causing Rework",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 14,
+  "primary_skill": "Performance Coaching & Feedback",
+  "tags": ["management", "performance", "feedback", "quality", "rework", "coaching"],
+  "agent_context": "Employee’s work has repeated quality issues leading to rework and delays. Use specific examples + impact, listen for root causes, then set clear expectations and a short improvement plan with support and check-ins.",
+
+  "raw_content": {
+    "channel": "call",
+    "customer_name": "Aarav Gupta",
+    "initial_message": "I’m surprised you’re saying this. I’m doing a lot already — and I don’t think my work is worse than anyone else’s.",
+    "context": "1:1 performance feedback. Pattern: recurring errors, incomplete handoffs, and missed acceptance criteria causing rework for peers. Policy: keep feedback behavior-based and specific (SBI), avoid comparisons, invite employee perspective, clarify definition of done, agree a time-bound improvement plan (checklist/review/training) with weekly check-ins. Do not threaten; focus on standards + support."
+  },
+
+  "annotations": {
+    "sme_author": "Management Enablement",
+    "sme_date": "2026-02-10",
+    "learning_objectives": [
+      "Deliver clear, specific feedback without blame",
+      "Diagnose root causes (clarity, workload, skill gaps, process)",
+      "Set measurable expectations and an improvement plan with cadence"
+    ],
+    "correct_sop_steps": [
+      "Set supportive intent and purpose for the conversation",
+      "Share 2–3 specific examples of quality gaps and explain impact (rework/delays)",
+      "Invite their perspective and listen to understand root causes",
+      "Clarify expectations and define ‘done’ (acceptance criteria, completeness, review steps)",
+      "Co-create a short improvement plan with support (checklist, peer review, training) and timeline",
+      "Agree on measurement and schedule weekly check-ins"
+    ],
+    "common_mistakes": [
+      "Vague feedback with no examples",
+      "Making it personal (labels) instead of behavior-based",
+      "Arguing about fairness or comparing to peers",
+      "No measurable plan or follow-up cadence"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Uses specific examples and explains business/team impact",
+        "Invites employee perspective and identifies at least one root cause",
+        "Sets clear expectations/definition of done",
+        "Agrees on a time-bound plan with measurement and follow-up"
+      ],
+      "bonus_points": [
+        "Co-creates a simple checklist or review workflow",
+        "Balances accountability with support (training, pairing, resources)",
+        "Ends with a concise summary of next steps and dates"
+      ],
+      "sticky_notes": [
+        "KEY: Specific examples + impact, then coaching plan.",
+        "TRAP: Don’t compare them to others or argue about fairness.",
+        "HINT: Agree on ‘definition of done’ and a repeatable quality checklist."
+      ]
+    }
+  },
+
+  "customer_persona_hints": {
+    "starting_tone": "Defensive, proud, feels singled out",
+    "secret_acceptance_condition": "Employee accepts feedback if you stay specific and fair, listen to their perspective, and agree on a clear improvement plan with support and weekly check-ins",
+    "escalation_triggers": [
+      "Personal labels or attacks",
+      "Peer comparisons",
+      "Threats without a plan",
+      "Vague accusations"
+    ],
+    "deescalation_triggers": [
+      "Specific examples with calm tone",
+      "Active listening and fairness",
+      "Clear expectations",
+      "Supportive improvement plan"
+    ]
+  }
+}

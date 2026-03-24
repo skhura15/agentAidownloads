@@ -1,0 +1,14 @@
+{
+  "id": "INFRA-101",
+  "type": "Infrastructure",
+  "label": "Azure Bot Service",
+  "properties": {
+    "regions": [
+      "EU West"
+    ]
+  },
+  "tags": [
+    "azure"
+  ],
+  "relations": {}
+}

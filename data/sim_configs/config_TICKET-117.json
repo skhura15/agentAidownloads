@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-117",
+  "title": "Late Delivery + Broken Item - Customer Demands Instant Refund",
+  "difficulty": "advanced",
+  "primary_skill": "De-escalation + Multi-Issue Resolution",
+  "scenario_context": "Multi-issue: late delivery + damaged item. Apologize for both, confirm order, request minimal evidence, refund after return initiated, offer expedited pickup/replacement, set timeline, escalate if refusal.",
+  "success_summary": "Multi-issue de-escalation with immediate action plan and refund timeline.",
+  "max_turns": 12,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Nikhil Kapoor",
+    "tone": "very angry, impatient",
+    "knowledge_level": "low",
+    "opening_message": "Late and broken. Refund me right now.",
+    "secret_condition": "Customer accepts if pickup scheduled immediately with refund timeline",
+    "escalation_triggers": [
+      "policy-first response",
+      "no timeline",
+      "doubting damage"
+    ],
+    "de_escalation_triggers": [
+      "pickup scheduled",
+      "firm timeline",
+      "confident plan"
+    ],
+    "personality_notes": "Highly escalated due to multiple failures."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge BOTH issues and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Validate both complaints."
+      },
+      {
+        "id": 2,
+        "description": "Confirm order and delivery details",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Verify basics."
+      },
+      {
+        "id": 3,
+        "description": "Request minimal evidence politely",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Ask gently."
+      },
+      {
+        "id": 4,
+        "description": "Explain refund constraint + propose expedited pickup",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Move to action plan."
+      },
+      {
+        "id": 5,
+        "description": "Provide timeline + summarize plan",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give one clear plan."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Ignoring one issue",
+      "Policy-first tone",
+      "No plan",
+      "Damage doubt"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

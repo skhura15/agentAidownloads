@@ -1,0 +1,12 @@
+{
+  "id": "FEAT-001",
+  "type": "Feature",
+  "label": "Sentiment Routing",
+  "properties": {
+    "availability": "2025 Wave 1"
+  },
+  "tags": [
+    "feature"
+  ],
+  "relations": {}
+}

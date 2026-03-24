@@ -1,0 +1,24 @@
+{
+  "id": "KI-001",
+  "type": "KnownIssue",
+  "label": "Voice Transfer Drop",
+  "properties": {
+    "severity": "P1"
+  },
+  "tags": [
+    "issue"
+  ],
+  "relations": {
+    "FIXED_IN": [
+      "RN-001"
+    ],
+    "WORKAROUND_IN": [
+      "CFG-001"
+    ],
+    "RELATED_TO": [
+      "INC-001",
+      "RB-001",
+      "UG-001"
+    ]
+  }
+}

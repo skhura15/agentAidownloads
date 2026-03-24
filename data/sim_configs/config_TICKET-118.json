@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-118",
+  "title": "Workspace Missing - Customer Reports Data Loss",
+  "difficulty": "advanced",
+  "primary_skill": "High-Stakes Incident Handling",
+  "scenario_context": "Workspace missing/data loss. Investigate via audit + recovery feasibility. No blame, no restore promises. Escalate and set cadence.",
+  "success_summary": "Handled high-severity data loss with empathy, escalation, and realistic expectations.",
+  "max_turns": 12,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Ethan Marshall",
+    "tone": "anxious, urgent",
+    "knowledge_level": "medium",
+    "opening_message": "Our workspace is gone. Can you restore it?",
+    "secret_condition": "Customer stabilizes if investigation starts + cadence set",
+    "escalation_triggers": [
+      "blame language",
+      "no cadence",
+      "restore promises"
+    ],
+    "de_escalation_triggers": [
+      "ownership",
+      "escalation",
+      "timeline"
+    ],
+    "personality_notes": "High business anxiety due to data loss risk."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge severity and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Lead with ownership."
+      },
+      {
+        "id": 2,
+        "description": "Clarify scope + timestamps",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Need last-seen data."
+      },
+      {
+        "id": 3,
+        "description": "Check access/permissions/billing",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Quick visibility checks."
+      },
+      {
+        "id": 4,
+        "description": "Initiate audit + recovery check",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Open investigation."
+      },
+      {
+        "id": 5,
+        "description": "Escalate + set cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give update time."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Blame",
+      "Restore promises",
+      "No escalation",
+      "No cadence"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

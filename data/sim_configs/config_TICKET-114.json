@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-114",
+  "title": "Auto-Renew Turned Off but Subscription Renewed Anyway",
+  "difficulty": "intermediate",
+  "primary_skill": "Billing Investigation & Trust Repair",
+  "scenario_context": "Customer disabled auto-renew but was charged. Verify timestamps vs cutoff. If error, refund. Confirm auto-renew OFF now and prevent future charges. Provide timeline.",
+  "success_summary": "Trust repaired with timestamp verification, prevention of future charges, and refund plan.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Marcus Lee",
+    "tone": "distrustful, annoyed",
+    "knowledge_level": "medium",
+    "opening_message": "I turned off auto-renew and still got charged today.",
+    "secret_condition": "Customer accepts if renewal stopped + timestamps explained + refund timeline provided",
+    "escalation_triggers": [
+      "blame language",
+      "vague answer",
+      "no refund timeline"
+    ],
+    "de_escalation_triggers": [
+      "timestamp explanation",
+      "future charge prevention",
+      "refund timeline"
+    ],
+    "personality_notes": "Feels misled; needs proof and reassurance."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge frustration and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Lead with trust repair."
+      },
+      {
+        "id": 2,
+        "description": "Verify identity and timestamps",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Cutoff timing determines outcome."
+      },
+      {
+        "id": 3,
+        "description": "Explain outcome clearly",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Avoid blame language."
+      },
+      {
+        "id": 4,
+        "description": "Confirm auto-renew OFF and prevent charges",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Reassure next renewal won’t happen."
+      },
+      {
+        "id": 5,
+        "description": "Provide refund timeline + update cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give timeline + follow-up."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Arguing",
+      "No timestamp check",
+      "No prevention",
+      "No timeline"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

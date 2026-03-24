@@ -1,0 +1,14 @@
+{
+  "id": "INFRA-001",
+  "type": "Infrastructure",
+  "label": "Dataverse",
+  "properties": {
+    "regions": [
+      "US East"
+    ]
+  },
+  "tags": [
+    "data"
+  ],
+  "relations": {}
+}

@@ -1,0 +1,69 @@
+{
+  "ticket_id": "TICKET-117",
+  "title": "Late Delivery + Broken Item - Customer Demands Instant Refund",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 15,
+  "primary_skill": "De-escalation + Multi-Issue Resolution",
+  "tags": ["delivery", "damaged-item", "refund", "multi-issue", "escalation"],
+  "agent_context": "Customer has two issues (late delivery + broken item) and is demanding an instant refund. Validate both problems, initiate expedited pickup/return flow, explain refund constraints calmly, and give a short, confident plan with a firm refund timeline.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Nikhil Kapoor",
+    "initial_message": "This order arrived late AND it’s broken. I’m not doing exchanges or return nonsense. Just refund me right now.",
+    "context": "Customer has multiple issues: delivery delay + damaged item. Policy: apologize, confirm order details, explain refund constraints (refund after return initiated/pickup scan), offer expedited pickup and replacement option, and set timeline. Avoid arguing, focus on an action plan."
+  },
+  "annotations": {
+    "sme_author": "Hannah Wu",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Handle multi-issue complaint without sounding overwhelmed",
+      "De-escalate and prioritize next best action",
+      "Follow refund policy but still provide a satisfying plan"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge both issues and apologize",
+      "Confirm order details and delivery date",
+      "Request minimal evidence politely if required",
+      "Explain refund constraint calmly",
+      "Offer expedited pickup and replacement",
+      "Set timeline and summarize plan",
+      "Offer escalation if refusal"
+    ],
+    "common_mistakes": [
+      "Addressing only one issue",
+      "Policy-first tone",
+      "No timeline",
+      "Doubting damage claim"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Acknowledges both issues",
+        "Actionable next steps",
+        "Timeline + update cadence"
+      ],
+      "bonus_points": [
+        "Concise plan summary",
+        "Optional goodwill credit"
+      ],
+      "sticky_notes": [
+        "KEY: Validate both problems first.",
+        "TRAP: Don’t debate refund instantly.",
+        "HINT: Pickup scheduling calms customer."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Very angry and impatient",
+    "escalation_triggers": [
+      "Policy-first tone",
+      "No timeline",
+      "Damage doubt"
+    ],
+    "deescalation_triggers": [
+      "Pickup scheduled",
+      "Refund timeline",
+      "Confident plan"
+    ],
+    "secret_acceptance_condition": "Will cooperate if pickup is scheduled immediately with refund timeline"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "ticket_id": "TICKET-113",
+  "title": "Payment Failed but Customer Sees Money Debited",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Billing Reassurance & Investigation",
+  "tags": ["billing", "payment-failure", "pending-charge", "reassurance"],
+  "agent_context": "Customer sees money deducted even though the payment failed, likely a pending authorization. Reassure without dismissing, confirm minimal transaction details (pending vs posted), explain reversal timelines, and escalate if it settles or exceeds SLA.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Hannah",
+    "initial_message": "My payment failed but the money is already deducted.",
+    "context": "Customer sees debit after a failed payment attempt. Often this is a pending authorization that reverses automatically. Policy: reassure without dismissing, verify transaction details, avoid asking for full card numbers, explain expected timelines, and offer escalation if it doesn’t resolve in the SLA window."
+  },
+  "annotations": {
+    "sme_author": "Raj Mehta",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Explain pending authorizations clearly without sounding dismissive",
+      "Collect minimal details needed for investigation",
+      "Set realistic expectations and next update time"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge frustration and reassure customer you will help",
+      "Confirm what they see: amount, timestamp, bank name, and pending vs posted",
+      "Explain temporary authorization hold and auto-reversal behavior",
+      "Clarify reversal timeline and offer tracking reference",
+      "Escalate if posted/settled or beyond SLA",
+      "Set next update time and confirm follow-up"
+    ],
+    "common_mistakes": [
+      "Saying 'it’s normal' dismissively",
+      "Asking for full card number or OTP",
+      "No timeline",
+      "No escalation option"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Reassurance + empathy",
+        "Minimal transaction detail collection",
+        "Clear timeline + next update cadence"
+      ],
+      "bonus_points": [
+        "Explains pending vs posted simply",
+        "Summarizes next steps clearly"
+      ],
+      "sticky_notes": [
+        "KEY: Validate anxiety first.",
+        "TRAP: Never request sensitive credentials.",
+        "HINT: Pending vs posted determines next steps."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Worried and defensive",
+    "escalation_triggers": [
+      "Dismissive tone",
+      "No timeline",
+      "Sensitive data requests"
+    ],
+    "deescalation_triggers": [
+      "Reassurance",
+      "Simple explanation",
+      "Specific next steps"
+    ],
+    "secret_acceptance_condition": "Will calm down if pending vs posted is explained with timeline and follow-up plan"
+  }
+}

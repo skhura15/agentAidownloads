@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "graph_name": "Knowledge Graph - Scenario2",
+    "version": "2.0.0",
+    "description": "Knowledge graph for Support AI Agent to resolve Microsoft Dynamics 365 Contact Center (CCaaS) tickets. Covers services, SPOs, release notes, user guides, known issues, runbooks, SOPs, incidents, experts, and customers.",
+    "created_date": "2026-03-06",
+    "last_updated": "2026-03-06",
+    "product": "Microsoft Dynamics 365 Contact Center (CCaaS)",
+    "total_nodes": 4,
+    "total_edges": 3,
+    "schema_version": "v2"
+  },
+  "node_types": [
+    "Product",
+    "Service",
+    "SPO",
+    "ReleaseNote",
+    "UserGuide",
+    "KnownIssue",
+    "Runbook",
+    "SOP",
+    "Incident",
+    "Expert",
+    "Team",
+    "Customer",
+    "Infrastructure",
+    "Configuration",
+    "FAQ",
+    "Feature"
+  ],
+  "edge_types": [
+    "ASSIGNED_TO",
+    "BELONGS_TO_SPO",
+    "CONFIGURED_BY",
+    "DEPENDS_ON",
+    "DOCUMENTED_IN",
+    "ESCALATES_TO",
+    "FIXED_IN",
+    "HAS_FAQ",
+    "HAS_FEATURE",
+    "HAS_KNOWN_ISSUE",
+    "HAS_RELEASE_NOTE",
+    "HAS_RUNBOOK",
+    "HAS_SERVICE",
+    "HAS_SOP",
+    "IMPACTED_BY",
+    "OWNS",
+    "RELATED_TO",
+    "REPORTED_INCIDENT",
+    "RESOLVED_BY",
+    "RUNS_ON",
+    "SUBSCRIBES_TO",
+    "WORKAROUND_IN"
+  ],
+  "nodes": [
+    {
+      "id": "FAQ-101",
+      "type": "FAQ",
+      "label": "Add chat widget",
+      "properties": {
+        "question": "How to add a chat widget?"
+      },
+      "tags": [
+        "faq"
+      ]
+    },
+    {
+      "id": "INFRA-101",
+      "type": "Infrastructure",
+      "label": "Azure Bot Service",
+      "properties": {
+        "regions": [
+          "EU West"
+        ]
+      },
+      "tags": [
+        "azure"
+      ]
+    },
+    {
+      "id": "PROD-101",
+      "type": "Product",
+      "label": "Sample Product B",
+      "properties": {
+        "vendor": "Acme"
+      },
+      "tags": [
+        "sample"
+      ]
+    },
+    {
+      "id": "SVC-101",
+      "type": "Service",
+      "label": "Chat Channel",
+      "properties": {
+        "criticality": "P2"
+      },
+      "tags": [
+        "chat"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "PROD-101",
+      "target": "SVC-101",
+      "type": "HAS_SERVICE"
+    },
+    {
+      "source": "SVC-101",
+      "target": "INFRA-101",
+      "type": "RUNS_ON"
+    },
+    {
+      "source": "SVC-101",
+      "target": "FAQ-101",
+      "type": "HAS_FAQ"
+    }
+  ],
+  "ai_agent_instructions": {
+    "purpose": "When a support ticket arrives for Microsoft Dynamics 365 Contact Center (CCaaS), traverse this graph to find the best resolution path.",
+    "resolution_workflow": [
+      "1. PARSE: Extract product, service, error messages, symptoms, customer name from ticket",
+      "2. IDENTIFY SERVICE: Map symptoms to the affected service node",
+      "3. CHECK KNOWN ISSUES: Search KnownIssue nodes matching symptoms — provide workaround immediately",
+      "4. CHECK RELEASE NOTES: Follow FIXED_IN edges for available fixes in newer versions",
+      "5. FIND RUNBOOK: Follow HAS_RUNBOOK edges for step-by-step recovery",
+      "6. CHECK FAQ: Follow HAS_FAQ edges for common questions",
+      "7. REVIEW PAST INCIDENTS: Search similar past incidents and their resolutions",
+      "8. FIND DOCUMENTS: Retrieve relevant User Guides, SPOs, Release Notes",
+      "9. IDENTIFY EXPERTS: Follow OWNS/ASSIGNED_TO edges to find the expert team",
+      "10. ESCALATE: If P1, follow SOP for escalation workflow"
+    ]
+  }
+}

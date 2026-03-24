@@ -1,0 +1,81 @@
+{
+  "case_id": "TICKET-130",
+  "title": "Burnout / Employee Wellbeing Conversation - Overwhelmed and Disengaged",
+  "difficulty": "intermediate",
+  "primary_skill": "Wellbeing Support & Workload Alignment",
+  "customer_profile": {
+    "name": "Meera Nair",
+    "tone": "Overwhelmed, anxious, discouraged",
+    "knowledge_level": "average",
+    "opening_message": "I’m exhausted. I’m behind on everything and I don’t know where to start. Maybe I’m not cut out for this anymore.",
+    "secret_condition": "Customer accepts if agent leads with empathy, explores stressors without prying, reprioritizes and de-scopes work immediately, offers supports/resources, and schedules a near-term follow-up with a clear recap",
+    "escalation_triggers": [
+      "Minimizing language",
+      "Pressure or guilt",
+      "No real workload change",
+      "Intrusive personal questions"
+    ],
+    "de_escalation_triggers": [
+      "Empathy and validation",
+      "Immediate reprioritization",
+      "Practical support offers",
+      "Clear follow-up"
+    ],
+    "personality_notes": "Feels shame about falling behind; needs psychological safety and immediate scope reduction to regain control."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Respond with empathy and create psychological safety",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Validate feelings and thank them for sharing before problem-solving."
+      },
+      {
+        "id": 2,
+        "description": "Explore stressors with open questions without prying into medical/personal details",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask about workload, clarity, constraints; avoid diagnosis and invasive questions."
+      },
+      {
+        "id": 3,
+        "description": "Reprioritize and de-scope: define top priorities and what will pause/stop",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Identify 1–2 priorities and explicitly pause lower-value work."
+      },
+      {
+        "id": 4,
+        "description": "Offer practical supports and mention resources (without pressure)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Provide immediate supports like focus time, pairing, deadline reset, PTO planning."
+      },
+      {
+        "id": 5,
+        "description": "Schedule a near-term follow-up and summarize next steps clearly",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Set a check-in date and recap the plan in a few bullets."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Minimizing feelings",
+      "Prying into medical/personal details",
+      "No scope reduction",
+      "No follow-up scheduled"
+    ],
+    "positive_reinforcement_triggers": [
+      "Empathy first",
+      "Concrete de-scoping",
+      "Practical supports offered",
+      "Clear follow-up and recap"
+    ]
+  },
+  "scenario_context": "Manager wellbeing check-in for burnout signals. Must lead with empathy, explore stressors without diagnosing or prying, reprioritize and de-scope work immediately, offer practical supports/resources, and schedule a near-term follow-up with a clear recap. Escalate to HR only if required by policy or explicit risk is disclosed.",
+  "success_summary": "Successfully demonstrate: Wellbeing Support & Workload Alignment",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

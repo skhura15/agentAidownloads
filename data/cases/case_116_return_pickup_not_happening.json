@@ -1,0 +1,68 @@
+{
+  "ticket_id": "TICKET-116",
+  "title": "Return Pickup Missed Multiple Times",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Ownership & Process Recovery",
+  "tags": ["returns", "pickup-failed", "refund-delay", "escalation"],
+  "agent_context": "Return pickup has failed multiple times and customer wants an immediate refund. Take ownership, escalate to logistics for priority reschedule (or offer drop-off), and explain refund timing tied to pickup scan/return initiation with a firm next update time.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Daniel Brooks",
+    "initial_message": "This is the THIRD time pickup didn’t happen. Just refund me already.",
+    "context": "Return pickup has failed multiple times. Policy: apologize, acknowledge inconvenience, reschedule with priority/escalation to logistics, offer drop-off option if available, explain refund timeline once pickup is confirmed, and provide next update time."
+  },
+  "annotations": {
+    "sme_author": "Mina Al-Sayed",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "De-escalate when the customer feels disrespected",
+      "Fix broken process with ownership and concrete action",
+      "Set realistic refund expectations"
+    ],
+    "correct_sop_steps": [
+      "Apologize and acknowledge inconvenience",
+      "Confirm return details and missed attempts",
+      "Escalate and reschedule with priority window",
+      "Offer drop-off alternative",
+      "Explain refund timeline post pickup scan",
+      "Set next update time"
+    ],
+    "common_mistakes": [
+      "Generic apology",
+      "No escalation",
+      "Refund promise too early",
+      "No follow-up timeline"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Ownership + apology",
+        "Escalation/reschedule",
+        "Timeline + update cadence"
+      ],
+      "bonus_points": [
+        "Drop-off option offered",
+        "Clear plan summary"
+      ],
+      "sticky_notes": [
+        "KEY: Show ownership for wasted time.",
+        "TRAP: Don’t promise instant refund.",
+        "HINT: Provide one clear plan."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Angry and exhausted",
+    "escalation_triggers": [
+      "No action plan",
+      "No escalation",
+      "Vague updates"
+    ],
+    "deescalation_triggers": [
+      "Priority reschedule",
+      "Timeline",
+      "Alternative option"
+    ],
+    "secret_acceptance_condition": "Will calm down if pickup is prioritized and rescheduled with firm window + follow-up"
+  }
+}

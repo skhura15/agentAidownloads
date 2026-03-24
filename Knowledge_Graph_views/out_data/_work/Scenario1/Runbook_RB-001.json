@@ -1,0 +1,17 @@
+{
+  "id": "RB-001",
+  "type": "Runbook",
+  "label": "Recover Voice Outage",
+  "properties": {
+    "estimated_time": "30 minutes"
+  },
+  "tags": [
+    "runbook"
+  ],
+  "relations": {
+    "RELATED_TO": [
+      "CFG-001",
+      "UG-001"
+    ]
+  }
+}

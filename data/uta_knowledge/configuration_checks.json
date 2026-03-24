@@ -1,0 +1,398 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2026-01-15",
+    "total_checks": 35
+  },
+  "configuration_checks": {
+    "routing": [
+      {
+        "id": "CHK-ROUTING-001",
+        "name": "Queue Status Validation",
+        "description": "Verify the queue is active and properly configured",
+        "priority": "high",
+        "applicable_signals": ["calls not routing", "queue issues", "calls stuck"],
+        "how_to_check": "Admin Portal > Contact Center > Queues > [Queue Name] > Status",
+        "expected_result": "Queue status shows 'Active'",
+        "common_failures": [
+          "Queue is set to 'Inactive'",
+          "Queue is in 'Maintenance' mode",
+          "Queue was recently created and not yet active"
+        ],
+        "remediation": "Enable the queue by setting status to 'Active'"
+      },
+      {
+        "id": "CHK-ROUTING-002",
+        "name": "Queue Membership Validation",
+        "description": "Verify agents are assigned to the queue",
+        "priority": "high",
+        "applicable_signals": ["calls not routing", "no agents", "queue empty"],
+        "how_to_check": "Admin Portal > Contact Center > Queues > [Queue Name] > Members",
+        "expected_result": "At least one agent assigned and showing as available",
+        "common_failures": [
+          "No agents assigned to queue",
+          "Agents assigned but all offline",
+          "Agents in wrong status (Away, DND)"
+        ],
+        "remediation": "Assign agents to the queue and ensure they are set to Available status"
+      },
+      {
+        "id": "CHK-ROUTING-003",
+        "name": "Routing Rules Configuration",
+        "description": "Verify routing rules are enabled and correctly configured",
+        "priority": "high",
+        "applicable_signals": ["wrong queue", "routing incorrect", "rules not working"],
+        "how_to_check": "Admin Portal > Contact Center > Routing Rules",
+        "expected_result": "At least one enabled rule matching the scenario with correct target",
+        "common_failures": [
+          "All rules disabled",
+          "Rule conditions not matching",
+          "Priority order incorrect",
+          "Target queue misconfigured"
+        ],
+        "remediation": "Enable relevant rules, verify conditions, and confirm target queues"
+      },
+      {
+        "id": "CHK-ROUTING-004",
+        "name": "Skills Configuration",
+        "description": "Verify skills-based routing is properly configured",
+        "priority": "medium",
+        "applicable_signals": ["skills", "skill matching", "wrong agent"],
+        "how_to_check": "Admin Portal > Contact Center > Skills + Queue Skill Requirements + Agent Skills",
+        "expected_result": "Skills defined, assigned to agents, and required by queue match",
+        "common_failures": [
+          "Skills not defined",
+          "Agents missing skill assignments",
+          "Queue skill requirements too restrictive",
+          "Proficiency levels mismatched"
+        ],
+        "remediation": "Create skills, assign to agents, configure queue requirements appropriately"
+      },
+      {
+        "id": "CHK-ROUTING-005",
+        "name": "Overflow Configuration",
+        "description": "Verify overflow settings for queue capacity handling",
+        "priority": "medium",
+        "applicable_signals": ["overflow", "queue full", "timeout", "long wait"],
+        "how_to_check": "Admin Portal > Contact Center > Queues > [Queue Name] > Overflow",
+        "expected_result": "Overflow enabled with valid target and appropriate threshold",
+        "common_failures": [
+          "Overflow disabled",
+          "Threshold too high",
+          "Target queue invalid or at capacity",
+          "Circular overflow reference"
+        ],
+        "remediation": "Enable overflow, set reasonable thresholds, configure valid fallback queue"
+      },
+      {
+        "id": "CHK-ROUTING-006",
+        "name": "Operating Hours",
+        "description": "Verify queue operating hours are correctly configured",
+        "priority": "medium",
+        "applicable_signals": ["after hours", "not available", "schedule", "hours"],
+        "how_to_check": "Admin Portal > Contact Center > Queues > [Queue Name] > Hours",
+        "expected_result": "Operating hours match expected business hours with correct timezone",
+        "common_failures": [
+          "Wrong timezone configured",
+          "Hours not set for all days",
+          "Holiday schedule overriding",
+          "After-hours routing not configured"
+        ],
+        "remediation": "Configure correct timezone, set hours for each day, review holiday settings"
+      },
+      {
+        "id": "CHK-ROUTING-007",
+        "name": "Call Flow Configuration",
+        "description": "Verify call flow routes to correct queue",
+        "priority": "high",
+        "applicable_signals": ["call flow", "IVR", "menu", "transfer"],
+        "how_to_check": "Admin Portal > Contact Center > Call Flows > [Flow Name]",
+        "expected_result": "Call flow paths correctly lead to intended queues without dead ends",
+        "common_failures": [
+          "Wrong queue referenced",
+          "Dead-end paths in flow",
+          "Infinite loops",
+          "Missing error handling"
+        ],
+        "remediation": "Review and correct call flow logic, ensure all paths have valid destinations"
+      }
+    ],
+    "licensing": [
+      {
+        "id": "CHK-LICENSE-001",
+        "name": "Tenant License Verification",
+        "description": "Verify tenant has active CCaaS license",
+        "priority": "high",
+        "applicable_signals": ["license", "feature not available", "access denied"],
+        "how_to_check": "M365 Admin Center > Billing > Licenses > Search 'Contact Center'",
+        "expected_result": "CCaaS license present with available seats",
+        "common_failures": [
+          "No CCaaS license purchased",
+          "License expired",
+          "All seats assigned",
+          "Wrong license tier"
+        ],
+        "remediation": "Purchase/renew CCaaS license, free up seats, or upgrade tier"
+      },
+      {
+        "id": "CHK-LICENSE-002",
+        "name": "User License Assignment",
+        "description": "Verify user has CCaaS license assigned",
+        "priority": "high",
+        "applicable_signals": ["cannot access", "permission denied", "user blocked"],
+        "how_to_check": "M365 Admin Center > Users > [User] > Licenses and apps",
+        "expected_result": "CCaaS license checkbox is selected for the user",
+        "common_failures": [
+          "License not assigned to user",
+          "Dependent license missing (Teams)",
+          "License assignment pending propagation"
+        ],
+        "remediation": "Assign CCaaS license to user, wait 15-30 minutes, have user re-login"
+      },
+      {
+        "id": "CHK-LICENSE-003",
+        "name": "Feature Flag Status",
+        "description": "Verify required feature flags are enabled",
+        "priority": "medium",
+        "applicable_signals": ["feature missing", "option not showing", "preview feature"],
+        "how_to_check": "CCaaS Admin Portal > Settings > Feature Management",
+        "expected_result": "Required feature is listed and toggle is set to Enabled",
+        "common_failures": [
+          "Feature flag disabled",
+          "Feature in preview requires opt-in",
+          "Feature flag reset after upgrade"
+        ],
+        "remediation": "Enable the feature flag, opt-in to preview if needed"
+      },
+      {
+        "id": "CHK-LICENSE-004",
+        "name": "License Tier Feature Access",
+        "description": "Verify feature is included in license tier",
+        "priority": "medium",
+        "applicable_signals": ["premium feature", "upgrade required", "not in plan"],
+        "how_to_check": "Reference License-Feature Matrix (internal doc)",
+        "expected_result": "Feature is included in customer's license tier (Standard/Premium/Enterprise)",
+        "common_failures": [
+          "Feature requires Premium, customer has Standard",
+          "Feature is Enterprise-only",
+          "Add-on license required"
+        ],
+        "remediation": "Advise customer on upgrade path or alternative features"
+      },
+      {
+        "id": "CHK-LICENSE-005",
+        "name": "User Role Verification",
+        "description": "Verify user has required role for feature access",
+        "priority": "medium",
+        "applicable_signals": ["permission", "access denied", "cannot see option"],
+        "how_to_check": "CCaaS Admin Portal > Users > [User] > Roles",
+        "expected_result": "User has the role required to access the feature",
+        "common_failures": [
+          "User has Agent role, needs Supervisor",
+          "Admin permission required",
+          "Custom role missing permission"
+        ],
+        "remediation": "Assign the appropriate role to the user"
+      },
+      {
+        "id": "CHK-LICENSE-006",
+        "name": "Regional Feature Availability",
+        "description": "Verify feature is available in tenant's region",
+        "priority": "low",
+        "applicable_signals": ["region", "not available", "location restriction"],
+        "how_to_check": "Admin Portal > About (for region) + Feature Availability Matrix",
+        "expected_result": "Feature is generally available in the tenant's region",
+        "common_failures": [
+          "Feature not yet rolled out to region",
+          "Regulatory restriction in region",
+          "Preview only in select regions"
+        ],
+        "remediation": "Provide rollout timeline, suggest alternatives, or discuss tenant migration"
+      }
+    ],
+    "connectivity": [
+      {
+        "id": "CHK-CONN-001",
+        "name": "Service Health Status",
+        "description": "Check for ongoing Azure/CCaaS outages",
+        "priority": "high",
+        "applicable_signals": ["outage", "service down", "not working for everyone"],
+        "how_to_check": "https://status.azure.com + https://status.microsoft.com + Admin Portal > Service Health",
+        "expected_result": "No active incidents affecting CCaaS in customer's region",
+        "common_failures": [
+          "Active service incident",
+          "Scheduled maintenance window",
+          "Regional degradation"
+        ],
+        "remediation": "Inform customer of known outage, provide status page, monitor for resolution"
+      },
+      {
+        "id": "CHK-CONN-002",
+        "name": "Firewall Endpoint Access",
+        "description": "Verify required endpoints are accessible through firewall",
+        "priority": "high",
+        "applicable_signals": ["blocked", "firewall", "cannot connect", "network"],
+        "how_to_check": "Test access to *.ccaas.microsoft.com, login.microsoftonline.com, *.teams.microsoft.com",
+        "expected_result": "All required CCaaS endpoints are accessible on port 443",
+        "common_failures": [
+          "CCaaS domains blocked",
+          "Wildcard domains not whitelisted",
+          "New endpoints not added to allowlist"
+        ],
+        "remediation": "Provide endpoint list to IT team, request firewall rule updates"
+      },
+      {
+        "id": "CHK-CONN-003",
+        "name": "Browser Compatibility",
+        "description": "Verify user's browser meets requirements",
+        "priority": "medium",
+        "applicable_signals": ["browser", "not loading", "display issue", "UI broken"],
+        "how_to_check": "Ask user for browser name and version",
+        "expected_result": "Edge 88+, Chrome 88+, Firefox 85+, or Safari 14+",
+        "common_failures": [
+          "Outdated browser version",
+          "Unsupported browser (IE11)",
+          "Browser extensions interfering"
+        ],
+        "remediation": "Update browser, test in incognito mode, try alternative browser"
+      },
+      {
+        "id": "CHK-CONN-004",
+        "name": "WebRTC/Media Connectivity",
+        "description": "Verify media connectivity for voice/video",
+        "priority": "high",
+        "applicable_signals": ["call quality", "audio", "video", "no sound", "voice issues"],
+        "how_to_check": "Run network connectivity test tool, check UDP 3478-3481",
+        "expected_result": "UDP connectivity confirmed, TURN servers accessible",
+        "common_failures": [
+          "UDP blocked by firewall",
+          "TURN servers not reachable",
+          "Symmetric NAT issues"
+        ],
+        "remediation": "Open UDP ports, whitelist TURN server IPs, review NAT configuration"
+      },
+      {
+        "id": "CHK-CONN-005",
+        "name": "Proxy Configuration",
+        "description": "Verify proxy is not interfering with connections",
+        "priority": "medium",
+        "applicable_signals": ["proxy", "corporate network", "SSL error", "certificate"],
+        "how_to_check": "Check browser certificate issuer, ask about proxy/SSL inspection",
+        "expected_result": "Certificate shows Microsoft as issuer, not proxy",
+        "common_failures": [
+          "SSL inspection modifying certificates",
+          "Proxy blocking WebSocket upgrade",
+          "Proxy timeout too short"
+        ],
+        "remediation": "Exclude CCaaS domains from SSL inspection, configure proxy for WebSocket"
+      }
+    ],
+    "version": [
+      {
+        "id": "CHK-VER-001",
+        "name": "Current Version Check",
+        "description": "Identify the current CCaaS version",
+        "priority": "medium",
+        "applicable_signals": ["version", "upgrade", "update", "after upgrade"],
+        "how_to_check": "Admin Portal > About or Settings > System Information",
+        "expected_result": "Version number clearly identified for troubleshooting reference",
+        "common_failures": [
+          "Version information not accessible",
+          "Multiple versions in hybrid deployment"
+        ],
+        "remediation": "Note version for issue correlation, check known issues for that version"
+      },
+      {
+        "id": "CHK-VER-002",
+        "name": "Known Issues Check",
+        "description": "Check if issue matches known bugs for the version",
+        "priority": "high",
+        "applicable_signals": ["bug", "known issue", "after upgrade", "started recently"],
+        "how_to_check": "Search internal Known Issues repository for version + symptoms",
+        "expected_result": "Either no match (new issue) or match found with documented workaround",
+        "common_failures": [
+          "Known issue without workaround",
+          "Hotfix available but not applied"
+        ],
+        "remediation": "Apply documented workaround or hotfix, escalate if no solution exists"
+      },
+      {
+        "id": "CHK-VER-003",
+        "name": "Feature Availability by Version",
+        "description": "Verify feature is available in current version",
+        "priority": "medium",
+        "applicable_signals": ["feature missing", "new feature", "version requirement"],
+        "how_to_check": "Reference Release Notes for current version",
+        "expected_result": "Feature is included in the current version's feature set",
+        "common_failures": [
+          "Feature introduced in newer version",
+          "Feature deprecated in current version",
+          "Feature preview in current version"
+        ],
+        "remediation": "Advise on upgrade path or feature alternatives"
+      },
+      {
+        "id": "CHK-VER-004",
+        "name": "Deprecated Parameter Check",
+        "description": "Check for deprecated configurations after upgrade",
+        "priority": "medium",
+        "applicable_signals": ["after upgrade", "configuration error", "API error"],
+        "how_to_check": "Review upgrade logs, check Admin Portal for warnings",
+        "expected_result": "No deprecated configuration warnings",
+        "common_failures": [
+          "Deprecated API parameters in integrations",
+          "Removed configuration options",
+          "Changed default values"
+        ],
+        "remediation": "Update configurations to use new parameters, review migration guide"
+      }
+    ],
+    "environment": [
+      {
+        "id": "CHK-ENV-001",
+        "name": "Tenant Environment Type",
+        "description": "Confirm if issue is in Production or Sandbox",
+        "priority": "low",
+        "applicable_signals": ["sandbox", "test", "production"],
+        "how_to_check": "Admin Portal > About > Environment",
+        "expected_result": "Environment type clearly identified",
+        "common_failures": [
+          "Testing in wrong environment",
+          "Sandbox limitations mistaken for bugs",
+          "Config not promoted to production"
+        ],
+        "remediation": "Ensure testing in correct environment, note sandbox limitations"
+      },
+      {
+        "id": "CHK-ENV-002",
+        "name": "Azure Region",
+        "description": "Verify tenant's Azure region for regional issues",
+        "priority": "low",
+        "applicable_signals": ["region", "latency", "compliance"],
+        "how_to_check": "Admin Portal > About > Region or Azure Portal",
+        "expected_result": "Region identified for service availability correlation",
+        "common_failures": [
+          "Feature not available in region",
+          "Regional outage affecting tenant",
+          "Data residency constraints"
+        ],
+        "remediation": "Check regional feature availability, monitor regional status"
+      },
+      {
+        "id": "CHK-ENV-003",
+        "name": "Compliance/DLP Settings",
+        "description": "Check for compliance policies affecting functionality",
+        "priority": "low",
+        "applicable_signals": ["blocked", "policy", "compliance", "DLP"],
+        "how_to_check": "M365 Compliance Center + Azure AD Conditional Access",
+        "expected_result": "No blocking policies for CCaaS functionality",
+        "common_failures": [
+          "DLP policy blocking data transfer",
+          "Conditional access blocking users",
+          "Information barriers affecting routing"
+        ],
+        "remediation": "Work with compliance team to review and adjust policies"
+      }
+    ]
+  }
+}

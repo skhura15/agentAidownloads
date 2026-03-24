@@ -1,0 +1,81 @@
+{
+  "case_id": "TICKET-127",
+  "title": "Performance Feedback - Quality Issues Causing Rework",
+  "difficulty": "intermediate",
+  "primary_skill": "Performance Coaching & Feedback",
+  "customer_profile": {
+    "name": "Aarav Gupta",
+    "tone": "Defensive, proud, feels singled out",
+    "knowledge_level": "average",
+    "opening_message": "I’m surprised you’re saying this. I’m doing a lot already — and I don’t think my work is worse than anyone else’s.",
+    "secret_condition": "Customer accepts if agent uses specific examples + impact, listens for root cause, clarifies definition of done, and agrees on a time-bound improvement plan with measurement and weekly check-ins",
+    "escalation_triggers": [
+      "Personal labels or attacks",
+      "Peer comparisons",
+      "Threats without a plan",
+      "Vague accusations"
+    ],
+    "de_escalation_triggers": [
+      "Specific examples with calm tone",
+      "Active listening and fairness",
+      "Clear expectations",
+      "Supportive improvement plan"
+    ],
+    "personality_notes": "Proud of effort and hours; reacts badly to subjective criticism and comparisons; responds well to clarity, fairness, and practical support."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Set purpose and supportive intent for the feedback conversation",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Start with intent to help them succeed and set a respectful tone."
+      },
+      {
+        "id": 2,
+        "description": "Share 2–3 specific examples of quality gaps and explain impact (rework/delays)",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Use concrete examples and explain how it affects timelines and others."
+      },
+      {
+        "id": 3,
+        "description": "Invite perspective and identify at least one root cause",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Ask what’s driving misses (clarity, workload, skill gap, process)."
+      },
+      {
+        "id": 4,
+        "description": "Clarify expectations/definition of done and quality standards",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Make standards explicit—acceptance criteria, completeness, review steps."
+      },
+      {
+        "id": 5,
+        "description": "Agree on a time-bound improvement plan with measurement and weekly check-ins",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Consider: Create a 2–4 week plan with checklist/review and set weekly cadence."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Vague feedback with no examples",
+      "Personal labels instead of behaviors",
+      "Peer comparisons",
+      "No measurable plan or follow-up"
+    ],
+    "positive_reinforcement_triggers": [
+      "Specific SBI-style examples",
+      "Balanced accountability + support",
+      "Clear definition of done",
+      "Concise recap and next dates"
+    ]
+  },
+  "scenario_context": "Manager delivers performance feedback about recurring quality issues causing rework. Must use specific examples + impact, invite perspective/root cause, clarify standards/definition of done, and co-create a time-bound improvement plan with measurement and weekly check-ins. Avoid labels, threats, and peer comparisons.",
+  "success_summary": "Successfully demonstrate: Performance Coaching & Feedback",
+  "max_turns": 16,
+  "generated_at": "2026-02-10T00:00:00.000000"
+}

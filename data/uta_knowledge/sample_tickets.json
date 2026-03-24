@@ -1,0 +1,114 @@
+{
+  "description": "Sample support tickets for testing UTA agent responses",
+  "version": "1.0",
+  "tickets": [
+    {
+      "id": "TICKET-001",
+      "title": "Calls not routing to agents after upgrade",
+      "description": "After upgrading to version 2.5.2 yesterday, our calls are no longer routing to agents. The queue shows 15 calls waiting but all 10 agents are showing as Available. This started immediately after the upgrade was completed around 3 PM. Before the upgrade everything was working fine. We've tried having agents log out and back in but the issue persists. This is affecting our main customer support queue.",
+      "category": "routing",
+      "expected_signals": ["calls not routing", "after upgrade", "queue waiting", "agents available"],
+      "priority": "P1",
+      "expected_checks": ["CHK-ROUTING-001", "CHK-ROUTING-002", "CHK-VER-002"]
+    },
+    {
+      "id": "TICKET-002", 
+      "title": "Skills-based routing not matching correctly",
+      "description": "We have configured skills-based routing for our technical support queue. Agents with 'Hardware' skill should get hardware calls and agents with 'Software' skill should get software calls. However, we're seeing hardware calls going to agents who only have the Software skill. This has been happening for about a week. We've checked and the skills are correctly assigned to agents. The queue is set to require the appropriate skill.",
+      "category": "routing",
+      "expected_signals": ["skills", "routing not matching", "wrong agent"],
+      "priority": "P2",
+      "expected_checks": ["CHK-ROUTING-004", "CHK-ROUTING-003"]
+    },
+    {
+      "id": "TICKET-003",
+      "title": "Agent cannot access Analytics Dashboard",
+      "description": "One of our supervisors, John Smith (john.smith@contoso.com), cannot access the Analytics Dashboard. When he clicks on Analytics in the menu, he gets an error saying 'You do not have permission to access this feature'. Other supervisors can access it fine. We've checked and he has the Supervisor role assigned. We have the Premium license. This started after we added him as a new supervisor last week.",
+      "category": "licensing",
+      "expected_signals": ["cannot access", "permission", "Analytics Dashboard", "Supervisor role"],
+      "priority": "P3",
+      "expected_checks": ["CHK-LICENSE-002", "CHK-LICENSE-005", "CHK-LICENSE-003"]
+    },
+    {
+      "id": "TICKET-004",
+      "title": "Sentiment Analysis feature not available",
+      "description": "We upgraded our license to Enterprise tier last month specifically to get the Sentiment Analysis feature. However, we don't see this option anywhere in our Admin Portal or agent desktop. We've confirmed with our account team that we have the Enterprise license active. Our tenant is in the APAC region (Australia East). Is there something else we need to enable?",
+      "category": "licensing",
+      "expected_signals": ["Sentiment Analysis", "feature not available", "Enterprise", "APAC region"],
+      "priority": "P3",
+      "expected_checks": ["CHK-LICENSE-001", "CHK-LICENSE-006", "CHK-LICENSE-003"]
+    },
+    {
+      "id": "TICKET-005",
+      "title": "Agents getting disconnected frequently",
+      "description": "Our agents are experiencing frequent disconnections from the CCaaS platform. They see a 'Reconnecting...' message and sometimes get completely logged out. This happens multiple times per hour. It started about 3 days ago. We haven't made any changes to our network. The issue affects all agents in our main office (about 50 people) but not our remote workers. We're using Chrome browser version 120.",
+      "category": "connectivity",
+      "expected_signals": ["disconnected", "Reconnecting", "logged out", "all agents", "main office"],
+      "priority": "P1",
+      "expected_checks": ["CHK-CONN-001", "CHK-CONN-002", "CHK-CONN-005"]
+    },
+    {
+      "id": "TICKET-006",
+      "title": "Call quality issues - choppy audio",
+      "description": "Multiple agents are reporting poor call quality with choppy audio and delays. Customers are complaining they can't hear agents clearly. This is happening on both inbound and outbound calls. We're using the web-based agent desktop. Our network team says our internet connection is stable. This has been getting worse over the past week. Agents are on our corporate network with VPN.",
+      "category": "connectivity",
+      "expected_signals": ["call quality", "choppy audio", "delays", "VPN"],
+      "priority": "P2",
+      "expected_checks": ["CHK-CONN-004", "CHK-CONN-002"]
+    },
+    {
+      "id": "TICKET-007",
+      "title": "Overflow to backup queue not working",
+      "description": "We have configured overflow from our Sales queue to our General queue when wait time exceeds 2 minutes. However, calls are sitting in the Sales queue for 5+ minutes without overflowing. We verified the overflow is enabled and set to 120 seconds. The General queue has available agents. This issue started after we made some changes to the Sales queue configuration last week to add new agents.",
+      "category": "routing",
+      "expected_signals": ["overflow not working", "wait time exceeds", "configuration changes"],
+      "priority": "P2",
+      "expected_checks": ["CHK-ROUTING-005", "CHK-VER-002"]
+    },
+    {
+      "id": "TICKET-008",
+      "title": "CRM integration stopped working after update",
+      "description": "Our Dynamics 365 CRM integration stopped working yesterday. When agents receive calls, the CRM popup no longer appears with customer information. We haven't made any changes on our end. The integration was working fine until yesterday. We're on CCaaS version 2.5.3. In the Admin Portal, the integration still shows as 'Connected'. Error in browser console shows 'API request failed: 401 Unauthorized'.",
+      "category": "integration",
+      "expected_signals": ["CRM integration", "stopped working", "401 Unauthorized", "popup not appearing"],
+      "priority": "P2",
+      "expected_checks": ["CHK-VER-002", "CHK-VER-004"]
+    },
+    {
+      "id": "TICKET-009",
+      "title": "Queue not available during business hours",
+      "description": "Our support queue should be available Monday-Friday 8 AM to 6 PM Eastern time. However, customers calling at 9 AM Eastern are getting the after-hours message saying we're closed. This started happening after daylight saving time change last weekend. The queue hours in Admin Portal show 8:00-18:00 and timezone is set to Eastern.",
+      "category": "routing",
+      "expected_signals": ["after-hours message", "business hours", "daylight saving", "timezone"],
+      "priority": "P2",
+      "expected_checks": ["CHK-ROUTING-006", "CHK-ENV-002"]
+    },
+    {
+      "id": "TICKET-010",
+      "title": "New agent cannot log in to agent desktop",
+      "description": "We have a new agent, Sarah Johnson (sarah.johnson@contoso.com), who started yesterday. She cannot log in to the agent desktop. When she tries to access the agent desktop URL, she gets redirected to a page that says 'Access Denied - You are not authorized to access this application'. Her manager confirmed she has been added to the system and assigned to the Customer Service queue. She can log in to Microsoft 365 applications without issue.",
+      "category": "licensing",
+      "expected_signals": ["cannot log in", "Access Denied", "new agent", "not authorized"],
+      "priority": "P2",
+      "expected_checks": ["CHK-LICENSE-002", "CHK-LICENSE-005", "CHK-ROUTING-002"]
+    },
+    {
+      "id": "TICKET-011",
+      "title": "Real-time dashboard showing incorrect data",
+      "description": "Our supervisor dashboard is showing incorrect real-time data. It shows 0 calls in queue and 0 agents available, but we can see agents are logged in and handling calls. The historical reports are accurate, only real-time data is wrong. We've tried refreshing and clearing cache. This started after the upgrade to 2.5.2 two days ago. Other supervisors see the same incorrect data.",
+      "category": "ui_feature",
+      "expected_signals": ["dashboard incorrect", "real-time data wrong", "after upgrade"],
+      "priority": "P2",
+      "expected_checks": ["CHK-VER-002", "CHK-CONN-002"]
+    },
+    {
+      "id": "TICKET-012",
+      "title": "Calls going to agents who are on break",
+      "description": "Agents are receiving calls even when they set their status to 'On Break'. This defeats the purpose of the break status. It's causing agent frustration as they can't step away from their desks. We've verified the agents are correctly setting their status to On Break. The issue affects all agents in our contact center. Been happening for about 2 weeks now. We're on version 2.5.1.",
+      "category": "routing",
+      "expected_signals": ["calls to agents on break", "status not respected", "agent status"],
+      "priority": "P2",
+      "expected_checks": ["CHK-ROUTING-002", "CHK-VER-002"]
+    }
+  ]
+}

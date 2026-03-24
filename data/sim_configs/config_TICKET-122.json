@@ -1,0 +1,75 @@
+{
+  "case_id": "TICKET-122",
+  "title": "Feature Removed - Customer Workflow Broken Without Notice",
+  "difficulty": "advanced",
+  "primary_skill": "Product Change Communication & Retention Handling",
+  "scenario_context": "Feature removed/deprecated; workflow broken. Acknowledge impact, offer workaround/alternatives, escalate to product/migrations, avoid promising reinstatement, set cadence.",
+  "success_summary": "Product change handled with empathy, immediate workaround, and migration support escalation with clear cadence.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Sophie Laurent",
+    "tone": "frustrated, operationally impacted",
+    "knowledge_level": "medium",
+    "opening_message": "The feature is gone and it breaks our workflow. What now?",
+    "secret_condition": "Customer stabilizes when agent provides a usable workaround + clear migration support path and cadence",
+    "escalation_triggers": [
+      "minimizing tone",
+      "no workaround",
+      "promising reinstatement"
+    ],
+    "de_escalation_triggers": [
+      "workaround",
+      "ownership",
+      "migration path + update time"
+    ],
+    "personality_notes": "Operational impact driving urgency more than emotion."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge workflow impact and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Validate impact first."
+      },
+      {
+        "id": 2,
+        "description": "Clarify workflow and today’s critical path",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Map what broke."
+      },
+      {
+        "id": 3,
+        "description": "Explain change at high level with boundaries",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Avoid notice debate."
+      },
+      {
+        "id": 4,
+        "description": "Provide workaround/alternative steps",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give actionable help."
+      },
+      {
+        "id": 5,
+        "description": "Escalate to product/migrations and set cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Provide owner + update time."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Minimizing impact",
+      "Arguing about notice",
+      "No workaround",
+      "Promising reinstatement",
+      "No escalation/timeline"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

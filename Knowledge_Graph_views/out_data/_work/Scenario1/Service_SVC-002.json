@@ -1,0 +1,22 @@
+{
+  "id": "SVC-002",
+  "type": "Service",
+  "label": "Routing Engine",
+  "properties": {
+    "criticality": "P2"
+  },
+  "tags": [
+    "routing"
+  ],
+  "relations": {
+    "RUNS_ON": [
+      "INFRA-001"
+    ],
+    "CONFIGURED_BY": [
+      "CFG-001"
+    ],
+    "DOCUMENTED_IN": [
+      "UG-001"
+    ]
+  }
+}

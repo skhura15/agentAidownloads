@@ -1,0 +1,70 @@
+{
+  "ticket_id": "TICKET-122",
+  "title": "Feature Removed - Customer Workflow Broken Without Notice",
+  "difficulty": "advanced",
+  "estimated_time_minutes": 16,
+  "primary_skill": "Product Change Communication & Retention Handling",
+  "tags": ["feature-deprecation", "workflow-impact", "product-change", "retention-risk", "escalation"],
+  "agent_context": "Customer’s workflow is disrupted due to a removed/deprecated feature with no prior notice. Acknowledge impact, explain the product change at a high level, offer workarounds, and escalate to migration/product support with a follow-up plan.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Sophie Laurent",
+    "initial_message": "We logged in today and the automation rules feature is just gone. That’s not a minor change — we’ve built our entire internal workflow around those rules. There was no warning, no migration guide, nothing. Right now my team is manually doing work that used to be automated, and it’s already causing delays. What happened, and what are you going to do to help us get back to normal?",
+    "context": "Feature deprecated/removed. Customer workflow impacted; expects notice and migration support. Policy: do not argue; acknowledge impact; provide high-level explanation of product change; offer available alternatives/workarounds; route to product/migrations team; set follow-up plan and cadence; avoid promising feature return unless confirmed."
+  },
+  "annotations": {
+    "sme_author": "Hannah Wu",
+    "sme_date": "2026-02-05",
+    "learning_objectives": [
+      "Communicate product changes empathetically and clearly",
+      "Offer realistic alternatives and mitigation steps",
+      "Escalate to the correct team for migration support",
+      "Avoid promising feature reinstatement"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge impact and apologize for disruption",
+      "Clarify which workflow depends on the removed feature and what their critical path is today",
+      "Explain at a high level that the feature has been deprecated/changed and you’ll confirm the official notice/details",
+      "Offer immediate mitigations: alternative feature, manual workaround checklist, or temporary configuration support if available",
+      "Escalate to product/migrations team (or account owner) for migration guidance and timeline",
+      "Set next update time and a follow-up support plan"
+    ],
+    "common_mistakes": [
+      "Minimizing the impact ('it’s a small change')",
+      "Arguing about whether notice was sent",
+      "Promising the feature will return",
+      "Offering no workaround",
+      "No escalation path or timeline"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Acknowledges workflow impact",
+        "Provides at least one realistic workaround/alternative",
+        "Escalates to migration/product support with timeline/cadence"
+      ],
+      "bonus_points": [
+        "Provides a short step-by-step workaround checklist",
+        "Offers to schedule a migration support call or guided session"
+      ],
+      "sticky_notes": [
+        "KEY: They need help operating today—workaround first, explanation second.",
+        "TRAP: Don’t promise reinstatement unless confirmed by product.",
+        "HINT: Ask what the automation rules were doing so you can map them to alternatives."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Frustrated, operationally impacted, not emotional ranting",
+    "escalation_triggers": [
+      "Minimizing language",
+      "No workaround",
+      "No timeline"
+    ],
+    "deescalation_triggers": [
+      "Workaround steps",
+      "Ownership + escalation",
+      "Concrete follow-up plan"
+    ],
+    "secret_acceptance_condition": "Customer calms down if you provide a practical workaround for today and a clear migration support path with an update cadence"
+  }
+}

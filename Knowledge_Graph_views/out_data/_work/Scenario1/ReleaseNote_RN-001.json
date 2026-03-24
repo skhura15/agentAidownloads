@@ -1,0 +1,12 @@
+{
+  "id": "RN-001",
+  "type": "ReleaseNote",
+  "label": "2025 Wave 2 Notes",
+  "properties": {
+    "release_date": "2025-10-01"
+  },
+  "tags": [
+    "release"
+  ],
+  "relations": {}
+}

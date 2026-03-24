@@ -1,0 +1,76 @@
+{
+  "case_id": "TICKET-120",
+  "title": "Account Suspended for Policy Violation - Customer Disputes Suspension",
+  "difficulty": "advanced",
+  "primary_skill": "Policy Enforcement & Appeal Handling",
+  "scenario_context": "Account suspended for policy violation; customer disputes. Agent must stay neutral, avoid disclosing sensitive details, provide appeal workflow, escalate to compliance, and set timeline/cadence.",
+  "success_summary": "Neutral, policy-safe handling with appeal steps, compliance escalation, and clear cadence.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Luis Romero",
+    "tone": "urgent, defensive",
+    "knowledge_level": "medium",
+    "opening_message": "We were suspended with no warning and need access restored immediately.",
+    "secret_condition": "Customer stabilizes when agent provides appeal steps + clear boundaries + concrete update time",
+    "escalation_triggers": [
+      "accusations",
+      "over-disclosure",
+      "no appeal path",
+      "no timeline"
+    ],
+    "de_escalation_triggers": [
+      "neutral tone",
+      "appeal checklist",
+      "update cadence"
+    ],
+    "personality_notes": "Business-critical disruption driving urgency."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge disruption and apologize",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Start with empathy; suspension is disruptive."
+      },
+      {
+        "id": 2,
+        "description": "Verify identity/role and account identifiers",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Confirm requester authority."
+      },
+      {
+        "id": 3,
+        "description": "Explain suspension at high level with disclosure boundaries",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Avoid internal triggers."
+      },
+      {
+        "id": 4,
+        "description": "Provide appeal steps and requirements",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give checklist."
+      },
+      {
+        "id": 5,
+        "description": "Escalate to compliance and set timeline + update cadence",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Commit to next update."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Promising reinstatement",
+      "Over-disclosure",
+      "Implying wrongdoing",
+      "No appeal path",
+      "No timeline"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

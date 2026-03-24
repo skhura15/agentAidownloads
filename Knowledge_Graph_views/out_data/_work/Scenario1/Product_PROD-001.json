@@ -1,0 +1,30 @@
+{
+  "id": "PROD-001",
+  "type": "Product",
+  "label": "Sample Contact Center Product",
+  "properties": {
+    "vendor": "Microsoft",
+    "version": "2025 Wave 2"
+  },
+  "tags": [
+    "sample"
+  ],
+  "relations": {
+    "HAS_SERVICE": [
+      "SVC-001",
+      "SVC-002"
+    ],
+    "BELONGS_TO_SPO": [
+      "SPO-001"
+    ],
+    "HAS_RELEASE_NOTE": [
+      "RN-001"
+    ],
+    "HAS_SOP": [
+      "SOP-001"
+    ],
+    "HAS_FEATURE": [
+      "FEAT-001"
+    ]
+  }
+}

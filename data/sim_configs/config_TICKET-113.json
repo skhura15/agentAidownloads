@@ -1,0 +1,74 @@
+{
+  "case_id": "TICKET-113",
+  "title": "Payment Failed but Customer Sees Money Debited",
+  "difficulty": "intermediate",
+  "primary_skill": "Billing Reassurance & Investigation",
+  "scenario_context": "Payment failed but customer sees debit. Likely pending authorization. Reassure, confirm pending vs posted, avoid sensitive data requests, provide timeline and escalation path.",
+  "success_summary": "Customer reassured with pending-vs-posted explanation, realistic timeline, and clear follow-up plan.",
+  "max_turns": 10,
+  "generated_at": "2026-02-10",
+  "customer_profile": {
+    "name": "Hannah",
+    "tone": "worried, defensive",
+    "knowledge_level": "low",
+    "opening_message": "My payment failed but the money is already deducted.",
+    "secret_condition": "Customer accepts if pending vs posted is explained with timeline and follow-up",
+    "escalation_triggers": [
+      "dismissive responses",
+      "no timeline",
+      "requesting sensitive data"
+    ],
+    "de_escalation_triggers": [
+      "reassurance",
+      "clear explanation",
+      "next steps"
+    ],
+    "personality_notes": "Anxious about money leaving account; needs reassurance."
+  },
+  "coaching_rubric": {
+    "checkpoints": [
+      {
+        "id": 1,
+        "description": "Acknowledge concern and reassure",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Validate urgency first."
+      },
+      {
+        "id": 2,
+        "description": "Collect minimal transaction details",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Ask amount, time, pending vs posted."
+      },
+      {
+        "id": 3,
+        "description": "Explain authorization hold simply",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Clarify auto-reversal."
+      },
+      {
+        "id": 4,
+        "description": "Share realistic timeline",
+        "trigger_phrases": [],
+        "importance": "required",
+        "hint_if_missed": "Give expectation window."
+      },
+      {
+        "id": 5,
+        "description": "Escalate if posted/beyond SLA",
+        "trigger_phrases": [],
+        "importance": "recommended",
+        "hint_if_missed": "Offer billing review."
+      }
+    ],
+    "common_mistakes_to_watch": [
+      "Dismissive tone",
+      "Sensitive data requests",
+      "No timeline",
+      "No escalation"
+    ],
+    "positive_reinforcement_triggers": []
+  }
+}

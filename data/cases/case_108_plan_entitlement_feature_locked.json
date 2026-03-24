@@ -1,0 +1,68 @@
+{
+  "ticket_id": "TICKET-108",
+  "title": "Feature Locked - Customer Believes It's Included",
+  "difficulty": "intermediate",
+  "estimated_time_minutes": 12,
+  "primary_skill": "Expectation Setting",
+  "tags": ["plan-entitlement", "feature-locked", "upsell", "policy-enforcement"],
+  "agent_context": "Customer on Starter plan can’t access Export, which is only available on Pro+. Acknowledge urgency, confirm entitlement, offer a quick workaround first, then present upgrade as an optional path.",
+  "raw_content": {
+    "channel": "chat",
+    "customer_name": "Riya Mehra",
+    "initial_message": "Why is the Export button locked? I paid for this. It’s urgent and I need to export the report right now.",
+    "context": "Customer is on the 'Starter' plan. Export feature is included only in 'Pro' and above. Policy: do not blame customer; verify plan and explain clearly; offer workaround (share view-only link / copy data) and propose upgrade options without pressure. If customer claims they were promised Export, check notes and escalate if needed."
+  },
+  "annotations": {
+    "sme_author": "Hannah Wu",
+    "sme_date": "2026-02-04",
+    "learning_objectives": [
+      "Explain plan limitations without sounding defensive",
+      "Offer immediate workaround to reduce urgency",
+      "Position upgrade as an option, not pressure"
+    ],
+    "correct_sop_steps": [
+      "Acknowledge urgency and frustration",
+      "Confirm account and plan tier (Starter) and verify the feature entitlement",
+      "Explain calmly: Export is available on Pro+; avoid blame language",
+      "Offer immediate workaround (share link, copy table, screenshot, alternative output) based on use case",
+      "Offer upgrade path (trial/one-time upgrade/proration if available) and explain impact",
+      "If customer insists it was promised, offer to review prior notes and escalate to billing/CS lead"
+    ],
+    "common_mistakes": [
+      "Saying 'you should have known' or blaming the customer",
+      "Jumping to upsell without helping with workaround first",
+      "Using vague language instead of clear plan explanation",
+      "Refusing to check prior notes when customer claims they were promised the feature"
+    ],
+    "success_criteria": {
+      "must_demonstrate": [
+        "Clear plan/entitlement explanation in soft language",
+        "At least one workable immediate alternative",
+        "Upgrade mentioned as an option (not pressure)"
+      ],
+      "bonus_points": [
+        "Asks one clarifying question about export use case",
+        "Offers to review account notes if customer claims they were promised Export"
+      ],
+      "sticky_notes": [
+        "KEY: Provide a workaround before talking upgrade.",
+        "TRAP: Don’t blame the customer for choosing the plan.",
+        "HINT: Ask what format they need the export in to propose a workaround."
+      ]
+    }
+  },
+  "customer_persona_hints": {
+    "starting_tone": "Urgent and slightly accusatory, but cooperative if helped quickly",
+    "escalation_triggers": [
+      "Blame or condescending tone",
+      "No workaround offered",
+      "Pushy upsell"
+    ],
+    "deescalation_triggers": [
+      "Clear explanation with empathy",
+      "Immediate workaround",
+      "Optional upgrade presented calmly"
+    ],
+    "secret_acceptance_condition": "Will calm down if you offer a workable alternative within 2 turns and explain entitlement clearly"
+  }
+}
